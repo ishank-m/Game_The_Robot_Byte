@@ -1,0 +1,4 @@
+[style name="style"]
+Kevin: This room is locked! It must be for \
+my sister...
+[signal arg="done2"]

@@ -9,6 +9,7 @@ var road_crossing = false
 
 #Initilaizing the Game
 func _ready():
+	$CanvasLayer/ColorRect.visible = false
 	if GameState.game_state == "main_menu":
 		GameState.game_state = 'main_menu'
 		$Player.hide()
@@ -84,7 +85,6 @@ func _on_load_1_bt_pressed():
 		$Loadmenu/Load_1.frame = 4
 		pressed = true
 		press = true
-		GameState.current_save = "save1"
 	if pressed:
 		$Loadmenu/Load_2.frame = 0
 		$Loadmenu/Load_3.frame = 0
@@ -182,8 +182,11 @@ func _on_delay_timeout():
 var entered = false
 func _on_house_body_entered(body: Node2D):
 	if body.name == "Player":
-		entered = true
-func _process(_delta):
-	if entered:
+		$CanvasLayer/ColorRect.visible = true
+		$transition.play("bye")
+
+
+
+func _on_transition_animation_finished(anim_name):
+	if anim_name == "bye":
 		get_tree().change_scene_to_file("res://scenes/House/Downstairs.tscn")
-		

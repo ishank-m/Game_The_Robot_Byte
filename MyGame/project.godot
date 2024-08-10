@@ -33,7 +33,11 @@ directories/dch_directory={
 directories/dtl_directory={
 "downstairs": "res://dialogues/downstairs.dtl",
 "downstairs_2": "res://dialogues/downstairs_2.dtl",
-"lobby_1": "res://dialogues/lobby_1.dtl"
+"lobby_1": "res://dialogues/lobby_1.dtl",
+"lobby_2": "res://dialogues/lobby_2.dtl",
+"lobby_3": "res://dialogues/lobby_3.dtl",
+"lobby_4": "res://dialogues/lobby_4.dtl",
+"mcbedroom": "res://dialogues/mcbedroom.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogues/style.tres", "res://dialogues/downstairs_2.tres", "res://dialogues/lobby_1.tres"]

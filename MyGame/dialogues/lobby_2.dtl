@@ -1,0 +1,3 @@
+[style name="style"]
+Kevin: This room's not locked! Let's check it out
+[signal arg="done"]

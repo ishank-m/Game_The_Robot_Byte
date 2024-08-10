@@ -13,7 +13,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/y_sort_origin = -23
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -22, 0, -20, 9.6, -20.8, 8, -16, 8, -8, 2, -6, -2, -6, -6, -8, -6, -16)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10, -22, 0, -20, 12, -24, 12, -20, 8, -16, 8, -8, 2, -6, -2, -6, -6, -8, -6, -16)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -242,7 +242,7 @@ position = Vector2(111.75, 161)
 shape = SubResource("RectangleShape2D_jvkoc")
 
 [node name="down" type="Marker2D" parent="."]
-position = Vector2(30, 101)
+position = Vector2(30, 107)
 
 [node name="mc_bedroom" type="Marker2D" parent="."]
 position = Vector2(112, 143)
