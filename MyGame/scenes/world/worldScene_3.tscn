@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=3 uid="uid://cji5eqnvahk3a"]
+
+[ext_resource type="Script" path="res://scenes/world/worldScene_3.gd" id="1_qtves"]
+[ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_sukll"]
+[ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_j5nxc"]
+
+[sub_resource type="Animation" id="Animation_koaic"]
+resource_name = "bye"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d2nhp"]
+resource_name = "hi"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbup2"]
+_data = {
+"bye": SubResource("Animation_koaic"),
+"hi": SubResource("Animation_d2nhp")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xv8pd"]
+texture = ExtResource("1_sukll")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+4:0/size_in_atlas = Vector2i(2, 2)
+4:0/0 = 0
+6:0/size_in_atlas = Vector2i(2, 2)
+6:0/0 = 0
+8:0/size_in_atlas = Vector2i(2, 2)
+8:0/0 = 0
+10:0/size_in_atlas = Vector2i(2, 2)
+10:0/0 = 0
+12:0/size_in_atlas = Vector2i(2, 2)
+12:0/0 = 0
+12:2/size_in_atlas = Vector2i(2, 4)
+12:2/0 = 0
+12:2/0/y_sort_origin = 18
+10:2/size_in_atlas = Vector2i(2, 2)
+10:2/0 = 0
+10:4/size_in_atlas = Vector2i(2, 2)
+10:4/0 = 0
+8:2/size_in_atlas = Vector2i(2, 2)
+8:2/0 = 0
+8:4/size_in_atlas = Vector2i(2, 2)
+8:4/0 = 0
+6:2/size_in_atlas = Vector2i(2, 2)
+6:2/0 = 0
+0:2/size_in_atlas = Vector2i(2, 2)
+0:2/0 = 0
+2:2/size_in_atlas = Vector2i(2, 2)
+2:2/0 = 0
+4:2/size_in_atlas = Vector2i(2, 2)
+4:2/0 = 0
+6:4/size_in_atlas = Vector2i(2, 2)
+6:4/0 = 0
+4:4/size_in_atlas = Vector2i(2, 2)
+4:4/0 = 0
+2:4/size_in_atlas = Vector2i(2, 2)
+2:4/0 = 0
+0:4/size_in_atlas = Vector2i(2, 2)
+0:4/0 = 0
+0:6/size_in_atlas = Vector2i(2, 2)
+0:6/0 = 0
+0:6/0/texture_origin = Vector2i(0, 3)
+2:6/size_in_atlas = Vector2i(2, 2)
+2:6/0 = 0
+4:6/size_in_atlas = Vector2i(2, 2)
+4:6/0 = 0
+4:6/0/texture_origin = Vector2i(0, 8)
+6:6/size_in_atlas = Vector2i(2, 2)
+6:6/0 = 0
+6:6/0/texture_origin = Vector2i(0, 9)
+8:6/size_in_atlas = Vector2i(2, 2)
+8:6/0 = 0
+10:6/size_in_atlas = Vector2i(2, 2)
+10:6/0 = 0
+12:6/size_in_atlas = Vector2i(2, 2)
+12:6/0 = 0
+0:8/size_in_atlas = Vector2i(4, 4)
+0:8/0 = 0
+0:8/0/y_sort_origin = 17
+4:8/size_in_atlas = Vector2i(2, 2)
+4:8/0 = 0
+6:8/size_in_atlas = Vector2i(4, 4)
+6:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7j630"]
+sources/0 = SubResource("TileSetAtlasSource_xv8pd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cloos"]
+
+[node name="WorldScene3" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_qtves")
+
+[node name="fade_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tbup2")
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_7j630")
+format = 2
+layer_0/name = "ground"
+layer_0/tile_data = PackedInt32Array(1114121, 262144, 4, 983049, 262144, 4, 851977, 262144, 4, 720905, 262144, 4, 589833, 0, 0, 458761, 262144, 4, 327689, 0, 0, 196617, 262144, 4, 65545, 262144, 2, 589835, 393216, 2, 589837, 393216, 2, 589839, 393216, 2, 327691, 393216, 2, 327693, 393216, 2, 327695, 393216, 2, 65547, 393216, 2, 65549, 393216, 2, 65551, 393216, 2, 65543, 393216, 2, 65541, 393216, 2, 65539, 393216, 2, 327687, 393216, 2, 327685, 393216, 2, 327683, 393216, 2, 589831, 393216, 2, 589829, 393216, 2, 589827, 393216, 2, 720907, 393216, 4, 720909, 393216, 4, 720911, 393216, 4, 851983, 393216, 4, 851981, 393216, 4, 851979, 393216, 4, 983051, 393216, 4, 983053, 393216, 4, 983055, 393216, 4, 1114123, 393216, 4, 1114125, 393216, 4, 1114127, 393216, 4, 720903, 393216, 4, 851975, 393216, 4, 983047, 393216, 4, 1114119, 393216, 4, 1114117, 393216, 4, 983045, 393216, 4, 851973, 393216, 4, 720901, 393216, 4, 720899, 393216, 4, 851971, 393216, 4, 983043, 393216, 4, 1114115, 393216, 4, 458759, 393216, 4, 458757, 393216, 4, 458755, 393216, 4, 458763, 393216, 4, 458765, 393216, 4, 458767, 393216, 4, 458769, 393216, 4, 196625, 393216, 4, 196623, 393216, 4, 196621, 393216, 4, 196619, 393216, 4, 196615, 393216, 4, 196613, 393216, 4, 196611, 393216, 4, 196609, 393216, 4, 458753, 393216, 4, 720897, 393216, 4, 851969, 393216, 4, 983041, 393216, 4, 1114113, 393216, 4, 720913, 393216, 4, 851985, 393216, 4, 983057, 393216, 4, 1114129, 393216, 4, -65519, 393216, 4, -65521, 393216, 4, -65523, 393216, 4, -196591, 393216, 4, -196593, 393216, 4, -196595, 393216, 4, -196597, 393216, 4, -196599, 393216, 4, -65525, 393216, 4, -65527, 393216, 4, -196601, 393216, 4, -65529, 393216, 4, -196603, 393216, 4, -65531, 393216, 4, -196605, 393216, 4, -65533, 393216, 4, -196607, 393216, 4, -65535, 393216, 4, 65537, 131072, 2, 65553, 131072, 2, 327697, 131072, 2, 327681, 131072, 2, 589825, 131072, 2, 589841, 131072, 2, -196589, 393216, 4, -65517, 393216, 4, 65555, 393216, 4, 196627, 393216, 4, 327699, 393216, 4, 458771, 393216, 4, 589843, 393216, 4, 720915, 393216, 4, 851987, 393216, 4, 983059, 393216, 4, 1114131, 393216, 4, 1179647, 393216, 4, 1048575, 393216, 4, 917503, 393216, 4, 786431, 393216, 4, 655359, 393216, 4, 524287, 393216, 4, 393215, 393216, 4, 262143, 393216, 4, 131071, 393216, 4, -1, 393216, 4, -131073, 393216, 4)
+layer_1/name = "house"
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(131078, 0, 8, 131074, 0, 8, 131084, 0, 8, 131088, 0, 8, 393228, 0, 8, 393232, 0, 8, 393222, 0, 8, 393218, 0, 8, -131070, 0, 8, -131066, 0, 8, -131060, 0, 8, -131056, 0, 8, 720902, 0, 8, 720908, 393216, 8)
+layer_2/name = "lamps"
+layer_2/y_sort_enabled = true
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array(458760, 262144, 8, 458762, 262144, 8, 196618, 262144, 8, 196616, 262144, 8, -65526, 262144, 8, -65528, 262144, 8, 786442, 262144, 8, 786440, 262144, 8, 196626, 262144, 8, 458770, 262144, 8, 1114122, 262144, 8, 1114120, 262144, 8, 196608, 262144, 8, -65536, 262144, 8, -65518, 262144, 8, 458752, 262144, 8)
+layer_3/name = "trees"
+layer_3/y_sort_enabled = true
+layer_3/z_index = 1
+layer_3/tile_data = PackedInt32Array(589841, 786432, 2, 262163, 786432, 2, -131063, 786432, 2, -131053, 786432, 2, 65535, 786432, 2, 327680, 786432, 2, 589824, 786432, 2, 589828, 786432, 2, 851972, 786432, 2, 851982, 786432, 2, 1048594, 786432, 2, 1048576, 786432, 2, -262144, 786432, 2, -262129, 786432, 2)
+layer_4/name = "bushes"
+layer_4/y_sort_enabled = true
+layer_4/z_index = 1
+layer_4/tile_data = PackedInt32Array(917514, 655360, 2, 1048584, 786432, 0, 851973, 786432, 0, 655361, 786432, 0, 524287, 786432, 0, 196607, 786432, 0, -196601, 786432, 0, -262133, 786432, 0, -196604, 786432, 0, 19, 655360, 2, 655378, 655360, 2, 655374, 655360, 2, 720899, 655360, 2, -131064, 655360, 2)
+layer_5/name = "rocks & grass"
+layer_5/y_sort_enabled = true
+layer_5/z_index = 1
+layer_5/tile_data = PackedInt32Array(1048587, 524288, 6, 983042, 524288, 6, 786431, 524288, 6, 720915, 524288, 6, -262141, 524288, 6, 458771, 524288, 6, 1048591, 655360, 6, 786433, 655360, 6, 1114115, 131072, 6, 917523, 131072, 6, 1114119, 0, 6, 851984, 0, 6, 983044, 0, 6, 851975, 0, 6, 720912, 0, 6, 1048581, 262144, 6, 917512, 393216, 6, 851969, 393216, 6, 786434, 393216, 6, 851967, 393216, 6, 655362, 393216, 6, 655358, 393216, 6, 786450, 393216, 6, 983053, 393216, 6, 1114128, 262144, 6, 851979, 262144, 6, 524303, 393216, 6, 524293, 262144, 6, 524289, 393216, 6, 524301, 262144, 6, 262157, 393216, 6, 262161, 262144, 6, 262151, 262144, 6, 262147, 393216, 6, 4, 393216, 6, 0, 393216, 6, 10, 262144, 6, 14, 393216, 6, 18, 393216, 6, 65555, 393216, 6, -262136, 393216, 6, 720911, 262144, 6, 524307, 262144, 6, 983039, 262144, 6, 262143, 262144, 6, 7, 262144, 6)
+
+[node name="init" type="Marker2D" parent="."]
+position = Vector2(152, 290)
+
+[node name="Player" parent="." instance=ExtResource("3_j5nxc")]
+scale = Vector2(0.8, 0.8)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1.25003, 3.05176e-05)
+limit_left = -24
+limit_top = -56
+limit_right = 328
+limit_bottom = 296
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(152, 314)
+shape = SubResource("RectangleShape2D_cloos")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -119.0
+offset_top = -147.0
+offset_right = 467.0
+offset_bottom = 383.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="fade_anim" to="." method="_on_fade_anim_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

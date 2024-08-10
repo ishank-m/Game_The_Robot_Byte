@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://jaas1l6rh74a"
+path="res://.godot/imported/wardroom.dialogue-484b1462e2894b356a3bc59688418bb0.tres"
+
+[deps]
+
+source_file="res://dialogues/wardroom.dialogue"
+dest_files=["res://.godot/imported/wardroom.dialogue-484b1462e2894b356a3bc59688418bb0.tres"]
+
+[params]
+
+defaults=true
