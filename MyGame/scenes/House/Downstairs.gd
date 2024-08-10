@@ -1,11 +1,13 @@
 extends Node2D
 var entered = false
 func _ready():
-	GameState.game_state= 'play'
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "init":
 		$Player.set_position($init.position)
 		GameState.scene = "downstairs"
+		Dialogic.start("downstairs")
 	elif GameState.scene == "lobby":
+		GameState.game_state = "play"
 		$Player.set_position($Lobby.position)
 		GameState.scene = "downstairs"
 
@@ -39,3 +41,21 @@ func _on_stairs_body_exited(body):
 		GameState.stairs = false
 
 	
+
+
+func _on_upstairs_body_entered(body):
+	if body.name == "Player":
+		entered = true
+
+func _on_dialogic_signal(argument: String):
+	if argument == "end":
+		GameState.game_state = "play"
+	if argument == "done":
+		GameState.game_state = "play"
+
+
+func _on_dialogue_body_entered(body):
+	if body.name == "Player":
+		$Player/Player.stop()
+		GameState.game_state = "pause"
+		Dialogic.start("downstairs_2")

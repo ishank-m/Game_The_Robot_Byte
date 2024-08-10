@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://cqisfyp6mxots"
+path="res://.godot/imported/downstairs.dialogue-ec72e683a40e78fa74be97462feb2c5f.tres"
+
+[deps]
+
+source_file="res://dialogues/downstairs.dialogue"
+dest_files=["res://.godot/imported/downstairs.dialogue-ec72e683a40e78fa74be97462feb2c5f.tres"]
+
+[params]
+
+defaults=true
