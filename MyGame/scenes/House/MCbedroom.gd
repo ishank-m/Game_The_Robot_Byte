@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	GameState.game_state = 'pause'
+	GameState.game_state = 'play'
 	$CanvasLayer/ColorRect.visible = true
 	$transition.play("hi")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -12,10 +12,17 @@ func _ready():
 		GameState.scene  = "mc_bedroom"
 
 func _on_timer_timeout():
-	Dialogic.start("mcbedroom")
+	if GameState.mcbed == 0:
+		GameState.game_state = "pause"
+		$Player/Player.stop()
+		Dialogic.start("mcbedroom")
+		GameState.mcbed = 1
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
+		GameState.game_state = 'pause'
+		$Player/Player.play("up")
+		$Player/Player.stop()
 		$door.play("open")
 
 

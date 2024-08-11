@@ -45,6 +45,9 @@ func _on_door_animation_finished():
 func _on_bedroom_body_entered(body: Node2D):
 	if body.name == "Player":
 		to = "MCBedroom"
+		GameState.game_state = 'pause'
+		$Player/Player.play("down")
+		$Player/Player.stop()
 		$CanvasLayer/ColorRect.visible = true
 		$transition.play("bye")
 		
