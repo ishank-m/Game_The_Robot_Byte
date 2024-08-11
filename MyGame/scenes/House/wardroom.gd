@@ -10,6 +10,7 @@ func _ready():
 	$transitions/light.color = "000000d3"
 	$char_opening_win.hide()
 	$char_going.hide()
+	$TileMap.animation = "part1"
 	$TileMap.frame = 0
 	Dialogic.start("winroom")
 	Dialogic.signal_event.connect(_on_dialogic_signal)
