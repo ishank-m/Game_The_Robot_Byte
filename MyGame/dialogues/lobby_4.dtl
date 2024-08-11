@@ -1,5 +1,5 @@
 [style name="lobby_1"]
-join Kevin 0 [animation="Fade In Up"]
+join Kevin 0
 Kevin: This room looks weird. I wonder what must\
 be in there...
 [signal arg="done3"]

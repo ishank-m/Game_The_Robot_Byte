@@ -1,5 +1,5 @@
 [style name="lobby_1"]
-join Kevin 0 [animation="Fade In Up"]
+join Kevin 0
 Kevin: Its locked. I guess it must be my \
 Dad's room...
 [signal arg="done"]

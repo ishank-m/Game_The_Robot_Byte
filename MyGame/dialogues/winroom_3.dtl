@@ -1,0 +1,5 @@
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: Huh? The window is opening on\
+its own?
+[signal arg="done3"]
+[end_timeline]

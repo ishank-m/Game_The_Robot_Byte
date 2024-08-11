@@ -1,5 +1,5 @@
 [style name="style"]
-join Kevin 0 [animation="Fade In Up"]
+join Kevin 0
 Kevin: This room is locked! judging by the carpet,\
 it must be for my sister.
 [signal arg="done2"]

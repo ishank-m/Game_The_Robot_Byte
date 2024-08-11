@@ -1,0 +1,31 @@
+join Dad 0
+Dad: We are here kids! See that red house up \
+ahead?
+leave Dad [animation="Instant In Or Out"]
+join sister 1 [animation="Instant In Or Out"]
+sister: Yes? Is that our new house?
+leave sister [animation="Instant In Or Out"]
+join Dad 0 [animation="Instant In Or Out"]
+Dad: Yes dear.
+leave Dad [animation="Instant In Or Out"]
+join Kevin (Kevin) 0 [animation="Instant In Or Out"]
+Kevin: Meh, our old house looked better. Plus it \
+had memories of our mother!
+leave Kevin [animation="Instant In Or Out"]
+join Dad 0 [animation="Instant In Or Out"]
+Dad: Try to move on Raj, it's been 6 years\
+since your mother died...
+Dad: Life keeps on going, you have to too...
+Dad: Try considering this a fresh start.
+leave Dad [animation="Instant In Or Out" length="0"]
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: I guess you're right Dad...
+leave Kevin [animation="Instant In Or Out"]
+join Dad 0 [animation="Instant In Or Out"]
+Dad: Okay Raj, you go tour the house. Naina\
+and I will unload the car first.
+leave Dad [animation="Instant In Or Out"]
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: Okay...
+[signal arg="done"]
+[end_timeline]

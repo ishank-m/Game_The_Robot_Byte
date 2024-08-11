@@ -8,23 +8,22 @@
 "sound_moods": {},
 "style": "style"
 },
-"default_portrait": "Dad",
-"description": "Kevin's Father",
-"display_name": "Dad",
+"default_portrait": "Sister",
+"description": "Raj's younger sister",
+"display_name": "Naina (Sister)",
 "mirror": false,
 "nicknames": [""],
-"offset": Vector2(10, -60),
+"offset": Vector2(-50, -50),
 "portraits": {
-"Dad": {
+"Sister": {
 "export_overrides": {
-"image": "\"res://assets/sprites/Characters/Dad/portrait/dad_portrait.png\""
+"image": "\"res://assets/sprites/Characters/Sister/sister_portrait.png\""
 },
-"ignore_char_scale": false,
 "mirror": false,
-"offset": Vector2(-5, 10),
+"offset": Vector2(-5, 0),
 "scale": 1,
 "scene": ""
 }
 },
-"scale": 1.0
+"scale": 0.8
 }

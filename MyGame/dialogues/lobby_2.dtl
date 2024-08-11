@@ -1,5 +1,5 @@
 [style name="style"]
-join Kevin 0 [animation="Fade In Up"]
+join Kevin 0
 Kevin: This room's not locked! I wonder who's room\
 this is...
 [signal arg="done"]

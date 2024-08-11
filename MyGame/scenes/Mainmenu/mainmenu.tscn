@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dgs4pjemsolew"]
+[gd_scene load_steps=77 format=3 uid="uid://dgs4pjemsolew"]
 
 [ext_resource type="Script" path="res://scenes/Mainmenu/mainmenu.gd" id="1_ykmb7"]
 [ext_resource type="Texture2D" uid="uid://2jdm1r87g06d" path="res://assets/sprites/Main Menu/Sprite-0001.png" id="2_1ha3f"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bm4o3ufs7fdtf" path="res://assets/sprites/Load Menu/lmbutton1.png" id="12_ps3uq"]
 [ext_resource type="Texture2D" uid="uid://tnjrfeoa8f4j" path="res://assets/sprites/Load Menu/lmbutton2.png" id="13_sxsj8"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="17_uh3ou"]
+[ext_resource type="Texture2D" uid="uid://bsedoe4w52swb" path="res://assets/sprites/House/Outside/door_outsidehouse.png" id="18_wxf8v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixwqm"]
 texture = ExtResource("2_s2p27")
@@ -758,6 +759,42 @@ _data = {
 "bye": SubResource("Animation_r4oln")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecme7"]
+atlas = ExtResource("18_wxf8v")
+region = Rect2(0, 0, 12, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce6ht"]
+atlas = ExtResource("18_wxf8v")
+region = Rect2(12, 0, 12, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1pn4"]
+atlas = ExtResource("18_wxf8v")
+region = Rect2(24, 0, 12, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujx5e"]
+atlas = ExtResource("18_wxf8v")
+region = Rect2(36, 0, 12, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1oh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecme7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce6ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1pn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujx5e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Main_menu" type="Control"]
 y_sort_enabled = true
 layout_mode = 3
@@ -816,6 +853,10 @@ wait_time = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_26yb5")
 }
+
+[node name="delay" type="Timer" parent="Car_2"]
+wait_time = 0.5
+one_shot = true
 
 [node name="Loadmenu" type="Sprite2D" parent="."]
 z_index = 2
@@ -994,7 +1035,7 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("17_uh3ou")]
 position = Vector2(2528, 118)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.8, 0.8)
 
 [node name="Car_1_main" type="Sprite2D" parent="."]
 z_index = 1
@@ -1010,9 +1051,6 @@ limit_bottom = 160
 libraries = {
 "": SubResource("AnimationLibrary_wsk6a")
 }
-
-[node name="delay" type="Timer" parent="Car_1_main"]
-wait_time = 0.5
 
 [node name="player_pos" type="Marker2D" parent="."]
 position = Vector2(2528, 69)
@@ -1032,9 +1070,14 @@ offset_right = 651.0
 offset_bottom = 236.0
 color = Color(0, 0, 0, 0)
 
+[node name="door_open" type="AnimatedSprite2D" parent="."]
+position = Vector2(2528, 55)
+sprite_frames = SubResource("SpriteFrames_x1oh7")
+
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="timeout" from="Truck/trucktimer" to="." method="_on_trucktimer_timeout"]
 [connection signal="timeout" from="Car_2/car2_timer" to="." method="_on_car_2_timer_timeout"]
+[connection signal="timeout" from="Car_2/delay" to="." method="_on_delay_timeout"]
 [connection signal="pressed" from="Loadmenu/Load_1/Load_1_bt" to="." method="_on_load_1_bt_pressed"]
 [connection signal="pressed" from="Loadmenu/Load_2/Load_2_bt" to="." method="_on_load_2_bt_pressed"]
 [connection signal="pressed" from="Loadmenu/Load_3/Load_3_bt" to="." method="_on_load_3_bt_pressed"]
@@ -1058,5 +1101,5 @@ color = Color(0, 0, 0, 0)
 [connection signal="animation_finished" from="Title/Quit_button_animation" to="." method="_on_quit_button_animation_animation_finished"]
 [connection signal="timeout" from="Bird/Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Car_1_main/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="Car_1_main/delay" to="." method="_on_delay_timeout"]
 [connection signal="animation_finished" from="transition" to="." method="_on_transition_animation_finished"]
+[connection signal="animation_finished" from="door_open" to="." method="_on_door_open_animation_finished"]

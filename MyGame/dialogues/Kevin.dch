@@ -10,7 +10,7 @@
 },
 "default_portrait": "Kevin",
 "description": "Main Character ",
-"display_name": "Kevin",
+"display_name": "Raj",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(10, -60),
@@ -20,7 +20,7 @@
 "image": "\"res://assets/sprites/Characters/MC/portrait/MC_portrait.png\""
 },
 "mirror": false,
-"offset": Vector2(0, 0),
+"offset": Vector2(-5, 10),
 "scale": 1.0,
 "scene": ""
 }

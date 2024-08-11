@@ -14,6 +14,8 @@ func _ready():
 		$Player.set_position($mc_bedroom.position)
 		GameState.scene = "lobby"
 	elif GameState.scene == "room_2":
+		$Player/Player.play("down")
+		$Player/Player.stop()
 		$Player.set_position($room_2.position)
 		GameState.scene = "lobby"
 

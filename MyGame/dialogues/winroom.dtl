@@ -1,6 +1,6 @@
 [style name="style"]
 [wait time="0.5"]
-join Kevin 0 [animation="Fade In Up"]
+join Kevin 0
 Kevin: This room is so dark!
 Kevin: Are those curtains up ahead?
 Kevin: Wait, let me open them to lighten \

@@ -21,13 +21,24 @@ func _on_area_2d_body_entered(body):
 
 func _on_door_animation_finished():
 	GameState.scene = "mc_bedroom"
-	get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
+	$CanvasLayer/ColorRect.visible = true
+	$transition.play("bye")
+	
 
 
 func _on_transition_animation_finished(anim_name):
 	if anim_name == "hi":
 		$CanvasLayer/ColorRect.visible = false
+	elif anim_name == 'bye':
+		get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 		
 func _on_dialogic_signal(argument):
 	if argument == "done":
 		GameState.game_state = 'play'
+	if argument == "done2":
+		GameState.game_state = 'play'
+
+func _on_for_dialogue_timeout():
+	$Player/Player.stop()
+	GameState.game_state = 'pause'
+	Dialogic.start("mcbedroom_2")

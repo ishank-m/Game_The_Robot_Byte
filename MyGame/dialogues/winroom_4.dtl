@@ -1,0 +1,4 @@
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: Wha-? Ahh!...
+[signal arg="done4"]
+[end_timeline]

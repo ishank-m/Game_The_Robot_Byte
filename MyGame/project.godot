@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Robot Byte"
-config/version="1.0"
+config/version="0.3"
 run/main_scene="res://scenes/Mainmenu/mainmenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.049174, 0.00535535, 0.125802, 1)
@@ -29,20 +29,28 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 directories/dch_directory={
 "Dad": "res://assets/sprites/Characters/MC/portrait/Dad.dch",
 "Kevin": "res://dialogues/Kevin.dch",
+"sister": "res://dialogues/sister.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"dialogues/mainmenu": "res://dialogues/mainmenu.dtl",
 "downstairs": "res://dialogues/downstairs.dtl",
 "downstairs_2": "res://dialogues/downstairs_2.dtl",
 "lobby_1": "res://dialogues/lobby_1.dtl",
 "lobby_2": "res://dialogues/lobby_2.dtl",
 "lobby_3": "res://dialogues/lobby_3.dtl",
 "lobby_4": "res://dialogues/lobby_4.dtl",
+"mainmenu": "res://assets/sprites/Characters/Dad/portrait/mainmenu.dtl",
 "mcbedroom": "res://dialogues/mcbedroom.dtl",
-"winroom": "res://dialogues/winroom.dtl"
+"mcbedroom_2": "res://dialogues/mcbedroom_2.dtl",
+"winroom": "res://dialogues/winroom.dtl",
+"winroom_0": "res://dialogues/winroom_0.dtl",
+"winroom_2": "res://dialogues/winroom_2.dtl",
+"winroom_3": "res://dialogues/winroom_3.dtl",
+"winroom_4": "res://dialogues/winroom_4.dtl"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://dialogues/style.tres", "res://dialogues/downstairs_2.tres", "res://dialogues/lobby_1.tres"]
+layout/style_list=["res://dialogues/style.tres"]
 layout/default_style="res://dialogues/style.tres"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -62,7 +70,9 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 save/autosave=false
-variables={}
+variables={
+"done": 0
+}
 
 [display]
 
