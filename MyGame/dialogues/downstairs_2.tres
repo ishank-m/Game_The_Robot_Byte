@@ -19,7 +19,9 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_2s5d6"]
 script = ExtResource("2_ia2vo")
 scene = ExtResource("3_fv3w4")
-overrides = {}
+overrides = {
+"portrait_size_mode": "2"
+}
 
 [sub_resource type="Resource" id="Resource_jq3fc"]
 script = ExtResource("2_ia2vo")
@@ -64,4 +66,4 @@ base_overrides = {
 "global_font_size": "10.0"
 }
 layers = Array[ExtResource("2_ia2vo")]([SubResource("Resource_tq7ls"), SubResource("Resource_2s5d6"), SubResource("Resource_jq3fc"), SubResource("Resource_8np3p"), SubResource("Resource_diylh"), SubResource("Resource_kld5w"), SubResource("Resource_mav60"), SubResource("Resource_8s4vl")])
-metadata/_latest_layer = 3
+metadata/_latest_layer = 1

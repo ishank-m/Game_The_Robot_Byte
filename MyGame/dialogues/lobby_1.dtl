@@ -1,4 +1,6 @@
 [style name="lobby_1"]
-Kevin: Its locked. I guess this one must be my \
-father's room...
+join Kevin 0 [animation="Fade In Up"]
+Kevin: Its locked. I guess it must be my \
+Dad's room...
 [signal arg="done"]
+[end_timeline]

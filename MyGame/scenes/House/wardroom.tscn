@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://deayapj47ib4r"]
+[gd_scene load_steps=53 format=3 uid="uid://deayapj47ib4r"]
 
 [ext_resource type="Script" path="res://scenes/House/wardroom.gd" id="1_gb3h2"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="4_hf674"]
@@ -288,6 +288,69 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yx6jd"]
 size = Vector2(20, 5)
 
+[sub_resource type="Animation" id="Animation_2u2bv"]
+resource_name = "hi"
+
+[sub_resource type="Animation" id="Animation_au6jx"]
+resource_name = "lightening"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transitions/light:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.827451), Color(0, 0, 0, 0.827451), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k835"]
+_data = {
+"hi": SubResource("Animation_2u2bv"),
+"lightening": SubResource("Animation_au6jx")
+}
+
+[sub_resource type="Animation" id="Animation_dhvq0"]
+resource_name = "bye"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3bws0"]
+resource_name = "hi"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8dgo"]
+_data = {
+"bye": SubResource("Animation_dhvq0"),
+"hi": SubResource("Animation_3bws0")
+}
+
 [node name="Wardroom" type="Node2D"]
 script = ExtResource("1_gb3h2")
 
@@ -304,18 +367,26 @@ position = Vector2(143, 116)
 position = Vector2(143, 116)
 scale = Vector2(0.8, 0.8)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="transitions" type="CanvasLayer" parent="."]
 
-[node name="hi" type="AnimatedSprite2D" parent="CanvasLayer"]
+[node name="clouds" type="AnimatedSprite2D" parent="transitions"]
 visible = false
 position = Vector2(144, 63)
 scale = Vector2(4, 4.161)
 sprite_frames = SubResource("SpriteFrames_cogoe")
 animation = &"bye"
 
-[node name="layer" type="Timer" parent="CanvasLayer"]
+[node name="layer" type="Timer" parent="transitions"]
 wait_time = 0.5
 one_shot = true
+
+[node name="light" type="ColorRect" parent="transitions"]
+visible = false
+offset_left = 31.0
+offset_top = -32.0
+offset_right = 255.0
+offset_bottom = 160.0
+color = Color(0, 0, 0, 0.827451)
 
 [node name="char_opening_win" type="AnimatedSprite2D" parent="."]
 position = Vector2(143, 26)
@@ -350,11 +421,35 @@ shape = SubResource("RectangleShape2D_yx6jd")
 wait_time = 0.1
 one_shot = true
 
-[connection signal="animation_finished" from="CanvasLayer/hi" to="." method="_on_hi_animation_finished"]
-[connection signal="timeout" from="CanvasLayer/layer" to="." method="_on_layer_timeout"]
-[connection signal="timeout" from="CanvasLayer/layer" to="." method="_on_timer_timeout"]
+[node name="light" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4k835")
+}
+
+[node name="transition" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+libraries = {
+"": SubResource("AnimationLibrary_m8dgo")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -42.0
+offset_top = -43.0
+offset_right = 350.0
+offset_bottom = 231.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="transitions/clouds" to="." method="_on_hi_animation_finished"]
+[connection signal="animation_finished" from="transitions/clouds" to="." method="_on_clouds_animation_finished"]
+[connection signal="timeout" from="transitions/layer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="transitions/layer" to="." method="_on_layer_timeout"]
 [connection signal="timeout" from="char_opening_win/Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="char_going" to="." method="_on_char_going_animation_finished"]
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
 [connection signal="timeout" from="door/change" to="." method="_on_change_timeout"]
+[connection signal="animation_finished" from="light" to="." method="_on_light_animation_finished"]
+[connection signal="animation_finished" from="transition" to="." method="_on_transition_animation_finished"]

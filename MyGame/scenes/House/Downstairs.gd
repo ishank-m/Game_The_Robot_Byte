@@ -1,5 +1,6 @@
 extends Node2D
-var entered = false
+var count = 0
+
 func _ready():
 	$CanvasLayer/ColorRect.visible = true
 	$transition.play("hi")
@@ -14,11 +15,6 @@ func _ready():
 		$Player.set_position($Lobby.position)
 		GameState.scene = "downstairs"
 
-#func _process(_delta):
-	#if Input.is_action_pressed("ui_cancel"):
-		#GameState.game_state = 'pause'
-	#if Input.is_action_pressed("save"):
-		#GameState.save()
 
 
 
@@ -48,11 +44,13 @@ func _on_dialogic_signal(argument: String):
 
 
 func _on_dialogue_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and count == 0:
 		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("downstairs_2")
-
+		count = 1
+	elif body.name == "Player" and count == 1:
+		count = 0
 
 func _on_transition_animation_finished(anim_name):
 	if anim_name == "hi":

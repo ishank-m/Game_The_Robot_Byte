@@ -29,12 +29,16 @@ func _on_downstairs_body_entered(body: Node2D):
 		entered = true
 
 func _on_wdoor_body_entered(body: Node2D):
+	
+	$Player/Player.stop()
 	if body.name == "Player":
 		GameState.game_state = "wait"
 		$door.play("open")
 
 func _on_door_animation_finished():
-	get_tree().change_scene_to_file("res://scenes/House/wardroom.tscn")
+	to = "WinRoom"
+	$CanvasLayer/ColorRect.visible = true
+	$transition.play("bye")
 
 func _on_bedroom_body_entered(body: Node2D):
 	if body.name == "Player":
@@ -54,11 +58,12 @@ func _on_stairs_body_exited(body):
 
 
 func _on_dialogue_parents_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and GameState.lobby1 == 0:
 		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_1")
-
+		GameState.lobby1 = 1
+		
 func _on_dialogic_signal(argument: String):
 	if argument == "done":
 		$Player/Player.play("down")
@@ -75,27 +80,27 @@ func _on_dialogic_signal(argument: String):
 
 
 func _on_dialogue_mc_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and GameState.lobby2 == 0:
 		$Player/Player.play("down")
 		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_2")
-
+		GameState.lobby2 = 1
 
 func _on_dialogue_sis_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and GameState.lobby3 == 0:
 		$Player/Player.play("down")
 		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_3")
-
+		GameState.lobby3 = 1
 
 func _on_dialogue_win_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and GameState.lobby4 == 0:
 		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_4")
-
+		GameState.lobby4 = 1
 
 func _on_transition_animation_finished(anim_name):
 	if anim_name == "hi":
@@ -104,3 +109,5 @@ func _on_transition_animation_finished(anim_name):
 	if anim_name == "bye":
 		if to == "MCBedroom":
 			get_tree().change_scene_to_file("res://scenes/House/MCbedroom.tscn")
+		elif to == "WinRoom":
+			get_tree().change_scene_to_file("res://scenes/House/wardroom.tscn")

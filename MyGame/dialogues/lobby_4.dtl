@@ -1,3 +1,6 @@
 [style name="lobby_1"]
-Kevin: This room looks a bit strange. Let's check it out...
+join Kevin 0 [animation="Fade In Up"]
+Kevin: This room looks weird. I wonder what must\
+be in there...
 [signal arg="done3"]
+[end_timeline]

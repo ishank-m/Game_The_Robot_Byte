@@ -739,6 +739,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_r4oln"]
 resource_name = "bye"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -746,7 +747,7 @@ tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -1029,7 +1030,7 @@ offset_left = -95.0
 offset_top = -119.0
 offset_right = 651.0
 offset_bottom = 236.0
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0)
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="timeout" from="Truck/trucktimer" to="." method="_on_trucktimer_timeout"]

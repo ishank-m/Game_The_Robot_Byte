@@ -19,7 +19,9 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_jprri"]
 script = ExtResource("2_v01n4")
 scene = ExtResource("3_813pu")
-overrides = {}
+overrides = {
+"portrait_size_mode": "2"
+}
 
 [sub_resource type="Resource" id="Resource_2fgy4"]
 script = ExtResource("2_v01n4")
@@ -31,8 +33,8 @@ script = ExtResource("2_v01n4")
 scene = ExtResource("5_uax51")
 overrides = {
 "box_margin_bottom": "30.0",
-"box_size": "Vector2(20, 30)",
-"name_label_box_offset": "Vector2(0, 14)",
+"box_size": "Vector2(10, 20)",
+"name_label_box_offset": "Vector2(65, 14)",
 "name_label_font": "\"res://font.ttf\"",
 "normal_font": "\"res://font.ttf\""
 }
@@ -64,4 +66,4 @@ base_overrides = {
 "global_font_size": "10.0"
 }
 layers = Array[ExtResource("2_v01n4")]([SubResource("Resource_d1v6v"), SubResource("Resource_jprri"), SubResource("Resource_2fgy4"), SubResource("Resource_uscsd"), SubResource("Resource_ii1qj"), SubResource("Resource_pf3ea"), SubResource("Resource_qxl80"), SubResource("Resource_lbqbm")])
-metadata/_latest_layer = 3
+metadata/_latest_layer = 1

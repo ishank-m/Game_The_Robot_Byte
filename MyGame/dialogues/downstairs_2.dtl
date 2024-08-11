@@ -1,3 +1,5 @@
 [style name="downstairs_2"]
+join Kevin 0 [animation="Fade In Up"]
 Kevin: Maybe I should head uptairs now...
 [signal arg="done"]
+[end_timeline]

@@ -1,4 +1,6 @@
 [style name="style"]
-Kevin: This room is locked! It must be for \
-my sister...
+join Kevin 0 [animation="Fade In Up"]
+Kevin: This room is locked! judging by the carpet,\
+it must be for my sister.
 [signal arg="done2"]
+[end_timeline]

@@ -1,3 +1,6 @@
 [style name="style"]
-Kevin: This room's not locked! Let's check it out
+join Kevin 0 [animation="Fade In Up"]
+Kevin: This room's not locked! I wonder who's room\
+this is...
 [signal arg="done"]
+[end_timeline]
