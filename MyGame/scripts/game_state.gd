@@ -1,6 +1,6 @@
 extends Node
 
-var player_pos = Vector2.ZERO
+var player_pos 
 var current_scene
 var game_state = 'main_menu'
 var scene = "init"
@@ -26,17 +26,17 @@ func check_save(save):
 func save_score():
 	var file = FileAccess.open(get_current_save(), FileAccess.WRITE)
 	current_scene = get_tree().current_scene.scene_file_path
+	player_pos = get_tree().current_scene.get_node("Player").position
 	file.store_var(current_scene)
 	file.store_var(player_pos)
-
+	print(player_pos)
 func load_score():
 	if check_save(get_current_save()):
 		var file = FileAccess.open(get_current_save(), FileAccess.READ)
 		current_scene = file.get_var()
-		get_tree().change_scene_to_file(current_scene)
 		player_pos = file.get_var()
-		print(player_pos)
-
+		get_tree().change_scene_to_file(current_scene)
+		
 func get_current_save():
 	if current_save == "save1":
 		return save1
