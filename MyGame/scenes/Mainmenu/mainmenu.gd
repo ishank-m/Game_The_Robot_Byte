@@ -6,7 +6,6 @@ var press = false
 var road_crossing = false
 
 
-
 #Initilaizing the Game
 func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)

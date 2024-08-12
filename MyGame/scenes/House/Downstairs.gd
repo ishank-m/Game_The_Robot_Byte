@@ -1,5 +1,6 @@
 extends Node2D
 var count = 0
+@onready var player = get_node("Player")
 
 func _ready():
 	$CanvasLayer/ColorRect.visible = true
@@ -14,6 +15,9 @@ func _ready():
 		GameState.game_state = "play"
 		$Player.set_position($Lobby.position)
 		GameState.scene = "downstairs"
+	if GameState.player_pos:
+		player.position = GameState.player_pos
+		GameState.player_pos = null
 
 func _on_stairs_body_entered(body):
 	if body.name == "Player":

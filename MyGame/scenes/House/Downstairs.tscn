@@ -299,6 +299,7 @@ offset_right = 350.0
 offset_bottom = 223.0
 color = Color(0, 0, 0, 0)
 
+[connection signal="ready" from="Player" to="." method="_on_player_ready"]
 [connection signal="body_entered" from="upstairs" to="." method="_on_upstairs_body_entered"]
 [connection signal="body_entered" from="stairs" to="." method="_on_stairs_body_entered"]
 [connection signal="body_exited" from="stairs" to="." method="_on_stairs_body_exited"]

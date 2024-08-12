@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 @export var speed: int = 50
 @onready var anim = $Player
-var once = true
+
 func _physics_process(_delta):
 	if GameState.game_state == 'play':
 		var direction = Vector2()
@@ -23,8 +23,7 @@ func _physics_process(_delta):
 		velocity = direction*speed
 		update_anim(direction)
 		move_and_slide()
-		if Input.is_action_pressed("save") and once:
-			once = false
+		if Input.is_action_pressed("save"):
 			GameState.save_score()
 	
 func update_anim(direction):

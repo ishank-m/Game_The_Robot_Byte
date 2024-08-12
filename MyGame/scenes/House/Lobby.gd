@@ -2,6 +2,7 @@ extends Node2D
 var entered = false
 var enter3 = false
 var to = ''
+@onready var player = get_node("Player")
 
 func _ready():
 	$CanvasLayer/ColorRect.visible = true
@@ -18,7 +19,9 @@ func _ready():
 		$Player/Player.stop()
 		$Player.set_position($room_2.position)
 		GameState.scene = "lobby"
-
+	if GameState.player_pos:
+		player.position = GameState.player_pos
+		GameState.player_pos = null
 func _process(_delta):
 	if entered:
 		get_tree().change_scene_to_file("res://scenes/House/Downstairs.tscn")
