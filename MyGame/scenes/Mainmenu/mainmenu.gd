@@ -22,9 +22,9 @@ func _ready():
 	if GameState.check_save(GameState.save1):
 		$Loadmenu/Load_1.frame = 3
 	if GameState.check_save(GameState.save2):
-		$Loadmenu/Load_1.frame = 2
+		$Loadmenu/Load_2.frame = 2
 	if GameState.check_save(GameState.save3):
-		$Loadmenu/Load_1.frame = 1
+		$Loadmenu/Load_3.frame = 1
 
 #Play Button on MainMenu
 func _on_play_pressed():
