@@ -868,7 +868,7 @@ texture = ExtResource("9_ang1k")
 position = Vector2(-24.4755, -9.09091)
 scale = Vector2(0.699301, 0.699301)
 texture = ExtResource("10_giel8")
-hframes = 5
+hframes = 8
 
 [node name="Load_1_bt" type="Button" parent="Loadmenu/Load_1"]
 offset_left = -16.0
@@ -881,7 +881,7 @@ theme = ExtResource("11_tinel")
 position = Vector2(8.3916, -9.09091)
 scale = Vector2(0.699301, 0.699301)
 texture = ExtResource("10_giel8")
-hframes = 5
+hframes = 8
 
 [node name="Load_2_bt" type="Button" parent="Loadmenu/Load_2"]
 offset_left = -16.0
@@ -894,7 +894,7 @@ theme = ExtResource("11_tinel")
 position = Vector2(40.5594, -9.09091)
 scale = Vector2(0.699301, 0.699301)
 texture = ExtResource("10_giel8")
-hframes = 5
+hframes = 8
 
 [node name="Load_3_bt" type="Button" parent="Loadmenu/Load_3"]
 offset_left = -16.0
