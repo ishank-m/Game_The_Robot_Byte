@@ -12,11 +12,11 @@ func _ready():
 		GameState.scene  = "mc_bedroom"
 
 func _on_timer_timeout():
-	if GameState.mcbed == 0:
+	if GameState.dialogues_count['mcbed'] == 0:
 		GameState.game_state = "pause"
 		$Player/Player.stop()
 		Dialogic.start("mcbedroom")
-		GameState.mcbed = 1
+		GameState.dialogues_count['mcbed'] = 1
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":

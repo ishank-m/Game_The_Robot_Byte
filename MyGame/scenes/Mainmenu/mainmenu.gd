@@ -4,7 +4,7 @@ var animation_playing = false
 var pressed = false
 var press = false
 var road_crossing = false
-
+var saves = {'save1': 0, 'save2': 0, 'save3': 0}
 
 #Initilaizing the Game
 func _ready():
@@ -20,10 +20,13 @@ func _ready():
 	#checking if save exists
 	if GameState.check_save(GameState.save1):
 		$Loadmenu/Load_1.frame = 3
+		saves['save1'] = 1
 	if GameState.check_save(GameState.save2):
 		$Loadmenu/Load_2.frame = 2
+		saves['save2'] = 1
 	if GameState.check_save(GameState.save3):
 		$Loadmenu/Load_3.frame = 1
+		saves['save3'] = 1
 
 #Play Button on MainMenu
 func _on_play_pressed():
@@ -196,6 +199,7 @@ func _on_dialogic_signal(argument):
 func _on_delay_timeout():
 	$Player.show()
 	GameState.game_state = "play"
+	road_crossing = true
 
 
 func _on_door_open_animation_finished():
