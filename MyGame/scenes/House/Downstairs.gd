@@ -15,21 +15,13 @@ func _ready():
 		$Player.set_position($Lobby.position)
 		GameState.scene = "downstairs"
 
-
-
-
 func _on_stairs_body_entered(body):
 	if body.name == "Player":
 		GameState.stairs = true
-		
-
 
 func _on_stairs_body_exited(body):
 	if body.name == "Player":
 		GameState.stairs = false
-
-	
-
 
 func _on_upstairs_body_entered(body):
 	if body.name == "Player":
@@ -41,7 +33,6 @@ func _on_dialogic_signal(argument: String):
 		GameState.game_state = "play"
 	if argument == "done":
 		GameState.game_state = "play"
-
 
 func _on_dialogue_body_entered(body):
 	if body.name == "Player" and count == 0:

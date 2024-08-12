@@ -18,6 +18,13 @@ func _ready():
 		$Bird/Timer.start()
 		$Car_1_main/AnimationPlayer.play("idle")
 		$Truck/truck_anim.play("truck_moving")
+	#checking if save exists
+	if GameState.check_save(GameState.save1):
+		$Loadmenu/Load_1.frame = 3
+	if GameState.check_save(GameState.save2):
+		$Loadmenu/Load_1.frame = 2
+	if GameState.check_save(GameState.save3):
+		$Loadmenu/Load_1.frame = 1
 
 #Play Button on MainMenu
 func _on_play_pressed():
@@ -46,7 +53,6 @@ func _on_animation_player_animation_finished(anim_name):
 func _on_timer_timeout():
 	$Bird/Bird_animation.play("birdie")
 
-
 #Quit Button on MainMenu
 func _on_quit_pressed():
 	if not animation_playing:
@@ -63,7 +69,6 @@ func _on_quit_button_animation_animation_finished(anim_name):
 		animation_playing = false
 		get_tree().quit()
 
-
 #Back Button on LoadMenu
 func _on_button_pressed():
 	$Loadmenu/Back/backanim.play("back_pressed")
@@ -71,7 +76,6 @@ func _on_backanim_animation_finished(anim_name):
 	if anim_name == "back_pressed":
 		$Car_1_main/AnimationPlayer.play("rev_frm_ld_mn")
 		$Loadmenu/Back.frame = 0
-
 
 #Saved Games load buttons on LoadMenu
 func _on_load_1_bt_pressed():
@@ -83,6 +87,7 @@ func _on_load_1_bt_pressed():
 		$Loadmenu/Load_1.frame = 4
 		pressed = true
 		press = true
+		GameState.current_save = "save1"
 	if pressed:
 		$Loadmenu/Load_2.frame = 0
 		$Loadmenu/Load_3.frame = 0
@@ -121,6 +126,7 @@ func _on_load_3_bt_pressed():
 #NewGame/Continue button on LoadMenu
 func _on_lmbt_1_pressed():
 	if not animation_playing and press:
+		GameState.load_score()
 		$Loadmenu/Lmbutton1/Lmb1.play("circle")
 		animation_playing = true
 func _on_lmb_1_animation_finished(anim_name):

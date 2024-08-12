@@ -22,6 +22,8 @@ func _physics_process(_delta):
 		velocity = direction*speed
 		update_anim(direction)
 		move_and_slide()
+		if Input.is_action_pressed("save"):
+			GameState.save_score()
 	
 func update_anim(direction):
 	if direction == Vector2(0,0):
