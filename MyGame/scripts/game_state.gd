@@ -21,8 +21,6 @@ var save1 = "res://saves/save1.dat"
 var save2 = "res://saves/save2.dat"
 var save3 = "res://saves/save3.dat"
 
-#is this necessary?
-#@export var Player: Node2D
 
 func check_save(save):
 	if FileAccess.file_exists(save):
@@ -63,3 +61,4 @@ func delete_save():
 	if check_save(get_current_save()):
 		var dir_access = DirAccess.open("res://saves/")
 		dir_access.remove(current_save)
+		
