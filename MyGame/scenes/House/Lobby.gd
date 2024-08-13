@@ -66,11 +66,11 @@ func _on_stairs_body_exited(body):
 
 
 func _on_dialogue_parents_body_entered(body):
-	if body.name == "Player" and GameState.dialogues_count['lobby1'] == 0:
+	if body.name == "Player" and GameState.dialogues_count["lobby1"] == 0:
 		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_1")
-		GameState.dialogues_count['lobby1'] = 1
+		GameState.dialogues_count["lobby1"] = 1
 		
 func _on_dialogic_signal(argument: String):
 	if argument == "done":
@@ -88,7 +88,7 @@ func _on_dialogic_signal(argument: String):
 
 
 func _on_dialogue_mc_body_entered(body):
-	if body.name == "Player" and GameState.dialogues_count['lobby2']== 0:
+	if body.name == "Player" and GameState.dialogues_count['lobby2'] == 0:
 		$Player/Player.play("down")
 		$Player/Player.stop()
 		GameState.game_state = "pause"

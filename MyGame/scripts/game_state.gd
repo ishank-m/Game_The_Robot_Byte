@@ -7,19 +7,19 @@ var scene = "init"
 var scene_neww = "init"
 var current_save
 
-var dialogues_count = {'lobby1':0,
-'lobby2': 0,
-'lobby3': 0,
-'lobby4': 0,
-'mcbed': 0,
+var dialogues_count = {
+	"lobby1": 0,
+	"lobby2": 0,
+	"lobby3": 0,
+	"lobby4": 0,
+	"mcbed": 0,
 }
-
 
 var stairs = false
 
-var save1 = "res://saves/save1.save"
-var save2 = "res://saves/save2.save"
-var save3 = "res://saves/save3.save"
+var save1 = "res://saves/save1.dat"
+var save2 = "res://saves/save2.dat"
+var save3 = "res://saves/save3.dat"
 
 #is this necessary?
 #@export var Player: Node2D
