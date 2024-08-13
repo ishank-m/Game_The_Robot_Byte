@@ -58,3 +58,8 @@ func get_current_save():
 		return save2
 	else:
 		return save3
+
+func delete_save():
+	if check_save(get_current_save()):
+		var dir_access = DirAccess.open("res://saves/")
+		dir_access.remove(current_save)
