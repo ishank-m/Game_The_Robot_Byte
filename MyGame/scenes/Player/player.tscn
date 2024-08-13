@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://sndhm53bfar"]
+[gd_scene load_steps=47 format=3 uid="uid://sndhm53bfar"]
 
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_x8gbn"]
 [ext_resource type="Texture2D" uid="uid://cxa6a1dohxexc" path="res://assets/sprites/Characters/MC/attack/MC.png" id="2_h1n0a"]
@@ -296,6 +296,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dsx5"]
+size = Vector2(19, 21)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_x8gbn")
@@ -308,3 +311,11 @@ shape = SubResource("RectangleShape2D_x4sbj")
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ir1r4")
 animation = &"down"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="attack_collision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_2dsx5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

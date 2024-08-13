@@ -10,6 +10,7 @@ var load_button_state = [
 	[0, 4, "new_game"],
 	[0, 4, "new_game"],
 	]
+
 #Initilaizing the Game
 func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)

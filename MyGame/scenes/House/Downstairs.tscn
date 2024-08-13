@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://clwdkkye8yln"]
+[gd_scene load_steps=13 format=3 uid="uid://clwdkkye8yln"]
 
 [ext_resource type="Script" path="res://scenes/House/Downstairs.gd" id="1_1c4jg"]
 [ext_resource type="Texture2D" uid="uid://bpwlqyvkxq3ky" path="res://assets/sprites/House/Downstairs/downstairs.png" id="1_pxlrl"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_ifv4m"]
+[ext_resource type="PackedScene" uid="uid://ctl6tvxhjk5p6" path="res://scenes/pauseMenu/pauseMenu.tscn" id="4_guv5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_esh4i"]
 texture = ExtResource("1_pxlrl")
@@ -298,6 +299,8 @@ offset_top = -32.0
 offset_right = 350.0
 offset_bottom = 223.0
 color = Color(0, 0, 0, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_guv5n")]
 
 [connection signal="ready" from="Player" to="." method="_on_player_ready"]
 [connection signal="body_entered" from="upstairs" to="." method="_on_upstairs_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://obodvku8275q"]
+
+[ext_resource type="Script" path="res://scenes/pauseMenu/input_handle.gd" id="1_jpluk"]
+
+[node name="InputHandle" type="Node"]
+script = ExtResource("1_jpluk")

@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 GameState="*res://scripts/game_state.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+InputHandle="*res://scripts/input_handle.gd"
 
 [dialogic]
 
