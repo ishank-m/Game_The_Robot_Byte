@@ -98,15 +98,15 @@ func _on_lmb_1_animation_finished(anim_name):
 		$Loadmenu/Lmbutton1.frame = 0
 		$Car_1_main/AnimationPlayer.play("Carmainmenu_2")
 func _on_lmbt_1_mouse_entered():
-	if not animation_playing:
-		var load_button_save_no = int(GameState.current_save[GameState.current_save.length() - 1])
+	if not animation_playing and GameState.current_save:
+		var load_button_save_no = int(GameState.current_save[4])
 		if load_button_state[load_button_save_no][2] == "new_game":
 			$Loadmenu/Lmbutton1.frame = 1
 		else:
 			$Loadmenu/Lmbutton1.frame = 3
 func _on_lmbt_1_mouse_exited():
-	if not animation_playing:
-		var load_button_save_no = int(GameState.current_save[GameState.current_save.length() - 1])
+	if not animation_playing and GameState.current_save:
+		var load_button_save_no = int(GameState.current_save[4])
 		if load_button_state[load_button_save_no][2] == "new_game":
 			$Loadmenu/Lmbutton1.frame = 0
 		else:
@@ -118,7 +118,7 @@ func _on_lmbt_2_pressed():
 	if not animation_playing and press:
 		GameState.delete_save()
 		update_load_button_state()
-		var load_button_save_no = int(GameState.current_save[GameState.current_save.length() - 1])
+		var load_button_save_no = int(GameState.current_save[4])
 		if load_button_save_no == 1:
 			load_button($Loadmenu/Load_1, 1)
 		elif load_button_save_no == 2:
@@ -132,7 +132,7 @@ func _on_lmb_2_animation_finished(anim_name):
 		animation_playing = false
 		$Loadmenu/Lmbutton2.frame = 0
 func _on_lmbt_2_mouse_entered():
-	if not animation_playing:
+	if not animation_playing and GameState.current_save:
 		$Loadmenu/Lmbutton2.frame = 1
 func _on_lmbt_2_mouse_exited():
 	if not animation_playing:
@@ -176,6 +176,7 @@ func  load_button(button_node, save_no):
 		button_node.frame = load_button_state[save_no][0]
 		pressed = false
 		press = false
+		GameState.current_save = null
 		$Loadmenu/Lmbutton1.frame = 0
 	elif not pressed:
 		button_node.frame = load_button_state[save_no][1]
@@ -184,6 +185,8 @@ func  load_button(button_node, save_no):
 		GameState.current_save = "save"+str(save_no)
 		if load_button_state[save_no][2] == "continue":
 			$Loadmenu/Lmbutton1.frame = 2
+		else:
+			$Loadmenu/Lmbutton1.frame = 0
 	if pressed:
 		for i in [[$Loadmenu/Load_1,1], [$Loadmenu/Load_2,2] , [$Loadmenu/Load_3,3]]:
 			if i[0] != button_node:
@@ -196,15 +199,30 @@ func update_load_button_state():
 		load_button_state[1][1] = 7
 		load_button_state[1][0] = 3
 		$Loadmenu/Load_1.frame = load_button_state[1][0]
+	else:
+		load_button_state[1][2] = "new_game"
+		load_button_state[1][1] = 4
+		load_button_state[1][0] = 0
+		$Loadmenu/Load_1.frame = load_button_state[1][0]
 	if GameState.check_save(GameState.save2):
 		load_button_state[2][2] = "continue"
 		load_button_state[2][1] = 6
 		load_button_state[2][0] = 2
 		$Loadmenu/Load_2.frame = load_button_state[2][0]
+	else:
+		load_button_state[2][2] = "new_game"
+		load_button_state[2][1] = 4
+		load_button_state[2][0] = 0
+		$Loadmenu/Load_2.frame = load_button_state[2][0]
 	if GameState.check_save(GameState.save3):
 		load_button_state[3][2] = "continue"
 		load_button_state[3][1] = 5
 		load_button_state[3][0] = 1
+		$Loadmenu/Load_3.frame = load_button_state[3][0]
+	else:
+		load_button_state[3][2] = "new_game"
+		load_button_state[3][1] = 4
+		load_button_state[3][0] = 0
 		$Loadmenu/Load_3.frame = load_button_state[3][0]
 
 func click_sound():
