@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://hccjh4a1we5r"]
 
-[ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
+[ext_resource type="Script" path="res://scenes/Enemy/Enemy.gd" id="1_cp2df"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_x680x"]
 [ext_resource type="PackedScene" uid="uid://cj8dauq7uwgiu" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
@@ -108,7 +108,7 @@ size = Vector2(32, 20)
 
 [node name="WorldScene2" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_287fu")
+script = ExtResource("1_cp2df")
 
 [node name="fade_anim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -140,6 +140,7 @@ position = Vector2(8, 73)
 [node name="Player" parent="." instance=ExtResource("3_x680x")]
 position = Vector2(158, 48)
 scale = Vector2(0.8, 0.8)
+speed = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(3.05176e-05, -7.62939e-06)
@@ -169,8 +170,7 @@ offset_bottom = 774.0
 color = Color(0, 0, 0, 0)
 
 [node name="Enemy" parent="." instance=ExtResource("4_4nm36")]
-position = Vector2(799, 78)
+position = Vector2(330, 57)
 
 [connection signal="animation_finished" from="fade_anim" to="." method="_on_fade_anim_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

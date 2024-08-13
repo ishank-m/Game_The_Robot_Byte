@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://tmn6x0cmvqud" path="res://assets/sprites/Characters/MC/down/MC.png" id="20_704tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4sbj"]
-size = Vector2(14, 6)
+size = Vector2(13, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfpd1"]
 atlas = ExtResource("2_h1n0a")
@@ -299,9 +299,10 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 script = ExtResource("1_x8gbn")
+speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 12)
+position = Vector2(0.5, 12)
 shape = SubResource("RectangleShape2D_x4sbj")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
