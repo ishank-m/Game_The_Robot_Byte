@@ -66,4 +66,4 @@ base_overrides = {
 "global_font_size": "10.0"
 }
 layers = Array[ExtResource("2_v01n4")]([SubResource("Resource_d1v6v"), SubResource("Resource_jprri"), SubResource("Resource_2fgy4"), SubResource("Resource_uscsd"), SubResource("Resource_ii1qj"), SubResource("Resource_pf3ea"), SubResource("Resource_qxl80"), SubResource("Resource_lbqbm")])
-metadata/_latest_layer = 3
+metadata/_latest_layer = -1

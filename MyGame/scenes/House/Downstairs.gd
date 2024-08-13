@@ -53,7 +53,3 @@ func _on_transition_animation_finished(anim_name):
 	if anim_name == "bye":
 		get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 
-
-func _process(_delta):
-	$PauseMenu.show_menu()
-	

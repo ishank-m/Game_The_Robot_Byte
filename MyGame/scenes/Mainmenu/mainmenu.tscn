@@ -1037,7 +1037,6 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource("17_uh3ou")]
 position = Vector2(2528, 118)
 scale = Vector2(0.8, 0.8)
-speed = null
 
 [node name="Car_1_main" type="Sprite2D" parent="."]
 z_index = 1

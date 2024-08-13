@@ -42,8 +42,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etmme"]
 size = Vector2(13, 5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ht2t8"]
-radius = 46.0109
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gyihi"]
+radius = 9.0
+height = 24.0
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_17d06")
@@ -60,8 +61,8 @@ shape = SubResource("RectangleShape2D_etmme")
 position = Vector2(0.5, 12.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
-position = Vector2(-0.5, -12.5)
-shape = SubResource("CircleShape2D_ht2t8")
+position = Vector2(-0.5, -9.5)
+shape = SubResource("CapsuleShape2D_gyihi")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

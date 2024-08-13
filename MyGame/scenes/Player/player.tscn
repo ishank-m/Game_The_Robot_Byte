@@ -296,8 +296,9 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dsx5"]
-size = Vector2(19, 21)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nekxs"]
+radius = 9.0
+height = 26.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -315,7 +316,7 @@ animation = &"down"
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="attack_collision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_2dsx5")
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_nekxs")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
