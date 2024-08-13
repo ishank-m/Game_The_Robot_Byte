@@ -60,5 +60,4 @@ func get_current_save():
 func delete_save():
 	if check_save(get_current_save()):
 		var dir_access = DirAccess.open("res://saves/")
-		dir_access.remove(current_save)
-		
+		dir_access.remove(current_save+".dat")
