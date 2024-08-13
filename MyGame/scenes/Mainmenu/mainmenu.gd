@@ -25,6 +25,7 @@ func _ready():
 
 #Play Button on MainMenu
 func _on_play_pressed():
+	click_sound()
 	if not animation_playing:
 		$Title/Play_button_animation.play("mouse_pressed")
 		animation_playing = true
@@ -52,6 +53,7 @@ func _on_timer_timeout():
 
 #Quit Button on MainMenu
 func _on_quit_pressed():
+	click_sound()
 	if not animation_playing:
 		$Title/Quit_button_animation.play("mouse_pressed")
 		animation_playing = true
@@ -68,6 +70,7 @@ func _on_quit_button_animation_animation_finished(anim_name):
 
 #Back Button on LoadMenu
 func _on_button_pressed():
+	click_sound()
 	$Loadmenu/Back/backanim.play("back_pressed")
 func _on_backanim_animation_finished(anim_name):
 	if anim_name == "back_pressed":
@@ -84,6 +87,7 @@ func _on_load_3_bt_pressed():
 
 #NewGame/Continue button on LoadMenu
 func _on_lmbt_1_pressed():
+	click_sound()
 	if not animation_playing and press:
 		GameState.load_score()
 		$Loadmenu/Lmbutton1/Lmb1.play("circle")
@@ -110,6 +114,7 @@ func _on_lmbt_1_mouse_exited():
 
 #Delete button on LoadMenu
 func _on_lmbt_2_pressed():
+	click_sound()
 	if not animation_playing and press:
 		GameState.delete_save()
 		update_load_button_state()
@@ -201,3 +206,6 @@ func update_load_button_state():
 		load_button_state[3][1] = 5
 		load_button_state[3][0] = 1
 		$Loadmenu/Load_3.frame = load_button_state[3][0]
+
+func click_sound():
+	$Audios/click_sound.play()
