@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctl6tvxhjk5p6"]
+[gd_scene load_steps=18 format=3 uid="uid://ctl6tvxhjk5p6"]
 
 [ext_resource type="Texture2D" uid="uid://uyp1bshhtnen" path="res://assets/sprites/pauseMenu/bg.png" id="1_bp7eb"]
 [ext_resource type="Script" path="res://scenes/pauseMenu/pauseMenu.gd" id="1_kdvyd"]
@@ -6,86 +6,25 @@
 [ext_resource type="Theme" uid="uid://cjd3w2r2wb0b7" path="res://scripts/transparentbutton.tres" id="4_yrjam"]
 [ext_resource type="Texture2D" uid="uid://0ufx7chvnr06" path="res://assets/sprites/pauseMenu/quitbutton.png" id="5_gopjd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u3us8"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(64, 0, 32, 16)
+[sub_resource type="Animation" id="Animation_ab4jb"]
+resource_name = "circle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjno0"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(96, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gplsq"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(128, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5peq"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(160, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wvgwq"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(192, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l7slt"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(32, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxtj4"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwr84"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(32, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1xyk"]
-atlas = ExtResource("3_tlirr")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mna4u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u3us8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjno0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gplsq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d5peq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wvgwq")
-}],
-"loop": false,
-"name": &"click",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l7slt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxtj4")
-}],
-"loop": false,
-"name": &"hover_in",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rwr84")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w1xyk")
-}],
-"loop": false,
-"name": &"hover_out",
-"speed": 8.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwhkt"]
+_data = {
+"circle": SubResource("Animation_ab4jb")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxxog"]
 atlas = ExtResource("5_gopjd")
@@ -180,11 +119,12 @@ texture = ExtResource("1_bp7eb")
 
 [node name="Buttons" type="Node2D" parent="CanvasLayer"]
 
-[node name="save" type="AnimatedSprite2D" parent="CanvasLayer/Buttons"]
+[node name="save" type="Sprite2D" parent="CanvasLayer/Buttons"]
 position = Vector2(161, 71)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_mna4u")
-animation = &"hover_in"
+texture = ExtResource("3_tlirr")
+hframes = 7
+frame = 6
 
 [node name="save_button" type="Button" parent="CanvasLayer/Buttons/save"]
 offset_left = -16.0
@@ -192,6 +132,11 @@ offset_top = -8.27358
 offset_right = 17.0
 offset_bottom = 8.72642
 theme = ExtResource("4_yrjam")
+
+[node name="save_animation" type="AnimationPlayer" parent="CanvasLayer/Buttons/save"]
+libraries = {
+"": SubResource("AnimationLibrary_wwhkt")
+}
 
 [node name="quit" type="AnimatedSprite2D" parent="CanvasLayer/Buttons"]
 position = Vector2(162, 107)
@@ -205,3 +150,9 @@ offset_top = -8.0
 offset_right = 16.0
 offset_bottom = 8.0
 theme = ExtResource("4_yrjam")
+
+[node name="quit_animation" type="AnimationPlayer" parent="CanvasLayer/Buttons/quit"]
+
+[connection signal="mouse_entered" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_pressed"]
