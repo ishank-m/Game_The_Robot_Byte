@@ -22,7 +22,10 @@ func _ready():
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 func _on_fade_out_done():
-	GameState.game_state = "pause"
+	if GameState.dialogues_count['downstairs'] == 0:
+		GameState.game_state = "pause"
+	elif GameState.dialogues_count['downstairs'] == 1:
+		GameState.game_state = "play"
 
 func _on_stairs_body_entered(body):
 	if body.name == "Player":
@@ -42,7 +45,7 @@ func _on_dialogic_signal(argument: String):
 
 func _on_dialogue_body_entered(body):
 	if body.name == "Player" and count == 0:
-		player.Player.stop()
+		$Player/Player.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("downstairs_2")
 		count = 1
@@ -54,4 +57,4 @@ func _on_out_body_entered(body):
 		Dialogic.start("downstairs")
 		GameState.dialogues_count['downstairs'] = 1
 	elif body.name == "Player" and GameState.dialogues_count['downstairs'] == 1:
-		GameState.game_state = "play"
+		pass #add another dialogue

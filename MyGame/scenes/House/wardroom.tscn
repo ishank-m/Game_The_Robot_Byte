@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://deayapj47ib4r"]
+[gd_scene load_steps=53 format=3 uid="uid://deayapj47ib4r"]
 
 [ext_resource type="Script" path="res://scenes/House/wardroom.gd" id="1_gb3h2"]
 [ext_resource type="Texture2D" uid="uid://cbssd5170fo4h" path="res://assets/sprites/House/Wardroom/wardroom.png" id="2_fj4dt"]
@@ -320,44 +320,6 @@ _data = {
 "lightening": SubResource("Animation_au6jx")
 }
 
-[sub_resource type="Animation" id="Animation_dhvq0"]
-resource_name = "bye"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_3bws0"]
-resource_name = "hi"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8dgo"]
-_data = {
-"bye": SubResource("Animation_dhvq0"),
-"hi": SubResource("Animation_3bws0")
-}
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg1cu"]
 texture = ExtResource("2_fj4dt")
 texture_region_size = Vector2i(32, 32)
@@ -478,26 +440,10 @@ libraries = {
 "": SubResource("AnimationLibrary_4k835")
 }
 
-[node name="transition" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CanvasLayer")
-libraries = {
-"": SubResource("AnimationLibrary_m8dgo")
-}
-
 [node name="physics" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ww0y3")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65529, 131073, 2, 7, 131073, 2, 65543, 131073, 2, 131079, 131073, 2, 196615, 131073, 2, 262151, 131073, 2, 262150, 131073, 2, 262149, 131073, 2, 262148, 131073, 2, 262147, 131073, 2, 262146, 131073, 2, 262145, 131073, 2, 196609, 131073, 2, 131073, 131073, 2, 65537, 131073, 2, 1, 131073, 2, -65535, 131073, 2, -65534, 131073, 2, -65533, 131073, 2, -65532, 131073, 2, -65531, 131073, 2, -65530, 131073, 2, 6, 196609, 2, 5, 196609, 2, 4, 196609, 2, 3, 196609, 2, 2, 196609, 2)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
-offset_left = -48.0
-offset_top = -57.0
-offset_right = 344.0
-offset_bottom = 217.0
-color = Color(0, 0, 0, 0)
 
 [connection signal="animation_finished" from="TileMap" to="." method="_on_tile_map_animation_finished"]
 [connection signal="animation_finished" from="transitions/clouds" to="." method="_on_clouds_animation_finished"]
@@ -506,4 +452,3 @@ color = Color(0, 0, 0, 0)
 [connection signal="animation_finished" from="char_going" to="." method="_on_char_going_animation_finished"]
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
 [connection signal="animation_finished" from="light" to="." method="_on_light_animation_finished"]
-[connection signal="animation_finished" from="transition" to="." method="_on_transition_animation_finished"]

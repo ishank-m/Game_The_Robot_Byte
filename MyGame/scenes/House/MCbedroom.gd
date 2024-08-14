@@ -1,16 +1,20 @@
 extends Node2D
-
+@onready var transition = $TransitionScene
+@onready var player = get_node("Player")
 func _ready():
-	GameState.game_state = 'play'
-	$CanvasLayer/ColorRect.visible = true
-	$transition.play("hi")
+	transition.fade_out()
+	transition.connect("fade_out_done", _on_fade_out_done)
+	transition.connect("fade_in_done", _on_fade_in_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "lobby":
 		$Player/Player.play("down")
 		$Player/Player.stop()
-		$Player.set_position($door_pos.position)
+		player.set_position($door_pos.position)
 		GameState.scene  = "mc_bedroom"
-
+func _on_fade_out_done():
+	GameState.game_state = "play"
+func _on_fade_in_done():
+	get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 func _on_timer_timeout():
 	if GameState.dialogues_count['mcbed'] == 0:
 		GameState.game_state = "pause"
@@ -27,17 +31,9 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_door_animation_finished():
-	GameState.scene = "mc_bedroom"
-	$CanvasLayer/ColorRect.visible = true
-	$transition.play("bye")
+	transition.fade_in()
 	
 
-
-func _on_transition_animation_finished(anim_name):
-	if anim_name == "hi":
-		$CanvasLayer/ColorRect.visible = false
-	elif anim_name == 'bye':
-		get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 		
 func _on_dialogic_signal(argument):
 	if argument == "done":

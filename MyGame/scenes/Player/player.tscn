@@ -312,7 +312,7 @@ shape = SubResource("RectangleShape2D_r7fbo")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ir1r4")
-animation = &"down"
+animation = &"up"
 
 [node name="Player_hitbox" type="Area2D" parent="."]
 visible = false

@@ -1,5 +1,6 @@
 extends Node2D
 var playing = false
+var
 
 func _ready():
 	$physics.hide()
