@@ -10,7 +10,7 @@ var load_button_state = [
 	[0, 4, "new_game"],
 	[0, 4, "new_game"],
 	]
-
+var dialogue = false
 #Initilaizing the Game
 func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -45,8 +45,9 @@ func _on_play_mouse_exited():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Carmainmenu":
 		$Car_1_main/AnimationPlayer.play("idle")
-	if anim_name == "Carmainmenu_2":
+	if anim_name == "Carmainmenu_2" and not dialogue:
 		Dialogic.start("mainmenu")
+		dialogue = true
 
 #Bird
 func _on_timer_timeout():
