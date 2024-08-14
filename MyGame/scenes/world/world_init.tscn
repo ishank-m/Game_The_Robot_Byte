@@ -82,7 +82,7 @@ texture = ExtResource("1_x7suc")
 2:6/0/physics_layer_0/angular_velocity = 0.0
 0:6/size_in_atlas = Vector2i(2, 2)
 0:6/0 = 0
-0:6/0/y_sort_origin = 9
+0:6/0/y_sort_origin = 4
 0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:6/0/physics_layer_0/angular_velocity = 0.0
 8:2/size_in_atlas = Vector2i(2, 2)
@@ -109,6 +109,7 @@ texture = ExtResource("1_x7suc")
 12:2/0/y_sort_origin = 20
 12:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:2/0/physics_layer_0/angular_velocity = 0.0
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.71429, 30.8571, -6.85714, 30.8571, -3.42857, 24, 1.14286, 22.8571)
 10:2/size_in_atlas = Vector2i(2, 2)
 10:2/0 = 0
 10:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -239,7 +240,7 @@ position = Vector2(113, 138)
 scale = Vector2(0.8, 0.8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.4, 1.4)
+zoom = Vector2(1.15, 1.15)
 limit_left = 29
 limit_top = -23
 limit_right = 317

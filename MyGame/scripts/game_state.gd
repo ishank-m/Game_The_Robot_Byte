@@ -8,6 +8,7 @@ var scene_neww = "init"
 var current_save
 
 var dialogues_count = {
+	"downstairs" : 0,
 	"lobby1": 0,
 	"lobby2": 0,
 	"lobby3": 0,

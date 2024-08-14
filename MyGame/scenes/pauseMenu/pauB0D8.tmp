@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctl6tvxhjk5p6"]
+
+[ext_resource type="Texture2D" uid="uid://uyp1bshhtnen" path="res://assets/sprites/pauseMenu/bg.png" id="1_bp7eb"]
+[ext_resource type="Script" path="res://scenes/pauseMenu/pauseMenu.gd" id="1_kdvyd"]
+[ext_resource type="Texture2D" uid="uid://cm0ighgc45b7w" path="res://assets/sprites/pauseMenu/savebutton.png" id="3_tlirr"]
+[ext_resource type="Theme" uid="uid://cjd3w2r2wb0b7" path="res://scripts/transparentbutton.tres" id="4_yrjam"]
+[ext_resource type="Texture2D" uid="uid://0ufx7chvnr06" path="res://assets/sprites/pauseMenu/quitbutton.png" id="5_gopjd"]
+
+[sub_resource type="Animation" id="Animation_ab4jb"]
+resource_name = "circle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwhkt"]
+_data = {
+"circle": SubResource("Animation_ab4jb")
+}
+
+[sub_resource type="Animation" id="Animation_gw8vj"]
+resource_name = "circle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_455u2"]
+_data = {
+"circle": SubResource("Animation_gw8vj")
+}
+
+[node name="PauseMenu" type="Node2D"]
+script = ExtResource("1_kdvyd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(162.5, 84)
+scale = Vector2(0.789063, 2)
+texture = ExtResource("1_bp7eb")
+
+[node name="Buttons" type="Node2D" parent="CanvasLayer"]
+
+[node name="save" type="Sprite2D" parent="CanvasLayer/Buttons"]
+position = Vector2(161, 71)
+scale = Vector2(2, 2)
+texture = ExtResource("3_tlirr")
+hframes = 7
+frame = 2
+
+[node name="save_button" type="Button" parent="CanvasLayer/Buttons/save"]
+offset_left = -16.0
+offset_top = -8.27358
+offset_right = 17.0
+offset_bottom = 8.72642
+theme = ExtResource("4_yrjam")
+
+[node name="save_animation" type="AnimationPlayer" parent="CanvasLayer/Buttons/save"]
+libraries = {
+"": SubResource("AnimationLibrary_wwhkt")
+}
+
+[node name="quit" type="Sprite2D" parent="CanvasLayer/Buttons"]
+position = Vector2(162, 107)
+scale = Vector2(2, 2)
+texture = ExtResource("5_gopjd")
+hframes = 7
+frame = 4
+
+[node name="quit_button" type="Button" parent="CanvasLayer/Buttons/quit"]
+offset_left = -16.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 8.0
+theme = ExtResource("4_yrjam")
+
+[node name="quit_animation" type="AnimationPlayer" parent="CanvasLayer/Buttons/quit"]
+libraries = {
+"": SubResource("AnimationLibrary_455u2")
+}
+
+[connection signal="mouse_entered" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Buttons/save/save_animation" to="." method="_on_save_animation_animation_finished"]
+[connection signal="mouse_entered" from="CanvasLayer/Buttons/quit/quit_button" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Buttons/quit/quit_button" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Buttons/quit/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Buttons/quit/quit_animation" to="." method="_on_quit_animation_animation_finished"]

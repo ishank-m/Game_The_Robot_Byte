@@ -10,7 +10,6 @@ func _ready():
 		$Player.set_position($init.position)
 		GameState.game_state = "pause"
 		GameState.scene = "downstairs"
-		Dialogic.start("downstairs")
 	elif GameState.scene == "lobby":
 		GameState.game_state = "play"
 		$Player.set_position($Lobby.position)
@@ -53,3 +52,11 @@ func _on_transition_animation_finished(anim_name):
 	if anim_name == "bye":
 		get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 
+
+
+func _on_out_body_entered(body):
+	if body.name == "Player" and GameState.dialogues_count['downstairs'] == 0:
+		Dialogic.start("downstairs")
+		GameState.dialogues_count['downstairs'] = 1
+	elif body.name == "Player" and GameState.dialogues_count['downstairs'] == 1:
+		pass #add another dialogue
