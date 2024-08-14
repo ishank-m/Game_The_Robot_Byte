@@ -10,7 +10,7 @@ func _ready():
 		$Player/Player.play("down")
 		$Player/Player.stop()
 		player.set_position($door_pos.position)
-		GameState.scene  = "mc_bedroom"
+	GameState.scene  = "mc_bedroom"
 func _on_fade_out_done():
 	GameState.game_state = "play"
 func _on_fade_in_done():

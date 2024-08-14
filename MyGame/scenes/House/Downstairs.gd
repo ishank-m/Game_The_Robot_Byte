@@ -10,14 +10,13 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "init":
 		player.set_position($init.position)
-		GameState.scene = "downstairs"
 	elif GameState.scene == "lobby":
 		GameState.game_state = "play"
 		player.set_position($Lobby.position)
-		GameState.scene = "downstairs"
 	if GameState.player_pos:
 		player.position = GameState.player_pos
 		GameState.player_pos = null
+	GameState.scene = "downstairs"
 
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
