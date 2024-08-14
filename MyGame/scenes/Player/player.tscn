@@ -301,6 +301,9 @@ radius = 18.0278
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
+collision_layer = 3
+collision_mask = 3
+safe_margin = 10.0
 script = ExtResource("1_x8gbn")
 speed = null
 
@@ -313,6 +316,9 @@ sprite_frames = SubResource("SpriteFrames_ir1r4")
 animation = &"down"
 
 [node name="Player_hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_hitbox"]
 position = Vector2(0, 2)

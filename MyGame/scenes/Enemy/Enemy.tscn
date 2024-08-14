@@ -171,8 +171,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_etmme"]
-size = Vector2(13, 5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbi5u"]
+radius = 6.5192
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgbut"]
 radius = 147.839
@@ -180,6 +180,9 @@ radius = 147.839
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
+safe_margin = 7.0
 script = ExtResource("1_17d06")
 
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
@@ -189,7 +192,7 @@ frame_progress = 0.113038
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 12.5)
-shape = SubResource("RectangleShape2D_etmme")
+shape = SubResource("CircleShape2D_hbi5u")
 
 [node name="detection_area" type="Area2D" parent="."]
 position = Vector2(0.5, 12.5)
@@ -198,10 +201,6 @@ position = Vector2(0.5, 12.5)
 position = Vector2(-0.5, -9.5)
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_dgbut")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
