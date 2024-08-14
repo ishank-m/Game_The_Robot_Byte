@@ -3,8 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CanvasLayer/ColorRect.visible = true
-	$fade_anim.play("hi")
+	
 	$Player.set_position($village.position)
 	
 

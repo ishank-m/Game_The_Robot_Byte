@@ -1,15 +1,17 @@
 extends Node2D
-
+@onready var transition = $TransitionScene
 
 
 func _ready():
+	transition.connect("finished", _on_transition_finished)
+	transition.fade_out()
 	if GameState.scene_neww == "Scene_1":
 		$Player.set_position($init.position)
 	elif GameState.scene_neww == "Scene_2":
 		$Player.set_position($right.position)
-	$CanvasLayer/ColorRect.visible = true
-	$CanvasLayer/ColorRect/AnimationPlayer.play("hi")
-	
+
+func _on_transition_finished():
+	GameState.game_state = "play"	
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
