@@ -11,13 +11,15 @@ var load_button_state = [
 	[0, 4, "new_game"],
 	]
 var dialogue = false
+@onready var transition = $TransitionScene
+@onready var player = get_node("Player")
 #Initilaizing the Game
 func _ready():
+	transition.connect("fade_in_done", _on_fade_in_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
-	$CanvasLayer/ColorRect.visible = false
 	if GameState.game_state == "main_menu":
 		GameState.game_state = 'main_menu'
-		$Player.hide()
+		player.hide()
 		$Bird/Bird_animation.play("birdie")
 		$Bird/Timer.start()
 		$Car_1_main/AnimationPlayer.play("idle")
@@ -150,14 +152,11 @@ func _on_car_2_timer_timeout():
 
 func _on_house_body_entered(body: Node2D):
 	if body.name == "Player":
-		GameState.game_state = 'pause'
+		GameState.game_state = "pause"
 		$Player/Player.play("up")
 		$Player/Player.stop()
 		$door_open.play("default")
 
-func _on_transition_animation_finished(anim_name):
-	if anim_name == "bye":
-		get_tree().change_scene_to_file("res://scenes/House/Downstairs.tscn")
 
 func _on_dialogic_signal(argument):
 	if argument == "done":
@@ -165,13 +164,14 @@ func _on_dialogic_signal(argument):
 		$Car_2/delay.start()
 
 func _on_delay_timeout():
-	$Player.show()
+	player.show()
 	GameState.game_state = "play"
 	road_crossing = true
 
 func _on_door_open_animation_finished():
-	$CanvasLayer/ColorRect.visible = true
-	$transition.play("bye")
+	transition.fade_in()
+func _on_fade_in_done():
+	get_tree().change_scene_to_file("res://scenes/House/Downstairs.tscn")
 
 func  load_button(button_node, save_no):
 	if button_node.frame == load_button_state[save_no][1]:
