@@ -7,7 +7,7 @@ var player = null
 var direction = Vector2.ZERO
 @onready var anim = $Enemy
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if chase_player:
 		direction = (player.position - position).normalized()
 		var distance_to_player = position.distance_to(player.position)
@@ -15,7 +15,7 @@ func _physics_process(_delta):
 			velocity = direction * speed
 		else:
 			velocity = Vector2.ZERO
-		move_and_slide()
+		move_and_collide(velocity*delta)
 		enemy_anim()
 	else:
 		anim.stop()
