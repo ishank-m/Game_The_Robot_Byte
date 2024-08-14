@@ -20,6 +20,8 @@ func _physics_process(_delta):
 				direction.y -= 0.5
 		if direction.length() > 0:
 			direction = direction.normalized()
+		if Input.is_action_pressed("attack"):
+			anim.play("attack")
 		velocity = direction*speed
 		update_anim(direction)
 		move_and_slide()
