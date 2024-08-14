@@ -1,12 +1,13 @@
 extends Node2D
 var playing = false
-var
+@onready var transition = $TransitionScene
+@onready var player = get_node("Player")
 
 func _ready():
+	transition.fade_out()
+	transition.connect("fade_out_done", _on_fade_out_done)
 	$physics.hide()
 	GameState.game_state = "pause"
-	$CanvasLayer/ColorRect.visible = true
-	$transition.play("hi")
 	$transitions/light.visible = true
 	$transitions/light.color = "000000d3"
 	$char_opening_win.hide()
@@ -17,8 +18,9 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "lobby":
 		$Player.set_position($room_2.position)
-		GameState.scene  = "room_2"
-
+	GameState.scene  = "room_2"
+func _on_fade_out_done():
+	GameState.game_state = "pause"
 
 
 func _on_area_2d_body_entered(body):
