@@ -311,7 +311,7 @@ shape = SubResource("RectangleShape2D_x4sbj")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ir1r4")
-animation = &"down"
+animation = &"up"
 
 [node name="Area2D" type="Area2D" parent="."]
 

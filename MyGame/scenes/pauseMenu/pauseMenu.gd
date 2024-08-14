@@ -22,26 +22,22 @@ func _input(event):
 		show_menu()
 	elif event.is_action_pressed("ui_cancel") and get_tree().paused:
 		hide_menu()
-	
-
 
 func _on_save_button_pressed():
 	if not animation_playing:
 		$CanvasLayer/Buttons/save/save_animation.play("circle")
 		animation_playing = true
-	
-
 
 func _on_save_button_mouse_entered():
 	if not animation_playing:
 		save_button.frame = 0
 
-
 func _on_save_button_mouse_exited():
 	if not animation_playing:
 		save_button.frame = 1
 
+func _on_save_animation_animation_finished(anim_name):
+	if anim_name == "circle":
+		GameState.save_score()
+		print("saved")
 
-#func _on_save_animation_finished():
-	
-	

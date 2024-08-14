@@ -26,3 +26,8 @@ func _on_animation_player_animation_finished(anim_name):
 		get_tree().change_scene_to_file("res://scenes/world/world_init.tscn")
 
 
+
+
+func _on_to_fight_1_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")

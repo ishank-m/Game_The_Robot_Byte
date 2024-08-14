@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckg02l7b6r70r"]
+[gd_scene load_steps=11 format=3 uid="uid://ckg02l7b6r70r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_1.gd" id="1_ak5e8"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_au8bh"]
@@ -109,6 +109,8 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfywl"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62vmw"]
+
 [node name="WorldScene1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ak5e8")
@@ -171,5 +173,12 @@ libraries = {
 position = Vector2(128, 408)
 shape = SubResource("RectangleShape2D_nfywl")
 
+[node name="to_fight_1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="to_fight_1"]
+position = Vector2(322, 144)
+shape = SubResource("RectangleShape2D_62vmw")
+
 [connection signal="animation_finished" from="CanvasLayer/ColorRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="to_fight_1" to="." method="_on_to_fight_1_body_entered"]
