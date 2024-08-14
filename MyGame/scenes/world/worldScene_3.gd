@@ -1,20 +1,21 @@
 extends Node2D
+@onready var transition = $TransitionScene
 
 func _ready():
-	$CanvasLayer/ColorRect.visible = true
-	$fade_anim.play("hi")
+	transition.fade_out()
+	transition.connect("fade_in_done", _on_fade_in_done)
 	$Player.set_position($init.position)
 
 
-func _on_fade_anim_animation_finished(anim_name):
-	if anim_name == "hi":
-		GameState.game_state = 'play'
-	if anim_name == "bye":
-		get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
+
+func _on_fade_in_done():
+	get_tree().change_scene_to_file("res://scenes/world/worldScene_1.tscn")
+func _on_clouds_animation_finished():
+	$CanvasLayer/clouds.hide()
 
 
-func _on_area_2d_body_entered(_body):
-	$CanvasLayer/ColorRect.visible = true
-	$fade_anim.play("bye")
 
 
+
+func _on_button_pressed():
+	transition.fade_in()

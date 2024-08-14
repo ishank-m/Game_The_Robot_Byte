@@ -1,23 +1,29 @@
 extends Node2D
-
-
+@onready var transition = $TransitionScene
+var to_where: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	transition.fade_out()
+	transition.connect("fade_in_done", _on_fade_in_done)
 	$Player.set_position($village.position)
 	
-
-
-
+	
+	
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
-		$CanvasLayer/ColorRect.visible = true
-		$fade_anim.play("bye")
+		to_where = "worldscene3"
+		transition.fade_in()
 
-
-func _on_fade_anim_animation_finished(anim_name):
-	if anim_name == "hi":
-		GameState.game_state = 'play'
-		$CanvasLayer/ColorRect.visible = false
-	if anim_name == "bye":
+func _on_fade_in_done():
+	if to_where == "worldscene1":
+		get_tree().change_scene_to_file("res://scenes/world/worldScene_1.tscn")
+	elif to_where == "worldscene3":
 		get_tree().change_scene_to_file("res://scenes/world/worldScene_3.tscn")
+func _on_clouds_animation_finished():
+	$CanvasLayer/clouds.hide()
+
+
+func _on_to_worldscene_1_body_entered(body):
+	if body.name == "Player":
+		to_where = "worldscene1"
+		transition.fade_in()

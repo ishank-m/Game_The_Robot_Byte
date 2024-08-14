@@ -1,6 +1,5 @@
 extends Node2D
 @onready var transition = $TransitionScene
-
 func _ready():
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
