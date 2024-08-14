@@ -54,4 +54,4 @@ func _on_out_body_entered(body):
 		Dialogic.start("downstairs")
 		GameState.dialogues_count['downstairs'] = 1
 	elif body.name == "Player" and GameState.dialogues_count['downstairs'] == 1:
-		pass #add another dialogue
+		GameState.game_state = "play"

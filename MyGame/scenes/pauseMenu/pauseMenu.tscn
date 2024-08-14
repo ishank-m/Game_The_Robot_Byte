@@ -62,7 +62,7 @@ texture = ExtResource("1_bp7eb")
 position = Vector2(161, 71)
 scale = Vector2(2, 2)
 texture = ExtResource("3_tlirr")
-hframes = 7
+hframes = 8
 frame = 2
 
 [node name="save_button" type="Button" parent="CanvasLayer/Buttons/save"]

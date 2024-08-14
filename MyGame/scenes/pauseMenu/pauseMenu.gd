@@ -38,6 +38,7 @@ func _on_save_button_mouse_exited():
 func _on_save_animation_animation_finished(anim_name):
 	if anim_name == "circle":
 		animation_playing = false
+		$CanvasLayer/Buttons/save.frame = 7
 		GameState.save_score()
 
 
