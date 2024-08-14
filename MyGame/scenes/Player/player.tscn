@@ -296,9 +296,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nekxs"]
-radius = 9.0
-height = 26.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nulh"]
+radius = 18.0278
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -311,12 +310,10 @@ shape = SubResource("RectangleShape2D_x4sbj")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ir1r4")
-animation = &"up"
+animation = &"down"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Player_hitbox" type="Area2D" parent="."]
 
-[node name="attack_collision" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_hitbox"]
 position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_nekxs")
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+shape = SubResource("CircleShape2D_1nulh")

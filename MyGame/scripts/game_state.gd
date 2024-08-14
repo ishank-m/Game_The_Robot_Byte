@@ -36,6 +36,7 @@ func save_score():
 	file.store_var(scene)
 	file.store_var(scene_neww)
 	file.store_var(dialogues_count)
+	player_pos = null
 	
 
 func load_score():
