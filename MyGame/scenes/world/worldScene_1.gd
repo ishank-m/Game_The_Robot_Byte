@@ -3,7 +3,7 @@ extends Node2D
 
 
 func _ready():
-	transition.connect("finished", _on_transition_finished)
+	transition.connect("fade_out_done", _on_transition_finished)
 	transition.fade_out()
 	if GameState.scene_neww == "Scene_1":
 		$Player.set_position($init.position)

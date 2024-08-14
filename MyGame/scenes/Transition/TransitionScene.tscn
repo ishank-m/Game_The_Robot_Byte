@@ -49,7 +49,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0)
 offset_left = -3977.0
 offset_top = -3581.0
 offset_right = 6061.0
