@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctl6tvxhjk5p6"]
+[gd_scene load_steps=10 format=3 uid="uid://ctl6tvxhjk5p6"]
 
 [ext_resource type="Texture2D" uid="uid://uyp1bshhtnen" path="res://assets/sprites/pauseMenu/bg.png" id="1_bp7eb"]
 [ext_resource type="Script" path="res://scenes/pauseMenu/pauseMenu.gd" id="1_kdvyd"]
@@ -26,86 +26,25 @@ _data = {
 "circle": SubResource("Animation_ab4jb")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sxxog"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(64, 0, 32, 16)
+[sub_resource type="Animation" id="Animation_gw8vj"]
+resource_name = "circle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_puorq"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(96, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywfca"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(128, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q0ph"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(160, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c564c"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(192, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i3w0u"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(32, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_btovg"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_22h7w"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4eakr"]
-atlas = ExtResource("5_gopjd")
-region = Rect2(32, 0, 32, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_b2ims"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sxxog")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_puorq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ywfca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8q0ph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c564c")
-}],
-"loop": false,
-"name": &"click",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i3w0u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_btovg")
-}],
-"loop": false,
-"name": &"hover_in",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_22h7w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4eakr")
-}],
-"loop": false,
-"name": &"hover_out",
-"speed": 8.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_455u2"]
+_data = {
+"circle": SubResource("Animation_gw8vj")
+}
 
 [node name="PauseMenu" type="Node2D"]
 script = ExtResource("1_kdvyd")
@@ -138,11 +77,12 @@ libraries = {
 "": SubResource("AnimationLibrary_wwhkt")
 }
 
-[node name="quit" type="AnimatedSprite2D" parent="CanvasLayer/Buttons"]
+[node name="quit" type="Sprite2D" parent="CanvasLayer/Buttons"]
 position = Vector2(162, 107)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_b2ims")
-animation = &"hover_in"
+texture = ExtResource("5_gopjd")
+hframes = 7
+frame = 4
 
 [node name="quit_button" type="Button" parent="CanvasLayer/Buttons/quit"]
 offset_left = -16.0
@@ -152,8 +92,15 @@ offset_bottom = 8.0
 theme = ExtResource("4_yrjam")
 
 [node name="quit_animation" type="AnimationPlayer" parent="CanvasLayer/Buttons/quit"]
+libraries = {
+"": SubResource("AnimationLibrary_455u2")
+}
 
 [connection signal="mouse_entered" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Buttons/save/save_button" to="." method="_on_save_button_pressed"]
 [connection signal="animation_finished" from="CanvasLayer/Buttons/save/save_animation" to="." method="_on_save_animation_animation_finished"]
+[connection signal="mouse_entered" from="CanvasLayer/Buttons/quit/quit_button" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Buttons/quit/quit_button" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Buttons/quit/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Buttons/quit/quit_animation" to="." method="_on_quit_animation_animation_finished"]

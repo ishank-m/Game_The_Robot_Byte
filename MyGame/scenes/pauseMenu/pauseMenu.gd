@@ -5,6 +5,7 @@ var animation_playing = false
 
 func _ready():
 	save_button.frame = 1
+	quit_button.frame = 1
 	set_process_input(PROCESS_MODE_ALWAYS)
 	$CanvasLayer.layer = 999
 	$CanvasLayer.visible = false
@@ -27,17 +28,37 @@ func _on_save_button_pressed():
 	if not animation_playing:
 		$CanvasLayer/Buttons/save/save_animation.play("circle")
 		animation_playing = true
-
 func _on_save_button_mouse_entered():
 	if not animation_playing:
 		save_button.frame = 0
-
 func _on_save_button_mouse_exited():
 	if not animation_playing:
 		save_button.frame = 1
-
 func _on_save_animation_animation_finished(anim_name):
 	if anim_name == "circle":
 		GameState.save_score()
 		print("saved")
 
+
+
+func _on_quit_button_pressed():
+		if not animation_playing:
+			$CanvasLayer/Buttons/quit/quit_animation.play("circle")
+			animation_playing = true
+
+
+func _on_quit_button_mouse_entered():
+	if not animation_playing:
+		quit_button.frame = 0
+
+
+
+func _on_quit_button_mouse_exited():
+	if not animation_playing:
+		quit_button.frame = 1
+
+
+func _on_quit_animation_animation_finished(anim_name):
+	if anim_name == "circle":
+		get_tree().change_scene_to_file("res://scenes/Mainmenu/mainmenu.tscn")
+		
