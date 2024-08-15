@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 @export var speed: int = 40
 var chase_player = false
-var min_distance = 17
+var min_distance = 5
 var player = null
+var player_in_hitbox = false
 var attack = false
 var attack_cooldown = true
+var health = 60
 var direction = Vector2.ZERO
 @onready var anim = $Enemy
 
@@ -24,9 +26,10 @@ func _physics_process(delta):
 			anim.stop()
 	else:
 		if attack_cooldown:
-			anim.play("attack")
 			$attack_cooldown.start()
 			attack_cooldown = false
+	if health == 0:
+		queue_free()
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
@@ -69,13 +72,32 @@ func enemy_anim():
 func _on_hitbox_enemy_body_entered(body):
 	if body.name == "Player":
 		attack = true
+		player_in_hitbox = true
 		chase_player = false
 
 func _on_hitbox_enemy_body_exited(body):
 	if body.name == "Player":
-		attack = false
+		player_in_hitbox = false
 		chase_player = true
 
 func _on_attack_cooldown_timeout():
 	attack_cooldown = true
-	anim.play("attack")
+	if player:
+		if (player.position.x - position.x) > 0:
+			anim.flip_h = true
+			anim.play("attack")
+		else:
+			anim.flip_h = false
+			anim.play("attack")
+
+func _on_enemy_animation_finished():
+	if $Enemy.animation == "attack":
+		if player_in_hitbox:
+			GameState.player_health -= 10
+		else:
+			attack = false
+
+
+func _on_hitbox_enemy_area_entered(area):
+	if area.is_in_group("player_attack"):
+		health -= 20

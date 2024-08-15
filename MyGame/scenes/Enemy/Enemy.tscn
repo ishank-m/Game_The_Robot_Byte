@@ -220,14 +220,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i52du"]
-radius = 4.34111
-height = 11.4915
+radius = 3.0
+height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgbut"]
 radius = 147.839
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2vqe"]
-radius = 19.105
+radius = 15.0
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 1
@@ -239,14 +239,16 @@ script = ExtResource("1_17d06")
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_sutga")
-animation = &"down"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.438137, 10.6555)
+visible = false
+position = Vector2(0, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_i52du")
 
 [node name="detection_area" type="Area2D" parent="."]
+visible = false
 position = Vector2(0.5, 12.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
@@ -257,13 +259,16 @@ shape = SubResource("CircleShape2D_dgbut")
 [node name="hitbox_enemy" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_enemy"]
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_e2vqe")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="animation_finished" from="Enemy" to="." method="_on_enemy_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_entered"]
 [connection signal="body_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_entered"]
 [connection signal="body_exited" from="hitbox_enemy" to="." method="_on_hitbox_enemy_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -3,14 +3,20 @@ class_name Player
 var attack
 var attack_diretion
 @export var speed: int = 50
-@onready var anim = $Player
+@onready var anim = $Player_sprite
+
+func _ready():
+	$attackbox_right.add_to_group("player_attack")
+	$attackbox_right/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("attack"):
-			anim.play("attack")
-			attack = true
-			GameState.game_state = "attack"
-	if GameState.game_state == 'play':
+	if Input.is_action_just_pressed("attack"):
+		attack = true
+		anim.play("attack")
+		$attackbox_right/CollisionShape2D.disabled = false
+		await anim.animation_finished
+		$attackbox_right/CollisionShape2D.disabled = true
+	elif not attack:
 		var direction = Vector2()
 		if Input.is_action_pressed("ui_up"):
 			direction.y -= 1
@@ -29,11 +35,6 @@ func _physics_process(_delta):
 		velocity = direction*speed
 		update_anim(direction)
 		move_and_slide()
-
-func _on_player_animation_finished():
-	if attack == true:
-		attack = false
-		GameState.game_state = "play"
 
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:
@@ -65,3 +66,8 @@ func update_anim(direction):
 			anim.play("down")
 		elif direction.y < 0:
 			anim.play("up")
+
+
+func _on_player_sprite_animation_finished():
+	if attack:
+		attack = false
