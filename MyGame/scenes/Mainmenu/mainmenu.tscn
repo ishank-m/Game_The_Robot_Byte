@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dgs4pjemsolew"]
+[gd_scene load_steps=80 format=3 uid="uid://dgs4pjemsolew"]
 
 [ext_resource type="Script" path="res://scenes/Mainmenu/mainmenu.gd" id="1_ykmb7"]
 [ext_resource type="Texture2D" uid="uid://2jdm1r87g06d" path="res://assets/sprites/Main Menu/Sprite-0001.png" id="2_1ha3f"]
@@ -158,6 +158,9 @@ _data = {
 "truck_moving": SubResource("Animation_6ayeg")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxwxq"]
+size = Vector2(38.2256, 13.9264)
+
 [sub_resource type="Animation" id="Animation_n087q"]
 length = 0.001
 tracks/0/type = "value"
@@ -218,6 +221,9 @@ _data = {
 "RESET": SubResource("Animation_n087q"),
 "car2_moving": SubResource("Animation_3ltvr")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ymkf"]
+size = Vector2(48, 13)
 
 [sub_resource type="Animation" id="Animation_roriv"]
 length = 0.001
@@ -740,6 +746,9 @@ _data = {
 "rev_frm_ld_mn": SubResource("Animation_0ixb7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0ayn"]
+size = Vector2(54, 14)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecme7"]
 atlas = ExtResource("18_wxf8v")
 region = Rect2(0, 0, 12, 18)
@@ -821,6 +830,13 @@ libraries = {
 "": SubResource("AnimationLibrary_lo2sb")
 }
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/StaticBody2D"]
+position = Vector2(0.579468, 19.5276)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_bxwxq")
+
 [node name="Car_2" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(2819, 82)
@@ -838,6 +854,12 @@ libraries = {
 [node name="delay" type="Timer" parent="Car_2"]
 wait_time = 0.5
 one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Car_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car_2/StaticBody2D"]
+position = Vector2(-1, 3.5)
+shape = SubResource("RectangleShape2D_3ymkf")
 
 [node name="Loadmenu" type="Sprite2D" parent="."]
 z_index = 2
@@ -1032,6 +1054,12 @@ limit_bottom = 160
 libraries = {
 "": SubResource("AnimationLibrary_wsk6a")
 }
+
+[node name="RigidBody2D" type="StaticBody2D" parent="Car_1_main"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car_1_main/RigidBody2D"]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_b0ayn")
 
 [node name="player_pos" type="Marker2D" parent="."]
 position = Vector2(2528, 69)
