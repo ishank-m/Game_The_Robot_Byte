@@ -74,6 +74,13 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_qo0dn")
 hframes = 2
 
+[node name="minus2" type="Button" parent="shop_interface/minus2"]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 5.0
+theme = ExtResource("4_uesth")
+
 [node name="plus" type="Sprite2D" parent="shop_interface"]
 position = Vector2(81, 2)
 scale = Vector2(0.7, 0.7)
@@ -92,6 +99,13 @@ position = Vector2(81, 26)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("6_tf223")
 hframes = 2
+
+[node name="plus2" type="Button" parent="shop_interface/plus2"]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = 5.0
+theme = ExtResource("4_uesth")
 
 [node name="health_potion_quantity" type="Label" parent="shop_interface"]
 anchors_preset = -1
@@ -126,7 +140,14 @@ position = Vector2(160, 85)
 texture = ExtResource("3_wtc5s")
 hframes = 3
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
 [connection signal="pressed" from="shop_interface/next_button/next_button" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="shop_interface/back_button/back_button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="shop_interface/minus/minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="shop_interface/minus2/minus2" to="." method="_on_minus_2_pressed"]
 [connection signal="pressed" from="shop_interface/plus/plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="shop_interface/plus2/plus2" to="." method="_on_plus_2_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
