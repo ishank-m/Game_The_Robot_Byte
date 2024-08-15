@@ -170,7 +170,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="King" type="CharacterBody2D"]
+[node name="King" type="CharacterBody2D" groups=["GoodGuys"]]
 
 [node name="Damaged" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d5xam")
