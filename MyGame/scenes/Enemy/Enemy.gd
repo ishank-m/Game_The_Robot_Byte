@@ -10,21 +10,23 @@ var direction = Vector2.ZERO
 @onready var anim = $Enemy
 
 func _physics_process(delta):
-	if chase_player:
-		direction = (player.position - position).normalized()
-		var distance_to_player = position.distance_to(player.position)
-		if distance_to_player > min_distance:
-			velocity = direction * speed
+	if not attack:
+		if chase_player:
+			direction = (player.position - position).normalized()
+			var distance_to_player = position.distance_to(player.position)
+			if distance_to_player > min_distance:
+				velocity = direction * speed
+			else:
+				velocity = Vector2.ZERO
+			move_and_collide(velocity*delta)
+			enemy_anim()
 		else:
-			velocity = Vector2.ZERO
-		move_and_collide(velocity*delta)
-		enemy_anim()
-	elif attack_cooldown and attack:
-		anim.stop()
-		if attack:
+			anim.stop()
+	else:
+		if attack_cooldown:
 			anim.play("attack")
 			$attack_cooldown.start()
-		attack_cooldown = false
+			attack_cooldown = false
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
