@@ -834,7 +834,6 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/StaticBody2D"]
 position = Vector2(0.579468, 19.5276)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bxwxq")
 
 [node name="Car_2" type="Sprite2D" parent="."]
