@@ -1,0 +1,3 @@
+Paste "The Robot Byte" at:
+
+c://Users/"Username"/AppData/Roaming/Godot/app_userdata/
