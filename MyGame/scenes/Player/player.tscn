@@ -291,14 +291,24 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7fbo"]
+size = Vector2(7, 11)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_1nulh"]
-radius = 18.0278
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaeet"]
+size = Vector2(13, 30)
 
 [node name="Player" type="CharacterBody2D" groups=["GoodGuys"]]
 z_index = 1
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_x8gbn")
+
+[node name="Player_sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ir1r4")
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 11.5)
@@ -310,6 +320,7 @@ sprite_frames = SubResource("SpriteFrames_ir1r4")
 animation = &"up"
 
 [node name="Player_hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -317,4 +328,10 @@ collision_mask = 2
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_1nulh")
 
-[connection signal="animation_finished" from="Player" to="." method="_on_player_animation_finished"]
+[node name="attackbox_right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_right"]
+position = Vector2(12.5, 0)
+shape = SubResource("RectangleShape2D_eaeet")
+
+[connection signal="animation_finished" from="Player_sprite" to="." method="_on_player_sprite_animation_finished"]
