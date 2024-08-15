@@ -12,7 +12,7 @@ func _ready():
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack"):
 		attack = true
-		anim.play("attack")
+		anim.play("attack_left")
 		$attackbox_right/CollisionShape2D.disabled = false
 		await anim.animation_finished
 		$attackbox_right/CollisionShape2D.disabled = true
@@ -69,5 +69,6 @@ func update_anim(direction):
 
 
 func _on_player_sprite_animation_finished():
-	if attack:
+	if attack and $Player.animation == "attack_left":
+		print("HI")
 		attack = false

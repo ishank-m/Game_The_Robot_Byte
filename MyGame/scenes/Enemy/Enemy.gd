@@ -85,13 +85,13 @@ func _on_attack_cooldown_timeout():
 	if player:
 		if (player.position.x - position.x) > 0:
 			anim.flip_h = true
-			anim.play("attack")
+			anim.play("attack_left")
 		else:
 			anim.flip_h = false
-			anim.play("attack")
+			anim.play("attack_left")
 
 func _on_enemy_animation_finished():
-	if $Enemy.animation == "attack":
+	if $Enemy.animation == "attack_left":
 		if player_in_hitbox:
 			GameState.player_health -= 10
 		else:
