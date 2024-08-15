@@ -35,6 +35,7 @@ directories/dch_directory={
 directories/dtl_directory={
 "dialogues/mainmenu": "res://dialogues/mainmenu.dtl",
 "downstairs": "res://dialogues/downstairs.dtl",
+"downstairs3": "res://dialogues/downstairs3.dtl",
 "downstairs_2": "res://dialogues/downstairs_2.dtl",
 "lobby_1": "res://dialogues/lobby_1.dtl",
 "lobby_2": "res://dialogues/lobby_2.dtl",
@@ -51,7 +52,7 @@ directories/dtl_directory={
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogues/style.tres"]
-layout/default_style="res://dialogues/style.tres"
+layout/default_style=""
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
@@ -73,6 +74,8 @@ save/autosave=false
 variables={
 "done": 0
 }
+animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_in.gd"
+animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_out.gd"
 
 [display]
 

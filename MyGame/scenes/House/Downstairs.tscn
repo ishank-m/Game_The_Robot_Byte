@@ -195,7 +195,7 @@ size = Vector2(32, 52)
 a = Vector2(158, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqw1q"]
-size = Vector2(32, 15)
+size = Vector2(32, 8.5)
 
 [node name="Downstairs" type="Node2D"]
 y_sort_enabled = true
@@ -257,7 +257,7 @@ process_mode = 3
 [node name="out" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="out"]
-position = Vector2(256, 190.5)
+position = Vector2(256, 192.75)
 shape = SubResource("RectangleShape2D_jqw1q")
 
 [node name="TransitionScene" parent="." instance=ExtResource("5_rw1ns")]
