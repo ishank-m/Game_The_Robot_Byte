@@ -4,6 +4,8 @@ extends CharacterBody2D
 var chase_player = false
 var min_distance = 17
 var player = null
+var attack = false
+var attack_cooldown = true
 var direction = Vector2.ZERO
 @onready var anim = $Enemy
 
@@ -17,8 +19,12 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 		move_and_collide(velocity*delta)
 		enemy_anim()
-	else:
+	elif attack_cooldown and attack:
 		anim.stop()
+		if attack:
+			anim.play("attack")
+			$attack_cooldown.start()
+		attack_cooldown = false
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
@@ -46,7 +52,6 @@ func enemy_anim():
 		if (player.position.y - position.y) > 5:
 			anim.flip_h = false
 			anim.play("left_down")
-			
 		elif (player.position.y - position.y) < -5:
 			anim.flip_h = false
 			anim.play("left_up")
@@ -59,3 +64,16 @@ func enemy_anim():
 		elif (player.position.y - position.y) < -5:
 			anim.play("up")
 
+func _on_hitbox_enemy_body_entered(body):
+	if body.name == "Player":
+		attack = true
+		chase_player = false
+
+func _on_hitbox_enemy_body_exited(body):
+	if body.name == "Player":
+		attack = false
+		chase_player = true
+
+func _on_attack_cooldown_timeout():
+	attack_cooldown = true
+	anim.play("attack")

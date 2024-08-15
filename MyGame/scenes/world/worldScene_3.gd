@@ -19,3 +19,8 @@ func _on_clouds_animation_finished():
 
 func _on_button_pressed():
 	transition.fade_in()
+
+
+func _on_to_worldscene_2_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")

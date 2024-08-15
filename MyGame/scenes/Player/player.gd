@@ -1,9 +1,15 @@
 extends CharacterBody2D
 class_name Player
+var attack
+var attack_diretion
 @export var speed: int = 50
 @onready var anim = $Player
 
 func _physics_process(_delta):
+	if Input.is_action_pressed("attack"):
+			anim.play("attack")
+			attack = true
+			GameState.game_state = "attack"
 	if GameState.game_state == 'play':
 		var direction = Vector2()
 		if Input.is_action_pressed("ui_up"):
@@ -20,15 +26,17 @@ func _physics_process(_delta):
 				direction.y -= 0.5
 		if direction.length() > 0:
 			direction = direction.normalized()
-		if Input.is_action_pressed("attack"):
-			anim.play("attack")
 		velocity = direction*speed
 		update_anim(direction)
 		move_and_slide()
-			
-	
+
+func _on_player_animation_finished():
+	if attack == true:
+		attack = false
+		GameState.game_state = "play"
+
 func update_anim(direction):
-	if direction == Vector2(0,0):
+	if direction == Vector2(0,0) and not attack:
 		anim.stop()
 		return
 	if direction.x > 0:

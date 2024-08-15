@@ -312,13 +312,14 @@ shape = SubResource("RectangleShape2D_r7fbo")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ir1r4")
-animation = &"attack"
+animation = &"down"
 
 [node name="Player_hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_hitbox"]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_1nulh")
+
+[connection signal="animation_finished" from="Player" to="." method="_on_player_animation_finished"]
