@@ -48,6 +48,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Carmainmenu":
 		$Car_1_main/AnimationPlayer.play("idle")
 	if anim_name == "Carmainmenu_2" and not dialogue:
+		$bg_music.stop()
 		Dialogic.start("mainmenu")
 		dialogue = true
 
