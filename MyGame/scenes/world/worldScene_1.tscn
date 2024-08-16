@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_au8bh"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_555ew"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="4_l6xe5"]
-[ext_resource type="PackedScene" uid="uid://7h55rutfwhrf" path="res://scenes/Enemy/Enemy.tscn" id="5_vplja"]
+[ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="5_o0sdx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mtyea"]
 texture = ExtResource("1_au8bh")
@@ -189,8 +189,8 @@ shape = SubResource("RectangleShape2D_62vmw")
 [node name="TransitionScene" parent="." instance=ExtResource("4_l6xe5")]
 visible = false
 
-[node name="Enemy" parent="." instance=ExtResource("5_vplja")]
-position = Vector2(130, 201)
+[node name="Enemy_spawner" parent="." instance=ExtResource("5_o0sdx")]
+position = Vector2(131, 144)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="to_fight_1" to="." method="_on_to_fight_1_body_entered"]

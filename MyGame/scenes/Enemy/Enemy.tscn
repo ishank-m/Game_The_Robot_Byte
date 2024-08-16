@@ -342,15 +342,12 @@ radius = 97.0464
 size = Vector2(38, 40)
 
 [node name="Enemy" type="CharacterBody2D"]
-z_index = 1
-y_sort_enabled = true
-collision_layer = 2
-collision_mask = 2
 safe_margin = 12.0
 script = ExtResource("1_17d06")
 
 [node name="Enemy_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dylm6")
+animation = &"down"
 animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -358,7 +355,6 @@ position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_mj3f7")
 
 [node name="detection_area" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_wqdm3")

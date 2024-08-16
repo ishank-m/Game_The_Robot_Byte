@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal enemy_freed
+
 var health = 60
 @export var speed = 40
 @onready var anim = $Enemy_sprite
@@ -7,16 +9,16 @@ var health = 60
 var player
 var direction
 var player_in_hitbox
-var died
+var died = false
 var attack_cooldown = true
 
 var animation_playing = false
 
 func _physics_process(delta):
-	if health == 0 and not died:
+	if health <= 0 and not died:
 		died = true
 		anim.play("die")
-	if player and not died:
+	if player and is_instance_valid(player) and not died:
 		var min_distance = 12
 		var distance_to_player = position.distance_to(player.position)
 		direction = (player.position - position).normalized()
@@ -77,12 +79,12 @@ func _on_attack_area_body_exited(body):
 		player = body
 
 func _on_enemy_sprite_animation_finished():
-	if anim.animation in ["attac_left", "attack_up", "attack_down"]:
+	if anim.animation in ["attack_left", "attack_up", "attack_down"]:
 		animation_playing = false
 		if player_in_hitbox:
 			GameState.player_health -= 10
-			print(GameState.player_health)
 	elif anim.animation == "die":
+		emit_signal("enemy_freed")
 		queue_free()
 		
 func enemy_anim():
