@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dgs4pjemsolew"]
+[gd_scene load_steps=81 format=3 uid="uid://dgs4pjemsolew"]
 
 [ext_resource type="Script" path="res://scenes/Mainmenu/mainmenu.gd" id="1_ykmb7"]
 [ext_resource type="Texture2D" uid="uid://2jdm1r87g06d" path="res://assets/sprites/Main Menu/Sprite-0001.png" id="2_1ha3f"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bsedoe4w52swb" path="res://assets/sprites/House/Outside/door_outsidehouse.png" id="18_wxf8v"]
 [ext_resource type="AudioStream" uid="uid://ddn8tiihoc0vi" path="res://assets/sounds/button_pressed.mp3" id="19_jxl7j"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="19_qy077"]
+[ext_resource type="AudioStream" uid="uid://tyok8fsqtepa" path="res://assets/music/bg_music_retro.wav" id="21_w6dw3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixwqm"]
 texture = ExtResource("2_s2p27")
@@ -1081,6 +1082,10 @@ stream = ExtResource("19_jxl7j")
 position = Vector2(2500, 0)
 build_mode = 1
 polygon = PackedVector2Array(12, -2, 186, 1, 205, -15, 48, -54, -203, 1, -204, 163, -167, 201, 234, 189, 198, 25, 180, 1, 181, 160, -125, 159, -124, 1)
+
+[node name="bg_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_w6dw3")
+autoplay = true
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="timeout" from="Truck/trucktimer" to="." method="_on_trucktimer_timeout"]
