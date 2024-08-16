@@ -16,53 +16,54 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("attack_left"):
-		attack = true
-		anim.flip_h = true
-		anim.play("attack_right")
-		$attackbox_left/CollisionShape2D.disabled = false
-		await anim.animation_finished
-		$attackbox_left/CollisionShape2D.disabled = true
-	elif Input.is_action_just_pressed("attack_down"):
-		attack = true
-		anim.flip_h = false
-		anim.play("attack_down")
-		$attackbox_bottom/CollisionShape2D.disabled = false
-		await anim.animation_finished
-		$attackbox_bottom/CollisionShape2D.disabled = true
-	elif Input.is_action_just_pressed("attack_right"):
-		attack = true
-		anim.flip_h = false
-		anim.play("attack_right")
-		$attackbox_right/CollisionShape2D.disabled = false
-		await anim.animation_finished
-		$attackbox_right/CollisionShape2D.disabled = true
-	elif Input.is_action_just_pressed("attack_up"):
-		attack = true
-		anim.flip_h = false
-		anim.play("attack_up")
-		$attackbox_top/CollisionShape2D.disabled = false
-		await anim.animation_finished
-		$attackbox_top/CollisionShape2D.disabled = true
-	elif not attack:
-		var direction = Vector2()
-		if Input.is_action_pressed("ui_up"):
-			direction.y -= 1
-		if Input.is_action_pressed("ui_down"):
-			direction.y += 1
-		if Input.is_action_pressed("ui_left"):
-			direction.x -= 1
-			if GameState.stairs:
-				direction.y += 0.5
-		if Input.is_action_pressed("ui_right"):
-			direction.x += 1
-			if GameState.stairs:
-				direction.y -= 0.5
-		if direction.length() > 0:
-			direction = direction.normalized()
-		velocity = direction*speed
-		update_anim(direction)
-		move_and_slide()
+	if GameState.game_state == "play":
+		if Input.is_action_just_pressed("attack_left"):
+			attack = true
+			anim.flip_h = true
+			anim.play("attack_right")
+			$attackbox_left/CollisionShape2D.disabled = false
+			await anim.animation_finished
+			$attackbox_left/CollisionShape2D.disabled = true
+		elif Input.is_action_just_pressed("attack_down"):
+			attack = true
+			anim.flip_h = false
+			anim.play("attack_down")
+			$attackbox_bottom/CollisionShape2D.disabled = false
+			await anim.animation_finished
+			$attackbox_bottom/CollisionShape2D.disabled = true
+		elif Input.is_action_just_pressed("attack_right"):
+			attack = true
+			anim.flip_h = false
+			anim.play("attack_right")
+			$attackbox_right/CollisionShape2D.disabled = false
+			await anim.animation_finished
+			$attackbox_right/CollisionShape2D.disabled = true
+		elif Input.is_action_just_pressed("attack_up"):
+			attack = true
+			anim.flip_h = false
+			anim.play("attack_up")
+			$attackbox_top/CollisionShape2D.disabled = false
+			await anim.animation_finished
+			$attackbox_top/CollisionShape2D.disabled = true
+		elif not attack:
+			var direction = Vector2()
+			if Input.is_action_pressed("ui_up"):
+				direction.y -= 1
+			if Input.is_action_pressed("ui_down"):
+				direction.y += 1
+			if Input.is_action_pressed("ui_left"):
+				direction.x -= 1
+				if GameState.stairs:
+					direction.y += 0.5
+			if Input.is_action_pressed("ui_right"):
+				direction.x += 1
+				if GameState.stairs:
+					direction.y -= 0.5
+			if direction.length() > 0:
+				direction = direction.normalized()
+			velocity = direction*speed
+			update_anim(direction)
+			move_and_slide()
 
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:

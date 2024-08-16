@@ -5,7 +5,6 @@ var player_health = 120
 var current_scene
 var game_state = 'main_menu'
 var scene = "init"
-var scene_neww = "init"
 var current_save
 
 var dialogues_count = {
@@ -36,7 +35,6 @@ func save_score():
 	file.store_var(player_pos)
 	file.store_var(game_state)
 	file.store_var(scene)
-	file.store_var(scene_neww)
 	file.store_var(dialogues_count)
 	player_pos = null
 	
@@ -48,7 +46,6 @@ func load_score():
 		player_pos = file.get_var()
 		game_state = file.get_var()
 		scene = file.get_var()
-		scene_neww = file.get_var()
 		dialogues_count = file.get_var()
 		get_tree().change_scene_to_file(current_scene)
 

@@ -450,6 +450,7 @@ layer_0/tile_data = PackedInt32Array(-65529, 131073, 2, 7, 131073, 2, 65543, 131
 [node name="PauseMenu" parent="." instance=ExtResource("7_3s8bx")]
 
 [node name="TransitionScene" parent="." instance=ExtResource("7_2f6xj")]
+visible = false
 
 [connection signal="animation_finished" from="TileMap" to="." method="_on_tile_map_animation_finished"]
 [connection signal="animation_finished" from="transitions/clouds" to="." method="_on_clouds_animation_finished"]

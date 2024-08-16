@@ -47,7 +47,9 @@ directories/dtl_directory={
 "winroom_0": "res://dialogues/winroom_0.dtl",
 "winroom_2": "res://dialogues/winroom_2.dtl",
 "winroom_3": "res://dialogues/winroom_3.dtl",
-"winroom_4": "res://dialogues/winroom_4.dtl"
+"winroom_4": "res://dialogues/winroom_4.dtl",
+"world_init1": "res://dialogues/world_init1.dtl",
+"world_init2": "res://dialogues/world_init2.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogues/style.tres"]
