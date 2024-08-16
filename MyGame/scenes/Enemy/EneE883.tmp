@@ -320,8 +320,8 @@ height = 10.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgbut"]
 radius = 147.839
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7uh0"]
-size = Vector2(46, 39)
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2vqe"]
+radius = 15.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 z_index = 1
@@ -333,8 +333,7 @@ script = ExtResource("1_17d06")
 [node name="Enemy" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_sutga")
-animation = &"attack_up"
-frame = 5
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -354,8 +353,8 @@ shape = SubResource("CircleShape2D_dgbut")
 [node name="hitbox_enemy" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_enemy"]
-position = Vector2(-1, -0.5)
-shape = SubResource("RectangleShape2D_r7uh0")
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_e2vqe")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 one_shot = true

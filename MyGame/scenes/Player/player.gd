@@ -7,15 +7,43 @@ var attack_diretion
 
 func _ready():
 	$attackbox_right.add_to_group("player_attack")
+	$attackbox_bottom.add_to_group("player_attack")
+	$attackbox_left.add_to_group("player_attack")
+	$attackbox_top.add_to_group("player_attack")
 	$attackbox_right/CollisionShape2D.disabled = true
+	$attackbox_bottom/CollisionShape2D.disabled = true
+	$attackbox_left/CollisionShape2D.disabled = true
+	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack_left"):
 		attack = true
-		anim.play("attack_left")
+		anim.flip_h = true
+		anim.play("attack_right")
+		$attackbox_left/CollisionShape2D.disabled = false
+		await anim.animation_finished
+		$attackbox_left/CollisionShape2D.disabled = true
+	elif Input.is_action_just_pressed("attack_down"):
+		attack = true
+		anim.flip_h = false
+		anim.play("attack_down")
+		$attackbox_bottom/CollisionShape2D.disabled = false
+		await anim.animation_finished
+		$attackbox_bottom/CollisionShape2D.disabled = true
+	elif Input.is_action_just_pressed("attack_right"):
+		attack = true
+		anim.flip_h = false
+		anim.play("attack_right")
 		$attackbox_right/CollisionShape2D.disabled = false
 		await anim.animation_finished
 		$attackbox_right/CollisionShape2D.disabled = true
+	elif Input.is_action_just_pressed("attack_up"):
+		attack = true
+		anim.flip_h = false
+		anim.play("attack_up")
+		$attackbox_top/CollisionShape2D.disabled = false
+		await anim.animation_finished
+		$attackbox_top/CollisionShape2D.disabled = true
 	elif not attack:
 		var direction = Vector2()
 		if Input.is_action_pressed("ui_up"):
@@ -69,6 +97,5 @@ func update_anim(direction):
 
 
 func _on_player_sprite_animation_finished():
-	if attack and $Player.animation == "attack_left":
-		print("HI")
+	if attack and ($Player_sprite.animation == "attack_right" or $Player_sprite.animation == "attack_up" or $Player_sprite.animation == "attack_down"):
 		attack = false

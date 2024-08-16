@@ -10,14 +10,15 @@ func _ready():
 	$Player.set_position($village.position)
 
 func _physics_process(_delta):
-	if not died:
-		if GameState.player_health == 0:
-			var camera = player.get_node("Camera2D")
-			player.remove_child(camera)
-			get_tree().root.add_child(camera)
-			camera.position = player.position
-			$Player.queue_free()
-			died = true
+	#if not died:
+		#if GameState.player_health == 0:
+			#var camera = player.get_node("Camera2D")
+			#player.remove_child(camera)
+			#get_tree().root.add_child(camera)
+			#camera.position = player.position
+			#$Player.queue_free()
+			#died = true
+	pass
 	
 
 func _on_area_2d_body_entered(body):

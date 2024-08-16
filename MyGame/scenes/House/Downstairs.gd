@@ -48,7 +48,7 @@ func _on_dialogic_signal(argument: String):
 
 func _on_dialogue_body_entered(body):
 	if body.name == "Player" and count == 0:
-		$Player/Player.stop()
+		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("downstairs_2")
 		count = 1

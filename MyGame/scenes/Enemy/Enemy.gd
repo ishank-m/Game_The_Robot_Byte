@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: int = 40
 var chase_player = false
-var min_distance = 5
+var min_distance = 10
 var player = null
 var player_in_hitbox = false
 var attack = false
@@ -83,12 +83,26 @@ func _on_hitbox_enemy_body_exited(body):
 func _on_attack_cooldown_timeout():
 	attack_cooldown = true
 	if player:
-		if (player.position.x - position.x) > 0:
-			anim.flip_h = true
-			anim.play("attack_left")
-		else:
-			anim.flip_h = false
-			anim.play("attack_left")
+		if (player.position.y - position.y) in range(-5,-21):
+			if (player.position.x - position.x) in range(-36, -10):
+				anim.flip_h = false
+				anim.play("attack_left")
+			elif (player.position.x - position.x) in range(9,36):
+				anim.flip_h = true
+				anim.play("attack_left")
+			else:
+				anim.flip_h = false
+				anim.play("attack_up")
+		if (player.position.y - position.y) in range(6, 23):
+			if (player.position.x - position.x) in range(-36, -10):
+				anim.flip_h = false
+				anim.play("attack_left")
+			elif (player.position.x - position.x) in range(9,36):
+				anim.flip_h = true
+				anim.play("attack_left")
+			else:
+				anim.flip_h = false
+				anim.play("attack_down")
 
 func _on_enemy_animation_finished():
 	if $Enemy.animation == "attack_left":

@@ -7,8 +7,8 @@ func _ready():
 	transition.connect("fade_in_done", _on_fade_in_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "lobby":
-		$Player/Player.play("down")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("down")
+		$Player/Player_sprite.stop()
 		player.set_position($door_pos.position)
 	GameState.scene  = "mc_bedroom"
 func _on_fade_out_done():
@@ -18,15 +18,15 @@ func _on_fade_in_done():
 func _on_timer_timeout():
 	if GameState.dialogues_count['mcbed'] == 0:
 		GameState.game_state = "pause"
-		$Player/Player.stop()
+		$Player/Player_sprite.stop()
 		Dialogic.start("mcbedroom")
 		GameState.dialogues_count['mcbed'] = 1
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		GameState.game_state = 'pause'
-		$Player/Player.play("up")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("up")
+		$Player/Player_sprite.stop()
 		$door.play("open")
 
 
@@ -42,6 +42,6 @@ func _on_dialogic_signal(argument):
 		GameState.game_state = 'play'
 
 func _on_for_dialogue_timeout():
-	$Player/Player.stop()
+	$Player/Player_sprite.stop()
 	GameState.game_state = 'pause'
 	Dialogic.start("mcbedroom_2")
