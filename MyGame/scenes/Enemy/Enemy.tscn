@@ -330,7 +330,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_17d06")
 
-[node name="Enemy" type="AnimatedSprite2D" parent="."]
+[node name="Enemy_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -2)
 sprite_frames = SubResource("SpriteFrames_sutga")
 animation = &"attack_up"
@@ -358,9 +358,10 @@ position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_r7uh0")
 
 [node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
-[connection signal="animation_finished" from="Enemy" to="." method="_on_enemy_animation_finished"]
+[connection signal="animation_finished" from="Enemy_sprite" to="." method="_on_enemy_sprite_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="area_entered" from="hitbox_enemy" to="." method="_on_hitbox_enemy_area_entered"]
