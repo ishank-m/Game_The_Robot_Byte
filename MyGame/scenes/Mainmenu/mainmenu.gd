@@ -153,8 +153,8 @@ func _on_car_2_timer_timeout():
 func _on_house_body_entered(body: Node2D):
 	if body.name == "Player":
 		GameState.game_state = "pause"
-		$Player/Player.play("up")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("up")
+		$Player/Player_sprite.stop()
 		$door_open.play("default")
 
 

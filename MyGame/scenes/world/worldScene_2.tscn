@@ -1,24 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://hccjh4a1we5r"]
+[gd_scene load_steps=10 format=3 uid="uid://hccjh4a1we5r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_x680x"]
 [ext_resource type="PackedScene" uid="uid://cj8dauq7uwgiu" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_1xbku"]
-
-[sub_resource type="Animation" id="Animation_cw5r4"]
-resource_name = "bye"
-length = 0.5
-
-[sub_resource type="Animation" id="Animation_3k5ks"]
-resource_name = "hi"
-length = 0.5
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_btmap"]
-_data = {
-"bye": SubResource("Animation_cw5r4"),
-"hi": SubResource("Animation_3k5ks")
-}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xe6xx"]
 texture = ExtResource("1_e3w42")
@@ -146,11 +132,6 @@ size = Vector2(20, 32)
 y_sort_enabled = true
 script = ExtResource("1_287fu")
 
-[node name="fade_anim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_btmap")
-}
-
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_i56fk")
@@ -205,7 +186,5 @@ visible = false
 position = Vector2(-9, 72)
 shape = SubResource("RectangleShape2D_do4y2")
 
-[connection signal="animation_finished" from="fade_anim" to="." method="_on_fade_anim_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="to_worldscene1" to="." method="_on_to_worldscene_1_body_entered"]

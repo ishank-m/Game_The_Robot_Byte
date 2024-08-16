@@ -41,7 +41,7 @@ func _on_char_going_animation_finished():
 func _on_door_body_entered(body):
 	if body.name == "Player":
 		GameState.game_state = "pause"
-		$Player/Player.stop()
+		$Player/Player_sprite.stop()
 		Dialogic.start("winroom_0")
 		
 
@@ -60,8 +60,8 @@ func _on_clouds_animation_finished():
 
 func _on_dialogic_signal(argument):
 	if argument == "done0":
-		$Player/Player.play("up")
-		$Player/Player.stop() 
+		$Player/Player_sprite.play("up")
+		$Player/Player_sprite.stop() 
 		GameState.game_state = "play"
 	if argument == "done":
 		GameState.game_state = "play"

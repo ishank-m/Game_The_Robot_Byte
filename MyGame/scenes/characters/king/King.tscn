@@ -174,7 +174,7 @@ animations = [{
 
 [node name="Damaged" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d5xam")
-animation = &"up_right"
-frame_progress = 0.90349
+animation = &"down_right"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false

@@ -12,8 +12,8 @@ func _ready():
 	elif GameState.scene == 'mc_bedroom':
 		$Player.set_position($mc_bedroom.position)
 	elif GameState.scene == "room_2":
-		$Player/Player.play("down")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("down")
+		$Player/Player_sprite.stop()
 		$Player.set_position($room_2.position)
 	if GameState.player_pos:
 		player.position = GameState.player_pos
@@ -36,7 +36,7 @@ func _on_downstairs_body_entered(body: Node2D):
 
 func _on_wdoor_body_entered(body: Node2D):
 	if body.name == "Player":
-		$Player/Player.stop()
+		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		$door.play("open")
 
@@ -48,8 +48,8 @@ func _on_bedroom_body_entered(body: Node2D):
 	if body.name == "Player":
 		GameState.game_state = "pause"
 		to_where = "mcbedroom"
-		$Player/Player.play("down")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("down")
+		$Player/Player_sprite.stop()
 		transition.fade_in()
 		
 
@@ -65,45 +65,45 @@ func _on_stairs_body_exited(body):
 
 func _on_dialogue_parents_body_entered(body):
 	if body.name == "Player" and GameState.dialogues_count["lobby1"] == 0:
-		$Player/Player.stop()
+		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_1")
 		GameState.dialogues_count["lobby1"] = 1
 		
 func _on_dialogic_signal(argument: String):
 	if argument == "done":
-		$Player/Player.play("down")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("down")
+		$Player/Player_sprite.stop()
 		GameState.game_state = "play"
 	if argument == "done2":
-		$Player/Player.play("up")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("up")
+		$Player/Player_sprite.stop()
 		GameState.game_state = "play"
 	if argument == "done3":
-		$Player/Player.play("up")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("up")
+		$Player/Player_sprite.stop()
 		GameState.game_state = "play"
 
 
 func _on_dialogue_mc_body_entered(body):
 	if body.name == "Player" and GameState.dialogues_count['lobby2'] == 0:
-		$Player/Player.play("down")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("down")
+		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_2")
 		GameState.dialogues_count['lobby2'] = 1
 
 func _on_dialogue_sis_body_entered(body):
 	if body.name == "Player" and GameState.dialogues_count['lobby3'] == 0:
-		$Player/Player.play("down")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("down")
+		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_3")
 		GameState.dialogues_count['lobby3'] = 1
 
 func _on_dialogue_win_body_entered(body):
 	if body.name == "Player" and GameState.dialogues_count['lobby4'] == 0:
-		$Player/Player.stop()
+		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("lobby_4")
 		GameState.dialogues_count['lobby4'] = 1
