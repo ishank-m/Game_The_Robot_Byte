@@ -17,10 +17,12 @@ func _physics_process(_delta):
 func _ready():
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
-	if GameState.scene_neww == "Scene_1":
+	if GameState.scene == "worldinit":
 		$Player.set_position($init.position)
-	elif GameState.scene_neww == "Scene_2":
+		GameState.scene = "worldscene1"
+	elif GameState.scene == "worldscene2":
 		$Player.set_position($right.position)
+		GameState.scene = "worldscene1"
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
