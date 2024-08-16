@@ -342,6 +342,8 @@ radius = 97.0464
 size = Vector2(38, 40)
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 safe_margin = 12.0
 script = ExtResource("1_17d06")
 

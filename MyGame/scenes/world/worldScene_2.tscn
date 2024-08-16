@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://hccjh4a1we5r"]
+[gd_scene load_steps=11 format=3 uid="uid://hccjh4a1we5r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
+[ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="3_qf72c"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_x680x"]
 [ext_resource type="PackedScene" uid="uid://7h55rutfwhrf" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_1xbku"]
@@ -142,6 +143,8 @@ limit_left = 8
 limit_top = -40
 limit_right = 1096
 limit_bottom = 152
+
+[node name="HealthBar" parent="Player" instance=ExtResource("3_qf72c")]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true

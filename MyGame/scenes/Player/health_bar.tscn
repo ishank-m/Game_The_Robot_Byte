@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bery0keh5fn4a"]
+
+[ext_resource type="Script" path="res://scenes/Player/health_bar.gd" id="1_qynmj"]
+[ext_resource type="Texture2D" uid="uid://gp38ag5nw8xi" path="res://assets/sprites/Characters/MC/health.png" id="2_88xbo"]
+[ext_resource type="Texture2D" uid="uid://qwpfs0uugq15" path="res://assets/sprites/Characters/MC/critical health.png" id="3_14d35"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvqn5"]
+atlas = ExtResource("3_14d35")
+region = Rect2(0, 0, 55, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruplu"]
+atlas = ExtResource("3_14d35")
+region = Rect2(55, 0, 55, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6mmq"]
+atlas = ExtResource("3_14d35")
+region = Rect2(110, 0, 55, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpue7"]
+atlas = ExtResource("3_14d35")
+region = Rect2(165, 0, 55, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyrpp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvqn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruplu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6mmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpue7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="HealthBar" type="CanvasLayer"]
+script = ExtResource("1_qynmj")
+
+[node name="bar" type="Sprite2D" parent="."]
+position = Vector2(30, 10)
+texture = ExtResource("2_88xbo")
+hframes = 6
+
+[node name="critical_health" type="AnimatedSprite2D" parent="."]
+position = Vector2(30, 10)
+sprite_frames = SubResource("SpriteFrames_hyrpp")
+frame_progress = 0.700898
