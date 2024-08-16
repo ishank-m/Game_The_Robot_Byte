@@ -22,7 +22,6 @@ config/icon="res://icon.png"
 [autoload]
 
 GameState="*res://scripts/game_state.gd"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 

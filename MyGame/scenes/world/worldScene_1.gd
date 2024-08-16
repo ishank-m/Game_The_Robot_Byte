@@ -1,6 +1,18 @@
 extends Node2D
 @onready var transition = $TransitionScene
+@onready var player = get_node("Player")
 var to_where: String
+var died = false
+
+func _physics_process(_delta):
+	if not died:
+		if GameState.player_health == 0:
+			var camera = player.get_node("Camera2D")
+			player.remove_child(camera)
+			get_tree().root.add_child(camera)
+			camera.position = player.position
+			$Player.queue_free()
+			died = true
 
 func _ready():
 	transition.fade_out()
