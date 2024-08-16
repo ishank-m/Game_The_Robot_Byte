@@ -7,6 +7,7 @@ var to_where: String
 func _ready():
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
+	transition.connect("fade_out_done", _on_fade_out_done)
 	$Player.set_position($village.position)
 
 func _physics_process(_delta):
@@ -25,7 +26,8 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		to_where = "worldscene3"
 		transition.fade_in()
-
+func _on_fade_out_done():
+	GameState.game_state = "play"
 func _on_fade_in_done():
 	if to_where == "worldscene1":
 		get_tree().change_scene_to_file("res://scenes/world/worldScene_1.tscn")
