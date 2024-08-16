@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_x680x"]
-[ext_resource type="PackedScene" uid="uid://cj8dauq7uwgiu" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
+[ext_resource type="PackedScene" uid="uid://7h55rutfwhrf" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_1xbku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xe6xx"]
@@ -132,6 +132,20 @@ size = Vector2(20, 32)
 y_sort_enabled = true
 script = ExtResource("1_287fu")
 
+[node name="Player" parent="." instance=ExtResource("3_x680x")]
+position = Vector2(158, 48)
+scale = Vector2(0.8, 0.8)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(3.05176e-05, -7.62939e-06)
+limit_left = 8
+limit_top = -40
+limit_right = 1096
+limit_bottom = 152
+
+[node name="Enemy" parent="." instance=ExtResource("4_4nm36")]
+position = Vector2(793, 54)
+
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_i56fk")
@@ -154,17 +168,6 @@ layer_3/tile_data = PackedInt32Array(393228, 131072, 6, -131051, 131072, 6, -654
 [node name="init" type="Marker2D" parent="."]
 position = Vector2(8, 73)
 
-[node name="Player" parent="." instance=ExtResource("3_x680x")]
-position = Vector2(158, 48)
-scale = Vector2(0.8, 0.8)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(3.05176e-05, -7.62939e-06)
-limit_left = 8
-limit_top = -40
-limit_right = 1096
-limit_bottom = 152
-
 [node name="village" type="Marker2D" parent="."]
 position = Vector2(888, -28)
 
@@ -173,9 +176,6 @@ position = Vector2(888, -28)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(888, -55)
 shape = SubResource("RectangleShape2D_ac2qa")
-
-[node name="Enemy" parent="." instance=ExtResource("4_4nm36")]
-position = Vector2(799, 78)
 
 [node name="TransitionScene" parent="." instance=ExtResource("5_1xbku")]
 visible = false

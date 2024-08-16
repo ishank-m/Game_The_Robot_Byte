@@ -1,53 +1,93 @@
 extends CharacterBody2D
 
-@export var speed: int = 40
-var chase_player = false
-var min_distance = 10
-var player = null
-var player_in_hitbox = false
-var attack = false
-var attack_cooldown = true
-var animation_playing = false
 var health = 60
-var direction = Vector2.ZERO
+@export var speed = 40
 @onready var anim = $Enemy_sprite
 
-func _physics_process(delta):
-	if health <= 0:
-		queue_free()
-		return
+var player
+var direction
+var player_in_hitbox
+var died
+var attack_cooldown = true
 
-	if not animation_playing:
-		if chase_player:
-			direction = (player.position - position).normalized()
-			var distance_to_player = position.distance_to(player.position)
-			if distance_to_player > min_distance:
-				velocity = direction * speed
-			else:
-				velocity = Vector2.ZERO
-			move_and_collide(velocity * delta)
-			enemy_anim()
+var animation_playing = false
+
+func _physics_process(delta):
+	if health == 0 and not died:
+		died = true
+		anim.play("die")
+	if player and not died:
+		var min_distance = 12
+		var distance_to_player = position.distance_to(player.position)
+		direction = (player.position - position).normalized()
+		if distance_to_player > min_distance:
+			velocity = direction * speed
 		else:
-			anim.stop()
-	elif attack and not animation_playing:
-		animation_playing = true
-		attack_cooldown = false
-		attack_anim()
+			velocity = Vector2.ZERO
+		enemy_anim()
+		move_and_collide(velocity*delta)
+	elif player_in_hitbox and not died:
+		if not animation_playing and attack_cooldown:
+			$attack_timer.start()
+			attack_cooldown = false
+			var x_diff = player_in_hitbox.position.x - position.x
+			var y_diff = player_in_hitbox.position.y - position.y
+			if y_diff >= -32 and y_diff <= 0:
+				if x_diff >= -36 and x_diff <= -10:
+					anim.flip_h = false
+					anim.play("attack_left")
+				elif x_diff >= 9 and x_diff <= 36:
+					anim.flip_h = true
+					anim.play("attack_left")
+				else:
+					anim.flip_h = false
+					anim.play("attack_up")
+			elif y_diff >= 0 and y_diff <= 23:
+				if x_diff >= -36 and x_diff <= -9:
+					anim.flip_h = false
+					anim.play("attack_left")
+				elif x_diff >= 9 and x_diff <= 36:
+					anim.flip_h = true
+					anim.play("attack_left")
+				else:
+					anim.flip_h = false
+					anim.play("attack_down")
+			else:
+				pass 
+	elif not (animation_playing and player and player_in_hitbox) and not died:
+		anim.stop()
+
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
 		player = body
-		chase_player = true
 
 func _on_detection_area_body_exited(body):
 	if body.name == "Player":
 		player = null
-		chase_player = false
 
+func _on_attack_area_body_entered(body):
+	if body.name == "Player":
+		player_in_hitbox = body
+		player = null
+
+func _on_attack_area_body_exited(body):
+	if body.name == "Player":
+		player_in_hitbox = null
+		player = body
+
+func _on_enemy_sprite_animation_finished():
+	if anim.animation in ["attac_left", "attack_up", "attack_down"]:
+		animation_playing = false
+		if player_in_hitbox:
+			GameState.player_health -= 10
+			print(GameState.player_health)
+	elif anim.animation == "die":
+		queue_free()
+		
 func enemy_anim():
 	var x_diff = player.position.x - position.x
 	var y_diff = player.position.y - position.y
-	
 	if x_diff > 5:
 		anim.flip_h = true
 		if y_diff > 5:
@@ -70,59 +110,11 @@ func enemy_anim():
 		elif y_diff < -5:
 			anim.play("up")
 
-func _on_hitbox_enemy_body_entered(body):
-	if body.name == "Player":
-		attack = true
-		player_in_hitbox = true
-		chase_player = false
 
-func _on_hitbox_enemy_body_exited(body):
-	if body.name == "Player":
-		player_in_hitbox = false
-		chase_player = true
+func _on_attack_timer_timeout():
+	attack_cooldown = true
 
-func attack_anim():
-	var x_diff = player.position.x - position.x
-	var y_diff = player.position.y - position.y
-	
-	if y_diff >= -32 and y_diff <= -5:
-		if x_diff >= -36 and x_diff <= -10:
-			anim.flip_h = false
-			anim.play("attack_left")
-		elif x_diff >= 9 and x_diff <= 36:
-			anim.flip_h = true
-			anim.play("attack_left")
-		else:
-			anim.flip_h = false
-			anim.play("attack_up")
-		print("Playing attack animation based on y_diff")
-	elif y_diff >= 6 and y_diff <= 23:
-		if x_diff >= -36 and x_diff <= 10:
-			anim.flip_h = false
-			anim.play("attack_left")
-		elif x_diff >= 9 and x_diff <= 36:
-			anim.flip_h = true
-			anim.play("attack_left")
-		else:
-			anim.flip_h = false
-			anim.play("attack_down")
-		print("Playing attack animation based on y_diff")
-	else:
-		print("No valid attack animation")
 
-func _on_hitbox_enemy_area_entered(area):
+func _on_attack_area_area_entered(area):
 	if area.is_in_group("player_attack"):
 		health -= 20
-
-func _on_attack_cooldown_timeout():
-	if player_in_hitbox and not animation_playing:
-		attack_anim()
-
-func _on_enemy_sprite_animation_finished():
-	if anim.animation in ["attack_up", "attack_down", "attack_left"]:
-		if player_in_hitbox:
-			GameState.player_health -= 10  # Assuming GameState is handling player health
-		attack = false
-		animation_playing = false
-		attack_cooldown = true
-		print("Animation finished, resetting attack and cooldown")
