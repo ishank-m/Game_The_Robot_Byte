@@ -348,7 +348,6 @@ script = ExtResource("1_17d06")
 [node name="Enemy_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dylm6")
 animation = &"down"
-animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 12.5)
