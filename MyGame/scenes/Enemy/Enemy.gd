@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal enemy_freed
 
-var health = 60
+var health = 40
 @export var speed = 40
 @onready var anim = $Enemy_sprite
 
@@ -119,4 +119,6 @@ func _on_attack_timer_timeout():
 
 func _on_attack_area_area_entered(area):
 	if area.is_in_group("player_attack"):
+		health -= 10
+	if area.is_in_group("king_attack"):
 		health -= 20

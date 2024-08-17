@@ -13,16 +13,13 @@ func _on_fade_out_done():
 
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
+
 func _on_clouds_animation_finished():
 	$CanvasLayer/clouds.hide()
-
-
-
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		transition.fade_in()
-
 
 func _on_shop_body_entered(body):
 	if body.name == "Player":

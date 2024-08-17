@@ -1,6 +1,6 @@
 extends Node2D
 @onready var transition = $TransitionScene
-@onready var player = get_node("Player")
+@onready var player 
 var died = false
 var to_where: String
 # Called when the node enters the scene tree for the first time.
@@ -13,14 +13,12 @@ func _ready():
 func _physics_process(_delta):
 	if not died:
 		if GameState.player_health == 0:
+			died = true
 			var camera = player.get_node("Camera2D")
 			player.remove_child(camera)
 			get_tree().root.add_child(camera)
 			camera.position = player.position
 			$Player.queue_free()
-			died = true
-	pass
-	
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":

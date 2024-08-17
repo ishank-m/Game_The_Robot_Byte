@@ -2,10 +2,13 @@ extends Node2D
 
 @onready var enemy = preload("res://scenes/Enemy/Enemy.tscn")
 
+var once = false
 var enemy_alive = false
 
+
 func _physics_process(_delta):
-	if not enemy_alive:
+	if not (enemy_alive and once):
+		once = true
 		enemy_alive = true
 		var new_enemy = enemy.instantiate()
 		new_enemy.position = position
@@ -17,4 +20,5 @@ func _on_enemy_removed():
 
 
 func _on_respan_wait_time_timeout():
+	once = false
 	enemy_alive = false
