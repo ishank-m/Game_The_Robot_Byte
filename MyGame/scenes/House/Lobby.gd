@@ -4,6 +4,7 @@ extends Node2D
 var to_where: String
 
 func _ready():
+	GameState.game_state = "play"
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)

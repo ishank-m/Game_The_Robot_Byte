@@ -56,7 +56,7 @@ func _on_quit_button_mouse_exited():
 func _on_quit_animation_animation_finished(anim_name):
 	if anim_name == "circle":
 		animation_playing = false
-		GameState.game_state = "main_menu"
+		#GameState.game_state = "main_menu"
 		get_tree().paused = false
 		get_tree().change_scene_to_file("res://scenes/Mainmenu/mainmenu.tscn")
 

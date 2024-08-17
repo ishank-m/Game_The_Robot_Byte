@@ -140,14 +140,9 @@ position = Vector2(160, 85)
 texture = ExtResource("3_wtc5s")
 hframes = 3
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
-
 [connection signal="pressed" from="shop_interface/next_button/next_button" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="shop_interface/back_button/back_button" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="shop_interface/minus/minus" to="." method="_on_minus_pressed"]
 [connection signal="pressed" from="shop_interface/minus2/minus2" to="." method="_on_minus_2_pressed"]
 [connection signal="pressed" from="shop_interface/plus/plus" to="." method="_on_plus_pressed"]
 [connection signal="pressed" from="shop_interface/plus2/plus2" to="." method="_on_plus_2_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
