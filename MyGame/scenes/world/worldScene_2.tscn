@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://hccjh4a1we5r"]
+[gd_scene load_steps=13 format=3 uid="uid://hccjh4a1we5r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
+[ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="3_b6atu"]
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="3_qf72c"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_x680x"]
 [ext_resource type="PackedScene" uid="uid://7h55rutfwhrf" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_1xbku"]
+[ext_resource type="PackedScene" uid="uid://dwwr13q3kdjad" path="res://scenes/characters/king/King.tscn" id="7_ovhcx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xe6xx"]
 texture = ExtResource("1_e3w42")
@@ -133,6 +135,10 @@ size = Vector2(20, 32)
 y_sort_enabled = true
 script = ExtResource("1_287fu")
 
+[node name="Enemy_spawner" parent="." instance=ExtResource("3_b6atu")]
+position = Vector2(286, -48)
+scale = Vector2(0.8, 0.8)
+
 [node name="Player" parent="." instance=ExtResource("3_x680x")]
 position = Vector2(158, 48)
 scale = Vector2(0.8, 0.8)
@@ -188,6 +194,9 @@ shape = SubResource("RectangleShape2D_do4y2")
 
 [node name="Enemy" parent="." instance=ExtResource("4_4nm36")]
 position = Vector2(803, 67)
+
+[node name="King" parent="." instance=ExtResource("7_ovhcx")]
+position = Vector2(1045, 67)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="to_worldscene1" to="." method="_on_to_worldscene_1_body_entered"]
