@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hccjh4a1we5r"]
+[gd_scene load_steps=14 format=3 uid="uid://hccjh4a1we5r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="3_qf72c"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_x680x"]
 [ext_resource type="PackedScene" uid="uid://7h55rutfwhrf" path="res://scenes/Enemy/Enemy.tscn" id="4_4nm36"]
+[ext_resource type="Texture2D" uid="uid://bh30cv3jp62kj" path="res://assets/sprites/Characters/MC/MC_dead.png" id="4_god4f"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_1xbku"]
 [ext_resource type="PackedScene" uid="uid://dwwr13q3kdjad" path="res://scenes/characters/king/King.tscn" id="7_ovhcx"]
 
@@ -138,6 +139,13 @@ script = ExtResource("1_287fu")
 [node name="Enemy_spawner" parent="." instance=ExtResource("3_b6atu")]
 position = Vector2(286, -48)
 scale = Vector2(0.8, 0.8)
+
+[node name="dead" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1.52588e-05, 3.8147e-06)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_god4f")
 
 [node name="Player" parent="." instance=ExtResource("3_x680x")]
 position = Vector2(158, 48)
