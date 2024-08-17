@@ -6,14 +6,24 @@
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": "style"
+"style": "style2"
 },
-"default_portrait": "",
+"default_portrait": "king_damaged",
 "description": "",
 "display_name": "...",
 "mirror": false,
 "nicknames": [""],
-"offset": Vector2(0, 0),
-"portraits": {},
+"offset": Vector2(10, -60),
+"portraits": {
+"king_damaged": {
+"export_overrides": {
+"image": "\"res://assets/sprites/Characters/King/king_por.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 10),
+"scale": 0.0,
+"scene": ""
+}
+},
 "scale": 1.0
 }

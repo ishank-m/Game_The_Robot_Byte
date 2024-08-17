@@ -60,7 +60,7 @@ directories/dtl_directory={
 "world_init2": "res://dialogues/world_init2.dtl"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://dialogues/style.tres"]
+layout/style_list=["res://dialogues/style.tres", "res://dialogues/style2.tres"]
 layout/default_style=""
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

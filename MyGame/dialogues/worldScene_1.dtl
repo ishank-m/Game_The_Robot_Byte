@@ -1,5 +1,5 @@
-join null 1
-null: Begone, soulless creation, you are not welcome\
+join null 0
+null (king_damaged): Begone, soulless creation, you are not welcome\
 in my kingdom...
 [signal arg="done1"]
 [end_timeline]
