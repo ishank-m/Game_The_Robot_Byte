@@ -2,6 +2,7 @@ extends Node
 
 var player_pos
 var player_health = 120
+var player_died = false
 var current_scene
 var game_state = 'main_menu'
 var scene = "init"

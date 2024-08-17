@@ -1,6 +1,6 @@
 extends Node2D
 @onready var transition = $TransitionScene
-@onready var player = get_node("Player")
+@onready var player = $Player
 var to_where: String
 var died = false
 
@@ -21,10 +21,9 @@ func _ready():
 	burn()
 	if GameState.scene == "worldinit":
 		$Player.set_position($init.position)
-		GameState.scene = "worldscene1"
 	elif GameState.scene == "worldscene2":
 		$Player.set_position($right.position)
-		GameState.scene = "worldscene1"
+	GameState.scene = "worldscene1"
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":

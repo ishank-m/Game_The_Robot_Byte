@@ -74,7 +74,7 @@ y_sort_enabled = true
 script = ExtResource("1_mdi3m")
 
 [node name="Player" parent="." instance=ExtResource("2_wlaf2")]
-position = Vector2(697.328, 1.83218)
+position = Vector2(1015, 80)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 

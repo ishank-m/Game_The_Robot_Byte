@@ -1,5 +1,8 @@
 extends Node2D
+@onready var player = $Player
+@onready var player_anim = $Player/Player_sprite
 @onready var transition = $TransitionScene
+
 func _ready():
 	GameState.game_state = "play"
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -7,18 +10,17 @@ func _ready():
 	if GameState.scene == "window": 
 		GameState.game_state = "pause"
 		$appearing.set_position(Vector2(159,125))
-		$Player.hide()
-		$Player.set_position($init.position)
+		player.hide()
+		player.set_position($init.position)
 		$appearing.visible = false
 		$CanvasLayer/clouds.play("hi")
-		GameState.scene = "worldinit"
 	if GameState.scene == "worldscene1":
 		transition.fade_out()
-		$Player/Player.play("down")
-		$Player/Player.stop()
-		$Player.set_position($up.position)
+		player_anim.play("down")
+		player_anim.stop()
+		player.set_position($up.position)
 		$CanvasLayer/clouds.hide()
-		GameState.scene = "worldinit"
+	GameState.scene = "worldinit"
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":

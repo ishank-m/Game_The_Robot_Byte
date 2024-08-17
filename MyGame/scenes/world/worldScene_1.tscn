@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://ckg02l7b6r70r"]
+[gd_scene load_steps=25 format=3 uid="uid://ckg02l7b6r70r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_1.gd" id="1_ak5e8"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_au8bh"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_555ew"]
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="3_wej0p"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="4_l6xe5"]
+[ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="5_73jhc"]
 [ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="5_o0sdx"]
 [ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="7_f6kkl"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="8_suvee"]
@@ -253,8 +254,10 @@ sources/0 = SubResource("TileSetAtlasSource_mtyea")
 sources/1 = SubResource("TileSetAtlasSource_v12lk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfywl"]
+size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62vmw"]
+size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aikag"]
 atlas = ExtResource("7_f6kkl")
@@ -364,11 +367,13 @@ limit_top = 96
 limit_right = 304
 limit_bottom = 384
 
+[node name="HealthBar" parent="Player" instance=ExtResource("5_73jhc")]
+
 [node name="init" type="Marker2D" parent="."]
-position = Vector2(128, 384)
+position = Vector2(128, 364)
 
 [node name="right" type="Marker2D" parent="."]
-position = Vector2(305, 144)
+position = Vector2(293, 145)
 
 [node name="left" type="Marker2D" parent="."]
 position = Vector2(-16, 144)
@@ -376,13 +381,13 @@ position = Vector2(-16, 144)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(128, 408)
+position = Vector2(128, 400)
 shape = SubResource("RectangleShape2D_nfywl")
 
 [node name="to_fight_1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="to_fight_1"]
-position = Vector2(322, 144)
+position = Vector2(320, 144)
 shape = SubResource("RectangleShape2D_62vmw")
 
 [node name="TransitionScene" parent="." instance=ExtResource("4_l6xe5")]

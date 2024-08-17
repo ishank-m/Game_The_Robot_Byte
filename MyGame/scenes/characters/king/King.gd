@@ -8,7 +8,7 @@ var attacking
 var direction
 var close_to_player
 var animation_playing
-var min_distance = 30
+var min_distance = 10
 
 func _ready():
 	$attackbox_right.add_to_group("king_attack")
@@ -21,7 +21,7 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
-	if not animation_playing:
+	if not (animation_playing or GameState.player_died):
 		if attacking:
 			animation_playing = true
 			var x_diff = attacking.position.x - position.x
@@ -64,7 +64,7 @@ func _physics_process(delta):
 					$attackbox_bottom/CollisionShape2D.disabled = false
 					await anim.animation_finished
 					$attackbox_bottom/CollisionShape2D.disabled = true
-		elif player and not close_to_player:
+		elif not attacking:
 			var distance_to_player = position.distance_to(player.position)
 			direction = (player.position - position).normalized()
 			if distance_to_player >= min_distance:
@@ -75,7 +75,7 @@ func _physics_process(delta):
 				close_to_player = true
 			king_anim()
 			move_and_collide(velocity*delta)
-		elif close_to_player:
+		if close_to_player:
 			anim.stop()
 
 func king_anim():
