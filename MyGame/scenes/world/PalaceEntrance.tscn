@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfv7m6ke8nb2a"]
+[gd_scene load_steps=14 format=3 uid="uid://cfv7m6ke8nb2a"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_27hir"]
+[ext_resource type="Script" path="res://scenes/world/PalaceEntrance.gd" id="1_tccje"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="2_e6vvn"]
+[ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_kjowy"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_4l0uv"]
+[ext_resource type="Texture2D" uid="uid://b7t8xabija863" path="res://assets/sprites/world/palace_entrance.png" id="3_bqvjn"]
 [ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="4_5grc7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
@@ -44,6 +47,11 @@ texture = ExtResource("2_e6vvn")
 0:6/size_in_atlas = Vector2i(2, 2)
 0:6/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdypl"]
+texture = ExtResource("3_bqvjn")
+0:0/size_in_atlas = Vector2i(20, 8)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4h5f6"]
 texture = ExtResource("3_4l0uv")
 0:0/size_in_atlas = Vector2i(2, 2)
@@ -69,8 +77,15 @@ sources/0 = SubResource("TileSetAtlasSource_sxjtb")
 sources/1 = SubResource("TileSetAtlasSource_m5r7p")
 sources/3 = SubResource("TileSetAtlasSource_4h5f6")
 sources/4 = SubResource("TileSetAtlasSource_2noo5")
+sources/2 = SubResource("TileSetAtlasSource_jdypl")
 
 [node name="PalaceEntrance" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_tccje")
+
+[node name="Player" parent="." instance=ExtResource("2_kjowy")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -90,3 +105,9 @@ layer_3/name = "stones "
 layer_3/tile_data = PackedInt32Array()
 layer_4/name = "extras"
 layer_4/tile_data = PackedInt32Array(327696, 393217, 6, 589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, 131090, 393217, 6, 131092, 262145, 6, 17, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 655380, 262145, 6, 393235, 262145, 6, 327700, 1, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6, 720899, 393217, 6, 917504, 393217, 6, 983048, 393217, 6, 720909, 393217, 6, 917522, 393217, 6, 655379, 393217, 6, 983054, 393217, 6, 786433, 262145, 6, 655368, 262145, 6, 851980, 262145, 6, 786449, 262145, 6, 917524, 262145, 6, 851973, 262145, 6, 917513, 1, 6, 917506, 1, 6, 720901, 1, 6, 524290, 1, 6, 458760, 1, 6, 262145, 1, 6, 458764, 1, 6, 327694, 1, 6, 524307, 1, 6, 720911, 1, 6, 786452, 1, 6)
+
+[node name="Palace" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(168.369, 46.5821)
+texture = ExtResource("3_bqvjn")
