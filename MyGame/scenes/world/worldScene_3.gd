@@ -5,9 +5,11 @@ func _ready():
 	$ShopInterface.visible = false
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
+	transition.connect("fade_out_done", _on_fade_out_done)
 	$Player.set_position($init.position)
 
-
+func _on_fade_out_done():
+	GameState.game_state = "play"
 
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")

@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfv7m6ke8nb2a"]
+
+[ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_27hir"]
+[ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="2_e6vvn"]
+[ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_4l0uv"]
+[ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="4_5grc7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
+texture = ExtResource("1_27hir")
+8:4/size_in_atlas = Vector2i(2, 2)
+8:4/0 = 0
+8:10/size_in_atlas = Vector2i(2, 2)
+8:10/0 = 0
+6:10/size_in_atlas = Vector2i(2, 2)
+6:10/0 = 0
+4:10/size_in_atlas = Vector2i(2, 2)
+4:10/0 = 0
+2:10/size_in_atlas = Vector2i(2, 2)
+2:10/0 = 0
+0:10/size_in_atlas = Vector2i(2, 2)
+0:10/0 = 0
+8:8/size_in_atlas = Vector2i(2, 2)
+8:8/0 = 0
+8:8/0/texture_origin = Vector2i(-1, 0)
+6:8/size_in_atlas = Vector2i(2, 2)
+6:8/0 = 0
+4:8/size_in_atlas = Vector2i(2, 2)
+4:8/0 = 0
+2:8/size_in_atlas = Vector2i(2, 2)
+2:8/0 = 0
+0:8/size_in_atlas = Vector2i(2, 2)
+0:8/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m5r7p"]
+texture = ExtResource("2_e6vvn")
+12:2/size_in_atlas = Vector2i(2, 4)
+12:2/0 = 0
+10:6/size_in_atlas = Vector2i(2, 2)
+10:6/0 = 0
+6:6/size_in_atlas = Vector2i(2, 2)
+6:6/0 = 0
+4:6/size_in_atlas = Vector2i(2, 2)
+4:6/0 = 0
+0:6/size_in_atlas = Vector2i(2, 2)
+0:6/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4h5f6"]
+texture = ExtResource("3_4l0uv")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.1
+0:0/animation_frame_1/duration = 0.1
+0:0/animation_frame_2/duration = 0.1
+0:0/animation_frame_3/duration = 0.1
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2noo5"]
+texture = ExtResource("4_5grc7")
+0:0/size_in_atlas = Vector2i(2, 4)
+0:0/animation_columns = 4
+0:0/animation_frame_0/duration = 0.1
+0:0/animation_frame_1/duration = 0.1
+0:0/animation_frame_2/duration = 0.1
+0:0/animation_frame_3/duration = 0.1
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lqox4"]
+sources/0 = SubResource("TileSetAtlasSource_sxjtb")
+sources/1 = SubResource("TileSetAtlasSource_m5r7p")
+sources/3 = SubResource("TileSetAtlasSource_4h5f6")
+sources/4 = SubResource("TileSetAtlasSource_2noo5")
+
+[node name="PalaceEntrance" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_lqox4")
+format = 2
+layer_0/name = "ground"
+layer_0/tile_data = PackedInt32Array(589834, 262144, 10, 458762, 262144, 10, 720906, 262144, 10, 851978, 262144, 10, 983050, 262144, 10, 458764, 393216, 10, 458766, 393216, 10, 458768, 393216, 10, 458770, 393216, 10, 458772, 393216, 10, 589836, 393216, 10, 589838, 393216, 10, 589840, 393216, 10, 589842, 393216, 10, 589844, 393216, 10, 720916, 393216, 10, 720914, 393216, 10, 720912, 393216, 10, 720910, 393216, 10, 720908, 393216, 10, 851980, 393216, 10, 851982, 393216, 10, 851984, 393216, 10, 851986, 393216, 10, 851988, 393216, 10, 983060, 393216, 10, 983058, 393216, 10, 983056, 393216, 10, 983054, 393216, 10, 983052, 393216, 10, 983048, 393216, 10, 983046, 393216, 10, 983044, 393216, 10, 983042, 393216, 10, 983040, 393216, 10, 851968, 393216, 10, 720896, 393216, 10, 589824, 393216, 10, 458752, 393216, 10, 458754, 393216, 10, 458756, 393216, 10, 458758, 393216, 10, 458760, 393216, 10, 589832, 393216, 10, 720904, 393216, 10, 851976, 393216, 10, 851974, 393216, 10, 720902, 393216, 10, 589830, 393216, 10, 589828, 393216, 10, 589826, 393216, 10, 720898, 393216, 10, 720900, 393216, 10, 851972, 393216, 10, 851970, 393216, 10, 327680, 393216, 10, 196608, 393216, 10, 65536, 393216, 10, -65536, 393216, 10, -65534, 393216, 10, 65538, 393216, 10, 196610, 393216, 10, 327682, 393216, 10, 327684, 393216, 10, 196612, 393216, 10, 65540, 393216, 10, -65532, 393216, 10, -65530, 393216, 10, 65542, 393216, 10, 196614, 393216, 10, 327686, 393216, 10, 327688, 393216, 10, 196616, 393216, 10, 65544, 393216, 10, -65528, 393216, 10, -65526, 393216, 10, 65546, 393216, 10, 196618, 393216, 10, 327690, 393216, 10, 327692, 393216, 10, 196620, 393216, 10, 65548, 393216, 10, -65524, 393216, 10, -65522, 393216, 10, 65550, 393216, 10, 196622, 393216, 10, 327694, 393216, 10, 327696, 393216, 10, 327698, 393216, 10, 327700, 393216, 10, 196628, 393216, 10, 196626, 393216, 10, 196624, 393216, 10, 65552, 393216, 10, -65520, 393216, 10, -65518, 393216, 10, 65554, 393216, 10, 65556, 393216, 10, -65516, 393216, 10)
+layer_1/name = "trees"
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(983056, 786433, 2, 851988, 786433, 2, 327697, 786433, 2, 327695, 786433, 2, 327693, 786433, 2, 327685, 786433, 2, 327683, 786433, 2, 327681, 786433, 2, 983046, 786433, 2, 786432, 4, 0, 327687, 4, 0, 327699, 4, 0)
+layer_2/name = "logs"
+layer_2/y_sort_enabled = true
+layer_2/z_index = 1
+layer_2/tile_data = PackedInt32Array(524308, 655361, 6, 917508, 655361, 6, 786445, 524288, 4, 524289, 524288, 4)
+layer_3/name = "stones "
+layer_3/tile_data = PackedInt32Array()
+layer_4/name = "extras"
+layer_4/tile_data = PackedInt32Array(327696, 393217, 6, 589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, 131090, 393217, 6, 131092, 262145, 6, 17, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 655380, 262145, 6, 393235, 262145, 6, 327700, 1, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6, 720899, 393217, 6, 917504, 393217, 6, 983048, 393217, 6, 720909, 393217, 6, 917522, 393217, 6, 655379, 393217, 6, 983054, 393217, 6, 786433, 262145, 6, 655368, 262145, 6, 851980, 262145, 6, 786449, 262145, 6, 917524, 262145, 6, 851973, 262145, 6, 917513, 1, 6, 917506, 1, 6, 720901, 1, 6, 524290, 1, 6, 458760, 1, 6, 262145, 1, 6, 458764, 1, 6, 327694, 1, 6, 524307, 1, 6, 720911, 1, 6, 786452, 1, 6)

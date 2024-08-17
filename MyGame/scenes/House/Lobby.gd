@@ -6,6 +6,7 @@ var to_where: String
 func _ready():
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
+	transition.connect("fade_out_done", _on_fade_out_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "downstairs":
 		$Player.set_position($down.position)
@@ -20,6 +21,8 @@ func _ready():
 		GameState.player_pos = null
 	GameState.scene = "lobby"
 
+func _on_fade_out_done():
+	GameState.game_state = "play"
 
 func _on_fade_in_done():
 	if to_where == "winroom":
