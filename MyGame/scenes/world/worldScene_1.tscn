@@ -282,7 +282,6 @@ sources/2 = SubResource("TileSetAtlasSource_667jc")
 sources/3 = SubResource("TileSetAtlasSource_chos8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nfywl"]
-size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62vmw"]
 
@@ -460,13 +459,11 @@ limit_top = 96
 limit_right = 304
 limit_bottom = 384
 
-[node name="HealthBar" parent="Player" instance=ExtResource("5_73jhc")]
-
 [node name="init" type="Marker2D" parent="."]
-position = Vector2(128, 364)
+position = Vector2(128, 384)
 
 [node name="right" type="Marker2D" parent="."]
-position = Vector2(293, 145)
+position = Vector2(305, 144)
 
 [node name="left" type="Marker2D" parent="."]
 position = Vector2(-16, 144)
@@ -474,13 +471,13 @@ position = Vector2(-16, 144)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(128, 400)
+position = Vector2(128, 408)
 shape = SubResource("RectangleShape2D_nfywl")
 
 [node name="to_fight_1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="to_fight_1"]
-position = Vector2(320, 144)
+position = Vector2(322, 144)
 shape = SubResource("RectangleShape2D_62vmw")
 
 [node name="TransitionScene" parent="." instance=ExtResource("4_l6xe5")]
