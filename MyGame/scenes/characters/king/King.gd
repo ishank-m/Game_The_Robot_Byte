@@ -8,7 +8,7 @@ var attacking
 var direction
 var close_to_player
 var animation_playing
-var min_distance = 10
+var min_distance = 30
 
 func _ready():
 	$attackbox_right.add_to_group("king_attack")
