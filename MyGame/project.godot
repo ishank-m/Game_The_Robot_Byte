@@ -29,10 +29,16 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 directories/dch_directory={
 "Dad": "res://assets/sprites/Characters/MC/portrait/Dad.dch",
 "Kevin": "res://dialogues/Kevin.dch",
+"King": "res://dialogues/King.dch",
+"null": "res://dialogues/null.dch",
 "sister": "res://dialogues/sister.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"2worldscene_1": "res://dialogues/2worldscene_1.dtl",
+"3worldscene_1": "res://dialogues/3worldscene_1.dtl",
+"4worldscene_1": "res://dialogues/4worldscene_1.dtl",
+"5worldscene_1": "res://dialogues/5worldscene_1.dtl",
 "dialogues/mainmenu": "res://dialogues/mainmenu.dtl",
 "downstairs": "res://dialogues/downstairs.dtl",
 "downstairs3": "res://dialogues/downstairs3.dtl",
@@ -49,6 +55,7 @@ directories/dtl_directory={
 "winroom_2": "res://dialogues/winroom_2.dtl",
 "winroom_3": "res://dialogues/winroom_3.dtl",
 "winroom_4": "res://dialogues/winroom_4.dtl",
+"worldScene_1": "res://dialogues/worldScene_1.dtl",
 "world_init1": "res://dialogues/world_init1.dtl",
 "world_init2": "res://dialogues/world_init2.dtl"
 }

@@ -100,3 +100,4 @@ func update_anim(direction):
 func _on_player_sprite_animation_finished():
 	if attack and ($Player_sprite.animation == "attack_right" or $Player_sprite.animation == "attack_up" or $Player_sprite.animation == "attack_down"):
 		attack = false
+

@@ -1,0 +1,44 @@
+join null 1
+null: What is it boy?
+join Kevin 0
+Kevin: What's going on here? And who are you?
+leave Kevin [animation="Instant In Or Out"]
+join King 1
+King: Are you new here? I am the king of this\
+kingdom.
+King: Adding on, I have no time for chatter...
+King: My kingdom is under threat, and so are \
+my brave men...
+King: Off you go lad, you'll get hurt here.
+leave King
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: But you are clearly wounded, you won't \
+stand a chance if you go like this...
+Kevin: Let me help you, I am a skilled fencer. \
+I played for my school in State Tournament.
+leave Kevin [animation="Instant In Or Out"]
+join King 1
+King: This is no such games. This is real \
+war. Just go already. 
+leave King
+join Kevin 0
+Kevin: No, I won't. Let me help you. \
+Please, you'll die.
+leave Kevin [animation="Instant In Or Out"]
+join King 1 [animation="Instant In Or Out"]
+King: Okay, okay. There's this village to the\
+right of here, take me there...
+King: They are my people, they can help me\
+heal.
+Kevin: Beware the beastly machines; they have \
+turned mad since...
+King: their malfunction before the grand \
+deployment of the AI soldiers.
+King: Take this sword, it might prove useful.
+[signal arg="sword"]
+leave King
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: Okay then, follow me, I'll ensure\
+no one harms you more.
+[signal arg="done4"]
+[end_timeline]
