@@ -81,28 +81,28 @@ func _physics_process(delta):
 func king_anim():
 	var x_diff = player.position.x - position.x
 	var y_diff = player.position.y - position.y
-	if x_diff > 5:
+	if x_diff > 0:
 		anim.flip_h = false
-		if y_diff > 5:
+		if y_diff > 0:
 			anim.play("down_right")
-		elif y_diff < -5:
+		elif y_diff < 0:
 			anim.play("up_right")
 		else:
 			anim.play("right")
-	elif x_diff < -5:
+	elif x_diff < 0:
 		anim.flip_h = true
-		if y_diff > 5:
+		if y_diff > 0:
 			anim.play("down_right")
-		elif y_diff < -5:
+		elif y_diff < 0:
 			anim.play("up_right")
 		else:
 			anim.play("right")
 	else:
-		if y_diff > 5:
+		anim.flip_h = false
+		if y_diff > 0:
 			anim.play("down")
-		elif y_diff < -5:
+		elif y_diff < 0:
 			anim.play("up")
-
 
 func _on_hitbox_body_entered(body):
 	if body.name == "Enemy":
