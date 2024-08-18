@@ -32,6 +32,7 @@ directories/dch_directory={
 "Kevin": "res://dialogues/Kevin.dch",
 "King": "res://dialogues/King.dch",
 "null": "res://dialogues/null.dch",
+"shopkeeper": "res://dialogues/shopkeeper.dch",
 "sister": "res://dialogues/sister.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
@@ -51,6 +52,7 @@ directories/dtl_directory={
 "mainmenu": "res://assets/sprites/Characters/Dad/portrait/mainmenu.dtl",
 "mcbedroom": "res://dialogues/mcbedroom.dtl",
 "mcbedroom_2": "res://dialogues/mcbedroom_2.dtl",
+"shop1": "res://dialogues/shop1.dtl",
 "winroom": "res://dialogues/winroom.dtl",
 "winroom_0": "res://dialogues/winroom_0.dtl",
 "winroom_2": "res://dialogues/winroom_2.dtl",
@@ -82,7 +84,7 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 save/autosave=false
 variables={
-"done": 0
+"points": 100
 }
 animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_in.gd"
 animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_out.gd"
