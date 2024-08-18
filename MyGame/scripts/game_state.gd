@@ -7,6 +7,7 @@ var current_scene
 var game_state = 'main_menu'
 var scene = "init"
 var current_save
+var points = 0
 
 var dialogues_count = {
 	"downstairs" : 0,

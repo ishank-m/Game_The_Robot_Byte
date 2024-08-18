@@ -105,12 +105,12 @@ func king_anim():
 			anim.play("up")
 
 func _on_hitbox_body_entered(body):
-	if body.name == "Enemy":
+	if body.is_in_group("Enemy"):
 		attacking = body
 		attacking.connect("enemy_freed", Callable(self, "_on_enemy_removed"))
 
 func _on_hitbox_body_exited(body):
-	if body.name == "Enemy":
+	if body.is_in_group("Enemy"):
 		attacking = null
 
 func _on_enemy_removed():
