@@ -7,14 +7,17 @@ func _ready():
 	GameState.game_state = "play"
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	transition.connect("fade_in_done", _on_fade_in_done)
-	if GameState.scene == "window": 
+	if GameState.player_pos:
+		player.position = GameState.player_pos
+		GameState.player_pos = null
+	elif GameState.scene == "window": 
 		GameState.game_state = "pause"
 		$appearing.set_position(Vector2(159,125))
 		player.hide()
 		player.set_position($init.position)
 		$appearing.visible = false
 		$CanvasLayer/clouds.play("hi")
-	if GameState.scene == "worldscene1":
+	elif GameState.scene == "worldscene1":
 		transition.fade_out()
 		player_anim.play("down")
 		player_anim.stop()

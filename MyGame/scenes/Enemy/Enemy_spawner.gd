@@ -10,7 +10,7 @@ var unactive_zone_x = 86
 var player_in_view
 
 func _physics_process(_delta):
-	if not player_in_view:
+	if not player_in_view and GameState.spawned_enemies < 5 and GameState.no_of_enemies < 50:
 		if not (enemy_alive and once):
 			if player.position.x:
 				once = true
@@ -18,6 +18,8 @@ func _physics_process(_delta):
 				var new_enemy = enemy.instantiate()
 				new_enemy.position = position
 				new_enemy.add_to_group("Enemy")
+				GameState.spawned_enemies += 1
+				GameState.no_of_enemies += 1
 				get_parent().add_child(new_enemy)
 				new_enemy.connect("enemy_freed", Callable(self, "_on_enemy_removed"))
 

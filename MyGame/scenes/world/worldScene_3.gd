@@ -24,4 +24,5 @@ func _on_area_2d_body_entered(body):
 func _on_shop_body_entered(body):
 	if body.name == "Player":
 		GameState.game_state = "pause"
+		$Player/Player_sprite.stop()
 		$ShopInterface.visible = true

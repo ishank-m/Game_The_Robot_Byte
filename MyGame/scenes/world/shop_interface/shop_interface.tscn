@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://by7uwi2gck71r" path="res://assets/sprites/world/shop/shop_interface_bg.png" id="2_vpr4f"]
 [ext_resource type="Texture2D" uid="uid://dbtkpuoiu2vdb" path="res://assets/sprites/world/shop/shop_sword_iron1.png" id="3_jgd0v"]
 [ext_resource type="Texture2D" uid="uid://dxvgb8f5xdy7u" path="res://assets/sprites/world/shop/shop_sword_diamond1.png" id="3_lrqry"]
-[ext_resource type="ButtonGroup" uid="uid://bdx1n5jvg3eme" path="res://scripts/button_group.tres" id="3_mj27b"]
+[ext_resource type="ButtonGroup" path="res://scripts/button_group.tres" id="3_mj27b"]
 [ext_resource type="Texture2D" uid="uid://cud58sh3som4i" path="res://assets/sprites/world/shop/shop_sword_iron2.png" id="4_q2o6r"]
 [ext_resource type="Texture2D" uid="uid://d2xp2s7pxd4xd" path="res://assets/sprites/world/shop/shop_sword_diamond2.png" id="4_r1pcl"]
 [ext_resource type="Theme" uid="uid://cjd3w2r2wb0b7" path="res://scripts/transparentbutton.tres" id="4_uesth"]
@@ -149,6 +149,7 @@ texture_normal = ExtResource("17_jpipq")
 texture_pressed = ExtResource("18_yyos0")
 
 [node name="Buy_pot" type="TextureButton" parent="ShopInterfaceBg/potionSection"]
+layout_mode = 0
 offset_left = 161.0
 offset_top = 27.0
 offset_right = 192.0
@@ -159,6 +160,7 @@ texture_pressed = ExtResource("13_cj8uo")
 
 [node name="Back" type="TextureButton" parent="ShopInterfaceBg/potionSection"]
 layout_direction = 1
+layout_mode = 0
 offset_left = 173.0
 offset_top = 8.0
 offset_right = 190.0

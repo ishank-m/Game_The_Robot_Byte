@@ -8,6 +8,8 @@ var game_state = 'main_menu'
 var scene = "init"
 var current_save
 var points = 0
+var no_of_enemies = 0
+var spawned_enemies = 0
 
 var dialogues_count = {
 	"downstairs" : 0,
@@ -16,6 +18,8 @@ var dialogues_count = {
 	"lobby3": 0,
 	"lobby4": 0,
 	"mcbed": 0,
+	"worldscene1" : 0,
+	"shop" : 0,
 }
 
 var stairs = false

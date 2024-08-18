@@ -7,12 +7,15 @@ var sword: String
 func _ready():
 	GameState.game_state = "pause"
 	set_process_input(false)
-	Dialogic.start("shop1")
-	Dialogic.VAR.points = GameState.player_health #add points var here
-	Dialogic.signal_event.connect(_on_dialogic_signal)
+	if not GameState.dialogues_count['shop']:
+		GameState.dialogues_count['shop'] = 1
+		Dialogic.start("shop1")
+		Dialogic.VAR.points = GameState.points
+		Dialogic.signal_event.connect(_on_dialogic_signal)
 	show_swords()
 func _on_close_pressed():
 	$ShopInterfaceBg.visible = false
+	GameState.game_state = "play"
 func _process(_delta):
 	$ShopInterfaceBg/potionSection/invin_pot_count.text = str(invin_count)
 	$ShopInterfaceBg/potionSection/health_pot_count.text = str(health_count)
