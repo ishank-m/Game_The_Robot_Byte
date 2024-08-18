@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ca486vex0n24x"]
+
+[ext_resource type="FontFile" uid="uid://rvc8fsmsm28m" path="res://font.ttf" id="1_whnhs"]
+
+[resource]
+default_font = ExtResource("1_whnhs")
+Button/styles/focus = null

@@ -8,5 +8,4 @@ func _ready():
 
 
 func _on_button_pressed():
-	transition.visible = true
-	transition.fade_in()
+	print("hi")

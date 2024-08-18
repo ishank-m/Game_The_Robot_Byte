@@ -1,8 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8mnjdtlid76r"]
+[gd_scene load_steps=10 format=3 uid="uid://c8mnjdtlid76r"]
 
 [ext_resource type="Script" path="res://scenes/test/a.gd" id="1_ppqnj"]
+[ext_resource type="Theme" uid="uid://ca486vex0n24x" path="res://scripts/button_default.tres" id="2_yhj7v"]
 [ext_resource type="FontFile" uid="uid://rvc8fsmsm28m" path="res://font.ttf" id="3_p0doq"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="4_rcpvs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_askd3"]
+load_path = "res://.godot/imported/shop_buy_button.png-4e2adc9212a96fb7bd268863be22be4e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24nv5"]
+texture = SubResource("CompressedTexture2D_askd3")
+region_rect = Rect2(2, 2, 26, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lx6qj"]
+texture = SubResource("CompressedTexture2D_askd3")
+region_rect = Rect2(2, 2, 27, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3q33"]
+texture = SubResource("CompressedTexture2D_askd3")
+region_rect = Rect2(32, 1, 30, 19)
 
 [sub_resource type="LabelSettings" id="LabelSettings_j5q68"]
 font = ExtResource("3_p0doq")
@@ -13,8 +29,12 @@ script = ExtResource("1_ppqnj")
 [node name="Button" type="Button" parent="."]
 offset_left = 121.0
 offset_top = 62.0
-offset_right = 187.0
+offset_right = 171.0
 offset_bottom = 90.0
+theme = ExtResource("2_yhj7v")
+theme_override_styles/normal = SubResource("StyleBoxTexture_24nv5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lx6qj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_p3q33")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 43.0
