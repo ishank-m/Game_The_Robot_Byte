@@ -24,6 +24,8 @@ func _ready():
 		$Bird/Timer.start()
 		$Car_1_main/AnimationPlayer.play("idle")
 		$Truck/truck_anim.play("truck_moving")
+	if GameState.game_state != "credits":
+		MusicPlayer.play_music1()
 	update_load_button_state()
 
 #Play Button on MainMenu
@@ -48,7 +50,7 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Carmainmenu":
 		$Car_1_main/AnimationPlayer.play("idle")
 	if anim_name == "Carmainmenu_2" and not dialogue:
-		$bg_music.stop()
+		MusicPlayer.stop()
 		Dialogic.start("mainmenu")
 		dialogue = true
 

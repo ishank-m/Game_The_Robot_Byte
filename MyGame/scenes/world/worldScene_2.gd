@@ -15,7 +15,7 @@ func _physics_process(_delta):
 	if not GameState.player_died:
 		if GameState.player_health == 0:
 			died = true
-			$dead.set_position(player.position)
+			#$dead.set_position(player.position) RIP STONE NOT WORKING
 			var camera = player.get_node("Camera2D")
 			player.remove_child(camera)
 			get_tree().root.add_child(camera)

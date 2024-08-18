@@ -30,6 +30,7 @@ offset_right = 321.0
 offset_bottom = 918.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="credits"]
+layout_mode = 0
 offset_right = 319.0
 offset_bottom = 895.0
 alignment = 1
@@ -37,7 +38,6 @@ alignment = 1
 [node name="Label0" type="Label" parent="credits/VBoxContainer"]
 layout_mode = 2
 text = "
-
 
 "
 label_settings = ExtResource("2_io3s1")
@@ -51,7 +51,7 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="credits/VBoxContainer"]
 layout_mode = 2
-text = "We hope you enjoyed the adventure as much as we loved creating it. This journey ends here, but the story continues. Goodbye until we meet again with a more dramatic continuation.
+text = "We hope you enjoyed the adventure as much as we loved creating it. This journey ends here, but the story doesn't. Goodbye, until we meet again with a more dramatic continuation.
 
 Thanks for playing!
 

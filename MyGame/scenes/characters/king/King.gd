@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 45
+@export var speed = 30
 @onready var anim = $Damaged
 @onready var player = get_parent().get_node("Player")
 
