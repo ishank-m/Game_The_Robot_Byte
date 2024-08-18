@@ -47,7 +47,10 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_6ebms"]
 script = ExtResource("2_11a2e")
 scene = ExtResource("7_y37vs")
-overrides = {}
+overrides = {
+"boxes_v_separation": "5.0",
+"font_custom": "\"res://font.ttf\""
+}
 
 [sub_resource type="Resource" id="Resource_03lcm"]
 script = ExtResource("2_11a2e")
@@ -66,4 +69,4 @@ base_overrides = {
 "global_font_size": "10.0"
 }
 layers = Array[ExtResource("2_11a2e")]([SubResource("Resource_hwj1g"), SubResource("Resource_sfox6"), SubResource("Resource_cfl8j"), SubResource("Resource_ab12r"), SubResource("Resource_r8mbj"), SubResource("Resource_6ebms"), SubResource("Resource_03lcm"), SubResource("Resource_uq0wa")])
-metadata/_latest_layer = 3
+metadata/_latest_layer = 5

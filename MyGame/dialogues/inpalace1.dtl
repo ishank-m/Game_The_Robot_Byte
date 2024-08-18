@@ -1,0 +1,37 @@
+join King 0
+King (king_normal): Well, well, We did great, especially you \
+young lad...
+King: You helped me save my kingdom, brave one,\
+and I owe you one.
+King: So tell me now, will you be the Commander\
+of my forces...
+King: and live the rest of your life in this magical\
+place?
+King: Or will you go back to your world, to your\
+family?
+label choice (Seek)
+- Go back home [if {choice} == ""]
+	set {choice} = "home"
+- Stay here [if {choice} == ""]
+	set {choice} = "stay"
+if {choice} == "home":
+	join King (king_normal) 0 [animation="Instant In Or Out"]
+	leave Kevin [animation="Instant In Or Out"]
+	King: Alright then, walk through the door on\
+up your left...
+	King: You'll get home.
+	[signal arg="done1"]
+	[end_timeline]
+elif {choice} == "stay":
+	join King (king_normal) 0 [animation="Instant In Or Out"]
+	leave Kevin [animation="Instant In Or Out"]
+	King: Great! I'll tell people to get your room \
+prepared.
+	leave King [animation="Instant In Or Out"]
+	join Kevin 0 [animation="Instant In Or Out"]
+	Kevin: (Thinking to himself) What about my Dad \
+and my sister?
+	Kevin: They are my only family i have left. \
+I should rethink my choice...
+	set {choice} = ""
+	jump choice

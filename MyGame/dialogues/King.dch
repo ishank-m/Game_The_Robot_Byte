@@ -23,6 +23,15 @@
 "offset": Vector2(0, 10),
 "scale": 0.0,
 "scene": ""
+},
+"king_normal": {
+"export_overrides": {
+"image": "\"res://assets/sprites/Characters/King/king_portrait.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 10),
+"scale": 1.0,
+"scene": ""
 }
 },
 "scale": 1.0

@@ -45,6 +45,7 @@ directories/dtl_directory={
 "downstairs": "res://dialogues/downstairs.dtl",
 "downstairs3": "res://dialogues/downstairs3.dtl",
 "downstairs_2": "res://dialogues/downstairs_2.dtl",
+"inpalace1": "res://dialogues/inpalace1.dtl",
 "lobby_1": "res://dialogues/lobby_1.dtl",
 "lobby_2": "res://dialogues/lobby_2.dtl",
 "lobby_3": "res://dialogues/lobby_3.dtl",
@@ -53,6 +54,7 @@ directories/dtl_directory={
 "mcbedroom": "res://dialogues/mcbedroom.dtl",
 "mcbedroom_2": "res://dialogues/mcbedroom_2.dtl",
 "shop1": "res://dialogues/shop1.dtl",
+"timeline": "res://scenes/test/timeline.dtl",
 "winroom": "res://dialogues/winroom.dtl",
 "winroom_0": "res://dialogues/winroom_0.dtl",
 "winroom_2": "res://dialogues/winroom_2.dtl",
@@ -84,6 +86,7 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 save/autosave=false
 variables={
+"choice": "",
 "points": 100
 }
 animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_in.gd"

@@ -1,0 +1,2 @@
+- hi [if {points} > 0]
+	King: hi

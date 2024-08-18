@@ -149,6 +149,7 @@ texture_normal = ExtResource("17_jpipq")
 texture_pressed = ExtResource("18_yyos0")
 
 [node name="Buy_pot" type="TextureButton" parent="ShopInterfaceBg/potionSection"]
+layout_mode = 0
 offset_left = 161.0
 offset_top = 27.0
 offset_right = 192.0
@@ -159,6 +160,7 @@ texture_pressed = ExtResource("13_cj8uo")
 
 [node name="Back" type="TextureButton" parent="ShopInterfaceBg/potionSection"]
 layout_direction = 1
+layout_mode = 0
 offset_left = 173.0
 offset_top = 8.0
 offset_right = 190.0
