@@ -1,3 +1,205 @@
-[gd_scene format=3 uid="uid://b3lodqhedoqps"]
+[gd_scene load_steps=8 format=3 uid="uid://b3lodqhedoqps"]
 
-[node name="EndCredits" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/Ending/EndCredits.gd" id="1_ke8ve"]
+[ext_resource type="FontFile" uid="uid://rvc8fsmsm28m" path="res://font.ttf" id="1_piggo"]
+[ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="2_io3s1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbyml"]
+font = ExtResource("1_piggo")
+font_size = 64
+outline_size = 1
+outline_color = Color(0, 1, 1, 1)
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_peppg"]
+resource_name = "down"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 85), Vector2(160, 560)]
+}
+
+[sub_resource type="Animation" id="Animation_cdrvk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 306)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eeq3y"]
+_data = {
+"RESET": SubResource("Animation_cdrvk"),
+"down": SubResource("Animation_peppg")
+}
+
+[node name="EndCredits" type="CanvasLayer"]
+script = ExtResource("1_ke8ve")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 645.0
+color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 35.0
+offset_right = 290.0
+offset_bottom = 99.0
+text = "THE END"
+label_settings = SubResource("LabelSettings_wbyml")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 7.0
+offset_right = 310.0
+offset_bottom = 247.0
+text = "We hope you enjoyed the adventure as much as we loved creating it. This journey ends here, but the story continues. Goodbye until we meet again with a more dramatic continuation.
+
+Thanks for playing!"
+label_settings = ExtResource("2_io3s1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 92.0
+offset_top = 199.0
+offset_right = 168.0
+offset_bottom = 416.0
+text = "Story by:
+Story Consultant: 
+
+    
+Programming:
+
+
+Game Design:
+
+
+Art & Graphics:
+
+Animation: 
+
+Music:
+
+
+Sound Effects:
+
+Voice Acting:
+
+Beta Testing:
+
+Special Thanks to:
+"
+label_settings = ExtResource("2_io3s1")
+
+[node name="Label" type="Label" parent="Label3"]
+layout_mode = 0
+offset_left = 79.0
+offset_right = 119.0
+offset_bottom = 85.0
+text = "Ishank
+Naman
+Azmi Sir
+
+Aqdas 
+Ishank
+
+Ishank
+Aqdas
+
+Ishank
+
+Ishank
+
+Ishank
+Nitin Sir 
+
+Ishank
+
+\"someone\"
+
+Bhot log (sabka Naam)
+
+City Montessori School
+(for providing such opportunity)
+ 
+"
+label_settings = ExtResource("2_io3s1")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 95.0
+offset_top = 500.0
+offset_right = 206.0
+offset_bottom = 508.0
+text = "Tools and Softwares Used"
+label_settings = ExtResource("2_io3s1")
+
+[node name="Label" type="Label" parent="Label4"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 16.0
+offset_right = 36.0
+offset_bottom = 39.0
+text = "Game Engine:
+
+
+Art, Graphics &
+Animations:
+
+Music:
+
+Sound Effects:
+"
+label_settings = ExtResource("2_io3s1")
+
+[node name="Label" type="Label" parent="Label4/Label"]
+layout_mode = 0
+offset_left = 75.0
+offset_right = 162.0
+offset_bottom = 107.0
+text = "Godot v4.2
+(with Dialogic Plugin)
+
+
+Aseprite v3.4 & v3.6
+
+FL Studio 21
+
+jsfxr.com
+audiomass.co"
+label_settings = ExtResource("2_io3s1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 306)
+limit_left = 0
+limit_top = 0
+limit_right = 320
+limit_bottom = 560
+
+[node name="Camera_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eeq3y")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
