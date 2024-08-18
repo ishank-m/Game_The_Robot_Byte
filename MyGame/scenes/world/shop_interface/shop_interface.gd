@@ -5,17 +5,24 @@ var invin_count = 0
 var sword: String
 
 func _ready():
+	GameState.game_state = "pause"
+	set_process_input(false)
+	Dialogic.start("shop1")
+	Dialogic.VAR.points = GameState.player_health #add points var here
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	show_swords()
 func _on_close_pressed():
-	print("hi")
 	$ShopInterfaceBg.visible = false
-func _process(delta):
+func _process(_delta):
 	$ShopInterfaceBg/potionSection/invin_pot_count.text = str(invin_count)
 	$ShopInterfaceBg/potionSection/health_pot_count.text = str(health_count)
 
 func _on_next_pressed():
 	show_potions()
 
+func _on_dialogic_signal(argument):
+	if argument == "done1":
+		set_process_input(true)
 
 func _on_iron_button_down():
 	sword = "iron"
