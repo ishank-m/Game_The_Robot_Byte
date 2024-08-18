@@ -11,11 +11,13 @@ var direction
 var player_in_hitbox
 var died = false
 var attack_cooldown = true
-
 var animation_playing = false
+var last_hit = null
 
 func _physics_process(delta):
 	if health <= 0 and not died:
+		if last_hit == "player":
+			GameState.points += 10
 		died = true
 		anim.play("die")
 	if player and is_instance_valid(player) and not died:

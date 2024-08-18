@@ -1,12 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://bshfs5ilxiykp"]
+[gd_scene load_steps=3 format=3 uid="uid://bshfs5ilxiykp"]
 
 [ext_resource type="Script" path="res://scenes/Enemy/Enemy_spawner.gd" id="1_wqnh5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ijk8"]
+size = Vector2(346, 168)
+
 [node name="Enemy_spawner" type="Node2D"]
+z_index = 1
 script = ExtResource("1_wqnh5")
 
 [node name="respawn_wait_time" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
+[node name="player_in_view" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_in_view"]
+shape = SubResource("RectangleShape2D_4ijk8")
+
 [connection signal="timeout" from="respawn_wait_time" to="." method="_on_respan_wait_time_timeout"]
+[connection signal="body_entered" from="player_in_view" to="." method="_on_player_in_view_body_entered"]
+[connection signal="body_exited" from="player_in_view" to="." method="_on_player_in_view_body_exited"]
