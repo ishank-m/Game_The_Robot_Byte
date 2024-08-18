@@ -17,7 +17,11 @@ var last_hit = null
 func _physics_process(delta):
 	if health <= 0 and not died:
 		if last_hit == "player":
+			last_hit = null
 			GameState.points += 10
+		elif last_hit == "king":
+			last_hit = null
+			GameState.no_of_enemies -= 1
 		died = true
 		anim.play("die")
 	if player and is_instance_valid(player) and not died:
@@ -87,6 +91,7 @@ func _on_enemy_sprite_animation_finished():
 			GameState.player_health -= 10
 	elif anim.animation == "die":
 		emit_signal("enemy_freed")
+		GameState.spawned_enemies -= 1
 		queue_free()
 		
 func enemy_anim():
@@ -121,6 +126,8 @@ func _on_attack_timer_timeout():
 
 func _on_attack_area_area_entered(area):
 	if area.is_in_group("player_attack"):
+		last_hit = "player"
 		health -= 10
 	if area.is_in_group("king_attack"):
+		last_hit = "king"
 		health -= 20

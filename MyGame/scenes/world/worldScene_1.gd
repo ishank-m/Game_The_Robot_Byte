@@ -26,6 +26,9 @@ func _ready():
 		$Player.set_position($init.position)
 	elif GameState.scene == "worldscene2":
 		$Player.set_position($right.position)
+	if GameState.player_pos:
+		player.position = GameState.player_pos
+		GameState.player_pos = null
 	GameState.scene = "worldscene1"
 
 func _on_area_2d_body_entered(body):
@@ -71,7 +74,8 @@ func _on_dialogic_signal(argument):
 		GameState.game_state = "play"
 
 func _on_dialogue_trigger_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and not GameState.dialogues_count['worldscene1']:
+		GameState.dialogues_count['worldscene1'] = 1
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		Dialogic.start("worldScene_1")

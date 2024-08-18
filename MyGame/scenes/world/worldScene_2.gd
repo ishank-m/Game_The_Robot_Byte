@@ -1,14 +1,28 @@
 extends Node2D
 @onready var transition = $TransitionScene
 @onready var player = $Player
+@onready var player_anim = $Player/Player_sprite
+
 var to_where: String
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	$dead.visible = false
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	transition.connect("fade_out_done", _on_fade_out_done)
-	#$Player.set_position($village.position)
+	if GameState.scene == "worldscene1":
+		player.position = $init.position
+		player_anim.flip_h = false
+		player_anim.play("right")
+		player_anim.stop()
+	elif GameState.scene == "worldscene3":
+		player.position = $village.position
+		player_anim.play("down")
+		player_anim.stop()
+	if GameState.player_pos:
+		player.position = GameState.player_pos
+		GameState.player_pos = null
+	GameState.scene = "worldscene2"
 
 func _physics_process(_delta):
 	if not GameState.player_died:
