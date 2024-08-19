@@ -1,0 +1,16 @@
+join Kevin 0
+Kevin: This can't be real...Everything's still here,\
+just like before...
+Kevin: This room looks exactly how Mom left it. \
+But, we moved all of this out of here?
+Kevin: How come everything be where it used to\
+be?...
+Kevin: And more importantly, why am I at this\
+house in the first place...
+Kevin: Even though we left this place.
+[signal arg="call"]
+Kevin: ...
+[wait time="2.0" hide_text="false"]
+Kevin: Mom? Is that you? Where are you?
+[signal arg="done1"]
+[end_timeline]

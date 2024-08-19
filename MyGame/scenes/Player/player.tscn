@@ -407,7 +407,7 @@ script = ExtResource("1_x8gbn")
 [node name="Player_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.075, 1.075)
 sprite_frames = SubResource("SpriteFrames_ir1r4")
-animation = &"down"
+animation = &"up"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
