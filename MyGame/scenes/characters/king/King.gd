@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 30
-@onready var anim = $Damaged
+@onready var anim  = $Damaged
 @onready var player = get_parent().get_node("Player")
 
 var attacking
@@ -21,6 +21,11 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
+	if GameState.kingstate == "Damaged":
+		$Normal.visible = false
+	else:
+		anim = $Normal
+		$Damaged.visible = false
 	if not (animation_playing or GameState.player_died):
 		if attacking:
 			animation_playing = true
