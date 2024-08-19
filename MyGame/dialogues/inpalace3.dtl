@@ -2,7 +2,7 @@ join Kevin 0
 Kevin: Wait, this isn't even a door! Are you \
 sure it's safe?
 leave Kevin [animation="Instant In Or Out"]
-join King (king_normal) 0
+join King (king_normal) 0 [animation="Instant In Or Out"]
 King: Just walk through already!
 leave King [animation="Instant In Or Out"]
 join Kevin 0 [animation="Instant In Or Out"]
