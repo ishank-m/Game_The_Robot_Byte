@@ -7,10 +7,11 @@ func _ready():
 	GameState.game_state = "play"
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	transition.connect("fade_in_done", _on_fade_in_done)
+	transition.connect("fade_out_done", _on_fade_out_done)
 	if GameState.player_pos:
 		player.position = GameState.player_pos
 		GameState.player_pos = null
-	elif GameState.scene == "window": 
+	if GameState.scene == "window": 
 		GameState.game_state = "pause"
 		$appearing.set_position(Vector2(159,125))
 		player.hide()
@@ -36,6 +37,8 @@ func _on_clouds_animation_finished():
 	$appearing.visible = true
 	$appearing.play("in")
 
+func _on_fade_out_done():
+	GameState.game_state = "play"
 
 
 func _on_appearing_animation_finished():
