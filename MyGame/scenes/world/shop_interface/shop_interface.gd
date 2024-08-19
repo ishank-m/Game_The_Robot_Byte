@@ -2,11 +2,11 @@ extends CanvasLayer
 #@onready var confirm_action = $CanvasLayer/confirm_action
 var health_count = 0
 var invin_count = 0
-var sword: String
+var sword
 
 func _ready():
 	GameState.game_state = "pause"
-	set_process_input(false)
+	set_process_input(true)
 	if not GameState.dialogues_count['shop']:
 		GameState.dialogues_count['shop'] = 1
 		Dialogic.start("shop1")
@@ -14,6 +14,9 @@ func _ready():
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	show_swords()
 func _on_close_pressed():
+	health_count = 0
+	invin_count = 0
+	sword = null
 	$ShopInterfaceBg.visible = false
 	GameState.game_state = "play"
 func _process(_delta):

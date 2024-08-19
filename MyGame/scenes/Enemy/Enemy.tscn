@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://7h55rutfwhrf"]
+[gd_scene load_steps=49 format=3 uid="uid://7h55rutfwhrf"]
 
 [ext_resource type="Script" path="res://scenes/Enemy/Enemy.gd" id="1_17d06"]
 [ext_resource type="Texture2D" uid="uid://xydyogi8r2dj" path="res://assets/sprites/Characters/Robot/movement/enemy.png" id="2_1grgf"]
@@ -336,10 +336,13 @@ animations = [{
 size = Vector2(11, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wqdm3"]
-radius = 42.0
+radius = 113.071
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkxvo"]
 size = Vector2(38, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rk4n3"]
+size = Vector2(16, 26)
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 1
@@ -368,11 +371,18 @@ visible = false
 shape = SubResource("RectangleShape2D_gkxvo")
 
 [node name="attack_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_rk4n3")
 
 [connection signal="animation_finished" from="Enemy_sprite" to="." method="_on_enemy_sprite_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
-[connection signal="area_entered" from="attack_area" to="." method="_on_attack_area_area_entered"]
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

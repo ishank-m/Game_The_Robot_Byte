@@ -65,14 +65,15 @@ func _physics_process(delta):
 	elif not (animation_playing and player and player_in_hitbox) and not died:
 		anim.stop()
 
-
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
 		player = body
+		GameState.combat = true
 
 func _on_detection_area_body_exited(body):
 	if body.name == "Player":
 		player = null
+		GameState.combat = false
 
 func _on_attack_area_body_entered(body):
 	if body.name == "Player":
@@ -93,7 +94,7 @@ func _on_enemy_sprite_animation_finished():
 		emit_signal("enemy_freed")
 		GameState.spawned_enemies -= 1
 		queue_free()
-		
+
 func enemy_anim():
 	var x_diff = player.position.x - position.x
 	var y_diff = player.position.y - position.y
@@ -119,12 +120,10 @@ func enemy_anim():
 		elif y_diff < -5:
 			anim.play("up")
 
-
 func _on_attack_timer_timeout():
 	attack_cooldown = true
 
-
-func _on_attack_area_area_entered(area):
+func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_attack"):
 		last_hit = "player"
 		health -= 10

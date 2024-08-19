@@ -7,6 +7,7 @@ var current_scene
 var game_state = 'main_menu'
 var scene = "init"
 var current_save
+var combat
 var points = 0
 var no_of_enemies = 0
 var spawned_enemies = 0
