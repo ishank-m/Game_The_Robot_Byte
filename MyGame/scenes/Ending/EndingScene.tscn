@@ -1,3 +1,221 @@
-[gd_scene format=3 uid="uid://cf6gcbuj05ewe"]
+[gd_scene load_steps=19 format=3 uid="uid://4js3ixkaohyj"]
+
+[ext_resource type="Texture2D" uid="uid://cptxl7dftcggn" path="res://assets/sprites/Old_house/old_house.png" id="1_exven"]
+[ext_resource type="Script" path="res://scenes/Ending/EndingScene.gd" id="1_o0rxg"]
+[ext_resource type="Texture2D" uid="uid://jdukvb6m0q5s" path="res://assets/sprites/Characters/MC/appearing/appearing.png" id="2_ytoo6"]
+[ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_pnfkq"]
+[ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_xisb5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0dndj"]
+texture = ExtResource("1_exven")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/texture_origin = Vector2i(0, -8)
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, 20)
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, -8)
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/texture_origin = Vector2i(0, -4)
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, 16)
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, 4)
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, 4)
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, 4)
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+4:0/size_in_atlas = Vector2i(1, 2)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+0:2/size_in_atlas = Vector2i(2, 2)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_o1pvl"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0dndj")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc18r"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqiaf"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op3w1"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atgw1"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64cxs"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqc08"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tepwl"]
+atlas = ExtResource("2_ytoo6")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42q4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc18r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqiaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op3w1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atgw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64cxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqc08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tepwl")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5imn"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gjmq"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgrc0"]
+size = Vector2(31.5307, 6.36194)
 
 [node name="EndingScene" type="Node2D"]
+script = ExtResource("1_o0rxg")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_o1pvl")
+format = 2
+layer_0/name = "ground"
+layer_0/tile_data = PackedInt32Array(65541, 327680, 1, 5, 327680, 0, 6, 196608, 2, 4, 196608, 2, 3, 131072, 2, 7, 131072, 2, 8, 196608, 2, 2, 196608, 2, 65544, 65536, 0, 65538, 196608, 268435457, 65539, 65536, 1, 65540, 65536, 1, 65542, 65536, 1, 65543, 65536, 1, 131077, 65536, 1, 131076, 0, 1, 131075, 0, 1, 131074, 65536, 268435456, 196613, 0, 1, 131078, 0, 1, 131079, 0, 1, 131080, 65536, 0, 196614, 0, 1, 196612, 0, 1, 262148, 0, 0, 262150, 0, 0, 262149, 0, 0, 196615, 0, 1, 262151, 0, 0, 196616, 65536, 0, 262152, 131072, 1, 196611, 0, 1, 196610, 65536, 268435456, 262146, 131072, 268435457, 262147, 0, 0, 131081, 262144, 4, 196617, 262144, 4, 262153, 262144, 4, 327688, 262144, 4, 327687, 262144, 4, 327686, 262144, 4, 327684, 262144, 4, 327683, 262144, 4, 327682, 262144, 4, 327689, 262144, 4, 262145, 262144, 4, 196609, 262144, 4, 131073, 262144, 4, -65534, 262144, 4, -65533, 262144, 4, -65532, 262144, 4, -65531, 262144, 4, -65530, 262144, 4, -65529, 262144, 4, -65528, 262144, 4, -65527, 262144, 4, -65535, 262144, 4, 327681, 262144, 4, 327685, 262144, 4)
+layer_1/name = "stairs"
+layer_1/tile_data = PackedInt32Array(65544, 262144, 0, 65538, 262144, 268435456)
+layer_2/name = "carpets"
+layer_2/tile_data = PackedInt32Array(65539, 262144, 2, 65543, 196608, 3, 196613, 0, 2, 262149, 262144, 3)
+layer_3/name = "items"
+layer_3/tile_data = PackedInt32Array(196613, 131072, 4, 196614, 196608, 4, 196612, 65536, 4, 131080, 0, 4, 131074, 0, 268435460, 196610, 131072, 3, 196616, 131072, 3, 65542, 131072, 3, 65540, 131072, 3)
+
+[node name="player incoming" type="AnimatedSprite2D" parent="."]
+position = Vector2(175, 125)
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_42q4y")
+animation = &"appear"
+frame = 6
+frame_progress = 1.0
+
+[node name="Player" parent="." instance=ExtResource("3_pnfkq")]
+position = Vector2(177, 137)
+scale = Vector2(0.8, 0.8)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.45, 1.45)
+limit_left = 64
+limit_top = 0
+limit_right = 288
+limit_bottom = 167
+
+[node name="TransitionScene" parent="." instance=ExtResource("5_xisb5")]
+visible = false
+
+[node name="stairs1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs1"]
+position = Vector2(304, 32)
+shape = SubResource("RectangleShape2D_q5imn")
+
+[node name="stairs2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs2"]
+position = Vector2(48, 32)
+shape = SubResource("RectangleShape2D_8gjmq")
+
+[node name="out" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="out"]
+position = Vector2(176.149, 160.919)
+shape = SubResource("RectangleShape2D_xgrc0")
+
+[connection signal="animation_finished" from="player incoming" to="." method="_on_player_incoming_animation_finished"]
+[connection signal="body_entered" from="stairs1" to="." method="_on_stairs_1_body_entered"]
+[connection signal="body_entered" from="stairs2" to="." method="_on_stairs_2_body_entered"]
+[connection signal="body_entered" from="out" to="." method="_on_out_body_entered"]
