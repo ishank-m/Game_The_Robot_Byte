@@ -20,9 +20,9 @@ func _ready():
 		$CanvasLayer/clouds.play("hi")
 	elif GameState.scene == "worldscene1":
 		transition.fade_out()
+		player.set_position($up.position)
 		player_anim.play("down")
 		player_anim.stop()
-		player.set_position($up.position)
 		$CanvasLayer/clouds.hide()
 	GameState.scene = "worldinit"
 
@@ -32,6 +32,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/world/worldScene_1.tscn")
+	
 func _on_clouds_animation_finished():
 	$CanvasLayer.visible = false
 	$appearing.visible = true
@@ -61,3 +62,6 @@ func _on_dialogue_cooldown_timeout():
 	$Player/Player_sprite.stop()
 	GameState.game_state = "pause"
 	Dialogic.start("world_init2")
+
+func on_fade_out_done():
+	GameState.game_state = "play"
