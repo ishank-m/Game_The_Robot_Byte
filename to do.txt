@@ -1,0 +1,2 @@
+Throne room stairs logic
+worldscene1 player and king dialogue trigger logic

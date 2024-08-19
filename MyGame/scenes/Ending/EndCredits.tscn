@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3lodqhedoqps"]
+[gd_scene load_steps=6 format=3 uid="uid://b3lodqhedoqps"]
 
 [ext_resource type="Script" path="res://scenes/Ending/EndCredits.gd" id="1_ke8ve"]
 [ext_resource type="FontFile" uid="uid://rvc8fsmsm28m" path="res://font.ttf" id="1_piggo"]
 [ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="2_io3s1"]
+[ext_resource type="LabelSettings" uid="uid://cblfyy6ss6oeb" path="res://scripts/new_label_settings.tres" id="4_u5p53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wbyml"]
 font = ExtResource("1_piggo")
@@ -16,7 +17,7 @@ script = ExtResource("1_ke8ve")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
-offset_bottom = 918.0
+offset_bottom = 1299.0
 color = Color(0, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
@@ -57,7 +58,7 @@ Thanks for playing!
 
 
 "
-label_settings = ExtResource("2_io3s1")
+label_settings = ExtResource("4_u5p53")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -101,7 +102,7 @@ Beta Testing:
 Special Thanks to:
 City Montessori School
 (for providing such an opportunity)"
-label_settings = ExtResource("2_io3s1")
+label_settings = ExtResource("4_u5p53")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -135,7 +136,7 @@ Voice Recorder
 jsfxr.com
 audiomass.co
 (for editing)"
-label_settings = ExtResource("2_io3s1")
+label_settings = ExtResource("4_u5p53")
 horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
