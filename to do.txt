@@ -1,4 +1,6 @@
 - ThroneRoom stairs logic and sound effects.
 - EndingScene stairs logic and sound effects.
 - (Needs improvement) worldscene1 player and king dialogue trigger logic.
-
+- boss destroyed animation
+- MC boss damage animation
+- door in village animation
