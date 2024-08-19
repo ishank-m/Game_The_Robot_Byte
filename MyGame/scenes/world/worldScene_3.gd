@@ -2,6 +2,7 @@ extends Node2D
 @onready var transition = $TransitionScene
 
 func _ready():
+	MusicPlayer.stop()
 	$ShopInterface.visible = false
 	print($ShopInterface.visible)
 	transition.fade_out()
