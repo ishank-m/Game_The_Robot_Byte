@@ -39,8 +39,8 @@ func _on_dialogic_signal(argument: String):
 	if argument == "end" or argument == "done":
 		GameState.game_state = "play"
 	elif argument == "done3":
-		$Player/Player.play("up")
-		$Player/Player.stop()
+		$Player/Player_sprite.play("up")
+		$Player/Player_sprite.stop()
 		GameState.game_state = "play"
 
 func _on_dialogue_body_entered(body):

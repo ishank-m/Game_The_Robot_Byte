@@ -6,6 +6,7 @@ extends Node2D
 var to_where: String
 
 func _ready():
+	MusicPlayer.play_music_fight()
 	$dead.visible = false
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
