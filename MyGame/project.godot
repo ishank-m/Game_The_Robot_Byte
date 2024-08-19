@@ -21,8 +21,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameState="*res://scenes/game_state.gd"
 MusicPlayer="*res://scenes/autoloads/MusicPlayer.tscn"
+GameState="*res://scripts/game_state.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
