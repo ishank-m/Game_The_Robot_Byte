@@ -407,7 +407,7 @@ script = ExtResource("1_x8gbn")
 [node name="Player_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.075, 1.075)
 sprite_frames = SubResource("SpriteFrames_ir1r4")
-animation = &"attack_down"
+animation = &"down"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -448,4 +448,9 @@ shape = SubResource("RectangleShape2D_16455")
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_0auga")
 
+[node name="healing_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="animation_finished" from="Player_sprite" to="." method="_on_player_sprite_animation_finished"]
+[connection signal="timeout" from="healing_timer" to="." method="_on_healing_timer_timeout"]

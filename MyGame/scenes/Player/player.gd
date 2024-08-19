@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 var attack
 var attack_diretion
+var healing = false
 @export var speed: int = 50
 @onready var anim = $Player_sprite
 
@@ -64,6 +65,10 @@ func _physics_process(_delta):
 			velocity = direction*speed
 			update_anim(direction)
 			move_and_slide()
+		if not healing:
+			if (GameState.combat and GameState.player_health < 120):
+				healing = true
+				$healing_timer.start()
 
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:
@@ -101,3 +106,8 @@ func _on_player_sprite_animation_finished():
 	if attack and ($Player_sprite.animation == "attack_right" or $Player_sprite.animation == "attack_up" or $Player_sprite.animation == "attack_down"):
 		attack = false
 
+
+
+func _on_healing_timer_timeout():
+	GameState.player_health += 10
+	healing = false

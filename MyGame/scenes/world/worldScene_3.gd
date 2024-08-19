@@ -3,6 +3,7 @@ extends Node2D
 
 func _ready():
 	$ShopInterface.visible = false
+	print($ShopInterface.visible)
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	transition.connect("fade_out_done", _on_fade_out_done)
@@ -26,3 +27,4 @@ func _on_shop_body_entered(body):
 		GameState.game_state = "pause"
 		$Player/Player_sprite.stop()
 		$ShopInterface.visible = true
+		print($ShopInterface.visible)
