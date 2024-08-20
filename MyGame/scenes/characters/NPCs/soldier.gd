@@ -14,7 +14,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func makepath():
-	nav_agent.target_position = Vector2(destination.position.y,0)
+	nav_agent.target_position = Vector2(destination.position.x, position.y)
 
 func _on_path_timer_timeout():
 	makepath()
