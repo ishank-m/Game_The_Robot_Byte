@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal enemy_freed
 
-var health = 40
+var health = 36
 @export var speed = 40
 @onready var anim = $Enemy_sprite
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
