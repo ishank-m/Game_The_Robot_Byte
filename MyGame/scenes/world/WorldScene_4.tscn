@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bprjx7w8377uh"]
+[gd_scene load_steps=19 format=3 uid="uid://bprjx7w8377uh"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_06dnp"]
 [ext_resource type="Script" path="res://scenes/world/WorldScene_4.gd" id="1_mdi3m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_5ed1o"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="4_1x6kw"]
 [ext_resource type="PackedScene" uid="uid://dispmmkisy7be" path="res://scenes/characters/NPCs/soldier.tscn" id="7_ctutm"]
+[ext_resource type="PackedScene" uid="uid://c1n4kfr86y6ah" path="res://scenes/Enemy/world_4_enemy.tscn" id="8_uavnj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mqaab"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -145,6 +146,9 @@ sources/4 = SubResource("TileSetAtlasSource_2noo5")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plp8f"]
 size = Vector2(36, 224)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4dkk"]
+size = Vector2(20, 224)
+
 [node name="WorldScene4" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_mdi3m")
@@ -218,3 +222,36 @@ position = Vector2(936, 72)
 
 [node name="soldier11" parent="." instance=ExtResource("7_ctutm")]
 position = Vector2(936, 48)
+
+[node name="world_4_enemy" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(104, 48)
+
+[node name="world_4_enemy2" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(104, 64)
+
+[node name="world_4_enemy3" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(104, 80)
+
+[node name="world_4_enemy4" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(136, 48)
+
+[node name="world_4_enemy5" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(136, 64)
+
+[node name="world_4_enemy6" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(136, 80)
+
+[node name="world_4_enemy7" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(168, 48)
+
+[node name="world_4_enemy8" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(168, 64)
+
+[node name="world_4_enemy9" parent="." instance=ExtResource("8_uavnj")]
+position = Vector2(168, 80)
+
+[node name="destination_robot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destination_robot"]
+position = Vector2(632, 72)
+shape = SubResource("RectangleShape2D_b4dkk")

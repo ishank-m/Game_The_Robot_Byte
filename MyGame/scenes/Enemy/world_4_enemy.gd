@@ -15,7 +15,7 @@ func _ready():
 
 func _physics_process(_delta):
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
-	if attack and not animation_playing:
+	if attack and (not animation_playing):
 		animation_playing = true
 		velocity = Vector2.ZERO
 		anim.play("attack_right")
