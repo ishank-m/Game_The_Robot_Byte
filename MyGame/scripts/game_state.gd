@@ -1,5 +1,6 @@
 extends Node
 
+var kingstate = "damaged"
 var player_pos
 var player_health = 120
 var player_died = false

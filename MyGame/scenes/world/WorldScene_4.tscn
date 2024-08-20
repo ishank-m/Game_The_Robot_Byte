@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bprjx7w8377uh"]
+[gd_scene load_steps=17 format=3 uid="uid://bprjx7w8377uh"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_06dnp"]
 [ext_resource type="Script" path="res://scenes/world/WorldScene_4.gd" id="1_mdi3m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_wlaf2"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_5ed1o"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="4_1x6kw"]
+[ext_resource type="PackedScene" uid="uid://dispmmkisy7be" path="res://scenes/characters/NPCs/soldier.tscn" id="7_ctutm"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mqaab"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -85,7 +86,7 @@ texture = ExtResource("4_1x6kw")
 12:2/0/y_sort_origin = 14
 12:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:2/0/physics_layer_0/angular_velocity = 0.0
-12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.5, 31, 5.5, 31.5, 2, 26, -3.5, 26)
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 32, 6.4, 32, 6.4, 28.8, -8, 28.8)
 10:6/size_in_atlas = Vector2i(2, 2)
 10:6/0 = 0
 10:6/0/y_sort_origin = -8
@@ -131,7 +132,7 @@ texture = ExtResource("2_0kki4")
 0:0/0/y_sort_origin = 14
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.5, 32, 6.5, 32, 2.5, 27, -4.5, 27.5)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 32, 6.4, 32, 6.4, 28.8, -8, 28.8)
 
 [sub_resource type="TileSet" id="TileSet_bykht"]
 physics_layer_0/collision_layer = 1
@@ -140,6 +141,9 @@ sources/0 = SubResource("TileSetAtlasSource_sxjtb")
 sources/1 = SubResource("TileSetAtlasSource_m5r7p")
 sources/3 = SubResource("TileSetAtlasSource_4h5f6")
 sources/4 = SubResource("TileSetAtlasSource_2noo5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plp8f"]
+size = Vector2(36, 224)
 
 [node name="WorldScene4" type="Node2D"]
 y_sort_enabled = true
@@ -174,3 +178,13 @@ layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(393263, 524288, 4, 327708, 524288, 4, 458762, 524288, 4, -65530, 524288, 4, 58, 524288, 4, 458816, 524288, 4)
 layer_4/name = "extras"
 layer_4/tile_data = PackedInt32Array(393258, 262145, 6, 131123, 262145, 6, 458806, 262145, 6, 131133, 262145, 6, 327739, 262145, 6, 65600, 262145, 6, -131008, 262145, 6, 131141, 262145, 6, -131001, 262145, 6, 327752, 262145, 6, 589888, 262145, 6, 65592, 262145, 6, -131025, 262145, 6, 589871, 262145, 6, 655413, 262145, 6, 65581, 262145, 6, 131116, 393217, 6, 49, 393217, 6, 393266, 393217, 6, 327735, 393217, 6, 131131, 393217, 6, -65474, 393217, 6, -65467, 393217, 6, 393285, 393217, 6, 327743, 393217, 6, 655419, 393217, 6, 655403, 393217, 6, 393254, 393217, 6, 393250, 393217, 6, 655392, 393217, 6, 655395, 393217, 6, 327711, 393217, 6, 589849, 393217, 6, 327703, 393217, 6, 327696, 393217, 6, 589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 327686, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, -131055, 393217, 6, 131090, 393217, 6, 65560, 393217, 6, -131044, 393217, 6, 131102, 393217, 6, -196577, 393217, 6, 131107, 393217, 6, 131108, 393217, 6, -65497, 393217, 6, 131112, 393217, 6, 327710, 262145, 6, 65565, 262145, 6, -65512, 262145, 6, 131092, 262145, 6, 17, 262145, 6, -196594, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, -131072, 262145, 6, 327683, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 655380, 262145, 6, 393235, 262145, 6, 655383, 262145, 6, 458785, 262145, 6, 524328, 262145, 6, 393264, 262145, 6, 655406, 1, 6, 327723, 1, 6, 65574, 1, 6, 196649, 1, 6, -65506, 1, 6, 131098, 1, 6, 327700, 1, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6, -65490, 1, 6, -131016, 1, 6, 131136, 1, 6, -131003, 1, 6, 655430, 1, 6, 327746, 1, 6, 458811, 1, 6, 393268, 1, 6)
+
+[node name="destination" type="Area2D" parent="."]
+position = Vector2(41, 71)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destination"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_plp8f")
+
+[node name="soldier" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(1030, 161)

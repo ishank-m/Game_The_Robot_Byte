@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dispmmkisy7be"]
 
 [ext_resource type="Script" path="res://scenes/characters/NPCs/soldier.gd" id="1_hkf4h"]
-[ext_resource type="Texture2D" uid="uid://dcpgnxsajg1vv" path="res://assets/sprites/Characters/NPCs/soldier.png" id="2_nivrq"]
+[ext_resource type="Texture2D" uid="uid://2ox68k2ikamj" path="res://assets/sprites/Characters/NPCs/soldier.png" id="2_nivrq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qx3uh"]
 atlas = ExtResource("2_nivrq")
@@ -100,8 +100,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwqof"]
-size = Vector2(9, 7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ph4t3"]
+radius = 3.80789
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sygpu"]
 size = Vector2(16, 31.5)
@@ -118,7 +118,7 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 11.5)
-shape = SubResource("RectangleShape2D_bwqof")
+shape = SubResource("CircleShape2D_ph4t3")
 
 [node name="attack_area" type="Area2D" parent="."]
 
