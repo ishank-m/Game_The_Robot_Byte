@@ -6,12 +6,15 @@ extends CanvasLayer
 @onready var kcritical_health = $critical_health_king
 var khealth = 120
 func _ready():
+	$BossHealth.visible = false
 	critical_health.visible = false
 	bar.visible = true
 	kcritical_health.visible = false
 	kbar.visible = true
 
 func _process(_delta):
+	$Health_potion.text = "x"+str(GameState.items["health_potion"])
+	$Invin_potion.text = "x"+str(GameState.items["invin_potion"])
 	var health = GameState.player_health
 	if health > 110:
 		bar.frame = 0
@@ -66,3 +69,5 @@ func _process(_delta):
 			kcritical_health.visible = true
 			kcritical_health.play("default")
 
+func show_boss_health():
+	$BossHealth.visible = true

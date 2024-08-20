@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bery0keh5fn4a"]
+[gd_scene load_steps=13 format=3 uid="uid://bery0keh5fn4a"]
 
 [ext_resource type="Script" path="res://scenes/Player/health_bar.gd" id="1_qynmj"]
 [ext_resource type="Texture2D" uid="uid://gp38ag5nw8xi" path="res://assets/sprites/Characters/MC/health.png" id="2_88xbo"]
 [ext_resource type="Texture2D" uid="uid://qwpfs0uugq15" path="res://assets/sprites/Characters/MC/critical health.png" id="3_14d35"]
 [ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="4_rqn7l"]
+[ext_resource type="Texture2D" uid="uid://buswwybmwccse" path="res://assets/sprites/Characters/MC/health_pot.png" id="5_sow20"]
+[ext_resource type="Texture2D" uid="uid://yyyah4o3fsqj" path="res://assets/sprites/Characters/MC/invin_pot.png" id="6_xcvrw"]
+[ext_resource type="Texture2D" uid="uid://c1cufl2soxaw0" path="res://assets/sprites/Characters/Final Boss/boss_health.png" id="7_7pox1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvqn5"]
 atlas = ExtResource("3_14d35")
@@ -82,3 +85,33 @@ offset_right = 318.0
 offset_bottom = 16.0
 text = "King Health"
 label_settings = ExtResource("4_rqn7l")
+
+[node name="HealthPot" type="Sprite2D" parent="."]
+position = Vector2(304, 40)
+texture = ExtResource("5_sow20")
+
+[node name="InvinPot" type="Sprite2D" parent="."]
+position = Vector2(304, 64)
+texture = ExtResource("6_xcvrw")
+
+[node name="Health_potion" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 38.0
+offset_right = 296.0
+offset_bottom = 46.0
+label_settings = ExtResource("4_rqn7l")
+horizontal_alignment = 2
+
+[node name="Invin_potion" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 61.0
+offset_right = 296.0
+offset_bottom = 69.0
+label_settings = ExtResource("4_rqn7l")
+horizontal_alignment = 2
+
+[node name="BossHealth" type="Sprite2D" parent="."]
+position = Vector2(160, 156)
+scale = Vector2(4.25, 1)
+texture = ExtResource("7_7pox1")
+hframes = 9

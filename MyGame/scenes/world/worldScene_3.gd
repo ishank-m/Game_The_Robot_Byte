@@ -5,6 +5,7 @@ extends Node2D
 var anim_playing =false
 var door_open = false
 var speed: int = 45
+var speedKing: int = 30
 var dialog = false
 var is_dialog_playing = false
 
@@ -18,7 +19,7 @@ func _ready():
 	transition.connect("fade_out_done", _on_fade_out_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 func _process(delta):
-	path_1.progress += speed*delta
+	path_1.progress += speedKing*delta
 	MCPath.progress += speed*delta
 	if not anim_playing and path_1.progress_ratio < 0.45:
 		$Path_1/PathFollow2D/King.play("up")
@@ -37,14 +38,14 @@ func _process(delta):
 		$PathMC/PathFollow2D/MC.play("down")
 		$PathMC/PathFollow2D/MC.stop()
 	if path_1.progress_ratio > 0.45 and path_1.progress_ratio < 0.46 and not is_dialog_playing:
-		speed = 0
+		speedKing = 0
 		$Path_1/PathFollow2D/King.stop()
 		Dialogic.start("1worlscene3")
 		is_dialog_playing = true
 
 func _on_dialogic_signal(argument):
 	if argument == "done1":
-		speed = 50
+		speedKing = 30
 		anim_playing = false
 func _on_fade_out_done():
 	GameState.game_state = "pause"
