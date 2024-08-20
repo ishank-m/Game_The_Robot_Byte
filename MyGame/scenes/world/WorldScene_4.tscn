@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bprjx7w8377uh"]
+[gd_scene load_steps=18 format=3 uid="uid://bprjx7w8377uh"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_06dnp"]
 [ext_resource type="Script" path="res://scenes/world/WorldScene_4.gd" id="1_mdi3m"]
@@ -146,17 +146,15 @@ sources/4 = SubResource("TileSetAtlasSource_2noo5")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plp8f"]
 size = Vector2(36, 224)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4dkk"]
-size = Vector2(20, 224)
-
 [node name="WorldScene4" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_mdi3m")
 
 [node name="Player" parent="." instance=ExtResource("2_wlaf2")]
-position = Vector2(960.618, 114.392)
+position = Vector2(107, 110)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
 limit_left = -8
 limit_top = -40
 limit_right = 1176
@@ -251,7 +249,8 @@ position = Vector2(168, 64)
 position = Vector2(168, 80)
 
 [node name="destination_robot" type="Area2D" parent="."]
+position = Vector2(671, 61)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="destination_robot"]
-position = Vector2(632, 72)
-shape = SubResource("RectangleShape2D_b4dkk")
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_plp8f")
