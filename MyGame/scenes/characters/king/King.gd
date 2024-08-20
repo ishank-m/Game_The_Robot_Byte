@@ -21,11 +21,14 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
-	if GameState.kingstate == "Damaged":
+	if GameState.kingstate == "damaged":
+		anim = $Damaged
 		$Normal.visible = false
+		$Damaged.visible = true
 	else:
 		anim = $Normal
 		$Damaged.visible = false
+		$Normal.visible = true
 	if not (animation_playing or GameState.player_died):
 		if attacking:
 			animation_playing = true

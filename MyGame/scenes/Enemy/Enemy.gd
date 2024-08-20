@@ -5,9 +5,9 @@ signal enemy_freed
 var health = 40
 @export var speed = 40
 @onready var anim = $Enemy_sprite
+@onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
 var player
-var direction
 var player_in_hitbox
 var died = false
 var attack_cooldown = true
@@ -27,13 +27,14 @@ func _physics_process(delta):
 	if player and is_instance_valid(player) and not died:
 		var min_distance = 12
 		var distance_to_player = position.distance_to(player.position)
-		direction = (player.position - position).normalized()
+		var dir = to_local(nav_agent.get_next_path_position()).normalized()
+		velocity = dir * speed
 		if distance_to_player > min_distance:
-			velocity = direction * speed
+			velocity = dir * speed
 		else:
 			velocity = Vector2.ZERO
 		enemy_anim()
-		move_and_collide(velocity*delta)
+		move_and_slide()
 	elif player_in_hitbox and not died:
 		if not animation_playing and attack_cooldown:
 			$attack_timer.start()
@@ -130,3 +131,10 @@ func _on_hurtbox_area_entered(area):
 	if area.is_in_group("king_attack"):
 		last_hit = "king"
 		health -= 20
+
+func makepath():
+	if player:
+		nav_agent.target_position = get_parent().get_node("Player").position
+
+func _on_timer_timeout():
+	makepath()
