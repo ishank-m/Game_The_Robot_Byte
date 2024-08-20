@@ -19,28 +19,34 @@ func _ready():
 
 func _physics_process(_delta):
 	if GameState.game_state == "play":
-		if Input.is_action_just_pressed("attack_left"):
+		if Input.is_action_just_pressed("health") and not attack:
+			attack = true
+			anim.play("health_potion")
+		elif Input.is_action_just_pressed("invin") and not attack:
+			attack = true
+			anim.play("invin_potion")
+		elif Input.is_action_just_pressed("attack_left") and not attack:
 			attack = true
 			anim.flip_h = true
 			anim.play(sword+"_attack_right")
 			$attackbox_left/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_left/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_down"):
+		elif Input.is_action_just_pressed("attack_down") and not attack:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_down")
 			$attackbox_bottom/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_bottom/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_right"):
+		elif Input.is_action_just_pressed("attack_right") and not attack:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_right")
 			$attackbox_right/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_right/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_up"):
+		elif Input.is_action_just_pressed("attack_up") and not attack:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_up")
@@ -104,10 +110,14 @@ func update_anim(direction):
 
 
 func _on_player_sprite_animation_finished():
-	if attack and ($Player_sprite.animation == "attack_right" or $Player_sprite.animation == "attack_up" or $Player_sprite.animation == "attack_down"):
+	if attack:
+		if $Player_sprite.animation in ["attack_right","attack_up", "attack_down"]:
+			pass
+		if anim.animation == "health":
+			GameState.player_health = 120
+		if anim.animation == "invin_postion":
+			pass
 		attack = false
-
-
 
 func _on_healing_timer_timeout():
 	GameState.player_health += 10
