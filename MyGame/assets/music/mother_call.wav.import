@@ -12,13 +12,13 @@ dest_files=["res://.godot/imported/mother_call.wav-9dc70ee411455f313f4f190f9b891
 
 [params]
 
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
+force/8_bit=true
+force/mono=true
+force/max_rate=true
+force/max_rate_hz=22000.0
 edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
+edit/normalize=true
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

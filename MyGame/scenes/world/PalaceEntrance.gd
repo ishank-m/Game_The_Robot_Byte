@@ -10,6 +10,7 @@ var anim_playing = false
 var scene_change = false
 
 func _ready():
+	$walk.play()
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	$castle.frame = 0
@@ -22,6 +23,7 @@ func _process(delta):
 		$MCPath/PathFollow2D/MC.play("up")
 		anim_playing = true
 	if kingPath.progress_ratio > 0.4 and not door_open:
+		$gates.play()
 		$castle.play("gates_open")
 		door_open = true
 	if kingPath.progress_ratio == 1 and not scene_change:
