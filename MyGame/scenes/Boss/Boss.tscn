@@ -231,6 +231,7 @@ size = Vector2(62, 27)
 [node name="Boss_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u7wl4")
 animation = &"attack"
+offset = Vector2(80, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
