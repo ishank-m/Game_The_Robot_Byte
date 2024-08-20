@@ -1,12 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfv7m6ke8nb2a"]
+[gd_scene load_steps=36 format=3 uid="uid://cfv7m6ke8nb2a"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_27hir"]
 [ext_resource type="Script" path="res://scenes/world/PalaceEntrance.gd" id="1_tccje"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="2_e6vvn"]
-[ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_kjowy"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_4l0uv"]
 [ext_resource type="Texture2D" uid="uid://b7t8xabija863" path="res://assets/sprites/world/palace_entrance.png" id="3_bqvjn"]
 [ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="4_5grc7"]
+[ext_resource type="Texture2D" uid="uid://ld057cvks115" path="res://assets/sprites/Characters/King/normal/king_normal.png" id="7_2xsic"]
+[ext_resource type="Texture2D" uid="uid://ydhvn2c0apbq" path="res://assets/sprites/Characters/MC/MC.png" id="8_3q4x4"]
+[ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="9_ofwwb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
 texture = ExtResource("1_27hir")
@@ -113,23 +115,121 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lrkf"]
-size = Vector2(93.4436, 5.42975)
+[sub_resource type="Curve2D" id="Curve2D_y2k2f"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 160, 264, 0, 0, 0, 0, 160, -24)
+}
+point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lr5p"]
-size = Vector2(64, 13)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x4ds"]
+atlas = ExtResource("7_2xsic")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opbvx"]
+atlas = ExtResource("7_2xsic")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwwgm"]
+atlas = ExtResource("7_2xsic")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x10pi"]
+atlas = ExtResource("7_2xsic")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yf37"]
+atlas = ExtResource("7_2xsic")
+region = Rect2(256, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mko4k"]
+atlas = ExtResource("7_2xsic")
+region = Rect2(320, 32, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krv0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x4ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opbvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwwgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x10pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yf37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mko4k")
+}],
+"loop": true,
+"name": &"up",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve2D" id="Curve2D_06u0j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 176, 288, 0, 0, 0, 0, 176, 0)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ricar"]
+atlas = ExtResource("8_3q4x4")
+region = Rect2(0, 128, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do3a6"]
+atlas = ExtResource("8_3q4x4")
+region = Rect2(64, 128, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibe1o"]
+atlas = ExtResource("8_3q4x4")
+region = Rect2(128, 128, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lun4s"]
+atlas = ExtResource("8_3q4x4")
+region = Rect2(192, 128, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnud4"]
+atlas = ExtResource("8_3q4x4")
+region = Rect2(256, 128, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcmh0"]
+atlas = ExtResource("8_3q4x4")
+region = Rect2(320, 128, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4abgl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ricar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do3a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibe1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lun4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnud4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcmh0")
+}],
+"loop": true,
+"name": &"up",
+"speed": 6.0
+}]
 
 [node name="PalaceEntrance" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_tccje")
-
-[node name="Player" parent="." instance=ExtResource("2_kjowy")]
-position = Vector2(181, 165)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = 8
-limit_top = 0
-limit_right = 328
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -153,30 +253,56 @@ layer_4/tile_data = PackedInt32Array(327696, 393217, 6, 589838, 393217, 6, 26215
 [node name="castle" type="AnimatedSprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(168, 52)
+position = Vector2(168, 43)
+scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_oc8wf")
 animation = &"gates_open"
 frame = 3
 frame_progress = 1.0
 offset = Vector2(0, -20)
 
-[node name="door_open" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door_open"]
-position = Vector2(169.391, 109.285)
-shape = SubResource("RectangleShape2D_5lrkf")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(136, 8, 136, 104, 5, 104, 5, -24, 331, -24, 331, 112, 200, 112, 200, 8)
+position = Vector2(-35, -21)
+scale = Vector2(1.2, 1.2)
+polygon = PackedVector2Array(135.833, -15.8333, 135.833, 110.833, 9.16667, 110.833, 9.16667, -22.5, 329.167, -22.5, 329.167, 110.833, 202.5, 110.833, 202.5, -15.8333)
 
-[node name="scene_change_trigger" type="Area2D" parent="."]
+[node name="KingPath" type="Path2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+curve = SubResource("Curve2D_y2k2f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_change_trigger"]
-position = Vector2(168, 14.5)
-shape = SubResource("RectangleShape2D_6lr5p")
+[node name="PathFollow2D" type="PathFollow2D" parent="KingPath"]
+position = Vector2(160, 264)
+rotates = false
+loop = false
+
+[node name="King" type="AnimatedSprite2D" parent="KingPath/PathFollow2D"]
+sprite_frames = SubResource("SpriteFrames_krv0v")
+animation = &"up"
+frame = 5
+frame_progress = 1.0
+
+[node name="MCPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_06u0j")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MCPath"]
+position = Vector2(176, 288)
+rotates = false
+loop = false
+
+[node name="MC" type="AnimatedSprite2D" parent="MCPath/PathFollow2D"]
+sprite_frames = SubResource("SpriteFrames_4abgl")
+animation = &"up"
+
+[node name="Camera2D" type="Camera2D" parent="MCPath/PathFollow2D/MC"]
+limit_left = -8
+limit_top = -48
+limit_right = 344
+limit_bottom = 264
+
+[node name="TransitionScene" parent="." instance=ExtResource("9_ofwwb")]
+visible = false
 
 [connection signal="animation_finished" from="castle" to="." method="_on_castle_animation_finished"]
-[connection signal="body_entered" from="door_open" to="." method="_on_door_open_body_entered"]
-[connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

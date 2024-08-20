@@ -1,4 +1,4 @@
-join King (king_normal) 0
+join King (king_normal) 0 [animation="Instant In Or Out"]
 King: So, I present to you a choice lad...
 King: return to your home, or take up the mantle \
 as commander of my forces.

@@ -27,7 +27,7 @@ func _ready():
 	if GameState.game_state != "credits":
 		MusicPlayer.play_music1()
 	update_load_button_state()
-
+	$Player.visible = false
 #Play Button on MainMenu
 func _on_play_pressed():
 	click_sound()
@@ -168,7 +168,8 @@ func _on_dialogic_signal(argument):
 		$Car_2/delay.start()
 
 func _on_delay_timeout():
-	player.show()
+	$Player.visible = true
+	$Car_1_main.frame = 0
 	GameState.game_state = "play"
 	road_crossing = true
 

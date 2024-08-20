@@ -13,8 +13,6 @@ func _ready():
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/Ending/EndCredits.tscn")
 
-func _process(delta):
-	pass
 func _on_dialogic_signal(argument):
 	if argument == "done1":
 		GameState.game_state = "play"

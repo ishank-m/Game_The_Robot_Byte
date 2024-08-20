@@ -1,33 +1,39 @@
 extends Node2D
-var once = false
 
-# Called when the node enters the scene tree for the first time.
+var start_scene = false
+var door_open = false
+@onready var kingPath = $KingPath/PathFollow2D
+@onready var MCPath = $MCPath/PathFollow2D
+@onready var transition = $TransitionScene
+var speed = 50
+var anim_playing = false
+var scene_change = false
+
 func _ready():
+	transition.fade_out()
+	transition.connect("fade_in_done", _on_fade_in_done)
 	$castle.frame = 0
-	GameState.game_state = "play"
 
+func _process(delta):
+	kingPath.progress += speed*delta
+	MCPath.progress += speed*delta
+	if not anim_playing:
+		$KingPath/PathFollow2D/King.play("up")
+		$MCPath/PathFollow2D/MC.play("up")
+		anim_playing = true
+	if kingPath.progress_ratio > 0.4 and not door_open:
+		$castle.play("gates_open")
+		door_open = false
+	if kingPath.progress_ratio == 1 and not scene_change:
+		scene_change = true
+		transition.fade_in()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
-func _on_door_open_body_entered(body):
-	if not once:
-		if body.name == "Player":
-			$Player/Player_sprite.play("up")
-			$Player/Player_sprite.stop()
-			GameState.game_state = "pause"
-			$castle.play("gates_open")
-
-
-func _on_scene_change_trigger_body_entered(body):
-	if body.name == "Player":
-		GameState.game_state = "pause"
-		print("hi")
-
+func _on_fade_in_done():
+	get_tree().change_scene_to_file("res://scenes/world/ThroneRoom.tscn")
 
 func _on_castle_animation_finished():
-	once = true
 	$castle.frame = 3
-	GameState.game_state = "play"
+
+func follow_path():
+	if not anim_playing:
+		kingPath.progress += speed * get_process_delta_time()

@@ -1,14 +1,28 @@
 extends Node2D
 @onready var path = $Path2D/PathFollow2D
 var speed = 40
-func _process(delta):
-	path.progress += speed*delta
+var follow = false
+@onready var player = $Player
+@onready var follower = $Path2D/PathFollow2D
 
+func _process(delta):
+	if follow:
+		path.progress += speed*delta
+		print($Path2D/PathFollow2D.position)
 func _ready():
-	var curve = Curve2D.new()
+	GameState.game_state= "play"
+
+
+func _on_button_pressed():
+	follower.position = player.position
+	player.get_parent().remove_child(player)
+	follower.add_child(player)
+	player.position = Vector2.ZERO
+	follow_now()
+	follow = true
 	
-	# Add points to the curve
-	curve.add_point($Player.position)  # Start point
-	curve.add_point(Vector2(150, 50)) # First segment
-	curve.add_point(Vector2(150, 150))
+func follow_now():
+	var curve = Curve2D.new()
+	curve.add_point(follower.position)
+	curve.add_point(Vector2(150, 50))
 	$Path2D.curve = curve
