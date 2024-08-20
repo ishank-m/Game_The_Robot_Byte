@@ -1,4 +1,4 @@
-join King 0
+join King (king_normal) 0
 King: So, I present to you a choice lad...
 King: return to your home, or take up the mantle \
 as commander of my forces.
@@ -13,7 +13,7 @@ if {choice} == "home":
 	join King (king_normal) 0 [animation="Instant In Or Out"]
 	leave Kevin [animation="Instant In Or Out"]
 	King: Very well. Walk through the white door to \
-your left, 
+your left,
 	King: and you shall find your way home, \
 wherever it may be.
 	leave King [animation="Instant In Or Out"]
@@ -21,8 +21,8 @@ wherever it may be.
 	Kevin: Thank you for everything, your majesty.
 	leave Kevin [animation="Instant In Or Out"]
 	join King (king_normal) 0 [animation="Instant In Or Out"]
-	King (king_normal): Do not thank me, it is I who must express my \
-gratitude to you...
+	King (king_normal): Do not thank me, it is I who must express \
+my gratitude to you...
 	King: for saving both my life and my kingdom.
 	King: Now, off you go.
 	[signal arg="done1"]

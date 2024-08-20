@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8mnjdtlid76r"]
+[gd_scene load_steps=11 format=3 uid="uid://c8mnjdtlid76r"]
 
 [ext_resource type="Script" path="res://scenes/test/a.gd" id="1_ppqnj"]
 [ext_resource type="Theme" uid="uid://ca486vex0n24x" path="res://scripts/button_default.tres" id="2_yhj7v"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="4_rcpvs"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_askd3"]
-load_path = "res://.godot/imported/shop_buy_button.png-4e2adc9212a96fb7bd268863be22be4e.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24nv5"]
 texture = SubResource("CompressedTexture2D_askd3")
@@ -23,6 +22,8 @@ region_rect = Rect2(32, 1, 30, 19)
 [sub_resource type="LabelSettings" id="LabelSettings_j5q68"]
 font = ExtResource("3_p0doq")
 
+[sub_resource type="Curve2D" id="Curve2D_vuh8r"]
+
 [node name="A" type="Node2D"]
 script = ExtResource("1_ppqnj")
 
@@ -36,6 +37,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_24nv5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lx6qj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_p3q33")
 
+[node name="Player" parent="." instance=ExtResource("4_rcpvs")]
+position = Vector2(230, 138)
+
 [node name="Label" type="Label" parent="."]
 offset_left = 43.0
 offset_top = 20.0
@@ -43,7 +47,12 @@ offset_right = 146.0
 offset_bottom = 64.0
 label_settings = SubResource("LabelSettings_j5q68")
 
-[node name="Player" parent="." instance=ExtResource("4_rcpvs")]
-position = Vector2(152, 124)
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vuh8r")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(150, 107)
+rotates = false
+loop = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
