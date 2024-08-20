@@ -3,9 +3,9 @@ extends CharacterBody2D
 @export var speed = 30
 @onready var anim  = $Damaged
 @onready var player = get_parent().get_node("Player")
+@onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
 var attacking
-var direction
 var close_to_player
 var animation_playing
 var min_distance = 30
@@ -20,7 +20,7 @@ func _ready():
 	$attackbox_left/CollisionShape2D.disabled = true
 	$attackbox_top/CollisionShape2D.disabled = true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if GameState.kingstate == "damaged":
 		anim = $Damaged
 		$Normal.visible = false
@@ -74,15 +74,15 @@ func _physics_process(delta):
 					$attackbox_bottom/CollisionShape2D.disabled = true
 		elif not attacking:
 			var distance_to_player = position.distance_to(player.position)
-			direction = (player.position - position).normalized()
+			var dir = to_local(nav_agent.get_next_path_position()).normalized()
 			if distance_to_player >= min_distance:
-				velocity = direction * speed
+				velocity = dir * speed
 				close_to_player = false
 			else:
 				velocity = Vector2.ZERO
 				close_to_player = true
 			king_anim()
-			move_and_collide(velocity*delta)
+			move_and_slide()
 		if close_to_player:
 			anim.stop()
 
@@ -127,3 +127,11 @@ func _on_enemy_removed():
 func _on_damaged_animation_finished():
 	if anim.animation in ["attack_right", "attack_up", "attack_down"]:
 		animation_playing = false
+
+func makepath():
+	if is_instance_valid(player):
+		nav_agent.target_position = player.position
+
+
+func _on_timer_timeout():
+	makepath()

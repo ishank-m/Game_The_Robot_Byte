@@ -15,6 +15,10 @@ var animation_playing = false
 var last_hit = null
 
 func _physics_process(delta):
+	if player or player_in_hitbox:
+		GameState.combat = true
+	else:
+		GameState.combat = false
 	if health <= 0 and not died:
 		if last_hit == "player":
 			last_hit = null
@@ -69,7 +73,6 @@ func _physics_process(delta):
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
 		player = body
-		GameState.combat = true
 
 func _on_detection_area_body_exited(body):
 	if body.name == "Player":
@@ -133,7 +136,7 @@ func _on_hurtbox_area_entered(area):
 		health -= 20
 
 func makepath():
-	if player:
+	if is_instance_valid(player):
 		nav_agent.target_position = get_parent().get_node("Player").position
 
 func _on_timer_timeout():

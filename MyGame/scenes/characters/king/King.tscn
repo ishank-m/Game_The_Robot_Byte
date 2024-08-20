@@ -315,8 +315,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kujw0"]
-size = Vector2(11, 6)
+[sub_resource type="CircleShape2D" id="CircleShape2D_bay1s"]
+radius = 4.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ooewb"]
 size = Vector2(44, 38)
@@ -718,48 +718,59 @@ script = ExtResource("1_5j6b7")
 
 [node name="Damaged" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d5xam")
-animation = &"attack_down"
-frame = 5
-frame_progress = 1.0
+animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 12)
-shape = SubResource("RectangleShape2D_kujw0")
+shape = SubResource("CircleShape2D_bay1s")
 
 [node name="hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_ooewb")
 
 [node name="attackbox_right" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_right"]
 position = Vector2(14, -0.5)
 shape = SubResource("RectangleShape2D_73hm3")
 
 [node name="attackbox_bottom" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_bottom"]
 position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_uigm5")
 
 [node name="attackbox_left" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_left"]
 position = Vector2(-13.5, -0.5)
 shape = SubResource("RectangleShape2D_o14tk")
 
 [node name="attackbox_top" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_top"]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_efbvg")
 
 [node name="Normal" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_6wdx8")
-animation = &"attack_up"
+animation = &"down"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="animation_finished" from="Damaged" to="." method="_on_damaged_animation_finished"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
