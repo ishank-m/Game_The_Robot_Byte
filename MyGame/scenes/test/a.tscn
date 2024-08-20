@@ -37,9 +37,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_24nv5")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lx6qj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_p3q33")
 
-[node name="Player" parent="." instance=ExtResource("4_rcpvs")]
-position = Vector2(230, 138)
-
 [node name="Label" type="Label" parent="."]
 offset_left = 43.0
 offset_top = 20.0
@@ -51,8 +48,11 @@ label_settings = SubResource("LabelSettings_j5q68")
 curve = SubResource("Curve2D_vuh8r")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(150, 107)
+position = Vector2(143, 134)
 rotates = false
 loop = false
+
+[node name="Player" parent="." instance=ExtResource("4_rcpvs")]
+position = Vector2(50, 50)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

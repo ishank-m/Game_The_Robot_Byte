@@ -1,5 +1,5 @@
 extends Node2D
-var speed = 30
+var speed = 50
 @onready var path = $Path2D/PathFollow2D
 @onready var path_mc = $Path2D2/PathFollow2D
 var anim_playing = false
