@@ -5,4 +5,5 @@ King: Until then, you get ready. We have a battle to\
 fight.
 King: See that Armoury over there? Go and see if you\
 can find something for yourself.
+[signal arg="done1"]
 [end_timeline]
