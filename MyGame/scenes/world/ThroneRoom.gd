@@ -1,5 +1,5 @@
 extends Node2D
-var speed = 50
+var speed = 45
 @onready var path = $Path2D/PathFollow2D
 @onready var path_mc = $Path2D2/PathFollow2D
 var anim_playing = false
@@ -10,6 +10,8 @@ var once = false
 var transition_playing = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$walk2.play()
+	$walk.play()
 	transition.fade_out()
 	transition.connect("fade_out_done", _on_fade_out_done)
 	transition.connect("fade_in_done", _on_fade_in_done)
@@ -41,11 +43,13 @@ func _process(delta):
 			$Path2D/PathFollow2D/King.play("down")
 			$Path2D/PathFollow2D/King.stop()
 			Dialogic.start("inpalace1")
+			$walk.stop()
 		if path_mc.progress_ratio < 1 and not anim_playing_mc:
 			$Path2D2/PathFollow2D/mc.play("up")
 			anim_playing_mc = true
 		if path_mc.progress_ratio == 1:
 			$Path2D2/PathFollow2D/mc.stop()
+			$walk2.stop()
 
 func _on_dialogic_signal(argument):
 	if argument == "done1":
@@ -87,6 +91,7 @@ func _on_end_dialogue_trigger_body_entered(body):
 
 func _on_scene_change_trigger_body_entered(body):
 	if body.name == "Player":
+		MusicPlayer.teleport_sound()
 		GameState.game_state = "pause"
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()

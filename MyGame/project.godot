@@ -37,6 +37,7 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"1worlscene3": "res://dialogues/1worlscene3.dtl",
 "2worldscene_1": "res://dialogues/2worldscene_1.dtl",
 "3worldscene_1": "res://dialogues/3worldscene_1.dtl",
 "4worldscene_1": "res://dialogues/4worldscene_1.dtl",
@@ -59,6 +60,8 @@ directories/dtl_directory={
 "mcbedroom": "res://dialogues/mcbedroom.dtl",
 "mcbedroom_2": "res://dialogues/mcbedroom_2.dtl",
 "shop1": "res://dialogues/shop1.dtl",
+"shop2": "res://dialogues/shop2.dtl",
+"shop3": "res://dialogues/shop3.dtl",
 "timeline": "res://scenes/test/timeline.dtl",
 "winroom": "res://dialogues/winroom.dtl",
 "winroom_0": "res://dialogues/winroom_0.dtl",
@@ -92,7 +95,8 @@ text/autopauses={}
 save/autosave=false
 variables={
 "choice": "",
-"points": 100
+"points": 100,
+"sword": ""
 }
 animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_in.gd"
 animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/bounce_out.gd"
@@ -207,3 +211,4 @@ locale/translations_pot_files=PackedStringArray("res://dialogues/wardroom.dialog
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/default_filters/use_nearest_mipmap_filter=true

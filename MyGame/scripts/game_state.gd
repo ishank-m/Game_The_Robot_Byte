@@ -1,5 +1,4 @@
 extends Node
-
 var items = {
 	"sword": "wood",
 	"health_potion": 0,

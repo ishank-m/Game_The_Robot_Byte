@@ -1,0 +1,4 @@
+join shopkeeper 0 [animation="Instant In Or Out"]
+shopkeeper: I can't let you have this for so less points...
+[signal arg="done2"]
+[end_timeline]

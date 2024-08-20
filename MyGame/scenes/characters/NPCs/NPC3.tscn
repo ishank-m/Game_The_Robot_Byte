@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfd802xejr0e4"]
+[gd_scene load_steps=12 format=3 uid="uid://bfd802xejr0e4"]
 
 [ext_resource type="Script" path="res://scenes/characters/NPCs/NPC3.gd" id="1_5etr2"]
 [ext_resource type="Texture2D" uid="uid://2quxpachysk2" path="res://assets/sprites/Characters/NPCs/villager_3.png" id="1_v06bv"]
@@ -53,6 +53,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf3j0"]
+radius = 5.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy70s"]
 size = Vector2(14, 9.5)
 
@@ -67,6 +70,12 @@ sprite_frames = SubResource("SpriteFrames_bwawv")
 animation = &"left"
 frame_progress = 0.527909
 flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NPC3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC3/StaticBody2D"]
+position = Vector2(-1.25, 10)
+shape = SubResource("CircleShape2D_yf3j0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 10)

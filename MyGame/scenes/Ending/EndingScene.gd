@@ -22,7 +22,7 @@ func _on_dialogic_signal(argument):
 		$Player/Player_sprite.stop()
 		GameState.game_state = "play"
 	elif argument == "call":
-		pass #play the mother's call sound
+		$call.play()
 	elif argument == "done3":
 		GameState.game_state = "play"
 
@@ -30,6 +30,7 @@ func _on_dialogic_signal(argument):
 func _on_player_incoming_animation_finished():
 	$Player.visible = true
 	$"player incoming".visible = false
+	MusicPlayer.stop()
 	Dialogic.start("endscene1")
 
 

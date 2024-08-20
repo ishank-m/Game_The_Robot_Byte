@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://uebno7qed4ai"]
+[gd_scene load_steps=26 format=3 uid="uid://uebno7qed4ai"]
 
 [ext_resource type="Script" path="res://scenes/world/shop_interface/shop_interface.gd" id="1_jliga"]
 [ext_resource type="Texture2D" uid="uid://by7uwi2gck71r" path="res://assets/sprites/world/shop/shop_interface_bg.png" id="2_vpr4f"]
@@ -19,15 +19,46 @@
 [ext_resource type="Texture2D" uid="uid://b1dec08stpswu" path="res://assets/sprites/world/shop/shop_interface_minus1.png" id="17_jpipq"]
 [ext_resource type="Texture2D" uid="uid://bw3qh0djrsj1l" path="res://assets/sprites/world/shop/shop_interface_minus2.png" id="18_yyos0"]
 [ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="19_xoow2"]
+[ext_resource type="LabelSettings" uid="uid://cblfyy6ss6oeb" path="res://scripts/new_label_settings.tres" id="20_m6p4n"]
+[ext_resource type="FontFile" uid="uid://rvc8fsmsm28m" path="res://font.ttf" id="21_8r61y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4wg0"]
+bg_color = Color(0.647447, 0.457749, 0.0942742, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.309801, 0.250486, 0, 1)
+corner_detail = 10
+expand_margin_left = 1.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_r1gdr"]
+Panel/styles/panel = SubResource("StyleBoxFlat_r4wg0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0862s"]
+font = ExtResource("21_8r61y")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgcic"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
 
 [node name="ShopInterface" type="CanvasLayer"]
 script = ExtResource("1_jliga")
 
 [node name="ShopInterfaceBg" type="Sprite2D" parent="."]
-position = Vector2(160, 85)
+position = Vector2(175, 85)
 texture = ExtResource("2_vpr4f")
 hframes = 2
-frame = 1
 
 [node name="swordSection" type="Control" parent="ShopInterfaceBg"]
 layout_mode = 3
@@ -95,6 +126,36 @@ offset_bottom = 73.0
 scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("12_8au42")
 texture_pressed = ExtResource("13_cj8uo")
+
+[node name="Panel" type="Panel" parent="ShopInterfaceBg/swordSection"]
+layout_mode = 0
+offset_left = -73.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 94.0
+theme = SubResource("Theme_r1gdr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopInterfaceBg/swordSection/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 66.0
+offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="ShopInterfaceBg/swordSection/Panel/VBoxContainer"]
+layout_mode = 2
+text = "
+Iron Sword
++25% damage
+
+Gold Sword
++50% damage
+
+Diamond Sword
++75% damage"
+label_settings = ExtResource("20_m6p4n")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="potionSection" type="Control" parent="ShopInterfaceBg"]
 layout_mode = 3
@@ -187,12 +248,70 @@ offset_bottom = 54.0
 text = "0"
 label_settings = ExtResource("19_xoow2")
 
+[node name="Panel" type="Panel" parent="ShopInterfaceBg/potionSection"]
+layout_mode = 0
+offset_left = -73.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 94.0
+theme = SubResource("Theme_r1gdr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopInterfaceBg/potionSection/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 66.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="ShopInterfaceBg/potionSection/Panel/VBoxContainer"]
+layout_mode = 2
+text = "
+Health Potion:
+Max Health
+
+Invincibility Potion:
+Invincibility for 10 seconds"
+label_settings = ExtResource("20_m6p4n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Close" type="TextureButton" parent="."]
-offset_left = 73.0
+offset_left = 88.0
 offset_top = 44.0
-offset_right = 85.0
+offset_right = 100.0
 offset_bottom = 56.0
 theme = ExtResource("4_uesth")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 32.0
+label_settings = SubResource("LabelSettings_0862s")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 128.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 24.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wgcic")
+
+[node name="points_counter" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -3.0
+offset_right = 61.0
+offset_bottom = 20.0
+text = "Points"
+label_settings = ExtResource("20_m6p4n")
+vertical_alignment = 1
 
 [connection signal="button_down" from="ShopInterfaceBg/swordSection/Iron" to="." method="_on_iron_button_down"]
 [connection signal="button_down" from="ShopInterfaceBg/swordSection/Gold" to="." method="_on_gold_button_down"]
@@ -206,3 +325,4 @@ theme = ExtResource("4_uesth")
 [connection signal="pressed" from="ShopInterfaceBg/potionSection/Buy_pot" to="." method="_on_buy_pot_pressed"]
 [connection signal="pressed" from="ShopInterfaceBg/potionSection/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

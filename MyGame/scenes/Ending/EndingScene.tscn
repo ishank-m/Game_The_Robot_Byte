@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4js3ixkaohyj"]
+[gd_scene load_steps=29 format=3 uid="uid://4js3ixkaohyj"]
 
 [ext_resource type="Texture2D" uid="uid://cptxl7dftcggn" path="res://assets/sprites/Old_house/old_house.png" id="1_exven"]
 [ext_resource type="Script" path="res://scenes/Ending/EndingScene.gd" id="1_o0rxg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="3_pnfkq"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_xisb5"]
 [ext_resource type="Texture2D" uid="uid://blk2vsyowvb0" path="res://assets/sprites/transition/transition_cloud_anim.png" id="6_klccl"]
+[ext_resource type="AudioStream" uid="uid://bslr3cmfyccff" path="res://assets/music/mother_call.wav" id="7_afash"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0dndj"]
 texture = ExtResource("1_exven")
@@ -307,6 +308,10 @@ sprite_frames = SubResource("SpriteFrames_niiyo")
 animation = &"hi"
 frame = 6
 frame_progress = 1.0
+
+[node name="call" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_afash")
+volume_db = -15.0
 
 [connection signal="animation_finished" from="player incoming" to="." method="_on_player_incoming_animation_finished"]
 [connection signal="body_entered" from="stairs1" to="." method="_on_stairs_1_body_entered"]

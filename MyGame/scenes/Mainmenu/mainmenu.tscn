@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dgs4pjemsolew"]
+[gd_scene load_steps=83 format=3 uid="uid://dgs4pjemsolew"]
 
 [ext_resource type="Script" path="res://scenes/Mainmenu/mainmenu.gd" id="1_ykmb7"]
 [ext_resource type="Texture2D" uid="uid://2jdm1r87g06d" path="res://assets/sprites/Main Menu/Sprite-0001.png" id="2_1ha3f"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bsedoe4w52swb" path="res://assets/sprites/House/Outside/door_outsidehouse.png" id="18_wxf8v"]
 [ext_resource type="AudioStream" uid="uid://ddn8tiihoc0vi" path="res://assets/sounds/button_pressed.mp3" id="19_jxl7j"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="19_qy077"]
+[ext_resource type="LabelSettings" uid="uid://cblfyy6ss6oeb" path="res://scripts/new_label_settings.tres" id="21_ylrrl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixwqm"]
 texture = ExtResource("2_s2p27")
@@ -785,6 +786,23 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0pxw2"]
+bg_color = Color(0.647447, 0.457749, 0.0942742, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.309801, 0.250486, 0, 1)
+corner_detail = 10
+expand_margin_left = 1.0
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_4eyr2"]
+Panel/styles/panel = SubResource("StyleBoxFlat_0pxw2")
+
 [node name="Main_menu" type="Control"]
 y_sort_enabled = true
 layout_mode = 3
@@ -1081,6 +1099,57 @@ stream = ExtResource("19_jxl7j")
 position = Vector2(2500, 0)
 build_mode = 1
 polygon = PackedVector2Array(12, -2, 186, 1, 205, -15, 48, -54, -203, 1, -204, 163, -167, 201, 234, 189, 198, 25, 180, 1, 181, 160, -125, 159, -124, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -73.0
+offset_top = 3.0
+offset_right = -5.0
+offset_bottom = 94.0
+theme = SubResource("Theme_4eyr2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 66.0
+offset_bottom = 88.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "
+Iron Sword
++25% damage
+
+Gold Sword
++50% damage
+
+Diamond Sword
++75% damage"
+label_settings = ExtResource("21_ylrrl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 66.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+text = "
+Health Potion:
+Max Health
+
+Invincibility Potion:
+Invincibility for 10 seconds"
+label_settings = ExtResource("21_ylrrl")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="timeout" from="Truck/trucktimer" to="." method="_on_trucktimer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cfv7m6ke8nb2a"]
+[gd_scene load_steps=38 format=3 uid="uid://cfv7m6ke8nb2a"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_27hir"]
 [ext_resource type="Script" path="res://scenes/world/PalaceEntrance.gd" id="1_tccje"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ld057cvks115" path="res://assets/sprites/Characters/King/normal/king_normal.png" id="7_2xsic"]
 [ext_resource type="Texture2D" uid="uid://ydhvn2c0apbq" path="res://assets/sprites/Characters/MC/MC.png" id="8_3q4x4"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="9_ofwwb"]
+[ext_resource type="AudioStream" uid="uid://5o6md411cinm" path="res://assets/music/SoundEffects/door_open.mp3" id="10_ftiuw"]
+[ext_resource type="AudioStream" uid="uid://cekweunju3vld" path="res://assets/music/SoundEffects/walk_grass.wav" id="11_wpon4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
 texture = ExtResource("1_27hir")
@@ -304,5 +306,14 @@ limit_bottom = 264
 
 [node name="TransitionScene" parent="." instance=ExtResource("9_ofwwb")]
 visible = false
+
+[node name="gates" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_ftiuw")
+attenuation = 0.554785
+panning_strength = 1.2
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_wpon4")
+volume_db = 10.0
 
 [connection signal="animation_finished" from="castle" to="." method="_on_castle_animation_finished"]
