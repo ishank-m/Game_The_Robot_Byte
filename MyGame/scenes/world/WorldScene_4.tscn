@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bprjx7w8377uh"]
+[gd_scene load_steps=15 format=3 uid="uid://bprjx7w8377uh"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_06dnp"]
 [ext_resource type="Script" path="res://scenes/world/WorldScene_4.gd" id="1_mdi3m"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="2_wlaf2"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_5ed1o"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="4_1x6kw"]
-[ext_resource type="PackedScene" uid="uid://dispmmkisy7be" path="res://scenes/characters/NPCs/soldier.tscn" id="7_ctutm"]
-[ext_resource type="PackedScene" uid="uid://c1n4kfr86y6ah" path="res://scenes/Enemy/world_4_enemy.tscn" id="8_uavnj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mqaab"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -143,9 +141,6 @@ sources/1 = SubResource("TileSetAtlasSource_m5r7p")
 sources/3 = SubResource("TileSetAtlasSource_4h5f6")
 sources/4 = SubResource("TileSetAtlasSource_2noo5")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_plp8f"]
-size = Vector2(36, 224)
-
 [node name="WorldScene4" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_mdi3m")
@@ -180,77 +175,3 @@ layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(393263, 524288, 4, 327708, 524288, 4, 458762, 524288, 4, -65530, 524288, 4, 58, 524288, 4, 458816, 524288, 4)
 layer_4/name = "extras"
 layer_4/tile_data = PackedInt32Array(393258, 262145, 6, 131123, 262145, 6, 458806, 262145, 6, 131133, 262145, 6, 327739, 262145, 6, 65600, 262145, 6, -131008, 262145, 6, 131141, 262145, 6, -131001, 262145, 6, 327752, 262145, 6, 589888, 262145, 6, 65592, 262145, 6, -131025, 262145, 6, 589871, 262145, 6, 655413, 262145, 6, 65581, 262145, 6, 131116, 393217, 6, 49, 393217, 6, 393266, 393217, 6, 327735, 393217, 6, 131131, 393217, 6, -65474, 393217, 6, -65467, 393217, 6, 393285, 393217, 6, 327743, 393217, 6, 655419, 393217, 6, 655403, 393217, 6, 393254, 393217, 6, 393250, 393217, 6, 655392, 393217, 6, 655395, 393217, 6, 327711, 393217, 6, 589849, 393217, 6, 327703, 393217, 6, 327696, 393217, 6, 589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 327686, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, -131055, 393217, 6, 131090, 393217, 6, 65560, 393217, 6, -131044, 393217, 6, 131102, 393217, 6, -196577, 393217, 6, 131107, 393217, 6, 131108, 393217, 6, -65497, 393217, 6, 131112, 393217, 6, 327710, 262145, 6, 65565, 262145, 6, -65512, 262145, 6, 131092, 262145, 6, 17, 262145, 6, -196594, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, -131072, 262145, 6, 327683, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 655380, 262145, 6, 393235, 262145, 6, 655383, 262145, 6, 458785, 262145, 6, 524328, 262145, 6, 393264, 262145, 6, 655406, 1, 6, 327723, 1, 6, 65574, 1, 6, 196649, 1, 6, -65506, 1, 6, 131098, 1, 6, 327700, 1, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6, -65490, 1, 6, -131016, 1, 6, 131136, 1, 6, -131003, 1, 6, 655430, 1, 6, 327746, 1, 6, 458811, 1, 6, 393268, 1, 6)
-
-[node name="destination" type="Area2D" parent="."]
-position = Vector2(41, 71)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="destination"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_plp8f")
-
-[node name="soldier" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(1008, 88)
-
-[node name="soldier2" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(1008, 64)
-
-[node name="soldier3" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(984, 64)
-
-[node name="soldier4" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(984, 88)
-
-[node name="soldier5" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(960, 88)
-
-[node name="soldier6" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(960, 64)
-
-[node name="soldier7" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(960, 40)
-
-[node name="soldier8" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(984, 40)
-
-[node name="soldier9" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(1008, 40)
-
-[node name="soldier10" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(936, 72)
-
-[node name="soldier11" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(936, 48)
-
-[node name="world_4_enemy" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(104, 48)
-
-[node name="world_4_enemy2" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(104, 64)
-
-[node name="world_4_enemy3" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(104, 80)
-
-[node name="world_4_enemy4" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(136, 48)
-
-[node name="world_4_enemy5" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(136, 64)
-
-[node name="world_4_enemy6" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(136, 80)
-
-[node name="world_4_enemy7" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(168, 48)
-
-[node name="world_4_enemy8" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(168, 64)
-
-[node name="world_4_enemy9" parent="." instance=ExtResource("8_uavnj")]
-position = Vector2(168, 80)
-
-[node name="destination_robot" type="Area2D" parent="."]
-position = Vector2(671, 61)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="destination_robot"]
-position = Vector2(0, 15)
-shape = SubResource("RectangleShape2D_plp8f")
