@@ -2,8 +2,8 @@ extends Node2D
 @onready var transition = $TransitionScene
 
 func _ready():
+	$ShopInterface.hide_shop()
 	MusicPlayer.stop()
-	$ShopInterface.visible = false
 	print($ShopInterface.visible)
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
@@ -27,5 +27,5 @@ func _on_shop_body_entered(body):
 	if body.name == "Player":
 		GameState.game_state = "pause"
 		$Player/Player_sprite.stop()
-		$ShopInterface.visible = true
+		$ShopInterface.shop()
 		print($ShopInterface.visible)

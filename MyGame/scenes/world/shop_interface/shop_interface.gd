@@ -3,8 +3,10 @@ extends CanvasLayer
 var health_count = 0
 var invin_count = 0
 var sword
+func hide_shop():
+	$ShopInterfaceBg.visible = false
 
-func _ready():
+func shop():
 	GameState.game_state = "pause"
 	set_process_input(true)
 	if not GameState.dialogues_count['shop']:
@@ -14,9 +16,6 @@ func _ready():
 		Dialogic.signal_event.connect(_on_dialogic_signal)
 	show_swords()
 func _on_close_pressed():
-	health_count = 0
-	invin_count = 0
-	sword = null
 	$ShopInterfaceBg.visible = false
 	GameState.game_state = "play"
 func _process(_delta):
@@ -29,6 +28,7 @@ func _on_next_pressed():
 func _on_dialogic_signal(argument):
 	if argument == "done1":
 		set_process_input(true)
+		$ShopInterfaceBg.visible = true
 
 func _on_iron_button_down():
 	sword = "iron"
@@ -86,3 +86,4 @@ func _on_minus_2_pressed():
 
 func _on_buy_pot_pressed():
 	print(invin_count, health_count)
+	
