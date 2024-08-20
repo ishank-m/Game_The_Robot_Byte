@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cwhxkpilfkko2"]
+[gd_scene load_steps=18 format=3 uid="uid://cwhxkpilfkko2"]
 
 [ext_resource type="Script" path="res://scenes/characters/NPCs/NPC1.gd" id="1_5cnxe"]
 [ext_resource type="Texture2D" uid="uid://b44tvew8shojr" path="res://assets/sprites/Characters/NPCs/villager_1.png" id="1_aht28"]
@@ -103,6 +103,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gk1n"]
+radius = 5.0
+
 [node name="Npc1" type="CharacterBody2D"]
 script = ExtResource("1_5cnxe")
 
@@ -114,6 +117,12 @@ shape = SubResource("RectangleShape2D_gyw0i")
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_528v0")
 animation = &"up"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NPC1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC1/StaticBody2D"]
+position = Vector2(0.552425, 10.5524)
+shape = SubResource("CircleShape2D_4gk1n")
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 5.0

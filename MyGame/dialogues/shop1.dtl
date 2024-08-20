@@ -1,10 +1,6 @@
 join shopkeeper 0
 shopkeeper: Hey...
-shopkeeper: You're the one who brought our\
-king back right?
-shopkeeper: It was a good decision of yours.
-shopkeeper: You would've know by now that our \
-kingdom is midst a great war...
+shopkeeper: Our kingdom is midst a great war...
 shopkeeper: To support, all of us armourers have\
 sought to give out stuff to brave souls.
 shopkeeper: Now tell me, how many robots have you\
@@ -18,7 +14,7 @@ shopkeeper: If I award you 10 points for every\
 robot destroyed...
 shopkeeper: {{points}/10} robots will\
 make {points} points for you...
-shopkeeper: Browse my shop and spend these \
-points as per your liking.
+shopkeeper: Browse my shop and spend these points \
+as per your liking.
 [signal arg="done1"]
 [end_timeline]

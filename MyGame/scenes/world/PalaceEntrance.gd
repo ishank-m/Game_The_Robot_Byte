@@ -23,7 +23,7 @@ func _process(delta):
 		anim_playing = true
 	if kingPath.progress_ratio > 0.4 and not door_open:
 		$castle.play("gates_open")
-		door_open = false
+		door_open = true
 	if kingPath.progress_ratio == 1 and not scene_change:
 		scene_change = true
 		transition.fade_in()

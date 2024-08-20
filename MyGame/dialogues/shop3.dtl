@@ -1,0 +1,5 @@
+join shopkeeper 0 [animation="Instant In Or Out"]
+shopkeeper: Great choice! The {sword} sword would really \
+suit you well.
+[signal arg="done3"]
+[end_timeline]

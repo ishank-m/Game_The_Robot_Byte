@@ -15,6 +15,10 @@ var dialogue = false
 @onready var player = get_node("Player")
 #Initilaizing the Game
 func _ready():
+	var style: DialogicStyle = load("res://dialogues/style.tres")
+	var style2: DialogicStyle = load("res://dialogues/style2.tres")
+	style.prepare()
+	style2.prepare()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.game_state == "main_menu":
