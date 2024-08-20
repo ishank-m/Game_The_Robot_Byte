@@ -5,6 +5,7 @@ var attack_diretion
 var healing = false
 @export var speed: int = 50
 @onready var anim = $Player_sprite
+var sword = GameState.items["sword"]
 
 func _ready():
 	$attackbox_right.add_to_group("player_attack")
@@ -21,28 +22,28 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("attack_left"):
 			attack = true
 			anim.flip_h = true
-			anim.play("attack_right")
+			anim.play(sword+"_attack_right")
 			$attackbox_left/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_left/CollisionShape2D.disabled = true
 		elif Input.is_action_just_pressed("attack_down"):
 			attack = true
 			anim.flip_h = false
-			anim.play("attack_down")
+			anim.play(sword+"_attack_down")
 			$attackbox_bottom/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_bottom/CollisionShape2D.disabled = true
 		elif Input.is_action_just_pressed("attack_right"):
 			attack = true
 			anim.flip_h = false
-			anim.play("attack_right")
+			anim.play(sword+"_attack_right")
 			$attackbox_right/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_right/CollisionShape2D.disabled = true
 		elif Input.is_action_just_pressed("attack_up"):
 			attack = true
 			anim.flip_h = false
-			anim.play("attack_up")
+			anim.play(sword+"_attack_up")
 			$attackbox_top/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_top/CollisionShape2D.disabled = true

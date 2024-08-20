@@ -8,6 +8,7 @@ var health = 40
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
 var player
+var player_damage = GameState.sword_damage
 var player_in_hitbox
 var died = false
 var attack_cooldown = true
@@ -134,7 +135,7 @@ func _on_attack_timer_timeout():
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_attack"):
 		last_hit = "player"
-		health -= 10
+		health -= player_damage
 	if area.is_in_group("king_attack"):
 		last_hit = "king"
 		health -= 20

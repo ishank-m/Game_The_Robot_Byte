@@ -4,6 +4,7 @@ var items = {
 	"health_potion": 0,
 	"invin_potion": 0
 }
+var sword_damage = 10
 var kingstate = "damaged"
 var player_pos
 var player_health = 120
