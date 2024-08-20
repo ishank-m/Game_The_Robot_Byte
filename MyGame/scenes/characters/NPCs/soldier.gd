@@ -33,7 +33,7 @@ func _on_path_timer_timeout():
 func _on_detection_box_body_entered(body):
 	if body.is_in_group("Enemy"):
 		attack = body
-		attack.connect("enemy_freed", Callable(self, "_on_enemy_removed"))
+		#attack.connect("enemy_freed", Callable(self, "_on_enemy_removed"))
 
 func _on_enemy_removed():
 	attack = null

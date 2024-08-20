@@ -383,7 +383,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42v44"]
-radius = 5.09902
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1nulh"]
 radius = 16.0
@@ -411,7 +411,7 @@ animation = &"up"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14)
+position = Vector2(-0.370037, 12.37)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_42v44")
 
