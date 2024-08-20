@@ -36,8 +36,8 @@ texture = ExtResource("1_06dnp")
 8:4/0/y_sort_origin = -10
 8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:4/0/physics_layer_0/angular_velocity = 0.0
-8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.5, 9, 3, 10, 10.5, 8, 13.5, 5.5, 15.5, 2, 15, -2.5, 8, -4.5, 0, -2, -4, 2.5)
-8:4/0/physics_layer_0/polygon_1/points = PackedVector2Array(-5, 7, -5, 11, -11, 11, -14, 6.5, -11, 4.5, -7, 4)
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 12, 3, 10, 10.5, 8, 13.5, 5.5, 15.5, 2, 15, -2.5, 8, -4.5, 0, -2, -4, 0)
+8:4/0/physics_layer_0/polygon_1/points = PackedVector2Array(0, 12, -4, 12, -11, 11, -14, 6.5, -11, 4.5, -4, 0)
 6:10/size_in_atlas = Vector2i(2, 2)
 6:10/0 = 0
 6:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -187,4 +187,34 @@ position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_plp8f")
 
 [node name="soldier" parent="." instance=ExtResource("7_ctutm")]
-position = Vector2(1030, 161)
+position = Vector2(1008, 88)
+
+[node name="soldier2" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(1008, 64)
+
+[node name="soldier3" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(984, 64)
+
+[node name="soldier4" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(984, 88)
+
+[node name="soldier5" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(960, 88)
+
+[node name="soldier6" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(960, 64)
+
+[node name="soldier7" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(960, 40)
+
+[node name="soldier8" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(984, 40)
+
+[node name="soldier9" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(1008, 40)
+
+[node name="soldier10" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(936, 72)
+
+[node name="soldier11" parent="." instance=ExtResource("7_ctutm")]
+position = Vector2(936, 48)

@@ -66,7 +66,7 @@ func _physics_process(_delta):
 			update_anim(direction)
 			move_and_slide()
 		if not healing:
-			if (GameState.combat and GameState.player_health < 120):
+			if ((not GameState.combat) and GameState.player_health < 120):
 				healing = true
 				$healing_timer.start()
 

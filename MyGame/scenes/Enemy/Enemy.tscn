@@ -361,7 +361,6 @@ position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_3aqhb")
 
 [node name="detection_area" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_wqdm3")
@@ -376,7 +375,6 @@ shape = SubResource("RectangleShape2D_gkxvo")
 one_shot = true
 
 [node name="hurtbox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(1, 3)

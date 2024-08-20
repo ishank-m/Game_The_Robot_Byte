@@ -14,7 +14,10 @@ var attack_cooldown = true
 var animation_playing = false
 var last_hit = null
 
-func _physics_process(delta):
+func _ready():
+	add_to_group("Enemy")
+
+func _physics_process(_delta):
 	if player or player_in_hitbox:
 		GameState.combat = true
 	else:
@@ -97,6 +100,7 @@ func _on_enemy_sprite_animation_finished():
 	elif anim.animation == "die":
 		emit_signal("enemy_freed")
 		GameState.spawned_enemies -= 1
+		GameState.combat = false
 		queue_free()
 
 func enemy_anim():

@@ -107,13 +107,15 @@ radius = 3.80789
 size = Vector2(16, 31.5)
 
 [node name="soldier" type="CharacterBody2D"]
+z_index = 1
 motion_mode = 1
 wall_min_slide_angle = 0.0
+safe_margin = 5.0
 script = ExtResource("1_hkf4h")
 
 [node name="soldier" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2k3mv")
-animation = &"left"
+animation = &"attack_left"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -132,4 +134,13 @@ shape = SubResource("RectangleShape2D_sygpu")
 wait_time = 0.1
 autostart = true
 
+[node name="detection box" type="Area2D" parent="."]
+position = Vector2(-14, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection box"]
+visible = false
+shape = SubResource("RectangleShape2D_sygpu")
+
+[connection signal="animation_finished" from="soldier" to="." method="_on_soldier_animation_finished"]
 [connection signal="timeout" from="path_timer" to="." method="_on_path_timer_timeout"]
+[connection signal="body_entered" from="detection box" to="." method="_on_detection_box_body_entered"]
