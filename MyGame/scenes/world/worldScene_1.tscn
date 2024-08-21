@@ -618,7 +618,6 @@ texture = ExtResource("8_f4sej")
 flip_h = true
 hframes = 6
 vframes = 3
-frame = 5
 
 [node name="walk" type="Sprite2D" parent="fighting_scene"]
 z_index = 3

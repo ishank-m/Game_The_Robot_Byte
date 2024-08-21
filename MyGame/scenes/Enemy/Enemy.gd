@@ -26,7 +26,6 @@ func _physics_process(_delta):
 			GameState.points += 10
 		elif last_hit == "king":
 			last_hit = null
-			GameState.no_of_enemies -= 1
 		died = true
 		anim.play("die")
 	if player and is_instance_valid(player) and not died:
