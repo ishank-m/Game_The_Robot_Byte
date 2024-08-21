@@ -22,6 +22,9 @@ func _physics_process(_delta):
 		if Input.is_action_just_pressed("health") and not attack:
 			attack = true
 			anim.play("health_potion")
+			await anim.animation_finished
+			GameState.player_health = 120
+			
 		elif Input.is_action_just_pressed("invin") and not attack:
 			attack = true
 			anim.play("invin_potion")
@@ -113,8 +116,6 @@ func _on_player_sprite_animation_finished():
 	if attack:
 		if $Player_sprite.animation in ["attack_right","attack_up", "attack_down"]:
 			pass
-		if anim.animation == "health":
-			GameState.player_health = 120
 		if anim.animation == "invin_postion":
 			pass
 		attack = false
