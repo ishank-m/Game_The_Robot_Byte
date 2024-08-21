@@ -10,6 +10,7 @@ var once = false
 var transition_playing = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameState.scene = "throne_room"
 	$walk2.play()
 	$walk.play()
 	transition.fade_out()
