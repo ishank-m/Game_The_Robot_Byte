@@ -36,7 +36,7 @@ func _physics_process(delta):
 			move_and_collide(velocity*delta)
 
 func update_anim():
-	if not attack:
+	if not attack and not died:
 		anim.play("walk")
 
 func _on_boss_sprite_animation_finished():
