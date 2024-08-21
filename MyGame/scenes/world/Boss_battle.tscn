@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://de0onpm8cli53"]
+[gd_scene load_steps=43 format=3 uid="uid://de0onpm8cli53"]
 
 [ext_resource type="Script" path="res://scenes/world/Boss_battle.gd" id="1_0xb08"]
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_t3diy"]
@@ -129,7 +129,7 @@ b = Vector2(1, 225)
 
 [sub_resource type="Curve2D" id="Curve2D_cc5r4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 248, 56, 0, 0, 0, 0, 72, 56)
+"points": PackedVector2Array(0, 0, 0, 0, 232, 56, 0, 0, 0, 0, 72, 56)
 }
 point_count = 2
 
@@ -168,6 +168,30 @@ region = Rect2(448, 0, 64, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2kune"]
 atlas = ExtResource("10_0p6bs")
 region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqace"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ukm3"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbbn8"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h0tp"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1pg4"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtuwu"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(320, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uocfm"]
 atlas = ExtResource("11_nxfck")
@@ -223,8 +247,31 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2kune")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqace")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ukm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbbn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h0tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1pg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtuwu")
+}],
+"loop": true,
+"name": &"down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -248,8 +295,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 12.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_otj8k"]
+radius = 5.51965
 
 [node name="BossBattle" type="Node2D"]
 y_sort_enabled = true
@@ -316,13 +366,20 @@ shape = SubResource("SegmentShape2D_yipnn")
 curve = SubResource("Curve2D_cc5r4")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(248, 56)
+position = Vector2(232, 56)
 rotates = false
 loop = false
 
 [node name="King" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
 sprite_frames = SubResource("SpriteFrames_pjime")
-animation = &"walk"
+animation = &"down"
 flip_h = true
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Path2D/PathFollow2D/King"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/King/StaticBody2D"]
+position = Vector2(0, 8.63068)
+shape = SubResource("CircleShape2D_otj8k")
+
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]
+[connection signal="animation_finished" from="Path2D/PathFollow2D/King" to="." method="_on_king_animation_finished"]
