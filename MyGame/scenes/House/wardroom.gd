@@ -22,7 +22,7 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "lobby":
 		$Player.set_position($room_2.position)
-		GameState.scene  = "window"
+	GameState.scene  = "window"
 func _on_fade_out_done():
 	GameState.game_state = "pause"
 

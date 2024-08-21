@@ -4,7 +4,6 @@ extends Node2D
 @onready var transition = $TransitionScene
 
 func _ready():
-	MusicPlayer.birds_sounds()
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	GameState.game_state = "play"
 	Dialogic.signal_event.connect(_on_dialogic_signal)
@@ -45,14 +44,16 @@ func _on_fade_out_done():
 
 
 func _on_appearing_animation_finished():
+	MusicPlayer.stop()
 	$appearing.visible = false
 	Dialogic.start("world_init1")
 	$Player.show()
 
 func _on_dialogic_signal(argument):
 	if argument == "play_sound_now":
-		print("play")
+		MusicPlayer.play_fight()
 	elif argument == "done1":
+		GameState.pausable = true
 		GameState.game_state = "play"
 		$dialogue_cooldown.start()
 	elif argument == "done2":
