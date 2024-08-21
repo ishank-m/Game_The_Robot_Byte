@@ -547,6 +547,7 @@ shape = SubResource("RectangleShape2D_tpmdv")
 visible = false
 
 [node name="transitions" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="clouds" type="AnimatedSprite2D" parent="transitions"]
 position = Vector2(168, 96)

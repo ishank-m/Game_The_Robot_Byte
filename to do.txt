@@ -1,4 +1,3 @@
 - ThroneRoom stairs logic
 - EndingScene stairs logic
 - combat = true
-- spawner deactivate logic
