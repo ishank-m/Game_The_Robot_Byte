@@ -4,6 +4,7 @@ extends Node2D
 @onready var transition = $TransitionScene
 
 func _ready():
+	MusicPlayer.birds_sounds()
 	GameState.game_state = "play"
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	transition.connect("fade_in_done", _on_fade_in_done)

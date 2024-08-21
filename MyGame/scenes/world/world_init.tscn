@@ -355,7 +355,7 @@ y_sort_enabled = true
 script = ExtResource("1_hxmwk")
 
 [node name="Player" parent="." instance=ExtResource("2_5jprm")]
-position = Vector2(249, 182)
+position = Vector2(178, 158)
 scale = Vector2(0.8, 0.8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

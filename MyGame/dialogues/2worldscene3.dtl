@@ -1,0 +1,7 @@
+join Kevin 0
+Kevin: Hey! Looks like you're ready for the battle.
+leave Kevin [animation="Instant In Or Out"]
+join King (king_normal) 0 [animation="Instant In Or Out"]
+King: Come on then. Let's get going.
+[signal arg="done2"]
+[end_timeline]

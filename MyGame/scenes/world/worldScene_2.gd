@@ -49,6 +49,7 @@ func _on_fade_in_done():
 	if to_where == "worldscene1":
 		get_tree().change_scene_to_file("res://scenes/world/worldScene_1.tscn")
 	elif to_where == "worldscene3":
+		MusicPlayer.stop()
 		get_tree().change_scene_to_file("res://scenes/world/worldScene_3.tscn")
 func _on_clouds_animation_finished():
 	$CanvasLayer/clouds.hide()

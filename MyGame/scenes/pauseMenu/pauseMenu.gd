@@ -20,10 +20,11 @@ func hide_menu():
 	$CanvasLayer.visible = false
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_cancel") and get_tree().paused:
-		hide_menu()
-	elif Input.is_action_just_pressed("ui_cancel") and not get_tree().paused:
-		show_menu()
+	if GameState.pausable:
+		if Input.is_action_just_pressed("ui_cancel") and get_tree().paused:
+			hide_menu()
+		elif Input.is_action_just_pressed("ui_cancel") and not get_tree().paused:
+			show_menu()
 
 func _on_save_button_pressed():
 	if not animation_playing:

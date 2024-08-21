@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cji5eqnvahk3a"]
+[gd_scene load_steps=72 format=3 uid="uid://cji5eqnvahk3a"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_3.gd" id="1_qtves"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_sukll"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://csb6cv21d40ff" path="res://assets/sprites/Characters/King/damaged/king.png" id="10_r0dbg"]
 [ext_resource type="Texture2D" uid="uid://ydhvn2c0apbq" path="res://assets/sprites/Characters/MC/MC.png" id="11_2cex7"]
 [ext_resource type="Texture2D" uid="uid://jqeerm63t1g" path="res://assets/sprites/world/door_anim.png" id="12_1sc1n"]
+[ext_resource type="PackedScene" uid="uid://dwwr13q3kdjad" path="res://scenes/characters/king/King.tscn" id="13_4h2vw"]
+[ext_resource type="AudioStream" uid="uid://culiwkrk02cc6" path="res://assets/music/SoundEffects/birds_sound.mp3" id="14_1l0aj"]
+[ext_resource type="AudioStream" uid="uid://du3a2g3ssewnn" path="res://assets/music/SoundEffects/door_open&close.mp3" id="15_w0cfm"]
+[ext_resource type="AudioStream" uid="uid://cekweunju3vld" path="res://assets/music/SoundEffects/walk_grass.wav" id="16_hl4ey"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m3y3n"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -476,6 +480,22 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7he0x"]
+atlas = ExtResource("12_1sc1n")
+region = Rect2(36, 0, 12, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glyil"]
+atlas = ExtResource("12_1sc1n")
+region = Rect2(24, 0, 12, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm533"]
+atlas = ExtResource("12_1sc1n")
+region = Rect2(12, 0, 12, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y7q6"]
+atlas = ExtResource("12_1sc1n")
+region = Rect2(0, 0, 12, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rfku"]
 atlas = ExtResource("12_1sc1n")
 region = Rect2(0, 0, 12, 20)
@@ -496,6 +516,23 @@ region = Rect2(36, 0, 12, 20)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7he0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glyil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm533")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y7q6")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7rfku")
 }, {
 "duration": 1.0,
@@ -511,6 +548,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gf1c"]
+size = Vector2(98, 30)
 
 [node name="WorldScene3" type="Node2D"]
 y_sort_enabled = true
@@ -637,9 +677,40 @@ limit_bottom = 264
 z_index = 1
 position = Vector2(104, 206)
 sprite_frames = SubResource("SpriteFrames_r45w2")
-frame = 3
-frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+
+[node name="King" parent="." instance=ExtResource("13_4h2vw")]
+
+[node name="dialogue_trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_trigger"]
+position = Vector2(152, 277)
+shape = SubResource("RectangleShape2D_5gf1c")
+
+[node name="birds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_1l0aj")
+volume_db = 15.0
+autoplay = true
+
+[node name="door_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_w0cfm")
+attenuation = 0.517632
+panning_strength = 0.1
+
+[node name="walk_chars" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_hl4ey")
+volume_db = 16.0
+
+[node name="walk_chars2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_hl4ey")
+volume_db = 16.0
+panning_strength = 0.86
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="shop" to="." method="_on_shop_body_entered"]
 [connection signal="animation_finished" from="door" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="dialogue_trigger" to="." method="_on_dialogue_trigger_body_entered"]

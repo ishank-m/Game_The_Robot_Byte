@@ -1,7 +1,7 @@
 extends Node
 var items = {
 	"sword": "wood",
-	"health_potion": 0,
+	"health_potion": 1,
 	"invin_potion": 0
 }
 var sword_damage = 9
@@ -17,6 +17,7 @@ var combat
 var points = 0
 var no_of_enemies = 0
 var spawned_enemies = 0
+var pausable = true
 
 var dialogues_count = {
 	"downstairs" : 0,

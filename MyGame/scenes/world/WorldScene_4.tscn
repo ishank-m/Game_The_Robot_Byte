@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bprjx7w8377uh"]
+[gd_scene load_steps=44 format=3 uid="uid://bprjx7w8377uh"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_06dnp"]
 [ext_resource type="Script" path="res://scenes/world/WorldScene_4.gd" id="1_mdi3m"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="10_vqcj0"]
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="11_ia1ko"]
 [ext_resource type="PackedScene" uid="uid://dwwr13q3kdjad" path="res://scenes/characters/king/King.tscn" id="12_rweo7"]
+[ext_resource type="AudioStream" uid="uid://cvtm5cmnpryn1" path="res://assets/music/SoundEffects/sword_hit.wav" id="13_sjlrr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mqaab"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -293,6 +294,9 @@ animations = [{
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hmxy3"]
 a = Vector2(0, -120)
 b = Vector2(0, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4bfd"]
+size = Vector2(20, 34)
 
 [node name="WorldScene4" type="Node2D"]
 y_sort_enabled = true
@@ -777,7 +781,7 @@ position = Vector2(595, 72)
 position = Vector2(442.127, 72)
 
 [node name="Enemy_spawner6" parent="." instance=ExtResource("10_vqcj0")]
-position = Vector2(442.127, 72)
+position = Vector2(429.127, 72)
 
 [node name="Enemy_spawner4" parent="." instance=ExtResource("10_vqcj0")]
 position = Vector2(736, 71.875)
@@ -808,9 +812,47 @@ position = Vector2(1152, 64)
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(-8, 56, 1176, 56, 1176, 88, 224, 88, -8, 88, -8, 184, 1208, 184, 1208, -40, -8, -40)
+polygon = PackedVector2Array(-8, 48, 1176, 48, 1176, 96, -8, 96, -8, 184, 1208, 184, 1208, -40, -8, -40)
 
 [node name="King" parent="." instance=ExtResource("12_rweo7")]
 position = Vector2(1184, 62.875)
 
+[node name="scene_change_trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_change_trigger"]
+position = Vector2(-32, 71)
+shape = SubResource("RectangleShape2D_g4bfd")
+
+[node name="fight_sound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_sjlrr")
+volume_db = -20.0
+pitch_scale = 1.3
+autoplay = true
+attenuation = 0.535887
+panning_strength = 0.79
+
+[node name="fight_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_sjlrr")
+volume_db = -20.0
+pitch_scale = 0.89
+autoplay = true
+attenuation = 0.965936
+panning_strength = 2.4
+
+[node name="fight_sound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_sjlrr")
+volume_db = -20.0
+pitch_scale = 1.34
+autoplay = true
+attenuation = 0.63728
+panning_strength = 3.0
+
+[node name="fight_sound4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_sjlrr")
+volume_db = -20.0
+autoplay = true
+attenuation = 0.297302
+panning_strength = 1.43
+
 [connection signal="body_entered" from="dialogue_trigger" to="." method="_on_dialogue_trigger_body_entered"]
+[connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

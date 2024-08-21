@@ -36,6 +36,7 @@ func _on_upstairs_body_entered(body):
 		transition.fade_in()
 
 func _on_dialogic_signal(argument: String):
+	GameState.pausable = true
 	if argument == "end" or argument == "done":
 		GameState.game_state = "play"
 	elif argument == "done3":
@@ -47,6 +48,7 @@ func _on_dialogue_body_entered(body):
 	if body.name == "Player" and count == 0:
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
+		GameState.pausable = false
 		Dialogic.start("downstairs_2")
 		count = 1
 	elif body.name == "Player" and count == 1:
@@ -56,9 +58,11 @@ func _on_out_body_entered(body):
 	if body.name == "Player" and GameState.dialogues_count['downstairs'] == 0:
 		GameState.game_state = "pause"
 		Dialogic.start("downstairs")
+		GameState.pausable = false
 		GameState.dialogues_count['downstairs'] = 1
 	elif body.name == "Player" and GameState.dialogues_count['downstairs'] == 1:
 		$Player/Player_sprite.play("down")
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
+		GameState.pausable = false
 		Dialogic.start("downstairs3")

@@ -67,46 +67,27 @@ offset_bottom = 16.0
 text = "Player Health"
 label_settings = ExtResource("4_rqn7l")
 
-[node name="bar_king" type="Sprite2D" parent="."]
-position = Vector2(285, 21)
-texture = ExtResource("2_88xbo")
-hframes = 11
-frame = 10
-
-[node name="critical_health_king" type="AnimatedSprite2D" parent="."]
-position = Vector2(285, 21)
-sprite_frames = SubResource("SpriteFrames_hyrpp")
-frame_progress = 0.81575
-
-[node name="Label_king" type="Label" parent="."]
-offset_left = 262.0
-offset_top = 8.0
-offset_right = 318.0
-offset_bottom = 16.0
-text = "King Health"
-label_settings = ExtResource("4_rqn7l")
-
 [node name="HealthPot" type="Sprite2D" parent="."]
-position = Vector2(304, 40)
+position = Vector2(304, 16)
 texture = ExtResource("5_sow20")
 
 [node name="InvinPot" type="Sprite2D" parent="."]
-position = Vector2(304, 64)
+position = Vector2(304, 40)
 texture = ExtResource("6_xcvrw")
 
 [node name="Health_potion" type="Label" parent="."]
 offset_left = 256.0
-offset_top = 38.0
+offset_top = 16.0
 offset_right = 296.0
-offset_bottom = 46.0
+offset_bottom = 24.0
 label_settings = ExtResource("4_rqn7l")
 horizontal_alignment = 2
 
 [node name="Invin_potion" type="Label" parent="."]
 offset_left = 256.0
-offset_top = 61.0
+offset_top = 37.0
 offset_right = 296.0
-offset_bottom = 69.0
+offset_bottom = 45.0
 label_settings = ExtResource("4_rqn7l")
 horizontal_alignment = 2
 

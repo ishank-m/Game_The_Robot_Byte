@@ -1,9 +1,9 @@
-join King (king_damaged) 0
+join King (king_damaged) 0 [animation="Instant In Or Out"]
 King: Well now that we're here, I'll go see my \
 wizard friend, he will heal me.
-King: Until then, you get ready. We have a battle \
-to fight.
-King: See that Armoury over there? 
+King: Wait for me. Until then, you get ready. \
+We have a battle to fight.
+King: See that Armoury over there?
 King: Go and see if you can find something \
 for yourself.
 [signal arg="done1"]
