@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ckg02l7b6r70r"]
+[gd_scene load_steps=40 format=3 uid="uid://ckg02l7b6r70r"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_1.gd" id="1_ak5e8"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_au8bh"]
@@ -8,10 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="4_l6xe5"]
 [ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="7_f6kkl"]
 [ext_resource type="Texture2D" uid="uid://coe0s3cnrxa5p" path="res://assets/sprites/Characters/King/damaged_attack/attack_king.png" id="8_f4sej"]
+[ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="8_foff0"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="8_suvee"]
 [ext_resource type="Texture2D" uid="uid://csb6cv21d40ff" path="res://assets/sprites/Characters/King/damaged/king.png" id="9_fyh46"]
 [ext_resource type="Texture2D" uid="uid://w3ly6cgxj84v" path="res://assets/sprites/Characters/Robot/attack/attack.png" id="9_kq2kq"]
 [ext_resource type="Texture2D" uid="uid://xydyogi8r2dj" path="res://assets/sprites/Characters/Robot/movement/enemy.png" id="10_i8oyt"]
+[ext_resource type="PackedScene" uid="uid://ctl6tvxhjk5p6" path="res://scenes/pauseMenu/pauseMenu.tscn" id="13_gwf7y"]
+[ext_resource type="AudioStream" uid="uid://cekweunju3vld" path="res://assets/music/SoundEffects/walk_grass.wav" id="15_2cpsu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_srdra"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -565,6 +568,19 @@ limit_top = 96
 limit_right = 304
 limit_bottom = 384
 
+[node name="Label" type="Label" parent="Player/Camera2D"]
+offset_left = 100.0
+offset_top = -83.0
+offset_right = 161.0
+offset_bottom = -73.0
+text = "+1 Wood Sword"
+label_settings = ExtResource("8_foff0")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Player/Camera2D/Label"]
+one_shot = true
+
 [node name="init" type="Marker2D" parent="."]
 position = Vector2(128, 384)
 
@@ -632,7 +648,7 @@ texture = ExtResource("10_i8oyt")
 flip_h = true
 hframes = 4
 vframes = 6
-frame = 21
+frame = 22
 
 [node name="dialogue_trigger" type="Area2D" parent="."]
 
@@ -650,6 +666,12 @@ shape = SubResource("RectangleShape2D_37ncg")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_gwf7y")]
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_2cpsu")
+volume_db = 6.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="to_fight_1" to="." method="_on_to_fight_1_body_entered"]

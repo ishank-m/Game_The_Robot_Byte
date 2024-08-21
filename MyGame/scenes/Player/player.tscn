@@ -993,7 +993,6 @@ one_shot = true
 
 [node name="walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_phm6k")
-volume_db = 6.0
 
 [node name="attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gjtl5")

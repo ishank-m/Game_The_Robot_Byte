@@ -30,4 +30,5 @@ func birds_sounds():
 	player.play()
 func play_fight():
 	player.stream = fight_sound
+	player.panning_strength = 1.5
 	player.play()
