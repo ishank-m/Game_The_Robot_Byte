@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b418v4wrj7b51"]
+[gd_scene load_steps=17 format=3 uid="uid://b418v4wrj7b51"]
 
 [ext_resource type="Script" path="res://scenes/House/MCbedroom.gd" id="1_3l5dn"]
 [ext_resource type="Texture2D" uid="uid://dwffu3irhwwp0" path="res://assets/sprites/House/MCbedroom/house.png" id="2_gu1a3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="4_y5d7a"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="5_iqqfk"]
 [ext_resource type="PackedScene" uid="uid://ctl6tvxhjk5p6" path="res://scenes/pauseMenu/pauseMenu.tscn" id="6_kttdb"]
+[ext_resource type="AudioStream" uid="uid://du3a2g3ssewnn" path="res://assets/music/SoundEffects/door_open&close.mp3" id="7_11kwl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0rxb"]
 texture = ExtResource("2_gu1a3")
@@ -229,6 +230,9 @@ visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_kttdb")]
 process_mode = 3
+
+[node name="door_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_11kwl")
 
 [connection signal="animation_finished" from="door" to="." method="_on_door_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

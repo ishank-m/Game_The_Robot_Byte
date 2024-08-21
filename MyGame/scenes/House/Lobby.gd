@@ -43,6 +43,7 @@ func _on_wdoor_body_entered(body: Node2D):
 	if body.name == "Player":
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
+		$door_sound.play()
 		$door.play("open")
 
 func _on_door_animation_finished():

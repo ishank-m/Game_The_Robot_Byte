@@ -17,6 +17,8 @@ func _ready():
 	$TileMap.animation = "part1"
 	$TileMap.frame = 0
 	Dialogic.start("winroom")
+	GameState.pausable = false
+	$Player.stop()
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "lobby":
 		$Player.set_position($room_2.position)
@@ -34,6 +36,7 @@ func _on_area_2d_body_entered(body):
 		$char_opening_win.play("open")
 		$TileMap.play("part1")
 		playing = true
+		GameState.pausable = false
 
 func _on_char_going_animation_finished():
 	$transitions/clouds.visible = true
@@ -44,6 +47,8 @@ func _on_door_body_entered(body):
 	if body.name == "Player":
 		GameState.game_state = "pause"
 		$Player/Player_sprite.stop()
+		GameState.pausable = false
+		$Player.stop()
 		Dialogic.start("winroom_0")
 		
 
@@ -52,24 +57,23 @@ func _on_light_animation_finished(anim_name):
 		$transitions/light.visible = false
 
 
-func _on_transition_animation_finished(anim_name):
-	if anim_name == "hi":
-		$CanvasLayer/ColorRect.visible = false
-
 func _on_clouds_animation_finished():
-	GameState.scene = "window"
 	get_tree().change_scene_to_file("res://scenes/world/world_init.tscn")
 
 func _on_dialogic_signal(argument):
 	if argument == "done0":
+		GameState.pausable = true
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop() 
 		GameState.game_state = "play"
 	if argument == "done":
+		GameState.pausable = true
 		GameState.game_state = "play"
 	if argument == "done2":
 		$TileMap.animation = "part2"
 		$TileMap.frame = 0
+		GameState.pausable = false
+		$Player.stop()
 		Dialogic.start("winroom_3")
 	if argument == "done3":
 		$TileMap.play("part2")
@@ -77,13 +81,17 @@ func _on_dialogic_signal(argument):
 		$char_opening_win.hide()
 		$char_going.show()
 		$char_going.play("bye")
+		MusicPlayer.teleport_sound()
 	
 		
 func _on_char_opening_win_animation_finished():
+	GameState.pausable = false
+	$Player.stop()
 	Dialogic.start("winroom_2")
-	
 
 
 func _on_tile_map_animation_finished():
 	if $TileMap.animation == "part2":
+		GameState.pausable = false
+		$Player.stop()
 		Dialogic.start("winroom_4")

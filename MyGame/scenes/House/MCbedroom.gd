@@ -20,6 +20,8 @@ func _on_timer_timeout():
 	if GameState.dialogues_count['mcbed'] == 0:
 		GameState.game_state = "pause"
 		$Player/Player_sprite.stop()
+		GameState.pausable = false
+		$Player.stop()
 		Dialogic.start("mcbedroom")
 		GameState.dialogues_count['mcbed'] = 1
 
@@ -28,6 +30,8 @@ func _on_area_2d_body_entered(body):
 		GameState.game_state = 'pause'
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
+		$Player.stop()
+		$door_sound.play()
 		$door.play("open")
 
 
@@ -37,6 +41,7 @@ func _on_door_animation_finished():
 
 		
 func _on_dialogic_signal(argument):
+	GameState.pausable = true
 	if argument == "done":
 		GameState.game_state = 'play'
 	if argument == "done2":
@@ -45,4 +50,6 @@ func _on_dialogic_signal(argument):
 func _on_for_dialogue_timeout():
 	$Player/Player_sprite.stop()
 	GameState.game_state = 'pause'
+	GameState.pausable = false
+	$Player.stop()
 	Dialogic.start("mcbedroom_2")
