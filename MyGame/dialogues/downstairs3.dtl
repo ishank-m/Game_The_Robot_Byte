@@ -1,4 +1,4 @@
-join Kevin 1
+join Kevin 0
 Kevin: I don't need to go out yet...
 [signal arg="done3"]
 [end_timeline]

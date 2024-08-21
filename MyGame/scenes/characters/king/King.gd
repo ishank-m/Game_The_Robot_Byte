@@ -4,7 +4,8 @@ extends CharacterBody2D
 @onready var anim  = $Damaged
 @onready var player = get_parent().get_node("Player")
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
-
+var walk_sound = false
+var attack_sound = false
 var attacking
 var close_to_player
 var animation_playing
@@ -87,8 +88,14 @@ func _physics_process(delta):
 			anim.stop()
 
 func king_anim():
+	if not walk_sound:
+		$walk.play()
+		walk_sound = true
 	var x_diff = player.position.x - position.x
 	var y_diff = player.position.y - position.y
+	if x_diff== 0 and y_diff == 0 and walk_sound:
+		$walk.stop()
+		walk_sound = false
 	if x_diff > 0:
 		anim.flip_h = false
 		if y_diff > 0:
@@ -111,11 +118,12 @@ func king_anim():
 			anim.play("down")
 		elif y_diff < 0:
 			anim.play("up")
+	
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemy"):
 		attacking = body
-		attacking.connect("enemy_freed", Callable(self, "_on_enemy_removed"))
+		#attacking.connect("enemy_freed", Callable(self, "_on_enemy_removed"))
 
 func _on_hitbox_body_exited(body):
 	if body.is_in_group("Enemy"):

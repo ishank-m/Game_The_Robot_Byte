@@ -1,8 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://7h55rutfwhrf"]
+[gd_scene load_steps=51 format=3 uid="uid://7h55rutfwhrf"]
 
 [ext_resource type="Script" path="res://scenes/Enemy/Enemy.gd" id="1_17d06"]
 [ext_resource type="Texture2D" uid="uid://xydyogi8r2dj" path="res://assets/sprites/Characters/Robot/movement/enemy.png" id="2_1grgf"]
 [ext_resource type="Texture2D" uid="uid://w3ly6cgxj84v" path="res://assets/sprites/Characters/Robot/attack/attack.png" id="2_gwmqg"]
+[ext_resource type="AudioStream" uid="uid://cvtm5cmnpryn1" path="res://assets/music/SoundEffects/sword_hit.wav" id="4_w6bjg"]
+[ext_resource type="AudioStream" uid="uid://cekweunju3vld" path="res://assets/music/SoundEffects/walk_grass.wav" id="5_4taes"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emy3i"]
 atlas = ExtResource("2_gwmqg")
@@ -385,6 +387,14 @@ shape = SubResource("RectangleShape2D_rk4n3")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_w6bjg")
+volume_db = 5.0
+
+[node name="walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4taes")
+volume_db = 5.0
 
 [connection signal="animation_finished" from="Enemy_sprite" to="." method="_on_enemy_sprite_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

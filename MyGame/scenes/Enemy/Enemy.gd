@@ -14,6 +14,8 @@ var died = false
 var attack_cooldown = true
 var animation_playing = false
 var last_hit = null
+var walk_sound = false
+var hit_sound = false
 
 func _ready():
 	add_to_group("Enemy")
@@ -98,6 +100,9 @@ func _on_enemy_sprite_animation_finished():
 		queue_free()
 
 func enemy_anim():
+	if not walk_sound:
+		$walk.play()
+		walk_sound = true
 	var x_diff = player.position.x - position.x
 	var y_diff = player.position.y - position.y
 	if x_diff > 5:
@@ -129,9 +134,15 @@ func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_attack"):
 		last_hit = "player"
 		health -= player_damage
+		if not hit_sound:
+			$hit.play()
+			hit_sound = true
 	if area.is_in_group("king_attack"):
 		last_hit = "king"
 		health -= 20
+		if not hit_sound:
+			$hit.play()
+			hit_sound = true
 
 func makepath():
 	if is_instance_valid(player):

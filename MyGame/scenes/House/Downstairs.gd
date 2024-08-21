@@ -2,6 +2,7 @@ extends Node2D
 var count = 0
 @onready var player = get_node("Player")
 @onready var transition = $TransitionScene
+var is_back = false
 
 func _ready():
 	$Player.walk = load("res://assets/music/SoundEffects/walk_wood.wav")
@@ -12,17 +13,19 @@ func _ready():
 	if GameState.scene == "init":
 		player.set_position($init.position)
 	elif GameState.scene == "lobby":
-		GameState.game_state = "play"
+		is_back = true
 		player.set_position($Lobby.position)
 	if GameState.player_pos:
 		player.position = GameState.player_pos
 		GameState.player_pos = null
 	GameState.scene = "downstairs"
+	GameState.game_state = "pause"
 
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
 func _on_fade_out_done():
-	pass
+	if is_back:
+		GameState.game_state = "play"
 
 func _on_stairs_body_entered(body):
 	if body.name == "Player":

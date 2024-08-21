@@ -9,6 +9,7 @@ var sword = GameState.items["sword"]
 var music_playing = false
 var walk 
 var music = false
+var attack_sound = false
 
 func _ready():
 	$walk.stream = walk
@@ -23,6 +24,12 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
+	if attack and not attack_sound:
+		attack_sound = true
+		$attack.play()
+	elif not attack and attack_sound:
+		$attack.stop()
+		attack_sound = false
 	if GameState.game_state == "play":
 		if Input.is_action_just_pressed("health") and not attack and GameState.items["health_potion"]:
 			attack = true
