@@ -43,6 +43,9 @@ func _on_play_button_animation_animation_finished(anim_name):
 	if anim_name == "mouse_pressed":
 		animation_playing = false
 		$Car_1_main/AnimationPlayer.play("Carmainmenu")
+		$car_start.play()
+		await $car_start.finished
+		$car_moving.play()
 		$Title/Play_Button.frame = 1
 		GameState.game_state = 'load_menu'
 func _on_play_mouse_entered():
@@ -58,6 +61,7 @@ func _on_animation_player_animation_finished(anim_name):
 		MusicPlayer.play_music_calm()
 		Dialogic.start("mainmenu")
 		dialogue = true
+		
 
 #Bird
 func _on_timer_timeout():
@@ -86,6 +90,7 @@ func _on_button_pressed():
 	$Loadmenu/Back/backanim.play("back_pressed")
 func _on_backanim_animation_finished(anim_name):
 	if anim_name == "back_pressed":
+		$car_start.play()
 		$Car_1_main/AnimationPlayer.play("rev_frm_ld_mn")
 		$Loadmenu/Back.frame = 0
 
