@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://54ki5d2u0k71"]
+[gd_scene load_steps=38 format=3 uid="uid://54ki5d2u0k71"]
 
 [ext_resource type="Texture2D" uid="uid://bhr5ad303xi2g" path="res://assets/sprites/Characters/Final Boss/boss_attack.png" id="1_h8081"]
 [ext_resource type="Script" path="res://scenes/Boss/Boss.gd" id="1_ptasi"]
@@ -228,73 +228,56 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 20.0
+"speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg7qn"]
-size = Vector2(62, 29.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ehtym"]
+radius = 13.0
+height = 68.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50w8x"]
-size = Vector2(80, 17)
+size = Vector2(170, 26)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbvwk"]
-size = Vector2(146, 17)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_na7t1"]
-size = Vector2(171, 31)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogqss"]
-size = Vector2(146, 27)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mkbgu"]
-radius = 12.3693
+[sub_resource type="CircleShape2D" id="CircleShape2D_yo16w"]
+radius = 32.0
 
 [node name="Boss" type="CharacterBody2D"]
+safe_margin = 10.0
 script = ExtResource("1_ptasi")
 
 [node name="Boss_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u7wl4")
 animation = &"attack"
+frame = 5
 offset = Vector2(80, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-3, 17.25)
-shape = SubResource("RectangleShape2D_hg7qn")
+position = Vector2(-6, 14)
+rotation = 4.71239
+shape = SubResource("CapsuleShape2D_ehtym")
 
-[node name="attackarea_1" type="Area2D" parent="."]
-visible = false
+[node name="attackarea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea_1"]
-position = Vector2(69, -3.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea"]
+position = Vector2(114, -3)
 shape = SubResource("RectangleShape2D_50w8x")
 
-[node name="attackarea_2" type="Area2D" parent="."]
-visible = false
+[node name="hurtbox" type="Area2D" parent="."]
+position = Vector2(-6, 14)
+rotation = -1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea_2"]
-position = Vector2(102, -2.5)
-shape = SubResource("RectangleShape2D_tbvwk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(8, 1)
+shape = SubResource("CircleShape2D_yo16w")
 
-[node name="attackarea_3" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea_3"]
-position = Vector2(115.5, -2.5)
-shape = SubResource("RectangleShape2D_na7t1")
-
-[node name="attackarea_4" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea_4"]
-position = Vector2(125, -2.5)
-shape = SubResource("RectangleShape2D_ogqss")
-
-[node name="attackarea_5" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea_5"]
-position = Vector2(175, -2)
-shape = SubResource("CircleShape2D_mkbgu")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="animation_finished" from="Boss_sprite" to="." method="_on_boss_sprite_animation_finished"]
+[connection signal="area_entered" from="attackarea" to="." method="_on_attackarea_2_area_entered"]
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
