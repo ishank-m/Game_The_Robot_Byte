@@ -2,6 +2,7 @@ extends Node2D
 var speed = 45
 @onready var path = $Path2D/PathFollow2D
 @onready var path_mc = $Path2D2/PathFollow2D
+@onready var player = get_node("Player")
 var anim_playing = false
 var anim_playing_mc = false
 var cutscene = true
@@ -10,20 +11,20 @@ var once = false
 var transition_playing = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Player.walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
-	GameState.pausable = false
-	GameState.scene = "throne_room"
-	$walk2.play()
-	$walk.play()
-	transition.fade_out()
-	transition.connect("fade_out_done", _on_fade_out_done)
-	transition.connect("fade_in_done", _on_fade_in_done)
-	$transitions/clouds.visible = false
-	$Path2D2/PathFollow2D/mc.visible = true
-	$Player.set_position($Path2D2/PathFollow2D.position)
-	$Player.visible = false
-	GameState.game_state = "pause"
-	Dialogic.signal_event.connect(_on_dialogic_signal)
+		$Player.walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
+		GameState.pausable = false
+		GameState.scene = "throne_room"
+		$walk2.play()
+		$walk.play()
+		transition.fade_out()
+		transition.connect("fade_out_done", _on_fade_out_done)
+		transition.connect("fade_in_done", _on_fade_in_done)
+		$transitions/clouds.visible = false
+		$Path2D2/PathFollow2D/mc.visible = true
+		$Player.set_position($Path2D2/PathFollow2D.position)
+		$Player.visible = false
+		GameState.game_state = "pause"
+		Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

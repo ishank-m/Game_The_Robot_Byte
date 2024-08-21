@@ -6,6 +6,7 @@ var dialogue = false
 var to_where: String
 
 func _ready():
+	GameState.player_health = 120
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	Dialogic.start("1worldscene2")
 	MusicPlayer.play_music_fight()
@@ -43,6 +44,8 @@ func _physics_process(_delta):
 			camera.position = player.position
 			$Player.queue_free()
 			$dead.visible = true
+			GameState.spawn = false
+			get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":

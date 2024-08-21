@@ -13,7 +13,7 @@ var player_died = false
 var current_scene
 var game_state = 'main_menu'
 var scene = "init"
-var current_save
+var current_save = "save1"
 var combat
 var points = 0
 var spawn = false
@@ -29,6 +29,7 @@ var dialogues_count = {
 	"mcbed": 0,
 	"worldscene1" : 0,
 	"shop" : 0,
+	"throneroom" : 0,
 }
 
 var stairs = false
