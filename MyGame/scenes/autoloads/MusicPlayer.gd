@@ -1,8 +1,8 @@
 extends Node
 var bgmusic_mainMenu = load("res://assets/music/bg_music_retro.wav")
 var bgmusic_calm = load("res://assets/music/bg_music_calm.wav")
-var fight_music = load("res://assets/music/intense_music.wav")
-var final_fight = load("res://assets/music/intense_music_2.wav")
+var fight_music = load("res://assets/music/intense_music.mp3")
+var final_fight = load("res://assets/music/intense_music_2.mp3")
 var teleport = load("res://assets/music/SoundEffects/teleport_sound.mp3")
 var birds = load("res://assets/music/SoundEffects/birds_sound.mp3")
 var fight_sound = load("res://assets/music/SoundEffects/sword_hit.wav")
