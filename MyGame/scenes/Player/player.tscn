@@ -987,15 +987,15 @@ visible = false
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_0auga")
 
-[node name="healing_timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_phm6k")
 
 [node name="attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gjtl5")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="animation_finished" from="Player_sprite" to="." method="_on_player_sprite_animation_finished"]
-[connection signal="timeout" from="healing_timer" to="." method="_on_healing_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

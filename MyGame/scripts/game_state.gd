@@ -1,4 +1,5 @@
 extends Node
+
 var items = {
 	"sword": "wood",
 	"health_potion": 0,
@@ -15,8 +16,7 @@ var scene = "init"
 var current_save
 var combat
 var points = 0
-var no_of_enemies = 0
-var spawned_enemies = 0
+var spawn = false
 var pausable = true
 var boss_health = 400
 

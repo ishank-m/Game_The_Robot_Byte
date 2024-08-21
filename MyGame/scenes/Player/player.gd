@@ -24,6 +24,10 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
+	if GameState.dialogues_count["worldscene1"]:
+		sword =  GameState.items["sword"]
+	else:
+		sword = null
 	if attack and not attack_sound:
 		attack_sound = true
 		$attack.play()
@@ -37,35 +41,35 @@ func _physics_process(_delta):
 			await anim.animation_finished
 			GameState.items["health_potion"] -= 1
 			GameState.player_health = 120
-			
 		elif Input.is_action_just_pressed("invin") and not attack and GameState.items["invin_potion"]:
 			attack = true
 			anim.play("invin_potion")
 			await anim.animation_finished
 			GameState.items["invin_potion"] -= 1
 			GameState.player_health = 10000
-		elif Input.is_action_just_pressed("attack_left") and not attack:
+			$Timer.start()
+		elif Input.is_action_just_pressed("attack_left") and not attack and sword:
 			attack = true
 			anim.flip_h = true
 			anim.play(sword+"_attack_right")
 			$attackbox_left/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_left/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_down") and not attack:
+		elif Input.is_action_just_pressed("attack_down") and not attack and sword:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_down")
 			$attackbox_bottom/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_bottom/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_right") and not attack:
+		elif Input.is_action_just_pressed("attack_right") and not attack and sword:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_right")
 			$attackbox_right/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_right/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_up") and not attack:
+		elif Input.is_action_just_pressed("attack_up") and not attack and sword:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_up")
@@ -95,10 +99,6 @@ func _physics_process(_delta):
 			velocity = direction*speed
 			update_anim(direction)
 			move_and_slide()
-		if not healing:
-			if ((not GameState.combat) and GameState.player_health < 120):
-				healing = true
-				$healing_timer.start()
 
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:
@@ -142,14 +142,11 @@ func update_anim(direction):
 func _on_player_sprite_animation_finished():
 	if attack:
 		if $Player_sprite.animation in ["attack_right","attack_up", "attack_down"]:
-			pass
-		if anim.animation == "invin_postion":
-			pass
-		attack = false
-
-func _on_healing_timer_timeout():
-	GameState.player_health += 10
-	healing = false
+			attack = false
 
 func stop():
 	$walk.stop()
+
+
+func _on_timer_timeout():
+	GameState.player_health = 120

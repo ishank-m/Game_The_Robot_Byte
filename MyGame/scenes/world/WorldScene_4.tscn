@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_5ed1o"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="4_1x6kw"]
 [ext_resource type="Texture2D" uid="uid://w3ly6cgxj84v" path="res://assets/sprites/Characters/Robot/attack/attack.png" id="7_4llua"]
-[ext_resource type="Texture2D" uid="uid://2ox68k2ikamj" path="res://assets/sprites/Characters/NPCs/soldier.png" id="8_vvyse"]
+[ext_resource type="Texture2D" uid="uid://dcpgnxsajg1vv" path="res://assets/sprites/Characters/NPCs/soldier.png" id="8_vvyse"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="9_y7nqd"]
 [ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="10_vqcj0"]
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="11_ia1ko"]
