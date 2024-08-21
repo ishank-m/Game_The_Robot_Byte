@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de0onpm8cli53"]
+[gd_scene load_steps=36 format=3 uid="uid://de0onpm8cli53"]
 
 [ext_resource type="Script" path="res://scenes/world/Boss_battle.gd" id="1_0xb08"]
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_t3diy"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="6_jpcw0"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="8_88dj5"]
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="9_l7ekm"]
+[ext_resource type="Texture2D" uid="uid://buslgl4uqxg2e" path="res://assets/sprites/Characters/King/boss_battle/king_damage_taken_on_boss_battle.png" id="10_0p6bs"]
+[ext_resource type="Texture2D" uid="uid://ld057cvks115" path="res://assets/sprites/Characters/King/normal/king_normal.png" id="11_nxfck"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
 texture = ExtResource("1_t3diy")
@@ -126,6 +128,128 @@ size = Vector2(32, 16)
 b = Vector2(1, 225)
 
 [sub_resource type="Curve2D" id="Curve2D_cc5r4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 248, 56, 0, 0, 0, 0, 72, 56)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_godpl"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukvuj"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0kxn"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0ofl"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdk3x"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rljlt"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siu2w"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn51b"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kune"]
+atlas = ExtResource("10_0p6bs")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uocfm"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udkgq"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(64, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfbxs"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(128, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnydn"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(192, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym4m6"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(256, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fahpg"]
+atlas = ExtResource("11_nxfck")
+region = Rect2(320, 64, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjime"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_godpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukvuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0kxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0ofl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdk3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rljlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siu2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn51b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kune")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uocfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udkgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfbxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnydn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym4m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fahpg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="BossBattle" type="Node2D"]
 y_sort_enabled = true
@@ -190,5 +314,15 @@ shape = SubResource("SegmentShape2D_yipnn")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_cc5r4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(248, 56)
+rotates = false
+loop = false
+
+[node name="King" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+sprite_frames = SubResource("SpriteFrames_pjime")
+animation = &"walk"
+flip_h = true
 
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

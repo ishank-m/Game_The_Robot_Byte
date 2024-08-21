@@ -1,6 +1,8 @@
 extends Node2D
 @onready var transition = $TransitionScene
-
+@onready var path = $Path2D/PathFollow2D
+var speed = 40
+var anim_playing = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Boss.is_attacking = false
@@ -13,8 +15,13 @@ func _ready():
 	transition.connect("fade_out_done", _on_fade_out_done)
 	GameState.scene = "bossbattle"
 	GameState.combat = true
-func _process(_delta):
-	pass
+func _process(delta):
+	path.progress += speed*delta
+	if not anim_playing:
+		$Path2D/PathFollow2D/King.play("walk")
+		anim_playing = true
+	if path.progress_ratio == 1 and :
+		
 func _on_fade_out_done():
 	GameState.game_state = "play"
 func _on_fade_in_done():
