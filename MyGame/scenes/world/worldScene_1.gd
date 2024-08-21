@@ -15,8 +15,8 @@ func _physics_process(_delta):
 			died = true
 
 func _ready():
-	if GameState.dialogues_count["worldscene1"]:
-		$King.visible = true
+	#if GameState.dialogues_count["worldscene1"]:
+		#$King.visible = true
 	$Player/Camera2D/Label.visible = false
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	transition.fade_out()

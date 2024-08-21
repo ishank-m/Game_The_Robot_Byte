@@ -12,10 +12,6 @@ var music = false
 var attack_sound = false
 
 func _ready():
-	if GameState.dialogues_count["worldscene1"]:
-		sword =  GameState.items["sword"]
-	else:
-		sword = null
 	$walk.stream = walk
 	$Player_hitbox.add_to_group("Player")
 	$attackbox_right.add_to_group("player_attack")
@@ -28,6 +24,10 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
+	if GameState.dialogues_count["worldscene1"]:
+		sword =  GameState.items["sword"]
+	else:
+		sword = null
 	if attack and not attack_sound:
 		attack_sound = true
 		$attack.play()
