@@ -2,6 +2,7 @@ extends Node2D
 @onready var transition = $TransitionScene
 
 func _ready():
+	GameState.scene = "end"
 	$transitions/clouds.visible = true
 	$transitions/clouds.play("hi")
 	$TransitionScene.visible = false

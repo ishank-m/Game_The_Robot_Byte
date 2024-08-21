@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://de0onpm8cli53"]
+[gd_scene load_steps=15 format=3 uid="uid://de0onpm8cli53"]
 
 [ext_resource type="Script" path="res://scenes/world/Boss_battle.gd" id="1_0xb08"]
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_t3diy"]
@@ -7,45 +7,83 @@
 [ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="4_tmd1x"]
 [ext_resource type="PackedScene" uid="uid://54ki5d2u0k71" path="res://scenes/Boss/Boss.tscn" id="5_7k31k"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="6_jpcw0"]
+[ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="8_88dj5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
 texture = ExtResource("1_t3diy")
 8:4/size_in_atlas = Vector2i(2, 2)
 8:4/0 = 0
+8:4/0/y_sort_origin = -4
+8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:4/0/physics_layer_0/angular_velocity = 0.0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.8, 9.6, 9.6, 7.2, 15.2, 2.4, 14.4, -2.4, 10.4, -4.8, 4, -4.8, -4, -1.6, -3.2, 5.6)
 8:10/size_in_atlas = Vector2i(2, 2)
 8:10/0 = 0
+8:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:10/0/physics_layer_0/angular_velocity = 0.0
+8:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.8, -15.2, 16, -16, 16, 16, -16.8, 16)
 6:10/size_in_atlas = Vector2i(2, 2)
 6:10/0 = 0
+6:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:10/0/physics_layer_0/angular_velocity = 0.0
 4:10/size_in_atlas = Vector2i(2, 2)
 4:10/0 = 0
+4:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:10/0/physics_layer_0/angular_velocity = 0.0
 2:10/size_in_atlas = Vector2i(2, 2)
 2:10/0 = 0
+2:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:10/0/physics_layer_0/angular_velocity = 0.0
 0:10/size_in_atlas = Vector2i(2, 2)
 0:10/0 = 0
+0:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:10/0/physics_layer_0/angular_velocity = 0.0
 8:8/size_in_atlas = Vector2i(2, 2)
 8:8/0 = 0
 8:8/0/texture_origin = Vector2i(-1, 0)
+8:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:8/0/physics_layer_0/angular_velocity = 0.0
 6:8/size_in_atlas = Vector2i(2, 2)
 6:8/0 = 0
+6:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:8/0/physics_layer_0/angular_velocity = 0.0
 4:8/size_in_atlas = Vector2i(2, 2)
 4:8/0 = 0
+4:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:8/0/physics_layer_0/angular_velocity = 0.0
 2:8/size_in_atlas = Vector2i(2, 2)
 2:8/0 = 0
+2:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:8/0/physics_layer_0/angular_velocity = 0.0
 0:8/size_in_atlas = Vector2i(2, 2)
 0:8/0 = 0
+0:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:8/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m5r7p"]
 texture = ExtResource("2_5fmmd")
 12:2/size_in_atlas = Vector2i(2, 4)
 12:2/0 = 0
+12:2/0/y_sort_origin = 18
+12:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:2/0/physics_layer_0/angular_velocity = 0.0
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 32, 0, 32, 4, 32, 3.2, 26.4, -3.2, 27.2)
 10:6/size_in_atlas = Vector2i(2, 2)
 10:6/0 = 0
+10:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:6/0/physics_layer_0/angular_velocity = 0.0
 6:6/size_in_atlas = Vector2i(2, 2)
 6:6/0 = 0
+6:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:6/0/physics_layer_0/angular_velocity = 0.0
 4:6/size_in_atlas = Vector2i(2, 2)
 4:6/0 = 0
+4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:6/0/physics_layer_0/angular_velocity = 0.0
 0:6/size_in_atlas = Vector2i(2, 2)
 0:6/0 = 0
+0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4h5f6"]
 texture = ExtResource("3_plcql")
@@ -56,6 +94,8 @@ texture = ExtResource("3_plcql")
 0:0/animation_frame_2/duration = 0.1
 0:0/animation_frame_3/duration = 0.1
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2noo5"]
 texture = ExtResource("4_tmd1x")
@@ -66,12 +106,20 @@ texture = ExtResource("4_tmd1x")
 0:0/animation_frame_2/duration = 0.1
 0:0/animation_frame_3/duration = 0.1
 0:0/0 = 0
+0:0/0/y_sort_origin = 18
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 30.4, 5.6, 31.2, 2.4, 27.2, -4, 27.2)
 
 [sub_resource type="TileSet" id="TileSet_mxnxh"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_sxjtb")
 sources/1 = SubResource("TileSetAtlasSource_m5r7p")
 sources/3 = SubResource("TileSetAtlasSource_4h5f6")
 sources/4 = SubResource("TileSetAtlasSource_2noo5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qie2f"]
+size = Vector2(32, 16)
 
 [node name="BossBattle" type="Node2D"]
 y_sort_enabled = true
@@ -82,26 +130,40 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_mxnxh")
 format = 2
 layer_0/name = "ground"
-layer_0/tile_data = PackedInt32Array(262152, 393216, 8, 262154, 393216, 8, 262156, 393216, 8, 262158, 393216, 8, -131058, 393216, 10, 14, 393216, 10, 131086, 393216, 10, 131084, 393216, 10, 12, 393216, 10, -131060, 393216, 10, -131062, 393216, 10, 10, 393216, 10, 131082, 393216, 10, 131080, 393216, 10, 8, 393216, 10, -131064, 393216, 10, 131076, 262144, 10, 131074, 0, 10, 131072, 393216, 10, 0, 393216, 10, -131072, 393216, 10, -131070, 0, 10, -131068, 262144, 10, 4, 262144, 10, 2, 0, 10, 655374, 393216, 10, 524302, 393216, 10, 393230, 393216, 10, 393228, 393216, 10, 524300, 393216, 10, 655372, 393216, 10, 655370, 393216, 10, 524298, 393216, 10, 393226, 393216, 10, 393224, 393216, 10, 524296, 393216, 10, 524294, 393216, 10, 393222, 393216, 10, 393220, 393216, 10, 524292, 393216, 10, 524290, 393216, 10, 393218, 393216, 10, 393216, 393216, 10, 524288, 393216, 10, 655360, 393216, 10, -131066, 0, 10, 6, 0, 10, 131078, 0, 10, 262150, 393216, 8, 262148, 0, 8, 262146, 131072, 10, 262144, 131072, 10, 655362, 393216, 10, 655364, 393216, 10, 655366, 393216, 10, 655368, 393216, 10)
+layer_0/tile_data = PackedInt32Array(262152, 393216, 8, 262154, 393216, 8, 262156, 393216, 8, 262158, 393216, 8, -131058, 393216, 10, 14, 393216, 10, 131086, 393216, 10, 131084, 393216, 10, 12, 393216, 10, -131060, 393216, 10, -131062, 393216, 10, 10, 393216, 10, 131082, 393216, 10, 131080, 393216, 10, 8, 393216, 10, -131064, 393216, 10, 131076, 262144, 10, 131074, 0, 10, 131072, 393216, 10, 0, 393216, 10, -131072, 393216, 10, -131070, 0, 10, -131068, 262144, 10, 4, 262144, 10, 2, 0, 10, 655374, 393216, 10, 524302, 393216, 10, 393230, 393216, 10, 393228, 393216, 10, 524300, 393216, 10, 655372, 393216, 10, 655370, 393216, 10, 524298, 393216, 10, 393226, 393216, 10, 393224, 393216, 10, 524296, 393216, 10, 524294, 393216, 10, 393222, 393216, 10, 393220, 393216, 10, 524292, 393216, 10, 524290, 393216, 10, 393218, 393216, 10, 393216, 393216, 10, 524288, 393216, 10, 655360, 393216, 10, -131066, 0, 10, 6, 0, 10, 131078, 0, 10, 262150, 393216, 8, 262148, 0, 8, 262146, 131072, 10, 262144, 131072, 10, 655362, 393216, 10, 655364, 393216, 10, 655366, 393216, 10, 655368, 393216, 10, -262144, 524288, 10, -262142, 524288, 10, -262138, 524288, 10, -262136, 524288, 10, -262134, 524288, 10, -262132, 524288, 10, -262130, 524288, 10, -262128, 524288, 10, -131056, 524288, 10, 16, 524288, 10, 131088, 524288, 10, 262160, 524288, 10, 393232, 524288, 10, 524304, 524288, 10, 655376, 524288, 10, 786448, 524288, 10, 786446, 524288, 10, 786444, 524288, 10, 786442, 524288, 10, 786440, 524288, 10, 786438, 524288, 10, 786436, 524288, 10, 786434, 524288, 10, 786432, 524288, 10, 851966, 524288, 10, 720894, 524288, 10, 589822, 524288, 10, 458750, 524288, 10, 327678, 524288, 10, 196606, 524288, 10, 65534, 524288, 10, -65538, 524288, 10, -196610, 524288, 10)
 layer_1/name = "trees"
 layer_1/y_sort_enabled = true
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(-65523, 786433, 2, -131061, 786433, 2, 458767, 4, 0, 458762, 4, 0, 589831, 4, 0, 589837, 4, 0)
-layer_2/name = "logs"
+layer_1/tile_data = PackedInt32Array(458767, 4, 0, 458762, 4, 0, 589831, 4, 0, 589837, 4, 0, 14, 4, 0, -131061, 4, 0, -262131, 4, 0, -196599, 786433, 2, 655370, 786433, 2)
+layer_2/name = "stones "
 layer_2/y_sort_enabled = true
 layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = "stones "
-layer_3/tile_data = PackedInt32Array(-65530, 524288, 4)
-layer_4/name = "extras"
-layer_4/tile_data = PackedInt32Array(589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 327686, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, -196594, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, -131072, 262145, 6, 327683, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6)
+layer_2/tile_data = PackedInt32Array(-65530, 524288, 4)
+layer_3/name = "extras"
+layer_3/tile_data = PackedInt32Array(589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 327686, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, -196594, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, -131072, 262145, 6, 327683, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6)
 
 [node name="Boss" parent="." instance=ExtResource("5_7k31k")]
 z_index = 1
 position = Vector2(32, 56)
 
 [node name="Player" parent="." instance=ExtResource("6_jpcw0")]
-position = Vector2(200, 56)
+position = Vector2(97.4966, -11.6026)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 visible = false
+
+[node name="scene_change_trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_change_trigger"]
+position = Vector2(72, -64)
+shape = SubResource("RectangleShape2D_qie2f")
+
+[node name="TransitionScene" parent="." instance=ExtResource("8_88dj5")]
+visible = false
+
+[node name="border" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="border"]
+polygon = PackedVector2Array(-8, -40, 248, -40, 248, 184, -8, 184, -8, -40, -40, -72, -40, 216, 280, 216, 280, -72, -40, -72)
+
+[connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

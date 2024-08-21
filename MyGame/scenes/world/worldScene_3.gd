@@ -11,6 +11,7 @@ var once = true
 var king_out = false
 
 func _ready():
+	GameState.scene = "worldscene4"
 	$King.visible = false
 	$door.frame = 0
 	$Player.visible = false
