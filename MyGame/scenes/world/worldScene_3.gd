@@ -23,6 +23,9 @@ func _ready():
 	transition.connect("fade_in_done", _on_fade_in_done)
 	transition.connect("fade_out_done", _on_fade_out_done)
 	Dialogic.signal_event.connect(_on_dialogic_signal)
+	if GameState.player_pos:
+		$Player.position = GameState.player_pos
+		GameState.player_pos = null
 func _process(delta):
 	path_1.progress += speedKing*delta
 	MCPath.progress += speed*delta
