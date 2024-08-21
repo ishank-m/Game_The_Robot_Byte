@@ -1,0 +1,5 @@
+join King 1 [animation="Instant In Or Out"]
+King: Seems like that was the last of them. lets \
+continue on our path.
+[signal arg="done_end"]
+[end_timeline]

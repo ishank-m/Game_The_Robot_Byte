@@ -47,6 +47,7 @@ directories/dtl_directory={
 "5worldscene_1": "res://dialogues/5worldscene_1.dtl",
 "bossbattle1": "res://dialogues/bossbattle1.dtl",
 "bossbattle2": "res://dialogues/bossbattle2.dtl",
+"dead": "res://dialogues/dead.dtl",
 "dialogues/mainmenu": "res://dialogues/mainmenu.dtl",
 "downstairs": "res://dialogues/downstairs.dtl",
 "downstairs3": "res://dialogues/downstairs3.dtl",
@@ -75,7 +76,8 @@ directories/dtl_directory={
 "winroom_4": "res://dialogues/winroom_4.dtl",
 "worldScene_1": "res://dialogues/worldScene_1.dtl",
 "world_init1": "res://dialogues/world_init1.dtl",
-"world_init2": "res://dialogues/world_init2.dtl"
+"world_init2": "res://dialogues/world_init2.dtl",
+"worldscene2_end": "res://dialogues/worldscene2_end.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogues/style.tres", "res://dialogues/style2.tres"]
