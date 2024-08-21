@@ -8,6 +8,7 @@ var healing = false
 var sword = GameState.items["sword"]
 
 func _ready():
+	$Player_hitbox.add_to_group("Player")
 	$attackbox_right.add_to_group("player_attack")
 	$attackbox_bottom.add_to_group("player_attack")
 	$attackbox_left.add_to_group("player_attack")

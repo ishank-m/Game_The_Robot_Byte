@@ -950,7 +950,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_42v44")
 
 [node name="Player_hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
