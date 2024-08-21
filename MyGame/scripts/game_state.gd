@@ -27,7 +27,7 @@ var dialogues_count = {
 	"lobby3": 0,
 	"lobby4": 0,
 	"mcbed": 0,
-	"worldscene1" : 0,
+	"worldscene1" : 1,
 	"shop" : 0,
 }
 

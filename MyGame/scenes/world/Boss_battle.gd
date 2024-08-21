@@ -4,8 +4,10 @@ extends Node2D
 var speed = 50
 var anim_playing = false
 var go_back = false
+var died = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$King.visible = false
 	$Player/Player_sprite.flip_h = true
 	$Player/Player_sprite.play("right")
 	$Player/Player_sprite.stop()
@@ -39,6 +41,11 @@ func _process(delta):
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
 		Dialogic.start("bossbattle1")
+		$HealthBar.visible = false
+		go_back = false
+	if $Boss.died and not died:
+		Dialogic.start("bossbattle2")
+		died = true
 func _on_fade_out_done():
 	pass
 func _on_fade_in_done():
@@ -49,10 +56,15 @@ func _on_scene_change_trigger_body_entered(body):
 
 func _on_dialogic_signal(argument):
 	if argument == "done1":
-		$Path2D/PathFollow2D/King.play("right")
+		$Path2D/PathFollow2D/King.play("walk")
 		$Path2D/PathFollow2D/King.stop()
 		GameState.game_state = "play"
 		$Boss.is_attacking = true
+		$HealthBar.visible = true
+	elif argument == "done2":
+		$King.set_position($Path2D/PathFollow2D/King.position)
+		$Path2D/PathFollow2D/King.visible = false
+		$King.visible = true
 
 func _on_king_animation_finished():
 	if $Path2D/PathFollow2D/King.animation == "attack":
