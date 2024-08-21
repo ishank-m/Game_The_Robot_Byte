@@ -306,7 +306,6 @@ polygon = PackedVector2Array(64, 0, 288, 0, 288, 16, 256, 32, 192, 32, 192, 64, 
 wait_time = 10.0
 
 [node name="transitions" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="clouds" type="AnimatedSprite2D" parent="transitions"]
 position = Vector2(170, 80)
