@@ -66,39 +66,36 @@ autowrap_mode = 2
 [node name="Label3" type="Label" parent="credits/VBoxContainer"]
 layout_mode = 2
 text = "Story by:
-Ishank
+Ishank Mishra
 
 Story Consultant: 
-Naman
-Azmi Sir
+Naman Khatri
+Mr. Azmi Abidi
 
 Programming:
-Aqdas
-Ishank
+Aqdas Rafat Khan
+Ishank Mishra
 
 Game Design:
-Ishank
-Aqdas
+Ishank Mishra
+Aqdas Rafat Khan
 
 Art & Graphics:
-Ishank
+Ishank Mishra
 
 Animation: 
-Ishank
+Ishank Mishra
 
 Music:
-Ishank
-Nitin Sir
+Ishank Mishra
+Mr. Nitin Ghosh
 
 Sound Effects:
-Ishank
+Ishank Mishra 
 
 Voice Acting:
 Dr. Anita Shukla 
-(Mother)
-
-Beta Testing:
-\"\"
+(Mother) 
 
 Special Thanks to:
 City Montessori School
@@ -122,17 +119,17 @@ text = "Tools and Softwares Used:
 
 
 Game Engine:
-Godot v4.2
+Godot v4.2.2
 (with Dialogic Plugin for dialogues)
 
 Art, Graphics, Animations:
-Aseprite
+Aseprite v1.3.4, v1.3.7
 
 Music:
 Fruity Loops Studio 21
 
 Sound Effects:
-Voice Recorder
+Samsung  Voice Recorder
 (for recording)
 jsfxr.com
 audiomass.co
