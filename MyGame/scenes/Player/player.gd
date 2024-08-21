@@ -24,10 +24,6 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
-	if GameState.dialogues_count["worldscene1"]:
-		sword =  GameState.items["sword"]
-	else:
-		sword = null
 	if attack and not attack_sound:
 		attack_sound = true
 		$attack.play()

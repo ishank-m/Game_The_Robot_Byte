@@ -95,6 +95,12 @@ func _on_enemy_sprite_animation_finished():
 			GameState.player_health -= 10
 	elif anim.animation == "die":
 		emit_signal("enemy_freed")
+		randomize()
+		var chance = randi_range(1,15)
+		if chance == 1:
+			GameState.items["health_potion"] += 1
+		elif chance == 2:
+			GameState.items["invin_potion"] += 1
 		queue_free()
 
 func enemy_anim():
