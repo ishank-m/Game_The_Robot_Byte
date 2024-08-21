@@ -11,7 +11,7 @@ var player_in_view
 
 func _physics_process(_delta):
 	if GameState.spawn:
-		if not (enemy_alive and once):
+		if not (enemy_alive and once) and is_instance_valid(player):
 			if player.position.x:
 				once = true
 				enemy_alive = true

@@ -32,7 +32,9 @@ func _on_dialogic_signal(argument):
 		GameState.game_state = "play"
 		$fight_timer.start()
 	if argument == "dead":
-		pass
+		$dead.visible = true
+		GameState.spawn = false
+		get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
 	if argument == "done_end":
 		GameState.game_state = "play"
 func _physics_process(_delta):
@@ -46,9 +48,6 @@ func _physics_process(_delta):
 			camera.position = player.position
 			$Player.queue_free()
 			Dialogic.start("dead")
-			$dead.visible = true
-			GameState.spawn = false
-			get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
