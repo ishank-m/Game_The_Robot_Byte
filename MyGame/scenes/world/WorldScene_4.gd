@@ -5,6 +5,7 @@ extends Node2D
 func _ready():
 	GameState.player_died = false
 	GameState.player_health = 120
+	$dead.visible = false
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	MusicPlayer.music_final_fight()
 	transition.fade_out()

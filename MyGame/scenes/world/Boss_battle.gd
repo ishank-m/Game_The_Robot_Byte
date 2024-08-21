@@ -10,6 +10,7 @@ var died = false
 func _ready():
 	GameState.player_died = false
 	GameState.player_health = 120
+	$dead.visible = false
 	$King.visible = false
 	$Player/Player_sprite.flip_h = true
 	$Player/Player_sprite.play("right")
@@ -27,18 +28,19 @@ func _ready():
 	GameState.combat = true
 
 func _physics_process(_delta):
+	GameState.game_state = "play"
 	if not GameState.player_died:
 		if GameState.player_health == 0:
 			GameState.player_died = true
-			#$dead.set_position(player.position) 
+			$dead.set_position(player.position) 
 			var camera = player.get_node("Camera2D")
 			player.remove_child(camera)
 			get_tree().root.add_child(camera)
 			camera.position = player.position
 			$Player.queue_free()
-			#$dead.visible = true
+			$dead.visible = true
 			GameState.spawn = false
-			get_tree().change_scene_to_file("res://scenes/world/worldScene_4.tscn")
+			get_tree().change_scene_to_file("res://scenes/world/Boss_battle.tscn")
 
 func _process(delta):
 	path.progress += speed*delta
