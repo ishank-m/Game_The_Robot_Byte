@@ -30,7 +30,7 @@ func  _physics_process(_delta):
 			$Player.queue_free()
 			$dead.visible = true
 			GameState.spawn = false
-			get_tree().change_scene_to_file("res://scenes/world/worldScene_4.tscn")
+			Dialogic.start("dead")
 
 func _on_fade_out_done():
 	GameState.game_state = "play"
@@ -41,7 +41,10 @@ func _on_fade_in_done():
 func _on_dialogic_signal(argument):
 	if argument == "done1":
 		GameState.game_state = "play"
-
+	if argument == "dead":
+		$dead.visible = true
+		GameState.spawn = false
+		get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
 func animations_play():
 	for i in range(1,14):
 		var fight = "fight"+str(i)

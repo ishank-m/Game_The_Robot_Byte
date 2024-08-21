@@ -26,6 +26,7 @@ func _ready():
 		GameState.game_state = 'main_menu'
 		player.hide()
 		$Bird/Bird_animation.play("birdie")
+		$birds.play()
 		$Bird/Timer.start()
 		$Car_1_main/AnimationPlayer.play("idle")
 		$Truck/truck_anim.play("truck_moving")
@@ -61,6 +62,8 @@ func _on_animation_player_animation_finished(anim_name):
 		MusicPlayer.play_music_calm()
 		Dialogic.start("mainmenu")
 		dialogue = true
+		$car_moving.stop()
+		$car_stop.play()
 		
 
 #Bird
@@ -158,9 +161,11 @@ func _on_lmbt_2_mouse_exited():
 func _on_trucktimer_timeout():
 	if not road_crossing:
 		$Truck/truck_anim.play("truck_moving")
+		$car_moving2.play()
 		$Car_2/car2_timer.start()
 func _on_car_2_timer_timeout():
 	if not road_crossing:
+		$car_moving2.play()
 		$Car_2/car2_anim.play("car2_moving")
 
 func _on_house_body_entered(body: Node2D):
@@ -169,6 +174,7 @@ func _on_house_body_entered(body: Node2D):
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
 		$door_open.play("default")
+		$door_sound.play()
 
 
 func _on_dialogic_signal(argument):
@@ -243,3 +249,18 @@ func update_load_button_state():
 
 func click_sound():
 	$Audios/click_sound.play()
+
+
+func _on_car_2_anim_animation_finished(anim_name):
+	if anim_name == "car2_moving":
+		$car_moving2.stop()
+
+
+func _on_truck_anim_animation_finished(anim_name):
+	if anim_name == "truck_moving":
+		$car_moving2.stop()
+
+
+func _on_bird_animation_animation_finished(anim_name):
+	if anim_name == "birdie":
+		$birds.stop()

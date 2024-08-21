@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://dgs4pjemsolew"]
+[gd_scene load_steps=86 format=3 uid="uid://dgs4pjemsolew"]
 
 [ext_resource type="Script" path="res://scenes/Mainmenu/mainmenu.gd" id="1_ykmb7"]
 [ext_resource type="Texture2D" uid="uid://2jdm1r87g06d" path="res://assets/sprites/Main Menu/Sprite-0001.png" id="2_1ha3f"]
@@ -24,6 +24,8 @@
 [ext_resource type="AudioStream" uid="uid://ben7ipcq0qb6c" path="res://assets/music/SoundEffects/car_start.mp3" id="22_35tyd"]
 [ext_resource type="AudioStream" uid="uid://dnl1wtocighu6" path="res://assets/music/SoundEffects/car_stop.mp3" id="23_iewsd"]
 [ext_resource type="AudioStream" uid="uid://c8rddgc78aq6q" path="res://assets/music/SoundEffects/car_pass.mp3" id="24_ilooq"]
+[ext_resource type="AudioStream" uid="uid://du3a2g3ssewnn" path="res://assets/music/SoundEffects/door_open&close.mp3" id="25_5gjsh"]
+[ext_resource type="AudioStream" uid="uid://culiwkrk02cc6" path="res://assets/music/SoundEffects/birds_sound.mp3" id="26_klyso"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixwqm"]
 texture = ExtResource("2_s2p27")
@@ -1088,7 +1090,13 @@ polygon = PackedVector2Array(12, -2, 186, 1, 205, -15, 48, -54, -203, 1, -204, 1
 
 [node name="car_moving" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_dhvwd")
-volume_db = -20.0
+volume_db = -28.0
+pitch_scale = 1.1
+
+[node name="car_moving2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_dhvwd")
+volume_db = -30.0
+pitch_scale = 1.1
 
 [node name="car_start" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_35tyd")
@@ -1096,13 +1104,27 @@ volume_db = -20.0
 
 [node name="car_stop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_iewsd")
+volume_db = -20.0
 
 [node name="car_pass" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_ilooq")
 
+[node name="door_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_5gjsh")
+volume_db = -20.0
+attenuation = 0.517632
+panning_strength = 0.1
+
+[node name="birds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_klyso")
+volume_db = 5.0
+autoplay = true
+
 [connection signal="body_entered" from="house" to="." method="_on_house_body_entered"]
 [connection signal="timeout" from="Truck/trucktimer" to="." method="_on_trucktimer_timeout"]
+[connection signal="animation_finished" from="Truck/truck_anim" to="." method="_on_truck_anim_animation_finished"]
 [connection signal="timeout" from="Car_2/car2_timer" to="." method="_on_car_2_timer_timeout"]
+[connection signal="animation_finished" from="Car_2/car2_anim" to="." method="_on_car_2_anim_animation_finished"]
 [connection signal="timeout" from="Car_2/delay" to="." method="_on_delay_timeout"]
 [connection signal="pressed" from="Loadmenu/Load_1/Load_1_bt" to="." method="_on_load_1_bt_pressed"]
 [connection signal="pressed" from="Loadmenu/Load_2/Load_2_bt" to="." method="_on_load_2_bt_pressed"]
@@ -1125,6 +1147,7 @@ stream = ExtResource("24_ilooq")
 [connection signal="pressed" from="Title/Quit Button/Quit" to="." method="_on_quit_pressed"]
 [connection signal="animation_finished" from="Title/Play_button_animation" to="." method="_on_play_button_animation_animation_finished"]
 [connection signal="animation_finished" from="Title/Quit_button_animation" to="." method="_on_quit_button_animation_animation_finished"]
+[connection signal="animation_finished" from="Bird/Bird_animation" to="." method="_on_bird_animation_animation_finished"]
 [connection signal="timeout" from="Bird/Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Car_1_main/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="door_open" to="." method="_on_door_open_animation_finished"]

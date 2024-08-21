@@ -41,7 +41,7 @@ func _physics_process(_delta):
 			$Player.queue_free()
 			$dead.visible = true
 			GameState.spawn = false
-			get_tree().change_scene_to_file("res://scenes/world/Boss_battle.tscn")
+			Dialogic.start("dead")
 
 func _process(delta):
 	if not is_walking:
@@ -95,7 +95,8 @@ func _on_dialogic_signal(argument):
 		$King.set_position($Path2D/PathFollow2D/King.position)
 		$Path2D/PathFollow2D/King.visible = false
 		$King.visible = true
-
+	elif argument == "dead":
+		get_tree().change_scene_to_file("res://scenes/world/Boss_battle.tscn")
 func _on_king_animation_finished():
 	if $Path2D/PathFollow2D/King.animation == "attack":
 		speed = -30
