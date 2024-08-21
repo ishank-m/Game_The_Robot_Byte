@@ -380,14 +380,13 @@ frame = 2
 frame_progress = 1.0
 
 [node name="room_2" type="Marker2D" parent="."]
-position = Vector2(143, 115)
+position = Vector2(143, 112)
 
 [node name="Player" parent="." instance=ExtResource("4_hf674")]
-position = Vector2(143, 115)
+position = Vector2(143, 112)
 scale = Vector2(0.8, 0.8)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -1.25)
 zoom = Vector2(1.5, 1.5)
 limit_left = 32
 limit_top = 0
@@ -447,10 +446,11 @@ tile_set = SubResource("TileSet_ww0y3")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65529, 131073, 2, 7, 131073, 2, 65543, 131073, 2, 131079, 131073, 2, 196615, 131073, 2, 262151, 131073, 2, 262150, 131073, 2, 262149, 131073, 2, 262148, 131073, 2, 262147, 131073, 2, 262146, 131073, 2, 262145, 131073, 2, 196609, 131073, 2, 131073, 131073, 2, 65537, 131073, 2, 1, 131073, 2, -65535, 131073, 2, -65534, 131073, 2, -65533, 131073, 2, -65532, 131073, 2, -65531, 131073, 2, -65530, 131073, 2, 6, 196609, 2, 5, 196609, 2, 4, 196609, 2, 3, 196609, 2, 2, 196609, 2)
 
-[node name="PauseMenu" parent="." instance=ExtResource("7_3s8bx")]
-
 [node name="TransitionScene" parent="." instance=ExtResource("7_2f6xj")]
 visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_3s8bx")]
+position = Vector2(-11, -3)
 
 [connection signal="animation_finished" from="TileMap" to="." method="_on_tile_map_animation_finished"]
 [connection signal="animation_finished" from="transitions/clouds" to="." method="_on_clouds_animation_finished"]

@@ -5,6 +5,7 @@ var fight_music = load("res://assets/music/intense_music.wav")
 var final_fight = load("res://assets/music/intense_music_2.wav")
 var teleport = load("res://assets/music/SoundEffects/teleport_sound.mp3")
 var birds = load("res://assets/music/SoundEffects/birds_sound.mp3")
+var fight_sound = load("res://assets/music/SoundEffects/sword_hit.wav")
 @onready var player = $Music
 
 func play_music1():
@@ -26,4 +27,7 @@ func music_final_fight():
 	player.play()
 func birds_sounds():
 	player.stream = birds
+	player.play()
+func play_fight():
+	player.stream = fight_sound
 	player.play()

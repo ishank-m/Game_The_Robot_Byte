@@ -27,6 +27,7 @@ func _process(_delta):
 			show_menu()
 
 func _on_save_button_pressed():
+	$click_sound.play()
 	if not animation_playing:
 		$CanvasLayer/Buttons/save/save_animation.play("circle")
 		animation_playing = true
@@ -45,9 +46,10 @@ func _on_save_animation_animation_finished(anim_name):
 
 
 func _on_quit_button_pressed():
-		if not animation_playing:
-			$CanvasLayer/Buttons/quit/quit_animation.play("circle")
-			animation_playing = true
+	$click_sound.play()
+	if not animation_playing:
+		$CanvasLayer/Buttons/quit/quit_animation.play("circle")
+		animation_playing = true
 func _on_quit_button_mouse_entered():
 	if not animation_playing:
 		quit_button.frame = 0
