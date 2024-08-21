@@ -45,6 +45,9 @@ func save_score():
 	var file = FileAccess.open(get_current_save(), FileAccess.WRITE)
 	current_scene = get_tree().current_scene.scene_file_path
 	player_pos = get_tree().current_scene.get_node("Player").position
+	file.store_var(items)
+	file.store_var(sword_damage)
+	file.store_var(player_health)
 	file.store_var(current_scene)
 	file.store_var(player_pos)
 	file.store_var(game_state)

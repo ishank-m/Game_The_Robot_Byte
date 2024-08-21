@@ -28,6 +28,7 @@ func _ready():
 func _on_dialogic_signal(argument):
 	if argument == "done1":
 		GameState.game_state = "play"
+		$fight_timer.start()
 
 func _physics_process(_delta):
 	if not GameState.player_died:
@@ -60,3 +61,7 @@ func _on_to_worldscene_1_body_entered(body):
 		to_where = "worldscene1"
 		transition.fade_in()
 
+
+
+func _on_fight_timer_timeout():
+	$StaticBody2D.queue_free()

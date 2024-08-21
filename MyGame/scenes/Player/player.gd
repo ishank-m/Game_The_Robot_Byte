@@ -7,7 +7,20 @@ var healing = false
 @onready var anim = $Player_sprite
 var sword = GameState.items["sword"]
 
+var wood = ["downstairs", "lobby", "mc_bedroom", "window", "end"]
+var stone = ["main_menu", "throne_room"]
+var grass = ["worldinit", "worldscene1", "worldscene2", "worldscene3", "worldscene4", "bossbattle"]
+var walk 
+var music = false
+
 func _ready():
+	#if GameState.scene in wood:
+		#walk = load("res://assets/music/SoundEffects/walk_wood.wav")
+	#elif GameState.scene in stone:
+		#walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
+	#elif GameState.scene in grass:
+		#walk = load("res://assets/music/SoundEffects/walk_grass.wav")
+	#$walk.stream = walk
 	$Player_hitbox.add_to_group("Player")
 	$attackbox_right.add_to_group("player_attack")
 	$attackbox_bottom.add_to_group("player_attack")
@@ -19,6 +32,14 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
+	#if GameState.scene in wood:
+		#walk = load("res://assets/music/SoundEffects/walk_wood.wav")
+	#elif GameState.scene in stone:
+		#walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
+	#elif GameState.scene in grass:
+		#walk = load("res://assets/music/SoundEffects/walk_grass.wav")
+	walk = load("res://assets/music/SoundEffects/walk_grass.wav")
+	$walk.stream = walk
 	if GameState.game_state == "play":
 		if Input.is_action_just_pressed("health") and not attack:
 			attack = true
@@ -84,34 +105,39 @@ func _physics_process(_delta):
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:
 		anim.stop()
+		$walk.stop()
+		music = false
 		return
-	if direction.x > 0:
-		if direction.y > 0:
-			anim.flip_h = false
-			anim.play("down_right")
-		elif direction.y < 0:
-			anim.flip_h = false
-			anim.play("up_right")
-		else:
-			anim.flip_h = false
-			anim.play("right")
-	elif direction.x < 0:
-		if direction.y > 0:
-			anim.flip_h = true
-			anim.play("down_right")
-			
-		elif direction.y < 0:
-			anim.flip_h = true
-			anim.play("up_right")
-		else:
-			anim.flip_h = true
-			anim.play("right")
 	else:
-		if direction.y > 0:
-			anim.play("down")
-		elif direction.y < 0:
-			anim.play("up")
-
+		if not music:
+			music = true
+			$walk.play()
+		if direction.x > 0:
+			if direction.y > 0:
+				anim.flip_h = false
+				anim.play("down_right")
+			elif direction.y < 0:
+				anim.flip_h = false
+				anim.play("up_right")
+			else:
+				anim.flip_h = false
+				anim.play("right")
+		elif direction.x < 0:
+			if direction.y > 0:
+				anim.flip_h = true
+				anim.play("down_right")
+				
+			elif direction.y < 0:
+				anim.flip_h = true
+				anim.play("up_right")
+			else:
+				anim.flip_h = true
+				anim.play("right")
+		else:
+			if direction.y > 0:
+				anim.play("down")
+			elif direction.y < 0:
+				anim.play("up")
 
 func _on_player_sprite_animation_finished():
 	if attack:

@@ -4,6 +4,7 @@ const speed = 80
 
 @onready var player = get_parent().get_node("Player")
 @onready var anim = $Boss_sprite
+@onready var border = get_parent().get_node("border")
 
 var health = 10
 var attack = false
@@ -18,6 +19,7 @@ func _physics_process(delta):
 		if health <= 0:
 			died = true
 			anim.play("dead")
+			border.queue_free()
 		var y_diff = position.y - player.position.y
 		var direction = Vector2.ZERO
 		if not attack:
