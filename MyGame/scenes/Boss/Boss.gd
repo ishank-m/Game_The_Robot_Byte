@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const speed = 80
-
+var attack_sound = false
 @onready var player = get_parent().get_node("Player")
 @onready var anim = $Boss_sprite
 @onready var border = get_parent().get_node("border")
@@ -55,6 +55,7 @@ func _on_hurtbox_area_entered(area):
 func _on_timer_timeout():
 	if not died:
 		anim.play("attack")
+		$attack.play()
 		$attackarea/CollisionShape2D.disabled = false
 		await anim.animation_finished
 		$attackarea/CollisionShape2D.disabled = true

@@ -6,3 +6,4 @@
 script = ExtResource("1_nqafe")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+max_distance = 20000.0
