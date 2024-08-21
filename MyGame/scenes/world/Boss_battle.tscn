@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://de0onpm8cli53"]
+[gd_scene load_steps=11 format=3 uid="uid://de0onpm8cli53"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_t3diy"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="2_5fmmd"]
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_plcql"]
 [ext_resource type="Texture2D" uid="uid://djyvyrehkqvkd" path="res://assets/sprites/world/tree_burning.png" id="4_tmd1x"]
+[ext_resource type="PackedScene" uid="uid://54ki5d2u0k71" path="res://scenes/Boss/Boss.tscn" id="5_7k31k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
 texture = ExtResource("1_t3diy")
@@ -81,7 +82,7 @@ layer_0/tile_data = PackedInt32Array(262152, 393216, 8, 262154, 393216, 8, 26215
 layer_1/name = "trees"
 layer_1/y_sort_enabled = true
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(-131053, 4, 0, -196606, 786433, 2, 65536, 4, 0, -131064, 4, 0, -65523, 786433, 2, -131050, 786433, 2, 589825, 4, 0, 458754, 786433, 2, -65516, 786433, 2, -131061, 786433, 2, 7, 786433, 2, -131056, 4, 0, -65512, 4, 0, 720903, 4, 0, 655383, 4, 0, 786453, 786433, 2)
+layer_1/tile_data = PackedInt32Array(-131053, 4, 0, -196606, 786433, 2, 65536, 4, 0, -65523, 786433, 2, -131050, 786433, 2, 589825, 4, 0, 458754, 786433, 2, -65516, 786433, 2, -131061, 786433, 2, -131056, 4, 0, -65512, 4, 0, 655383, 4, 0, 786453, 786433, 2)
 layer_2/name = "logs"
 layer_2/y_sort_enabled = true
 layer_2/z_index = 1
@@ -90,3 +91,8 @@ layer_3/name = "stones "
 layer_3/tile_data = PackedInt32Array(-65530, 524288, 4, 589845, 524288, 4)
 layer_4/name = "extras"
 layer_4/tile_data = PackedInt32Array(589849, 393217, 6, 327703, 393217, 6, 327696, 393217, 6, 589838, 393217, 6, 262155, 393217, 6, 589828, 393217, 6, 327680, 393217, 6, 327686, 393217, 6, 131077, 393217, 6, -65535, 393217, 6, 12, 393217, 6, 131082, 393217, 6, -131055, 393217, 6, 131090, 393217, 6, 65560, 393217, 6, -65512, 262145, 6, 131092, 262145, 6, 17, 262145, 6, -196594, 262145, 6, 131086, 262145, 6, 131080, 262145, 6, 65538, 262145, 6, -131072, 262145, 6, 327683, 262145, 6, 655366, 262145, 6, 458752, 262145, 6, 393228, 262145, 6, 327688, 262145, 6, 458766, 262145, 6, 655380, 262145, 6, 393235, 262145, 6, 655383, 262145, 6, 327700, 1, 6, 327692, 1, 6, 10, 1, 6, 458757, 1, 6, 65539, 1, 6)
+
+[node name="Boss" parent="." instance=ExtResource("5_7k31k")]
+position = Vector2(88, 56)
+
+[node name="Camera2D" type="Camera2D" parent="Boss"]
