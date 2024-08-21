@@ -45,6 +45,8 @@ directories/dtl_directory={
 "3worldscene_1": "res://dialogues/3worldscene_1.dtl",
 "4worldscene_1": "res://dialogues/4worldscene_1.dtl",
 "5worldscene_1": "res://dialogues/5worldscene_1.dtl",
+"bossbattle1": "res://dialogues/bossbattle1.dtl",
+"bossbattle2": "res://dialogues/bossbattle2.dtl",
 "dialogues/mainmenu": "res://dialogues/mainmenu.dtl",
 "downstairs": "res://dialogues/downstairs.dtl",
 "downstairs3": "res://dialogues/downstairs3.dtl",

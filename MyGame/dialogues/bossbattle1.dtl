@@ -1,0 +1,13 @@
+join King (king_normal) 0 [animation="Instant In Or Out"]
+King: This machinery is the hive mind. It controls \
+rest of the robots... 
+King: But it is too strong. I don't think we will \
+be able to defeat this one.
+leave King [animation="Instant In Or Out"]
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: No offense your majesty, but speak for youself.
+Kevin: Just have a look at my shining {sword} sword.
+Kevin: Its enough to disintegrate this crab-crawler. 
+Kevin: I'll get to work, your highness. 
+[signal arg="done1"]
+[end_timeline]
