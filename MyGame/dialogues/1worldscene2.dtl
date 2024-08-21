@@ -1,0 +1,10 @@
+join Kevin 0
+Kevin: Oh no, it seems like there are more of\
+these robots to deal with.
+Kevin: Stay behind me, your majesty, and I\
+shall protect you.
+leave Kevin
+join King 0 [animation="Instant In Or Out"]
+King: Okay, but I will assist you when needed.
+[signal arg="done1"]
+[end_timeline]

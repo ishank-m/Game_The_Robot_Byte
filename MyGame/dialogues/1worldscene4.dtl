@@ -1,0 +1,8 @@
+join King (king_normal) 0 [animation="Instant In Or Out"]
+King: Let alone my brave men, We must end the \
+hive mind...
+King: to end this once and for all.
+join Kevin 0 [animation="Instant In Or Out"]
+Kevin: Okay, let's keep moving then.
+[signal arg="done1"]
+[end_timeline]
