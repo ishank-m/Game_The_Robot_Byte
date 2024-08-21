@@ -35,12 +35,14 @@ func _physics_process(_delta):
 			attack = true
 			anim.play("health_potion")
 			await anim.animation_finished
+			attack = false
 			GameState.items["health_potion"] -= 1
 			GameState.player_health = 120
 		elif Input.is_action_just_pressed("invin") and not attack and GameState.items["invin_potion"]:
 			attack = true
 			anim.play("invin_potion")
 			await anim.animation_finished
+			attack = false
 			GameState.items["invin_potion"] -= 1
 			GameState.player_health = 10000
 			$Timer.start()
