@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bsedoe4w52swb" path="res://assets/sprites/House/Outside/door_outsidehouse.png" id="18_wxf8v"]
 [ext_resource type="AudioStream" uid="uid://ddn8tiihoc0vi" path="res://assets/sounds/button_pressed.mp3" id="19_jxl7j"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="19_qy077"]
-[ext_resource type="LabelSettings" path="res://scripts/new_label_settings.tres" id="21_ylrrl"]
+[ext_resource type="LabelSettings" uid="uid://cblfyy6ss6oeb" path="res://scripts/new_label_settings.tres" id="21_ylrrl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixwqm"]
 texture = ExtResource("2_s2p27")

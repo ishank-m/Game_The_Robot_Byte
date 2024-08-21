@@ -1,10 +1,11 @@
-[gd_scene load_steps=100 format=3 uid="uid://dwwr13q3kdjad"]
+[gd_scene load_steps=101 format=3 uid="uid://dwwr13q3kdjad"]
 
 [ext_resource type="Texture2D" uid="uid://csb6cv21d40ff" path="res://assets/sprites/Characters/King/damaged/king.png" id="1_3jrga"]
 [ext_resource type="Script" path="res://scenes/characters/king/King.gd" id="1_5j6b7"]
 [ext_resource type="Texture2D" uid="uid://coe0s3cnrxa5p" path="res://assets/sprites/Characters/King/damaged_attack/attack_king.png" id="1_sldd7"]
 [ext_resource type="Texture2D" uid="uid://bex3okb72npul" path="res://assets/sprites/Characters/King/normal_attack/attack_king_normal.png" id="4_0tdgh"]
 [ext_resource type="Texture2D" uid="uid://ld057cvks115" path="res://assets/sprites/Characters/King/normal/king_normal.png" id="4_etvic"]
+[ext_resource type="AudioStream" uid="uid://coreoxejbkmp2" path="res://assets/music/SoundEffects/sword.wav" id="7_prkyy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wgt5"]
 atlas = ExtResource("1_sldd7")
@@ -771,9 +772,8 @@ autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="walk" type="AudioStreamPlayer2D" parent="."]
-
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_prkyy")
 
 [connection signal="animation_finished" from="Damaged" to="." method="_on_damaged_animation_finished"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
