@@ -2,6 +2,7 @@ extends CanvasLayer
 #need to addd king's health var from global script
 @onready var bar = $bar
 @onready var critical_health = $critical_health
+@onready var boss =$BossHealth
 var anim_playing = false
 func _ready():
 	$BossHealth.visible = false
@@ -39,11 +40,32 @@ func _process(_delta):
 				bar.visible = false
 				critical_health.visible = true
 				critical_health.play("default")
-				anim_playing = true
 	else:
 		anim_playing = false
 		bar.visible = true
 		critical_health.visible = false
 		critical_health.stop()
+	if boss.visible:
+		if GameState.boss_health>360:
+			boss.frame = 0
+		elif GameState.boss_health> 320:
+			boss.frame = 1
+		elif GameState.boss_health> 280:
+			boss.frame = 2
+		elif GameState.boss_health> 240:
+			boss.frame = 3
+		elif GameState.boss_health> 200:
+			boss.frame = 4
+		elif GameState.boss_health> 160:
+			boss.frame = 5
+		elif GameState.boss_health> 120:
+			boss.frame = 6
+		elif GameState.boss_health> 80:
+			boss.frame = 7
+		elif GameState.boss_health> 40:
+			boss.frame = 8
+		elif GameState.boss_health==0:
+			boss.frame = 9
+			
 func show_boss_health():
 	$BossHealth.visible = true

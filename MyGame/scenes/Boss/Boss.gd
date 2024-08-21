@@ -5,8 +5,6 @@ const speed = 80
 @onready var player = get_parent().get_node("Player")
 @onready var anim = $Boss_sprite
 @onready var border = get_parent().get_node("border")
-
-var health = 10
 var attack = false
 var died = false
 
@@ -16,7 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	if not died and is_instance_valid(player):
-		if health <= 0:
+		if GameState.boss_health <= 0:
 			died = true
 			anim.play("dead")
 			border.queue_free()
@@ -51,7 +49,7 @@ func _on_attackarea_2_area_entered(area):
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_attack"):
-		health -= GameState.sword_damage
+		GameState.boss_health -= GameState.sword_damage
 
 func _on_timer_timeout():
 	if not died:

@@ -178,7 +178,7 @@ polygon = PackedVector2Array(-8, -40, 248, -40, 248, 184, -8, 184, -8, -40, -40,
 [node name="HealthBar" parent="." instance=ExtResource("9_l7ekm")]
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(224, 72)
+position = Vector2(232, 80)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
