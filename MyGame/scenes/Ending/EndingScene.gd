@@ -2,6 +2,7 @@ extends Node2D
 @onready var transition = $TransitionScene
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_wood.wav")
 	GameState.scene = "end"
 	$transitions/clouds.visible = true
 	$transitions/clouds.play("hi")

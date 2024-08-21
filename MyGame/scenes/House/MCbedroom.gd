@@ -2,6 +2,7 @@ extends Node2D
 @onready var transition = $TransitionScene
 @onready var player = get_node("Player")
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_wood.wav")
 	transition.fade_out()
 	transition.connect("fade_out_done", _on_fade_out_done)
 	transition.connect("fade_in_done", _on_fade_in_done)

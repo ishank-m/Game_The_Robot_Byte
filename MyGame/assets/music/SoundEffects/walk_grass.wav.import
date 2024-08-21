@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/walk_grass.wav-234114492c793320f0320be9bcdf7f
 
 [params]
 
-force/8_bit=true
-force/mono=true
+force/8_bit=false
+force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

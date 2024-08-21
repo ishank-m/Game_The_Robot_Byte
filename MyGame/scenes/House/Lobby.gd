@@ -4,6 +4,7 @@ extends Node2D
 var to_where: String
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_wood.wav")
 	GameState.game_state = "play"
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
@@ -29,7 +30,7 @@ func _on_fade_in_done():
 	if to_where == "winroom":
 		get_tree().change_scene_to_file("res://scenes/House/wardroom.tscn")
 	elif to_where == "downstairs":
-		get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
+		get_tree().change_scene_to_file("res://scenes/House/Downstairs.tscn")
 	elif to_where == "mcbedroom":
 		get_tree().change_scene_to_file("res://scenes/House/MCbedroom.tscn")
 

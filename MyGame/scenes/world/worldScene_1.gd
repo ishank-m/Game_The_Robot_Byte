@@ -15,6 +15,7 @@ func _physics_process(_delta):
 			died = true
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	transition.connect("fade_out_done", _on_fade_out_done)

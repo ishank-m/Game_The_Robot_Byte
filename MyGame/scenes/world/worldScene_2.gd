@@ -6,6 +6,7 @@ var dialogue = false
 var to_where: String
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	Dialogic.start("1worldscene2")
 	MusicPlayer.play_music_fight()
 	$dead.visible = false
