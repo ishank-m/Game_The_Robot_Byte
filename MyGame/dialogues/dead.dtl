@@ -1,0 +1,6 @@
+join null (null) 1 [animation="Instant In Or Out"]
+null (null): Oops, seems like you died way before saving\
+the poor King's kingdom.
+null (null): Maybe try again?
+[signal arg="dead"]
+[end_timeline]

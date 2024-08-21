@@ -31,7 +31,10 @@ func _on_dialogic_signal(argument):
 		GameState.spawn = true
 		GameState.game_state = "play"
 		$fight_timer.start()
-
+	if argument == "dead":
+		pass
+	if argument == "done_end":
+		GameState.game_state = "play"
 func _physics_process(_delta):
 	if not GameState.player_died:
 		if GameState.player_health == 0:
@@ -42,6 +45,7 @@ func _physics_process(_delta):
 			get_tree().root.add_child(camera)
 			camera.position = player.position
 			$Player.queue_free()
+			Dialogic.start("dead")
 			$dead.visible = true
 
 func _on_area_2d_body_entered(body):
@@ -67,4 +71,7 @@ func _on_to_worldscene_1_body_entered(body):
 
 func _on_fight_timer_timeout():
 	$StaticBody2D.queue_free()
+	GameState.game_state = "pause"
+	$Player/Player_sprite.stop()
+	Dialogic.start("worldscene2_end")
 	GameState.spawn = false

@@ -11,7 +11,6 @@ var transition_playing = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
-	GameState.pausable = false
 	GameState.scene = "throne_room"
 	$walk2.play()
 	$walk.play()
@@ -45,7 +44,6 @@ func _process(delta):
 			anim_playing = false
 			$Path2D/PathFollow2D/King.play("down")
 			$Path2D/PathFollow2D/King.stop()
-			GameState.pausable = false
 			$Player.stop()
 			Dialogic.start("inpalace1")
 			$walk.stop()
@@ -64,15 +62,12 @@ func _on_dialogic_signal(argument):
 		cutscene = false
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
-		GameState.pausable = true
 	elif argument == "done2":
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
 		GameState.game_state = "play"
-		GameState.pausable = true
 	elif argument == "done3":
 		GameState.game_state = "play"
-		GameState.pausable = true
 
 func _on_fade_out_done():
 	transition_playing = false
@@ -86,7 +81,6 @@ func _on_area_2d_body_entered(body):
 		$Player/Player_sprite.play("down")
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
-		GameState.pausable = false
 		$Player.stop()
 		Dialogic.start("inpalace2")
 
@@ -96,7 +90,6 @@ func _on_end_dialogue_trigger_body_entered(body):
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
-		GameState.pausable = false
 		$Player.stop()
 		Dialogic.start("inpalace3")
 
