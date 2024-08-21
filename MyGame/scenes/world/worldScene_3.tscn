@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cji5eqnvahk3a"]
+[gd_scene load_steps=73 format=3 uid="uid://cji5eqnvahk3a"]
 
 [ext_resource type="Script" path="res://scenes/world/worldScene_3.gd" id="1_qtves"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_sukll"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://culiwkrk02cc6" path="res://assets/music/SoundEffects/birds_sound.mp3" id="14_1l0aj"]
 [ext_resource type="AudioStream" uid="uid://du3a2g3ssewnn" path="res://assets/music/SoundEffects/door_open&close.mp3" id="15_w0cfm"]
 [ext_resource type="AudioStream" uid="uid://cekweunju3vld" path="res://assets/music/SoundEffects/walk_grass.wav" id="16_hl4ey"]
+[ext_resource type="PackedScene" uid="uid://ctl6tvxhjk5p6" path="res://scenes/pauseMenu/pauseMenu.tscn" id="17_4veap"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_m3y3n"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -692,22 +693,23 @@ shape = SubResource("RectangleShape2D_5gf1c")
 
 [node name="birds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_1l0aj")
-volume_db = 15.0
+volume_db = 5.0
 autoplay = true
 
 [node name="door_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_w0cfm")
+volume_db = -20.0
 attenuation = 0.517632
 panning_strength = 0.1
 
 [node name="walk_chars" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_hl4ey")
-volume_db = 16.0
 
 [node name="walk_chars2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_hl4ey")
-volume_db = 16.0
 panning_strength = 0.86
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_4veap")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="shop" to="." method="_on_shop_body_entered"]

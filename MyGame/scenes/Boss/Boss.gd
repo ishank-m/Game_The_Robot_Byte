@@ -7,31 +7,32 @@ const speed = 80
 @onready var border = get_parent().get_node("border")
 var attack = false
 var died = false
-
+var is_attacking = true
 func _ready():
 	$attackarea.add_to_group("boss")
 	$attackarea/CollisionShape2D.disabled = true
 
 func _physics_process(delta):
-	if not died and is_instance_valid(player):
-		if GameState.boss_health <= 0:
-			died = true
-			anim.play("dead")
-			border.queue_free()
-		var y_diff = position.y - player.position.y
-		var direction = Vector2.ZERO
-		if not attack:
-			if -5 < y_diff and y_diff < 5:
-				attack = true
-				anim.stop()
-				$Timer.start()
-			elif y_diff < 0:
-				direction.y += 1
-			elif y_diff > 0:
-				direction.y -= 1
-			velocity = direction * speed
-			update_anim()
-			move_and_collide(velocity*delta)
+	if is_attacking:
+		if not died and is_instance_valid(player):
+			if GameState.boss_health <= 0:
+				died = true
+				anim.play("dead")
+				border.queue_free()
+			var y_diff = position.y - player.position.y
+			var direction = Vector2.ZERO
+			if not attack:
+				if -5 < y_diff and y_diff < 5:
+					attack = true
+					anim.stop()
+					$Timer.start()
+				elif y_diff < 0:
+					direction.y += 1
+				elif y_diff > 0:
+					direction.y -= 1
+				velocity = direction * speed
+				update_anim()
+				move_and_collide(velocity*delta)
 
 func update_anim():
 	if not attack and not died:

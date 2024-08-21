@@ -96,3 +96,13 @@ position = Vector2(160, 156)
 scale = Vector2(4.25, 1)
 texture = ExtResource("7_7pox1")
 hframes = 9
+
+[node name="Boss" type="Label" parent="."]
+offset_left = 136.0
+offset_top = 144.0
+offset_right = 182.0
+offset_bottom = 152.0
+text = "InfernoBot"
+label_settings = ExtResource("4_rqn7l")
+horizontal_alignment = 1
+vertical_alignment = 1
