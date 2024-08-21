@@ -5,6 +5,7 @@ extends Node2D
 
 func _ready():
 	MusicPlayer.birds_sounds()
+	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	GameState.game_state = "play"
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	transition.connect("fade_in_done", _on_fade_in_done)

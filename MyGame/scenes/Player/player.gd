@@ -6,21 +6,12 @@ var healing = false
 @export var speed: int = 50
 @onready var anim = $Player_sprite
 var sword = GameState.items["sword"]
-
-var wood = ["downstairs", "lobby", "mc_bedroom", "window", "end"]
-var stone = ["main_menu", "throne_room"]
-var grass = ["worldinit", "worldscene1", "worldscene2", "worldscene3", "worldscene4", "bossbattle"]
+var music_playing = false
 var walk 
 var music = false
 
 func _ready():
-	#if GameState.scene in wood:
-		#walk = load("res://assets/music/SoundEffects/walk_wood.wav")
-	#elif GameState.scene in stone:
-		#walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
-	#elif GameState.scene in grass:
-		#walk = load("res://assets/music/SoundEffects/walk_grass.wav")
-	#$walk.stream = walk
+	$walk.stream = walk
 	$Player_hitbox.add_to_group("Player")
 	$attackbox_right.add_to_group("player_attack")
 	$attackbox_bottom.add_to_group("player_attack")
@@ -32,14 +23,6 @@ func _ready():
 	$attackbox_top/CollisionShape2D.disabled = true
 
 func _physics_process(_delta):
-	#if GameState.scene in wood:
-		#walk = load("res://assets/music/SoundEffects/walk_wood.wav")
-	#elif GameState.scene in stone:
-		#walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
-	#elif GameState.scene in grass:
-		#walk = load("res://assets/music/SoundEffects/walk_grass.wav")
-	walk = load("res://assets/music/SoundEffects/walk_grass.wav")
-	$walk.stream = walk
 	if GameState.game_state == "play":
 		if Input.is_action_just_pressed("health") and not attack:
 			attack = true
@@ -105,12 +88,14 @@ func _physics_process(_delta):
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:
 		anim.stop()
-		$walk.stop()
-		music = false
+		if music_playing:
+			$walk.stop()
+			music_playing = false
 		return
 	else:
-		if not music:
-			music = true
+		if not music_playing:
+			music_playing = true
+			$walk.stream = walk
 			$walk.play()
 		if direction.x > 0:
 			if direction.y > 0:
@@ -150,3 +135,6 @@ func _on_player_sprite_animation_finished():
 func _on_healing_timer_timeout():
 	GameState.player_health += 10
 	healing = false
+
+func stop():
+	$walk.stop()

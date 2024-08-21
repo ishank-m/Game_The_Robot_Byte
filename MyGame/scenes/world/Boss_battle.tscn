@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://de0onpm8cli53"]
+[gd_scene load_steps=16 format=3 uid="uid://de0onpm8cli53"]
 
 [ext_resource type="Script" path="res://scenes/world/Boss_battle.gd" id="1_0xb08"]
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_t3diy"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://54ki5d2u0k71" path="res://scenes/Boss/Boss.tscn" id="5_7k31k"]
 [ext_resource type="PackedScene" uid="uid://sndhm53bfar" path="res://scenes/Player/player.tscn" id="6_jpcw0"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="8_88dj5"]
+[ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="9_l7ekm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxjtb"]
 texture = ExtResource("1_t3diy")
@@ -165,5 +166,7 @@ visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="border"]
 polygon = PackedVector2Array(-8, -40, 248, -40, 248, 184, -8, 184, -8, -40, -40, -72, -40, 216, 280, 216, 280, -72, -40, -72)
+
+[node name="HealthBar" parent="." instance=ExtResource("9_l7ekm")]
 
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

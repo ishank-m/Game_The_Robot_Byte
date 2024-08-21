@@ -4,6 +4,7 @@ var playing = false
 @onready var player = get_node("Player")
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_wood.wav")
 	MusicPlayer.stop()
 	transition.fade_out()
 	transition.connect("fade_out_done", _on_fade_out_done)

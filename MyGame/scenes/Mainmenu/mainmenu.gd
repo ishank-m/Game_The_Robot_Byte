@@ -15,6 +15,7 @@ var dialogue = false
 @onready var player = get_node("Player")
 #Initilaizing the Game
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
 	var style: DialogicStyle = load("res://dialogues/style.tres")
 	var style2: DialogicStyle = load("res://dialogues/style2.tres")
 	style.prepare()

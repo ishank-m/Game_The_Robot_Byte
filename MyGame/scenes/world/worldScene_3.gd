@@ -11,6 +11,7 @@ var once = true
 var king_out = false
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	GameState.scene = "worldscene4"
 	$King.visible = false
 	$door.frame = 0

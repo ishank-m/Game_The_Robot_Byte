@@ -10,6 +10,7 @@ var anim_playing = false
 var scene_change = false
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_on_stone.mp3")
 	$walk.play()
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)

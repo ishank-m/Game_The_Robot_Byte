@@ -3,12 +3,13 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
+	$HealthBar.show_boss_health()
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
 	transition.connect("fade_out_done", _on_fade_out_done)
 	GameState.scene = "bossbattle"
 	GameState.combat = true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 func _on_fade_out_done():

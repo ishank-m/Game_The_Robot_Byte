@@ -4,6 +4,7 @@ var count = 0
 @onready var transition = $TransitionScene
 
 func _ready():
+	$Player.walk = load("res://assets/music/SoundEffects/walk_wood.wav")
 	transition.fade_out()
 	transition.connect("fade_out_done", _on_fade_out_done)
 	transition.connect("fade_in_done", _on_fade_in_done)
@@ -50,6 +51,7 @@ func _on_dialogue_body_entered(body):
 		GameState.game_state = "pause"
 		GameState.pausable = false
 		Dialogic.start("downstairs_2")
+		$Player.stop()
 		count = 1
 	elif body.name == "Player" and count == 1:
 		count = 0
@@ -59,10 +61,12 @@ func _on_out_body_entered(body):
 		GameState.game_state = "pause"
 		Dialogic.start("downstairs")
 		GameState.pausable = false
+		$Player.stop()
 		GameState.dialogues_count['downstairs'] = 1
 	elif body.name == "Player" and GameState.dialogues_count['downstairs'] == 1:
 		$Player/Player_sprite.play("down")
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
 		GameState.pausable = false
+		$Player.stop()
 		Dialogic.start("downstairs3")
