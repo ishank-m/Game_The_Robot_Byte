@@ -1,6 +1,7 @@
 extends Node2D
 @onready var transition = $TransitionScene
 @onready var path = $Path2D/PathFollow2D
+@onready var player = get_node("Player")
 var speed = 50
 var anim_playing = false
 var go_back = false
@@ -8,6 +9,9 @@ var died = false
 var is_walking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameState.player_died = false
+	GameState.player_health = 120
+	$dead.visible = false
 	$King.visible = false
 	$Player/Player_sprite.flip_h = true
 	$Player/Player_sprite.play("right")
@@ -23,6 +27,22 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	GameState.scene = "bossbattle"
 	GameState.combat = true
+
+func _physics_process(_delta):
+	GameState.game_state = "play"
+	if not GameState.player_died:
+		if GameState.player_health == 0:
+			GameState.player_died = true
+			$dead.set_position(player.position) 
+			var camera = player.get_node("Camera2D")
+			player.remove_child(camera)
+			get_tree().root.add_child(camera)
+			camera.position = player.position
+			$Player.queue_free()
+			$dead.visible = true
+			GameState.spawn = false
+			get_tree().change_scene_to_file("res://scenes/world/Boss_battle.tscn")
+
 func _process(delta):
 	if not is_walking:
 		$walk.play()

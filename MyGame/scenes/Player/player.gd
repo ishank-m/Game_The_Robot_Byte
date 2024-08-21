@@ -44,28 +44,28 @@ func _physics_process(_delta):
 			GameState.items["invin_potion"] -= 1
 			GameState.player_health = 10000
 			$Timer.start()
-		elif Input.is_action_just_pressed("attack_left") and not attack and sword:
+		elif Input.is_action_just_pressed("attack_left") and not attack:
 			attack = true
 			anim.flip_h = true
 			anim.play(sword+"_attack_right")
 			$attackbox_left/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_left/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_down") and not attack and sword:
+		elif Input.is_action_just_pressed("attack_down") and not attack:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_down")
 			$attackbox_bottom/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_bottom/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_right") and not attack and sword:
+		elif Input.is_action_just_pressed("attack_right") and not attack:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_right")
 			$attackbox_right/CollisionShape2D.disabled = false
 			await anim.animation_finished
 			$attackbox_right/CollisionShape2D.disabled = true
-		elif Input.is_action_just_pressed("attack_up") and not attack and sword:
+		elif Input.is_action_just_pressed("attack_up") and not attack:
 			attack = true
 			anim.flip_h = false
 			anim.play(sword+"_attack_up")
@@ -136,9 +136,8 @@ func update_anim(direction):
 				anim.play("up")
 
 func _on_player_sprite_animation_finished():
-	if attack:
-		if $Player_sprite.animation in ["attack_right","attack_up", "attack_down"]:
-			attack = false
+	if $Player_sprite.animation in [sword+"_attack_right", sword+"_attack_up", sword+"_attack_down"]:
+		attack = false
 
 func stop():
 	$walk.stop()

@@ -6,6 +6,7 @@ var dialogue = false
 var to_where: String
 
 func _ready():
+	GameState.player_died = false
 	GameState.player_health = 120
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	Dialogic.start("1worldscene2")
@@ -23,10 +24,8 @@ func _ready():
 		player.position = $village.position
 		player_anim.play("down")
 		player_anim.stop()
-	if GameState.player_pos:
-		player.position = GameState.player_pos
-		GameState.player_pos = null
 	GameState.scene = "worldscene2"
+
 func _on_dialogic_signal(argument):
 	if argument == "done1":
 		GameState.spawn = true

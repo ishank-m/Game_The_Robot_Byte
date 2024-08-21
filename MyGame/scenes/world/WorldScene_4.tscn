@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bprjx7w8377uh"]
+[gd_scene load_steps=45 format=3 uid="uid://bprjx7w8377uh"]
 
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_06dnp"]
 [ext_resource type="Script" path="res://scenes/world/WorldScene_4.gd" id="1_mdi3m"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="11_ia1ko"]
 [ext_resource type="PackedScene" uid="uid://dwwr13q3kdjad" path="res://scenes/characters/king/King.tscn" id="12_rweo7"]
 [ext_resource type="AudioStream" uid="uid://cvtm5cmnpryn1" path="res://assets/music/SoundEffects/sword_hit.wav" id="13_sjlrr"]
+[ext_resource type="Texture2D" uid="uid://bh30cv3jp62kj" path="res://assets/sprites/Characters/MC/MC_dead.png" id="14_tthfn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mqaab"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -861,6 +862,13 @@ volume_db = -20.0
 autoplay = true
 attenuation = 0.297302
 panning_strength = 1.43
+
+[node name="dead" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1.52588e-05, 3.8147e-06)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("14_tthfn")
 
 [connection signal="body_entered" from="dialogue_trigger" to="." method="_on_dialogue_trigger_body_entered"]
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

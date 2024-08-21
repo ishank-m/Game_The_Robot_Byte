@@ -1,7 +1,11 @@
 extends Node2D
 @onready var transition = $TransitionScene
+@onready var player = get_node("Player")
 
 func _ready():
+	GameState.player_died = false
+	GameState.player_health = 120
+	$dead.visible = false
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	MusicPlayer.music_final_fight()
 	transition.fade_out()
@@ -13,6 +17,20 @@ func _ready():
 	$Player/Player_sprite.flip_h = true
 	$Player/Player_sprite.play("right")
 	$Player/Player_sprite.stop()
+
+func  _physics_process(_delta):
+	if not GameState.player_died:
+		if GameState.player_health == 0:
+			GameState.player_died = true
+			$dead.set_position(player.position) 
+			var camera = player.get_node("Camera2D")
+			player.remove_child(camera)
+			get_tree().root.add_child(camera)
+			camera.position = player.position
+			$Player.queue_free()
+			$dead.visible = true
+			GameState.spawn = false
+			get_tree().change_scene_to_file("res://scenes/world/worldScene_4.tscn")
 
 func _on_fade_out_done():
 	GameState.game_state = "play"
