@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://4js3ixkaohyj"]
+[gd_scene load_steps=31 format=3 uid="uid://4js3ixkaohyj"]
 
 [ext_resource type="Texture2D" uid="uid://cptxl7dftcggn" path="res://assets/sprites/Old_house/old_house.png" id="1_exven"]
 [ext_resource type="Script" path="res://scenes/Ending/EndingScene.gd" id="1_o0rxg"]
@@ -232,7 +232,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsfcv"]
-size = Vector2(33.0356, 54.8397)
+size = Vector2(29.2608, 54.8397)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuqgx"]
+size = Vector2(28, 55)
 
 [node name="EndingScene" type="Node2D"]
 y_sort_enabled = true
@@ -279,13 +282,13 @@ visible = false
 [node name="stairs1" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stairs1"]
-position = Vector2(304, 32)
+position = Vector2(312, 32)
 shape = SubResource("RectangleShape2D_q5imn")
 
 [node name="stairs2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stairs2"]
-position = Vector2(48, 32)
+position = Vector2(40, 32)
 shape = SubResource("RectangleShape2D_8gjmq")
 
 [node name="out" type="Area2D" parent="."]
@@ -317,11 +320,17 @@ frame_progress = 1.0
 stream = ExtResource("7_afash")
 volume_db = -15.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="stairs" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(270.257, 46.7636)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs"]
+position = Vector2(268.37, 46.7636)
 shape = SubResource("RectangleShape2D_wsfcv")
+
+[node name="reverse_stairs" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reverse_stairs"]
+position = Vector2(83, 45.5)
+shape = SubResource("RectangleShape2D_uuqgx")
 
 [connection signal="animation_finished" from="player incoming" to="." method="_on_player_incoming_animation_finished"]
 [connection signal="body_entered" from="stairs1" to="." method="_on_stairs_1_body_entered"]
@@ -329,3 +338,7 @@ shape = SubResource("RectangleShape2D_wsfcv")
 [connection signal="body_entered" from="out" to="." method="_on_out_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="transitions/clouds" to="." method="_on_clouds_animation_finished"]
+[connection signal="body_entered" from="stairs" to="." method="_on_stairs_body_entered"]
+[connection signal="body_exited" from="stairs" to="." method="_on_stairs_body_exited"]
+[connection signal="body_entered" from="reverse_stairs" to="." method="_on_reverse_stairs_body_entered"]
+[connection signal="body_exited" from="reverse_stairs" to="." method="_on_reverse_stairs_body_exited"]

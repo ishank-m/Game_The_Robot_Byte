@@ -64,3 +64,22 @@ func _on_clouds_animation_finished():
 	$transitions/clouds.visible = false
 	$"player incoming".visible = true
 	$"player incoming".play("appear")
+
+
+func _on_stairs_body_entered(body):
+	if body.name =="Player":
+		GameState.stairs = true
+
+func _on_stairs_body_exited(body):
+	if body.name =="Player":
+		GameState.stairs = false
+
+
+func _on_reverse_stairs_body_entered(body):
+	if body.name =="Player":
+		GameState.reverse_stairs = true
+
+
+func _on_reverse_stairs_body_exited(body):
+	if body.name =="Player":
+		GameState.reverse_stairs = false

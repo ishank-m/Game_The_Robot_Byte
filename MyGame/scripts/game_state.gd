@@ -31,6 +31,7 @@ var dialogues_count = {
 }
 
 var stairs = false
+var reverse_stairs = false
 
 var save1 = "res://saves/save1.dat"
 var save2 = "res://saves/save2.dat"

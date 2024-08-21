@@ -82,10 +82,14 @@ func _physics_process(_delta):
 				direction.x -= 1
 				if GameState.stairs:
 					direction.y += 0.5
+				elif GameState.reverse_stairs:
+					direction.y -= 0.5
 			if Input.is_action_pressed("ui_right"):
 				direction.x += 1
 				if GameState.stairs:
 					direction.y -= 0.5
+				elif GameState.reverse_stairs:
+					direction.y += 0.5
 			if direction.length() > 0:
 				direction = direction.normalized()
 			velocity = direction*speed
