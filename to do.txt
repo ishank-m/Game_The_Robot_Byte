@@ -1,3 +1,4 @@
 - ThroneRoom stairs logic
 - EndingScene stairs logic
 - combat = true
+- game music edit
