@@ -37,6 +37,8 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"1worldscene2": "res://dialogues/1worldscene2.dtl",
+"1worldscene4": "res://dialogues/1worldscene4.dtl",
 "1worlscene3": "res://dialogues/1worlscene3.dtl",
 "2worldscene_1": "res://dialogues/2worldscene_1.dtl",
 "3worldscene_1": "res://dialogues/3worldscene_1.dtl",

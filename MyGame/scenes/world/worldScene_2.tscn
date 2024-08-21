@@ -350,5 +350,14 @@ position = Vector2(887, 76)
 [node name="Enemy" parent="." instance=ExtResource("9_apk4b")]
 position = Vector2(611, 59)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1088, 152, 16, 152, 16, -32, 1088, -32, 1128, -72, -24, -72, -24, 184, 1128, 184, 1128, -72, 1088, -32)
+
+[node name="fight_timer" type="Timer" parent="."]
+wait_time = 200.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="to_worldscene1" to="." method="_on_to_worldscene_1_body_entered"]

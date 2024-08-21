@@ -2,15 +2,16 @@ extends Node2D
 @onready var transition = $TransitionScene
 @onready var player = $Player
 @onready var player_anim = $Player/Player_sprite
-
+var dialogue = false
 var to_where: String
 
 func _ready():
+	Dialogic.start("1worldscene2")
 	MusicPlayer.play_music_fight()
 	$dead.visible = false
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
-	transition.connect("fade_out_done", _on_fade_out_done)
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if GameState.scene == "worldscene1":
 		player.position = $init.position
 		player_anim.flip_h = false
@@ -24,6 +25,9 @@ func _ready():
 		player.position = GameState.player_pos
 		GameState.player_pos = null
 	GameState.scene = "worldscene2"
+func _on_dialogic_signal(argument):
+	if argument == "done1":
+		GameState.game_state = "play"
 
 func _physics_process(_delta):
 	if not GameState.player_died:
@@ -41,8 +45,6 @@ func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		to_where = "worldscene3"
 		transition.fade_in()
-func _on_fade_out_done():
-	GameState.game_state = "play"
 func _on_fade_in_done():
 	if to_where == "worldscene1":
 		get_tree().change_scene_to_file("res://scenes/world/worldScene_1.tscn")
@@ -56,3 +58,4 @@ func _on_to_worldscene_1_body_entered(body):
 	if body.name == "Player":
 		to_where = "worldscene1"
 		transition.fade_in()
+

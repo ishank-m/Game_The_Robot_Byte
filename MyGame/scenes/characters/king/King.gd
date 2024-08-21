@@ -20,7 +20,7 @@ func _ready():
 	$attackbox_left/CollisionShape2D.disabled = true
 	$attackbox_top/CollisionShape2D.disabled = true
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if GameState.kingstate == "damaged":
 		anim = $Damaged
 		$Normal.visible = false
@@ -82,7 +82,7 @@ func _physics_process(_delta):
 				velocity = Vector2.ZERO
 				close_to_player = true
 			king_anim()
-			move_and_slide()
+			move_and_collide(velocity*delta)
 		if close_to_player:
 			anim.stop()
 

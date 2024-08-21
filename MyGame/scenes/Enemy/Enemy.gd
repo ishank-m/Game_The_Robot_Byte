@@ -76,6 +76,7 @@ func _physics_process(_delta):
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
+		GameState.combat = true
 		player = body
 
 func _on_detection_area_body_exited(body):
