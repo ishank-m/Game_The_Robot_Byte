@@ -152,6 +152,10 @@ position = Vector2(97.4966, -11.6026)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 visible = false
+limit_left = -10
+limit_top = -40
+limit_right = 250
+limit_bottom = 185
 
 [node name="scene_change_trigger" type="Area2D" parent="."]
 
