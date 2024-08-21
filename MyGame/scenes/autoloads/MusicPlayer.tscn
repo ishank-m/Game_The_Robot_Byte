@@ -6,4 +6,3 @@
 script = ExtResource("1_nqafe")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-volume_db = 15.0

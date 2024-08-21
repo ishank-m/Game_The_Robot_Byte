@@ -960,24 +960,28 @@ position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_1nulh")
 
 [node name="attackbox_right" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_right"]
 position = Vector2(14, 1.5)
 shape = SubResource("RectangleShape2D_eaeet")
 
 [node name="attackbox_bottom" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_bottom"]
 position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_l2i24")
 
 [node name="attackbox_left" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_left"]
 position = Vector2(-13.5, 1.5)
 shape = SubResource("RectangleShape2D_16455")
 
 [node name="attackbox_top" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackbox_top"]
 position = Vector2(0, -4)

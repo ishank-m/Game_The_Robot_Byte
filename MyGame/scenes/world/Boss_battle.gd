@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
+	$Player.set_position($Marker2D.position)
 	$HealthBar.show_boss_health()
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)

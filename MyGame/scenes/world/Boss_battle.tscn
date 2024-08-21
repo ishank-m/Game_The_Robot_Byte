@@ -151,8 +151,12 @@ position = Vector2(32, 56)
 position = Vector2(97.4966, -11.6026)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-visible = false
-zoom = Vector2(3, 3)
+position = Vector2(-1.4966, 3.6026)
+zoom = Vector2(1.3, 1.3)
+limit_left = -8
+limit_top = -40
+limit_right = 248
+limit_bottom = 184
 
 [node name="scene_change_trigger" type="Area2D" parent="."]
 
@@ -169,5 +173,8 @@ visible = false
 polygon = PackedVector2Array(-8, -40, 248, -40, 248, 184, -8, 184, -8, -40, -40, -72, -40, 216, 280, 216, 280, -72, -40, -72)
 
 [node name="HealthBar" parent="." instance=ExtResource("9_l7ekm")]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(224, 72)
 
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

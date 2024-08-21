@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qxyg7qqfhihu" path="res://assets/sprites/world/log_burning.png" id="3_5ed1o"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="4_1x6kw"]
 [ext_resource type="Texture2D" uid="uid://w3ly6cgxj84v" path="res://assets/sprites/Characters/Robot/attack/attack.png" id="7_4llua"]
-[ext_resource type="Texture2D" uid="uid://dcpgnxsajg1vv" path="res://assets/sprites/Characters/NPCs/soldier.png" id="8_vvyse"]
+[ext_resource type="Texture2D" uid="uid://2ox68k2ikamj" path="res://assets/sprites/Characters/NPCs/soldier.png" id="8_vvyse"]
 [ext_resource type="PackedScene" uid="uid://c0u8yvqkliii7" path="res://scenes/Transition/TransitionScene.tscn" id="9_y7nqd"]
 [ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="10_vqcj0"]
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="11_ia1ko"]
@@ -775,27 +775,35 @@ shape = SubResource("CircleShape2D_dpuub")
 visible = false
 
 [node name="Enemy_spawner" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(595, 72)
 
 [node name="Enemy_spawner2" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(442.127, 72)
 
 [node name="Enemy_spawner6" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(429.127, 72)
 
 [node name="Enemy_spawner4" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(736, 71.875)
 
 [node name="Enemy_spawner5" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(652.737, 71.875)
 
 [node name="Enemy_spawner3" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(246, 72)
 
 [node name="Enemy_spawner7" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(160, 72)
 
 [node name="Enemy_spawner8" parent="." instance=ExtResource("10_vqcj0")]
+visible = false
 position = Vector2(208, 72)
 
 [node name="dialogue_trigger" type="Area2D" parent="."]
@@ -812,7 +820,7 @@ position = Vector2(1152, 64)
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(-8, 48, 1176, 48, 1176, 96, -8, 96, -8, 184, 1208, 184, 1208, -40, -8, -40)
+polygon = PackedVector2Array(-8, 40, 1176, 40, 1176, 104, -8, 104, -8, 184, 1208, 184, 1208, -40, -8, -40)
 
 [node name="King" parent="." instance=ExtResource("12_rweo7")]
 position = Vector2(1184, 62.875)
