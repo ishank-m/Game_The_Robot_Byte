@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var boss =$BossHealth
 var anim_playing = false
 func _ready():
+	$Boss.visible = false
 	$BossHealth.visible = false
 	critical_health.visible = false
 	bar.visible = true
@@ -69,3 +70,4 @@ func _process(_delta):
 			
 func show_boss_health():
 	$BossHealth.visible = true
+	$Boss.visible = true

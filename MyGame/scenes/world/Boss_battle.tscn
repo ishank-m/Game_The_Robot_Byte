@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://de0onpm8cli53"]
+[gd_scene load_steps=18 format=3 uid="uid://de0onpm8cli53"]
 
 [ext_resource type="Script" path="res://scenes/world/Boss_battle.gd" id="1_0xb08"]
 [ext_resource type="Texture2D" uid="uid://cc34cek2x7rdi" path="res://assets/sprites/world/world_at_war.png" id="1_t3diy"]
@@ -125,6 +125,8 @@ size = Vector2(32, 16)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_yipnn"]
 b = Vector2(1, 225)
 
+[sub_resource type="Curve2D" id="Curve2D_cc5r4"]
+
 [node name="BossBattle" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_0xb08")
@@ -185,5 +187,8 @@ position = Vector2(232, 80)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(60, -40)
 shape = SubResource("SegmentShape2D_yipnn")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_cc5r4")
 
 [connection signal="body_entered" from="scene_change_trigger" to="." method="_on_scene_change_trigger_body_entered"]

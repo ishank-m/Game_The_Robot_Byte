@@ -23,6 +23,7 @@ func shop():
 func _on_close_pressed():
 	$ShopInterfaceBg.visible = false
 	GameState.game_state = "play"
+	GameState.pausable = true
 	$Panel.visible = false
 func _process(_delta):
 	$Panel/points_counter.text = "Points: "+str(GameState.points)

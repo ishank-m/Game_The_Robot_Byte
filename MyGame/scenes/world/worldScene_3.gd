@@ -11,6 +11,7 @@ var once = true
 var king_out = false
 
 func _ready():
+	GameState.pausable = false
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	GameState.scene = "worldscene4"
 	$King.visible = false
@@ -52,7 +53,8 @@ func _process(delta):
 		$walk_chars2.stop()
 		Dialogic.start("1worlscene3")
 		is_dialog_playing = true
-
+	if path_1.progress_ratio == 1:
+		$walk_chars2.stop()
 func _on_dialogic_signal(argument):
 	if argument == "done1":
 		$walk_chars2.play()
@@ -60,6 +62,7 @@ func _on_dialogic_signal(argument):
 		anim_playing = false
 	elif argument == "done2":
 		GameState.game_state = "play"
+		GameState.pausable = true
 func _on_fade_out_done():
 	GameState.game_state = "pause"
 
@@ -75,7 +78,11 @@ func _on_area_2d_body_entered(body):
 
 func _on_shop_body_entered(body):
 	if body.name == "Player":
+		GameState.pausable = false
+		$Player.stop()
 		GameState.game_state = "pause"
+		GameState.pausable = false
+		$Player.stop()
 		$Player/Player_sprite.stop()
 		$ShopInterface.shop()
 
@@ -85,6 +92,7 @@ func _on_animated_sprite_2d_animation_finished():
 	if $door.animation == "default" and not king_out:
 		$door.animation = "close"
 		$door.play("close")
+		GameState.pausable = true
 		$Timer.start()
 		king_out = true
 	elif $door.animation == "default" and king_out:
@@ -114,5 +122,7 @@ func _on_dialogue_trigger_body_entered(body):
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
 		GameState.game_state = "pause"
+		GameState.pausable = false
+		$Player.stop()
 		Dialogic.start("2worldscene3")
 		once = false

@@ -3,6 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Boss.is_attacking = false
+	$Boss/Boss_sprite.frame = 0
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	$Player.set_position($Marker2D.position)
 	$HealthBar.show_boss_health()
