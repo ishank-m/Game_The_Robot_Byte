@@ -65,3 +65,12 @@ func _on_to_worldscene_1_body_entered(body):
 
 func _on_fight_timer_timeout():
 	$StaticBody2D.queue_free()
+	$Enemy_spawner.queue_free()
+	$Enemy_spawner2.queue_free()
+	$Enemy_spawner3.queue_free()
+	$Enemy_spawner4.queue_free()
+	$Enemy_spawner5.queue_free()
+	$Enemy_spawner6.queue_free()
+	$Enemy_spawner7.queue_free()
+	$Enemy_spawner8.queue_free()
+	$Enemy_spawner9.queue_free()

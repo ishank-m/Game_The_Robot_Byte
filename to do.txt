@@ -1,9 +1,4 @@
 - ThroneRoom stairs logic
 - EndingScene stairs logic
-- (Needs improvement) worldscene1 player and king dialogue trigger logic.
-- worldscene3
-- revert old logic (movencollide) for worldscene2 cuz chipak jaa rha king sabse
-- worldscene4 animation
-- worldscene2 dailogs
 - combat = true
 - spawner deactivate logic

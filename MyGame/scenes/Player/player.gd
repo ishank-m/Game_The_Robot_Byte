@@ -41,15 +41,19 @@ func _physics_process(_delta):
 	walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	$walk.stream = walk
 	if GameState.game_state == "play":
-		if Input.is_action_just_pressed("health") and not attack:
+		if Input.is_action_just_pressed("health") and not attack and GameState.items["health_potion"]:
 			attack = true
 			anim.play("health_potion")
 			await anim.animation_finished
+			GameState.items["health_potion"] -= 1
 			GameState.player_health = 120
 			
-		elif Input.is_action_just_pressed("invin") and not attack:
+		elif Input.is_action_just_pressed("invin") and not attack and GameState.items["invin_potion"]:
 			attack = true
 			anim.play("invin_potion")
+			await anim.animation_finished
+			GameState.items["invin_potion"] -= 1
+			GameState.player_health = 10000
 		elif Input.is_action_just_pressed("attack_left") and not attack:
 			attack = true
 			anim.flip_h = true

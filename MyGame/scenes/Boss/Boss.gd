@@ -32,10 +32,10 @@ func _physics_process(delta):
 			elif y_diff > 0:
 				direction.y -= 1
 			velocity = direction * speed
-			update_anim(direction)
+			update_anim()
 			move_and_collide(velocity*delta)
 
-func update_anim(direction):
+func update_anim():
 	if not attack:
 		anim.play("walk")
 

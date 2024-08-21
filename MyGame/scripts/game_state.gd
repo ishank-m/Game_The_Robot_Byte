@@ -1,7 +1,7 @@
 extends Node
 var items = {
 	"sword": "wood",
-	"health_potion": 1,
+	"health_potion": 0,
 	"invin_potion": 0
 }
 var sword_damage = 9
@@ -46,6 +46,7 @@ func save_score():
 	current_scene = get_tree().current_scene.scene_file_path
 	player_pos = get_tree().current_scene.get_node("Player").position
 	file.store_var(items)
+	file.store_var(points)
 	file.store_var(sword_damage)
 	file.store_var(player_health)
 	file.store_var(current_scene)
@@ -59,6 +60,10 @@ func save_score():
 func load_score():
 	if check_save(get_current_save()):
 		var file = FileAccess.open(get_current_save(), FileAccess.READ)
+		items = file.get_var()
+		points = file.get_var()
+		sword_damage = file.get_var()
+		player_health = file.get_var()
 		current_scene = file.get_var()
 		player_pos = file.get_var()
 		game_state = file.get_var()

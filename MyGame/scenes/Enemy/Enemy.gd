@@ -19,10 +19,6 @@ func _ready():
 	add_to_group("Enemy")
 
 func _physics_process(_delta):
-	if player or player_in_hitbox:
-		GameState.combat = true
-	else:
-		GameState.combat = false
 	if health <= 0 and not died:
 		if last_hit == "player":
 			last_hit = null
@@ -76,13 +72,11 @@ func _physics_process(_delta):
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
-		GameState.combat = true
 		player = body
 
 func _on_detection_area_body_exited(body):
 	if body.name == "Player":
 		player = null
-		GameState.combat = false
 
 func _on_attack_area_body_entered(body):
 	if body.name == "Player":
@@ -101,8 +95,6 @@ func _on_enemy_sprite_animation_finished():
 			GameState.player_health -= 10
 	elif anim.animation == "die":
 		emit_signal("enemy_freed")
-		GameState.spawned_enemies -= 1
-		GameState.combat = false
 		queue_free()
 
 func enemy_anim():
