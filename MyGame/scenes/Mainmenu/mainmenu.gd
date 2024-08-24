@@ -42,6 +42,7 @@ func _on_play_pressed():
 		animation_playing = true
 func _on_play_button_animation_animation_finished(anim_name):
 	if anim_name == "mouse_pressed":
+		$Title/Play_Button.frame = 1
 		animation_playing = false
 		$Car_1_main/AnimationPlayer.play("Carmainmenu")
 		$car_start.play()
@@ -84,6 +85,7 @@ func _on_quit_mouse_exited():
 		$Title/"Quit Button".frame = 1
 func _on_quit_button_animation_animation_finished(anim_name):
 	if anim_name == "mouse_pressed":
+		$Title/Quit_button_animation.frame = 1
 		animation_playing = false
 		get_tree().quit()
 
@@ -173,8 +175,9 @@ func _on_house_body_entered(body: Node2D):
 		GameState.game_state = "pause"
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
-		$door_open.play("default")
+		$Player.stop()
 		$door_sound.play()
+		$door_open.play("default")
 
 
 func _on_dialogic_signal(argument):

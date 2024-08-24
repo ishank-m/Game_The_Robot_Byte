@@ -1112,6 +1112,7 @@ stream = ExtResource("24_ilooq")
 [node name="door_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_5gjsh")
 volume_db = -20.0
+max_distance = 20000.0
 attenuation = 0.517632
 panning_strength = 0.1
 

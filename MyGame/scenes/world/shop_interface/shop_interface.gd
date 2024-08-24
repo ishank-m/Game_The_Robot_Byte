@@ -2,12 +2,7 @@ extends CanvasLayer
 var health_count = 0
 var invin_count = 0
 var sword
-func hide_shop():
-	$ShopInterfaceBg.visible = false
-	$Panel.visible = false
-#func _ready():
-	#$ShopInterfaceBg.visible = false
-	#$Panel.visible = false
+
 func shop():
 	GameState.game_state = "pause"
 	set_process_input(true)
@@ -21,6 +16,7 @@ func shop():
 		$Panel.visible = true
 	show_swords()
 func _on_close_pressed():
+	$click_sound.play()
 	$ShopInterfaceBg.visible = false
 	GameState.game_state = "play"
 	GameState.pausable = true
@@ -31,13 +27,14 @@ func _process(_delta):
 	$ShopInterfaceBg/potionSection/health_pot_count.text = str(health_count)
 
 func _on_next_pressed():
+	$click_sound.play()
 	show_potions()
 
 func _on_dialogic_signal(argument):
-	if argument == "done1":
+	if argument == "done_shop1":
 		$ShopInterfaceBg.visible = true
 		$Panel.visible = true
-	if argument == "done2" or argument == "done3":
+	if argument == "done_shop2" or argument == "done3":
 		show_shop()
 	set_process_input(true)
 
@@ -58,6 +55,7 @@ func _on_diamond_button_down():
 
 
 func _on_buy_pressed():
+	$click_sound.play()
 	set_process_input(false)
 	if sword == "iron":
 		if GameState.points >= 180:
@@ -102,6 +100,7 @@ func _on_buy_pressed():
 			hide_shop()
 			Dialogic.start("shop2")
 func _on_back_pressed():
+	$click_sound.play()
 	show_swords()
 
 
@@ -128,6 +127,7 @@ func _on_minus_2_pressed():
 
 
 func _on_buy_pot_pressed():
+	$click_sound.play()
 	var amount = health_count*50 + invin_count*50
 	if amount<GameState.points and amount != 0:
 		GameState.points -= amount
@@ -153,6 +153,6 @@ func _on_timer_timeout():
 func show_shop():
 	$ShopInterfaceBg.visible = true
 	$Panel.visible = true
-func hide_show():
+func hide_shop():
 	$ShopInterfaceBg.visible = false
 	$Panel.visible = false

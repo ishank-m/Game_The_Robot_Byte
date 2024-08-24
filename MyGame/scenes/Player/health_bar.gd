@@ -41,33 +41,37 @@ func _process(_delta):
 				bar.visible = false
 				critical_health.visible = true
 				critical_health.play("default")
+				await $critical_health.animation_finished
+				anim_playing = false
+				bar.visible = true
+				critical_health.visible = true
 	else:
 		anim_playing = false
 		bar.visible = true
 		critical_health.visible = false
 		critical_health.stop()
 	if boss.visible:
-		if GameState.boss_health>360:
+		if GameState.boss_health>560:
 			boss.frame = 0
-		elif GameState.boss_health> 320:
+		elif GameState.boss_health> 490:
 			boss.frame = 1
-		elif GameState.boss_health> 280:
+		elif GameState.boss_health> 420:
 			boss.frame = 2
-		elif GameState.boss_health> 240:
+		elif GameState.boss_health> 350:
 			boss.frame = 3
-		elif GameState.boss_health> 200:
+		elif GameState.boss_health> 280:
 			boss.frame = 4
-		elif GameState.boss_health> 160:
+		elif GameState.boss_health> 210:
 			boss.frame = 5
-		elif GameState.boss_health> 120:
+		elif GameState.boss_health> 140:
 			boss.frame = 6
-		elif GameState.boss_health> 80:
+		elif GameState.boss_health> 70:
 			boss.frame = 7
-		elif GameState.boss_health> 40:
+		elif GameState.boss_health == 0:
 			boss.frame = 8
-		elif GameState.boss_health==0:
-			boss.frame = 9
 			
 func show_boss_health():
 	$BossHealth.visible = true
 	$Boss.visible = true
+func hide_boss_health():
+	$BossHealth.visible = false

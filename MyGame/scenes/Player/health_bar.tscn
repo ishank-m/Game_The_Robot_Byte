@@ -39,7 +39,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tpue7")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 4.0
 }]
@@ -96,6 +96,7 @@ position = Vector2(160, 156)
 scale = Vector2(4.25, 1)
 texture = ExtResource("7_7pox1")
 hframes = 9
+frame = 8
 
 [node name="Boss" type="Label" parent="."]
 offset_left = 136.0

@@ -2,6 +2,7 @@ extends Node2D
 @onready var transition = $TransitionScene
 @onready var path = $Path2D/PathFollow2D
 @onready var player = get_node("Player")
+@onready var camera = $Player/Camera2D
 var speed = 50
 var anim_playing = false
 var go_back = false
@@ -9,6 +10,10 @@ var died = false
 var is_walking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if GameState.player_died:
+		camera.make_current()
+		GameState.player_died = false
+		GameState.player_health = 120
 	GameState.player_died = false
 	GameState.player_health = 120
 	$dead.visible = false
@@ -29,18 +34,18 @@ func _ready():
 	GameState.combat = true
 
 func _physics_process(_delta):
-	GameState.game_state = "play"
 	if not GameState.player_died:
 		if GameState.player_health == 0:
 			GameState.player_died = true
-			$dead.set_position(player.position) 
-			var camera = player.get_node("Camera2D")
+			$dead.visible = true
+			$dead.set_position(player.position)
+			camera = player.get_node("Camera2D")
 			player.remove_child(camera)
 			get_tree().root.add_child(camera)
-			camera.position = player.position
+			var cam = get_tree().root.get_node("Camera2D")
+			cam.position = player.position
 			$Player.queue_free()
-			$dead.visible = true
-			GameState.spawn = false
+			MusicPlayer.stop()
 			Dialogic.start("dead")
 
 func _process(delta):
@@ -74,10 +79,11 @@ func _process(delta):
 		$HealthBar.visible = false
 		go_back = false
 	if $Boss.died and not died:
+		$HealthBar.hide_boss_health()
 		Dialogic.start("bossbattle2")
 		died = true
 func _on_fade_out_done():
-	pass
+	GameState.game_state = "pause"
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/world/PalaceEntrance.tscn")
 func _on_scene_change_trigger_body_entered(body):
@@ -92,7 +98,6 @@ func _on_dialogic_signal(argument):
 		$Boss.is_attacking = true
 		$HealthBar.visible = true
 	elif argument == "done2":
-		$King.set_position($Path2D/PathFollow2D/King.position)
 		$Path2D/PathFollow2D/King.visible = false
 		$King.visible = true
 	elif argument == "dead":

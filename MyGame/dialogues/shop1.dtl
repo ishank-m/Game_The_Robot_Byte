@@ -16,5 +16,5 @@ shopkeeper: {{points}/10} robots will\
 make {points} points for you...
 shopkeeper: Browse my shop and spend these points \
 as per your liking.
-[signal arg="done1"]
+[signal arg="done_shop1"]
 [end_timeline]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://uebno7qed4ai"]
+[gd_scene load_steps=27 format=3 uid="uid://uebno7qed4ai"]
 
 [ext_resource type="Script" path="res://scenes/world/shop_interface/shop_interface.gd" id="1_jliga"]
 [ext_resource type="Texture2D" uid="uid://by7uwi2gck71r" path="res://assets/sprites/world/shop/shop_interface_bg.png" id="2_vpr4f"]
@@ -21,6 +21,7 @@
 [ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="19_xoow2"]
 [ext_resource type="LabelSettings" uid="uid://cblfyy6ss6oeb" path="res://scripts/new_label_settings.tres" id="20_m6p4n"]
 [ext_resource type="FontFile" uid="uid://rvc8fsmsm28m" path="res://font.ttf" id="21_8r61y"]
+[ext_resource type="AudioStream" uid="uid://ddn8tiihoc0vi" path="res://assets/sounds/button_pressed.mp3" id="22_e5w0y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4wg0"]
 bg_color = Color(0.647447, 0.457749, 0.0942742, 1)
@@ -312,6 +313,9 @@ offset_bottom = 20.0
 text = "Points"
 label_settings = ExtResource("20_m6p4n")
 vertical_alignment = 1
+
+[node name="click_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_e5w0y")
 
 [connection signal="button_down" from="ShopInterfaceBg/swordSection/Iron" to="." method="_on_iron_button_down"]
 [connection signal="button_down" from="ShopInterfaceBg/swordSection/Gold" to="." method="_on_gold_button_down"]

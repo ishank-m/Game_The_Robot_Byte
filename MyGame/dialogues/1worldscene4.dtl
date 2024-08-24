@@ -1,7 +1,8 @@
 join King (king_normal) 0 [animation="Instant In Or Out"]
-King: Let alone my brave men, We must end the \
+King: Let alone my brave men, I must end the \
 hive mind...
-King: to end this once and for all.
+King: to end this once and for all. He's all\
+mine to destroy.
 join Kevin 0 [animation="Instant In Or Out"]
 Kevin: Okay, let's keep moving then.
 [signal arg="done1"]

@@ -18,7 +18,7 @@ var combat
 var points = 0
 var spawn = false
 var pausable = true
-var boss_health = 400
+var boss_health = 600
 
 var dialogues_count = {
 	"downstairs" : 0,

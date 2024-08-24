@@ -44,6 +44,8 @@ func _physics_process(_delta):
 			await anim.animation_finished
 			attack = false
 			GameState.items["invin_potion"] -= 1
+			#var health = get_parent().get_node("HealthBar")
+			#health.invin_health()
 			GameState.player_health = 10000
 			$Timer.start()
 		elif Input.is_action_just_pressed("attack_left") and not attack:
@@ -146,4 +148,6 @@ func stop():
 
 
 func _on_timer_timeout():
+	#var health = get_parent().get_node("HealthBar")
+	#health.normal_health()
 	GameState.player_health = 120

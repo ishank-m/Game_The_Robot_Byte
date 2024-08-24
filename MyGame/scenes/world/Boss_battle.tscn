@@ -429,7 +429,7 @@ position = Vector2(232, 80)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(60, -40)
+position = Vector2(67, -40)
 shape = SubResource("SegmentShape2D_yipnn")
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -442,7 +442,7 @@ loop = false
 
 [node name="King" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
 sprite_frames = SubResource("SpriteFrames_pjime")
-animation = &"attack"
+animation = &"down"
 flip_h = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Path2D/PathFollow2D/King"]
@@ -452,7 +452,7 @@ position = Vector2(0, 8.63068)
 shape = SubResource("CircleShape2D_otj8k")
 
 [node name="King" parent="." instance=ExtResource("12_sp78i")]
-position = Vector2(234, 57)
+position = Vector2(231, 56)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

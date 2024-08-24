@@ -1,10 +1,12 @@
 extends Node2D
 @onready var transition = $TransitionScene
 @onready var player = get_node("Player")
-
+@onready var camera = $Player/Camera2D
 func _ready():
-	GameState.player_died = false
-	GameState.player_health = 120
+	if GameState.player_died:
+		camera.make_current()
+		GameState.player_died = false
+		GameState.player_health = 120
 	$dead.visible = false
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	MusicPlayer.music_final_fight()
@@ -22,14 +24,16 @@ func  _physics_process(_delta):
 	if not GameState.player_died:
 		if GameState.player_health == 0:
 			GameState.player_died = true
-			$dead.set_position(player.position) 
-			var camera = player.get_node("Camera2D")
+			$dead.visible = true
+			$dead.set_position(player.position)
+			camera = player.get_node("Camera2D")
 			player.remove_child(camera)
 			get_tree().root.add_child(camera)
-			camera.position = player.position
+			var cam = get_tree().root.get_node("Camera2D")
+			cam.position = player.position
 			$Player.queue_free()
-			$dead.visible = true
-			GameState.spawn = false
+			MusicPlayer.stop()
+			$Enemy.stop_music()
 			Dialogic.start("dead")
 
 func _on_fade_out_done():
@@ -56,6 +60,7 @@ func _on_dialogue_trigger_body_entered(body):
 	if body.name == "Player":
 		GameState.game_state = "pause"
 		$Player/Player_sprite.stop()
+		$Player.stop()
 		Dialogic.start("1worldscene4")
 
 func _on_scene_change_trigger_body_entered(body):

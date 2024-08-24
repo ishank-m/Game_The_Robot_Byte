@@ -317,7 +317,7 @@ frame_progress = 1.0
 
 [node name="call" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_afash")
-volume_db = -15.0
+volume_db = -10.0
 
 [node name="stairs" type="Area2D" parent="."]
 

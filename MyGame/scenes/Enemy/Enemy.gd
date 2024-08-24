@@ -15,6 +15,7 @@ var attack_cooldown = true
 var animation_playing = false
 var last_hit = null
 var hit_sound = false
+var MC_hit_sound = false
 
 func _ready():
 	add_to_group("Enemy")
@@ -23,7 +24,7 @@ func _physics_process(_delta):
 	if health <= 0 and not died:
 		if last_hit == "player":
 			last_hit = null
-			GameState.points += 10
+			GameState.points += 40
 		elif last_hit == "king":
 			last_hit = null
 		died = true
@@ -69,7 +70,8 @@ func _physics_process(_delta):
 				pass 
 	elif not (animation_playing and player and player_in_hitbox) and not died:
 		anim.stop()
-
+	if GameState.player_died:
+		$hit.stop()
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":
 		player = body
@@ -135,9 +137,9 @@ func _on_hurtbox_area_entered(area):
 	if area.is_in_group("player_attack"):
 		last_hit = "player"
 		health -= player_damage
-		if not hit_sound:
+		if not MC_hit_sound:
 			$hit.play()
-			hit_sound = true
+			MC_hit_sound = true
 	if area.is_in_group("king_attack"):
 		last_hit = "king"
 		health -= 20
@@ -151,3 +153,6 @@ func makepath():
 
 func _on_timer_timeout():
 	makepath()
+
+func stop_music():
+	$hit.stop()
