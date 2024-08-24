@@ -10,7 +10,7 @@ join Kevin 0 [animation="Instant In Or Out"]
 Kevin: {{points}/10}
 leave Kevin [animation="Instant In Or Out"]
 join shopkeeper 0 [animation="Instant In Or Out"]
-shopkeeper: If I award you 10 points for every\
+shopkeeper: If I award you 40 points for every\
 robot destroyed...
 shopkeeper: {{points}/10} robots will\
 make {points} points for you...
