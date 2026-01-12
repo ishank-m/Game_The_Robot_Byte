@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 30
+@export var speed = 20
 @onready var anim  = $Damaged
 @onready var player = get_parent().get_node("Player")
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -29,6 +29,7 @@ func _physics_process(delta):
 		anim = $Normal
 		$Damaged.visible = false
 		$Normal.visible = true
+		speed = 50
 	if not (animation_playing or GameState.player_died):
 		if attacking:
 			animation_playing = true

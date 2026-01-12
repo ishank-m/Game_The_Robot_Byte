@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://7h55rutfwhrf"]
 
-[ext_resource type="Script" path="res://scenes/Enemy/Enemy.gd" id="1_17d06"]
+[ext_resource type="Script" uid="uid://ci2wj0gwmgysf" path="res://scenes/Enemy/Enemy.gd" id="1_17d06"]
 [ext_resource type="Texture2D" uid="uid://xydyogi8r2dj" path="res://assets/sprites/Characters/Robot/movement/enemy.png" id="2_1grgf"]
 [ext_resource type="Texture2D" uid="uid://w3ly6cgxj84v" path="res://assets/sprites/Characters/Robot/attack/attack.png" id="2_gwmqg"]
 [ext_resource type="AudioStream" uid="uid://cvtm5cmnpryn1" path="res://assets/music/SoundEffects/sword_hit.wav" id="4_w6bjg"]
@@ -391,6 +391,9 @@ autostart = true
 stream = ExtResource("4_w6bjg")
 volume_db = 5.0
 
+[node name="heal" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="animation_finished" from="Enemy_sprite" to="." method="_on_enemy_sprite_animation_finished"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
@@ -399,3 +402,4 @@ volume_db = 5.0
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="heal" to="." method="_on_heal_timeout"]

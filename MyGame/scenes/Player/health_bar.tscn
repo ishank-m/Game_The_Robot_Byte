@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bery0keh5fn4a"]
 
-[ext_resource type="Script" path="res://scenes/Player/health_bar.gd" id="1_qynmj"]
+[ext_resource type="Script" uid="uid://com3uy7gsfm6i" path="res://scenes/Player/health_bar.gd" id="1_qynmj"]
 [ext_resource type="Texture2D" uid="uid://gp38ag5nw8xi" path="res://assets/sprites/Characters/MC/health.png" id="2_88xbo"]
 [ext_resource type="Texture2D" uid="uid://qwpfs0uugq15" path="res://assets/sprites/Characters/MC/critical health.png" id="3_14d35"]
 [ext_resource type="LabelSettings" uid="uid://c3iu4hv6r375y" path="res://scripts/label_settings.tres" id="4_rqn7l"]

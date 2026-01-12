@@ -85,5 +85,4 @@ func _on_fight_timer_timeout():
 	$StaticBody2D.queue_free()
 	GameState.game_state = "pause"
 	$Player/Player_sprite.stop()
-	Dialogic.start("worldscene2_end")
 	GameState.spawn = false

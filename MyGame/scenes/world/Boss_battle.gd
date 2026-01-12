@@ -25,6 +25,8 @@ func _ready():
 	$Boss/Boss_sprite.frame = 0
 	$Player.walk = load("res://assets/music/SoundEffects/walk_grass.wav")
 	$Player.set_position($Marker2D.position)
+	$Player/Player_sprite.stop()
+	GameState.game_state = "pause"
 	$HealthBar.show_boss_health()
 	transition.fade_out()
 	transition.connect("fade_in_done", _on_fade_in_done)
@@ -101,6 +103,7 @@ func _on_dialogic_signal(argument):
 		$Path2D/PathFollow2D/King.visible = false
 		$King.visible = true
 	elif argument == "dead":
+		GameState.boss_health = 600
 		get_tree().change_scene_to_file("res://scenes/world/Boss_battle.tscn")
 func _on_king_animation_finished():
 	if $Path2D/PathFollow2D/King.animation == "attack":

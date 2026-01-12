@@ -60,7 +60,7 @@ func _on_buy_pressed():
 	if sword == "iron":
 		if GameState.points >= 180:
 			GameState.items["sword"] = sword
-			GameState.sword_damage = 12
+			GameState.sword_damage = 15
 			GameState.points -= 180
 			$Label.text = "+1 Iron Sword"
 			$ShopInterfaceBg/swordSection/Buy.disabled = true
@@ -75,7 +75,7 @@ func _on_buy_pressed():
 		if GameState.points >= 260:
 			$Label.text = "+1 Gold Sword"
 			GameState.items["sword"] = sword
-			GameState.sword_damage = 18
+			GameState.sword_damage = 25
 			GameState.points -= 260
 			$ShopInterfaceBg/swordSection/Buy.disabled = true
 			Dialogic.VAR.sword = sword
@@ -89,7 +89,7 @@ func _on_buy_pressed():
 		if GameState.points >= 300:
 			$Label.text = "+1 Diamond Sword"
 			GameState.items["sword"] = sword
-			GameState.sword_damage = 36
+			GameState.sword_damage = 35
 			GameState.points -= 300
 			$ShopInterfaceBg/swordSection/Buy.disabled = true
 			Dialogic.VAR.sword = sword

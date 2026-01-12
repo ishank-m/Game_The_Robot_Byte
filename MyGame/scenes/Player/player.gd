@@ -100,6 +100,7 @@ func _physics_process(_delta):
 			update_anim(direction)
 			move_and_slide()
 
+
 func update_anim(direction):
 	if direction == Vector2(0,0) and not attack:
 		anim.stop()

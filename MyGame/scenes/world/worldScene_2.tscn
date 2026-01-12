@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://hccjh4a1we5r"]
 
-[ext_resource type="Script" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
+[ext_resource type="Script" uid="uid://cbotlnxlk7ntw" path="res://scenes/world/worldScene_2.gd" id="1_287fu"]
 [ext_resource type="Texture2D" uid="uid://cymnhl47hj6bo" path="res://assets/sprites/world/world.png" id="1_e3w42"]
 [ext_resource type="PackedScene" uid="uid://bshfs5ilxiykp" path="res://scenes/Enemy/enemy_spawner.tscn" id="3_b6atu"]
 [ext_resource type="PackedScene" uid="uid://bery0keh5fn4a" path="res://scenes/Player/health_bar.tscn" id="3_qf72c"]
@@ -97,140 +97,86 @@ agent_radius = 0.0
 texture = ExtResource("1_e3w42")
 6:2/size_in_atlas = Vector2i(2, 2)
 6:2/0 = 0
-6:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:2/0/physics_layer_0/angular_velocity = 0.0
 6:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6yndr")
 6:4/size_in_atlas = Vector2i(2, 2)
 6:4/0 = 0
-6:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:4/0/physics_layer_0/angular_velocity = 0.0
 6:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mwqjg")
 8:6/size_in_atlas = Vector2i(2, 2)
 8:6/0 = 0
 8:6/0/texture_origin = Vector2i(0, -6)
-8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:6/0/physics_layer_0/angular_velocity = 0.0
 6:6/size_in_atlas = Vector2i(2, 2)
 6:6/0 = 0
 6:6/0/texture_origin = Vector2i(0, -6)
-6:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:6/0/physics_layer_0/angular_velocity = 0.0
 4:6/size_in_atlas = Vector2i(2, 2)
 4:6/0 = 0
 4:6/0/texture_origin = Vector2i(0, -6)
-4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:6/0/physics_layer_0/angular_velocity = 0.0
 2:6/size_in_atlas = Vector2i(2, 2)
 2:6/0 = 0
 2:6/0/y_sort_origin = -6
-2:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:6/0/physics_layer_0/angular_velocity = 0.0
 2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.8, 14.4, 0, 15.2, 13.6, 6.4, 12.8, 0, 8, -0.8, 1.6, 0, -9.6, 6.4, -9.6, 11.2)
 0:6/size_in_atlas = Vector2i(2, 2)
 0:6/0 = 0
 0:6/0/texture_origin = Vector2i(0, -6)
-0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:6/0/physics_layer_0/angular_velocity = 0.0
 0:4/size_in_atlas = Vector2i(2, 2)
 0:4/0 = 0
-0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:4/0/physics_layer_0/angular_velocity = 0.0
 2:4/size_in_atlas = Vector2i(2, 2)
 2:4/0 = 0
-2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:4/0/physics_layer_0/angular_velocity = 0.0
 2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_eu2vp")
 4:4/size_in_atlas = Vector2i(2, 2)
 4:4/0 = 0
-4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:4/0/physics_layer_0/angular_velocity = 0.0
 4:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_m1trn")
 4:2/size_in_atlas = Vector2i(2, 2)
 4:2/0 = 0
-4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:2/0/physics_layer_0/angular_velocity = 0.0
 4:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_208sx")
 2:2/size_in_atlas = Vector2i(2, 2)
 2:2/0 = 0
-2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:2/0/physics_layer_0/angular_velocity = 0.0
 2:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_uxoqe")
 0:2/size_in_atlas = Vector2i(2, 2)
 0:2/0 = 0
-0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:2/0/physics_layer_0/angular_velocity = 0.0
 0:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_qtb3s")
 0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_bwtdd")
 2:0/size_in_atlas = Vector2i(2, 2)
 2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_i6oik")
 4:0/size_in_atlas = Vector2i(2, 2)
 4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_iuro5")
 6:0/size_in_atlas = Vector2i(2, 2)
 6:0/0 = 0
-6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:0/0/physics_layer_0/angular_velocity = 0.0
 6:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_c1vdx")
 8:0/size_in_atlas = Vector2i(2, 2)
 8:0/0 = 0
-8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:0/0/physics_layer_0/angular_velocity = 0.0
 10:6/size_in_atlas = Vector2i(2, 2)
 10:6/0 = 0
 10:6/0/y_sort_origin = -5
-10:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-10:6/0/physics_layer_0/angular_velocity = 0.0
 10:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.4, 8.8, 12, 3.2, 12, 0, 8, 0, -12.8, 6.4, -11.2, 8.8)
 12:6/size_in_atlas = Vector2i(2, 2)
 12:6/0 = 0
-12:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-12:6/0/physics_layer_0/angular_velocity = 0.0
 12:2/size_in_atlas = Vector2i(2, 4)
 12:2/0 = 0
 12:2/0/y_sort_origin = 14
-12:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-12:2/0/physics_layer_0/angular_velocity = 0.0
 12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.5, 27.5, 8, 32, -8.8, 32, -4.8, 28)
 10:2/size_in_atlas = Vector2i(2, 2)
 10:2/0 = 0
 10:2/0/y_sort_origin = -4
-10:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-10:2/0/physics_layer_0/angular_velocity = 0.0
 10:4/size_in_atlas = Vector2i(2, 2)
 10:4/0 = 0
 10:4/0/y_sort_origin = -2
-10:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-10:4/0/physics_layer_0/angular_velocity = 0.0
 10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.2, 10.4, -5.6, 13.6, -1.6, 13.6, 4.8, 9.6, 4, 6.4, 0.8, 6.4)
 8:2/size_in_atlas = Vector2i(2, 2)
 8:2/0 = 0
-8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:2/0/physics_layer_0/angular_velocity = 0.0
 8:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vi01m")
 8:4/size_in_atlas = Vector2i(2, 2)
 8:4/0 = 0
-8:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:4/0/physics_layer_0/angular_velocity = 0.0
 8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 15.75, -15.75, 15.75)
 10:0/size_in_atlas = Vector2i(2, 2)
 10:0/0 = 0
 10:0/0/y_sort_origin = -4
-10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-10:0/0/physics_layer_0/angular_velocity = 0.0
 12:0/size_in_atlas = Vector2i(2, 2)
 12:0/0 = 0
 12:0/0/y_sort_origin = -4
-12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-12:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_i56fk"]
 physics_layer_0/collision_layer = 1
@@ -306,7 +252,7 @@ position = Vector2(-9, 72)
 shape = SubResource("RectangleShape2D_do4y2")
 
 [node name="King" parent="." instance=ExtResource("7_ovhcx")]
-position = Vector2(30, 94)
+position = Vector2(14, 60)
 
 [node name="Enemy_spawner3" parent="." instance=ExtResource("3_b6atu")]
 position = Vector2(728, 29)
@@ -318,6 +264,7 @@ position = Vector2(966, 128)
 position = Vector2(425, 106)
 
 [node name="Enemy_spawner6" parent="." instance=ExtResource("3_b6atu")]
+visible = false
 position = Vector2(150, 103)
 
 [node name="Enemy_spawner7" parent="." instance=ExtResource("3_b6atu")]
@@ -327,6 +274,7 @@ position = Vector2(311, -21)
 position = Vector2(998, 38)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(1088, 152, 16, 152, 16, -32, 1088, -32, 1128, -72, -24, -72, -24, 184, 1128, 184, 1128, -72, 1088, -32)

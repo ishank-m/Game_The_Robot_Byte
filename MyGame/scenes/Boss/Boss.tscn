@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://54ki5d2u0k71"]
 
 [ext_resource type="Texture2D" uid="uid://bhr5ad303xi2g" path="res://assets/sprites/Characters/Final Boss/boss_attack.png" id="1_h8081"]
-[ext_resource type="Script" path="res://scenes/Boss/Boss.gd" id="1_ptasi"]
+[ext_resource type="Script" uid="uid://bh4ryopowuv3v" path="res://scenes/Boss/Boss.gd" id="1_ptasi"]
 [ext_resource type="Texture2D" uid="uid://c5arcpify82wx" path="res://assets/sprites/Characters/Final Boss/boss_destroyed.png" id="2_2d8vn"]
 [ext_resource type="Texture2D" uid="uid://cb2sw5wylh6s1" path="res://assets/sprites/Characters/Final Boss/boss_movement.png" id="3_ukixl"]
 [ext_resource type="AudioStream" uid="uid://cswn52obpxvyx" path="res://assets/music/SoundEffects/fire.mp3" id="5_oj5qv"]
@@ -234,10 +234,11 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ehtym"]
 radius = 13.0
-height = 68.0
+height = 60.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_50w8x"]
-size = Vector2(170, 8)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vg1s6"]
+radius = 5.0
+height = 172.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yo16w"]
 radius = 32.0
@@ -262,14 +263,16 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea"]
-position = Vector2(115, -2)
-shape = SubResource("RectangleShape2D_50w8x")
+position = Vector2(114, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vg1s6")
 
 [node name="hurtbox" type="Area2D" parent="."]
 position = Vector2(-6, 14)
 rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+visible = false
 position = Vector2(8, 1)
 shape = SubResource("CircleShape2D_yo16w")
 

@@ -94,11 +94,11 @@ func _on_enemy_sprite_animation_finished():
 	if anim.animation in ["attack_left", "attack_up", "attack_down"]:
 		animation_playing = false
 		if player_in_hitbox:
-			GameState.player_health -= 10
+			GameState.player_health -= 5
 	elif anim.animation == "die":
 		emit_signal("enemy_freed")
 		randomize()
-		var chance = randi_range(1,15)
+		var chance = randi_range(1,5)
 		if chance == 1:
 			GameState.items["health_potion"] += 1
 		elif chance == 2:

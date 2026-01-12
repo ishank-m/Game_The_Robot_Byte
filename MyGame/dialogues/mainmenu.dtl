@@ -1,1 +1,15 @@
+join Dad 0 [ z_index="1"]
+Dad: Alright, we're here! Raj, why don't you check out the new house...
+Dad: while me and your sister bring our bags from the car?
+leave Dad [animation="Instant In Or Out" wait="true"]
+join Kevin 0 [ z_index="1"]
+Kevin: I don't want to dad. why do we have to move at all? Our old house has memories of mom...
+Kevin: I'm scared I'll forget her forever without them.
+leave Kevin [animation="Instant In Or Out"]
+join Dad 0 [animation="Instant In Or Out" z_index="1"]
+Dad: It's been an year since her death, Raj. Life has to move forward...
+Dad: It was painful living in that house. Come on, you're stronger than this.
+leave Dad [animation="Instant In Or Out"]
+join Kevin 0 [animation="Instant In Or Out" z_index="1"]
+Kevin: Alright, alright. I'll go.
 [signal arg="done"]

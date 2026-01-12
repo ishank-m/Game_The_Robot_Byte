@@ -67,7 +67,7 @@ func _process(_delta):
 			boss.frame = 6
 		elif GameState.boss_health> 70:
 			boss.frame = 7
-		elif GameState.boss_health == 0:
+		elif GameState.boss_health <= 10:
 			boss.frame = 8
 			
 func show_boss_health():
@@ -75,3 +75,4 @@ func show_boss_health():
 	$Boss.visible = true
 func hide_boss_health():
 	$BossHealth.visible = false
+	$Boss.visible = false

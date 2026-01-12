@@ -5,6 +5,7 @@ King: Wait for me. Until then, you get ready. \
 We have a battle to fight.
 King: See that Armoury over there?
 King: Go and see if you can find something \
-for yourself.
+for yourself. 
+King: We'll go the same path we came from.
 [signal arg="done1"]
 [end_timeline]
