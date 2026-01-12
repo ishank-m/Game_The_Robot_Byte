@@ -15,11 +15,13 @@ func _ready():
 	elif GameState.scene == "lobby":
 		is_back = true
 		player.set_position($Lobby.position)
+	elif GameState.scene == "downstairs":
+		is_back = true
 	if GameState.player_pos:
 		player.position = GameState.player_pos
 		GameState.player_pos = null
 	GameState.scene = "downstairs"
-	GameState.game_state = "pause"
+	
 
 func _on_fade_in_done():
 	get_tree().change_scene_to_file("res://scenes/House/Lobby.tscn")
@@ -41,12 +43,10 @@ func _on_upstairs_body_entered(body):
 
 func _on_dialogic_signal(argument: String):
 	GameState.pausable = true
-	if argument == "end" or argument == "done":
-		GameState.game_state = "play"
-	elif argument == "done3":
+	GameState.game_state = "play"
+	if argument == "done3":
 		$Player/Player_sprite.play("up")
 		$Player/Player_sprite.stop()
-		GameState.game_state = "play"
 
 func _on_dialogue_body_entered(body):
 	if body.name == "Player" and count == 0:

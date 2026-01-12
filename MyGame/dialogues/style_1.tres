@@ -1,49 +1,42 @@
 [gd_resource type="Resource" script_class="DialogicStyle" load_steps=17 format=3 uid="uid://d32xpbnancxt4"]
 
 [ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="1_43glt"]
-[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_318j5"]
+[ext_resource type="Script" uid="uid://c7wu7hc8pobfp" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_318j5"]
 [ext_resource type="PackedScene" uid="uid://by6waso0mjpjp" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/textbox_with_speaker_portrait.tscn" id="3_tc0it"]
 [ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="4_bpn6t"]
 [ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="5_kttre"]
 [ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="6_1t8rh"]
 [ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="7_kxtjg"]
 [ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="8_feplx"]
-[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="9_aliu5"]
+[ext_resource type="Script" uid="uid://lc8ack0yeiog" path="res://addons/dialogic/Resources/dialogic_style.gd" id="9_aliu5"]
 
 [sub_resource type="Resource" id="Resource_np7hs"]
 script = ExtResource("2_318j5")
 scene = ExtResource("1_43glt")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_rwao4"]
 script = ExtResource("2_318j5")
 scene = ExtResource("3_tc0it")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_fcwk5"]
 script = ExtResource("2_318j5")
 scene = ExtResource("4_bpn6t")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_2t133"]
 script = ExtResource("2_318j5")
 scene = ExtResource("5_kttre")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_hy755"]
 script = ExtResource("2_318j5")
 scene = ExtResource("6_1t8rh")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_fyacc"]
 script = ExtResource("2_318j5")
 scene = ExtResource("7_kxtjg")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_udnn6"]
 script = ExtResource("2_318j5")
 scene = ExtResource("8_feplx")
-overrides = {}
 
 [resource]
 script = ExtResource("9_aliu5")

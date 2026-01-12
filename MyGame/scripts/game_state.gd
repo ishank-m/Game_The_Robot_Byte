@@ -35,16 +35,20 @@ var dialogues_count = {
 var stairs = false
 var reverse_stairs = false
 
-var save1 = "res://saves/save1.dat"
-var save2 = "res://saves/save2.dat"
-var save3 = "res://saves/save3.dat"
+var save1 = "user://saves/save1.dat"
+var save2 = "user://saves/save2.dat"
+var save3 = "user://saves/save3.dat"
 
+func ensure_save_dir():
+	var dir := DirAccess.open("user://")
+	if not dir.dir_exists("saves"):
+		dir.make_dir("saves")
 
 func check_save(save):
-	if FileAccess.file_exists(save):
-		return true
+	return FileAccess.file_exists(save)
 
 func save_score():
+	ensure_save_dir()
 	var file = FileAccess.open(get_current_save(), FileAccess.WRITE)
 	current_scene = get_tree().current_scene.scene_file_path
 	player_pos = get_tree().current_scene.get_node("Player").position
@@ -58,6 +62,7 @@ func save_score():
 	file.store_var(scene)
 	file.store_var(dialogues_count)
 	player_pos = null
+	file.close()
 	
 
 func load_score():
@@ -73,16 +78,50 @@ func load_score():
 		scene = file.get_var()
 		dialogues_count = file.get_var()
 		get_tree().change_scene_to_file(current_scene)
+	print(game_state)
 
 func get_current_save():
 	if current_save == "save1":
 		return save1
 	elif current_save == "save2":
 		return save2
-	else:
+	elif current_save == "save3":
 		return save3
 
 func delete_save():
 	if check_save(get_current_save()):
-		var dir_access = DirAccess.open("res://saves/")
+		var dir_access = DirAccess.open("user://saves/")
 		dir_access.remove(current_save+".dat")
+
+func reset_for_new_game():
+	items = {
+		"sword": "wood",
+		"health_potion": 0,
+		"invin_potion": 0
+	}
+	sword_damage = 9
+	kingstate = "damaged"
+	player_pos = null
+	player_health = 120
+	player_died = false
+	current_scene = null
+	game_state = "play"
+	scene = "init"
+	points = 0
+	spawn = false
+	pausable = true
+	boss_health = 600
+	stairs = false
+	reverse_stairs = false
+
+	dialogues_count = {
+		"downstairs": 0,
+		"lobby1": 0,
+		"lobby2": 0,
+		"lobby3": 0,
+		"lobby4": 0,
+		"mcbed": 0,
+		"worldscene1": 0,
+		"shop": 0,
+		"throneroom": 0,
+	}

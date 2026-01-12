@@ -55,7 +55,6 @@ func _on_quit_button_mouse_entered():
 		quit_button.frame = 0
 func _on_quit_button_mouse_exited():
 	if not animation_playing:
-		GameState.current_save = null
 		quit_button.frame = 1
 func _on_quit_animation_animation_finished(anim_name):
 	if anim_name == "circle":
