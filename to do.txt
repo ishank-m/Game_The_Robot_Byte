@@ -1,6 +1,1 @@
-- combat = true
-- game music edit
 
-
-bugs:
-- worldscene1 king phadphadana
