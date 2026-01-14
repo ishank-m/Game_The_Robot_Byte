@@ -68,7 +68,6 @@ directories/dtl_directory={
 "shop1": "res://dialogues/shop1.dtl",
 "shop2": "res://dialogues/shop2.dtl",
 "shop3": "res://dialogues/shop3.dtl",
-"timeline": "res://scenes/test/timeline.dtl",
 "winroom": "res://dialogues/winroom.dtl",
 "winroom_0": "res://dialogues/winroom_0.dtl",
 "winroom_2": "res://dialogues/winroom_2.dtl",

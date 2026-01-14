@@ -39,9 +39,6 @@ func _on_dialogic_signal(argument):
 		GameState.spawn = false
 		GameState.scene = "worldscene1"
 		get_tree().change_scene_to_file("res://scenes/world/worldScene_2.tscn")
-	elif argument == "done_end":
-		GameState.game_state = "play"
-		player.attack = false
 
 func _physics_process(_delta):
 	if not GameState.player_died:
@@ -83,6 +80,6 @@ func _on_to_worldscene_1_body_entered(body):
 
 func _on_fight_timer_timeout():
 	$StaticBody2D.queue_free()
-	GameState.game_state = "pause"
 	$Player/Player_sprite.stop()
 	GameState.spawn = false
+	player.attack = false
